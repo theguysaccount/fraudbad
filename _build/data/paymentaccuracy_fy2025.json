@@ -1,0 +1,1548 @@
+{
+ "pulled": "2026-11-09",
+ "source": "https://www.paymentaccuracy.gov/agencies-and-programs",
+ "agencies": [
+  {
+   "kind": "agency",
+   "name": "Department of Health and Human Services",
+   "outlays": 1670124000000.0,
+   "raw_outlays": "$1,670,124 M",
+   "programs": "391",
+   "susceptible": "10",
+   "rate": 5.83,
+   "change": "+0.26%"
+  },
+  {
+   "kind": "agency",
+   "name": "Social Security Administration",
+   "outlays": 1494212000000.0,
+   "raw_outlays": "$1,494,212 M",
+   "programs": "11",
+   "susceptible": "3",
+   "rate": 0.76,
+   "change": "+0.01%"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of War",
+   "outlays": 241689000000.0,
+   "raw_outlays": "$241,689 M",
+   "programs": "49",
+   "susceptible": "8",
+   "rate": 0.72,
+   "change": "+0.47%"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Veterans Affairs",
+   "outlays": 201103000000.0,
+   "raw_outlays": "$201,103 M",
+   "programs": "91",
+   "susceptible": "7",
+   "rate": 1.09,
+   "change": "-3.46%"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Education",
+   "outlays": 185708000000.0,
+   "raw_outlays": "$185,708 M",
+   "programs": "126",
+   "susceptible": "3",
+   "rate": 0.71,
+   "change": "-0.2%"
+  },
+  {
+   "kind": "agency",
+   "name": "Office of Personnel Management",
+   "outlays": 176584000000.0,
+   "raw_outlays": "$176,584 M",
+   "programs": "7",
+   "susceptible": "2",
+   "rate": 0.25,
+   "change": "-0.07%"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Agriculture",
+   "outlays": 148306000000.0,
+   "raw_outlays": "$148,306 M",
+   "programs": "325",
+   "susceptible": "10",
+   "rate": 9.05,
+   "change": "-0.06%"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of the Treasury",
+   "outlays": 105743000000.0,
+   "raw_outlays": "$105,743 M",
+   "programs": "285",
+   "susceptible": "7",
+   "rate": 26.54,
+   "change": "+4.63%"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Transportation",
+   "outlays": 67068000000.0,
+   "raw_outlays": "$67,068 M",
+   "programs": "57",
+   "susceptible": "2",
+   "rate": 3.57,
+   "change": "+1.67%"
+  },
+  {
+   "kind": "agency",
+   "name": "Small Business Administration",
+   "outlays": 66238000000.0,
+   "raw_outlays": "$66,238 M",
+   "programs": "40",
+   "susceptible": "8",
+   "rate": 12.29,
+   "change": "+7.09%"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Housing and Urban Development",
+   "outlays": 50439000000.0,
+   "raw_outlays": "$50,439 M",
+   "programs": "85",
+   "susceptible": "2",
+   "rate": 0.0,
+   "change": "0.0%"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Labor",
+   "outlays": 41634000000.0,
+   "raw_outlays": "$41,634 M",
+   "programs": "57",
+   "susceptible": "2",
+   "rate": 12.16,
+   "change": "-1.13%"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Homeland Security",
+   "outlays": 21631000000.0,
+   "raw_outlays": "$21,631 M",
+   "programs": "176",
+   "susceptible": "3",
+   "rate": 0.15,
+   "change": "-0.32%"
+  },
+  {
+   "kind": "agency",
+   "name": "Federal Communications Commission",
+   "outlays": 2741000000.0,
+   "raw_outlays": "$2,741 M",
+   "programs": "13",
+   "susceptible": "2",
+   "rate": 5.03,
+   "change": "+1.88%"
+  },
+  {
+   "kind": "agency",
+   "name": "Corporation for National and Community Service",
+   "outlays": 478000000.0,
+   "raw_outlays": "$478 M",
+   "programs": "17",
+   "susceptible": "2",
+   "rate": 2.64,
+   "change": "+0.87%"
+  },
+  {
+   "kind": "agency",
+   "name": "Administrative Conference of the US",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Appalachian Regional Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "5",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Barry Goldwater Scholarship and Excellence in Education Fund",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Commodity Futures Trading Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "2",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Consumer Product Safety Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "4",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Court Services and Offender Supervision Agency for the District",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "2",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Defense Nuclear Facilities Safety Board",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Delta Regional Authority",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Denali Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "3",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Commerce",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "64",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Energy",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "6",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of Justice",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "5",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of State",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "40",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Department of the Interior",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "375",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Election Assistance Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "3",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Environmental Protection Agency",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "134",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Equal Employment Opportunity Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "8",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Executive Office of the President",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "8",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Export-Import Bank of the U.S.",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "4",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Farm Credit Administration",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "0",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Federal Election Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Federal Energy Regulatory Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "2",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Federal Financial Institutions Examination Council Appraisal Subcommittee",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "2",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Federal Labor Relations Authority",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "5",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Federal Maritime Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "0",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Federal Trade Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "2",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "General Services Administration",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "48",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Gulf Coast Ecosystem Restoration Council",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "2",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Inter-American Foundation",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "2",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "International Assistance Programs (USAID)",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "0",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "James Madison Memorial Fellowship Foundation (JMMFF)",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Japan-U.S. Friendship Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Library of Congress",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "6",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Merit Systems Protection Board",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Millennium Challenge Corporation",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "6",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Morris K. Udall Scholarship and Excellence in National Environmental Policy Foundation",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "3",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "National Aeronautics and Space Administration",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "76",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "National Archives and Records Administration",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "7",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "National Credit Union Administration",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "National Endowment for the Arts",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "3",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "National Endowment for the Humanities",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "10",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "National Labor Relations Board",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "4",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "National Mediation Board",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "0",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "National Science Foundation",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "4",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "National Transportation Safety Board",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "0",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Northern Border Regional Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Nuclear Regulatory Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "9",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Occupational Safety and Health Review Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "0",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Office of Government Ethics",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Office of Special Counsel",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "PENSION BENEFIT GUARANTY CORPORATION",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "7",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Peace Corps",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Permitting Council",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Privacy and Civil Liberties Oversight Board",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "2",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Railroad Retirement Board",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "4",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Securities and Exchange Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "6",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Selective Service System",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Southeast Crescent Regional Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Surface Transportation Board",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "Tennessee Valley Authority",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "3",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "The Institute of Museum and Library Services",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "11",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "U.S. Commission on Civil Rights",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "US International Development Finance Corporation",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "4",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "US International Trade Commission",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "United States Access Board",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "0",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "United States Agency for Global Media, BBG",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "10",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "United States Holocaust Memorial Museum",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "0",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  },
+  {
+   "kind": "agency",
+   "name": "United States Institute of Peace",
+   "outlays": 0.0,
+   "raw_outlays": "$0 M",
+   "programs": "1",
+   "susceptible": "0",
+   "rate": 0.0,
+   "change": "N/A"
+  }
+ ],
+ "programs": [
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Administration for Children and Families (ACF) - Child Care and Development Fund",
+   "outlays": 18698590000.0,
+   "raw_outlays": "$18,698.59 M",
+   "rate": 4.93,
+   "change": "-0.01%",
+   "est": 921840487.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Administration for Children and Families (ACF) - Foster Care Title IV-E",
+   "outlays": 1295000000.0,
+   "raw_outlays": "$1,295.0 M",
+   "rate": 5.72,
+   "change": "+0.9%",
+   "est": 74074000.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Administration for Children and Families (ACF) - Head Start",
+   "outlays": 11726700000.0,
+   "raw_outlays": "$11,726.7 M",
+   "rate": 1.68,
+   "change": "-1.85%",
+   "est": 197008560.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Administration for Children and Families (ACF) - Temporary Assistance for Needy Families",
+   "outlays": null,
+   "raw_outlays": "Did not report",
+   "rate": null,
+   "change": "N/A",
+   "est": null
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Centers for Medicare & Medicaid Services (CMS) - Advance Premium Tax Credit (APTC)",
+   "outlays": 73812750000.0,
+   "raw_outlays": "$73,812.75 M",
+   "rate": 0.89,
+   "change": "-0.12%",
+   "est": 656933475.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Centers for Medicare & Medicaid Services (CMS) - Children's Health Insurance Program (CHIP)",
+   "outlays": 19448780000.0,
+   "raw_outlays": "$19,448.78 M",
+   "rate": 7.05,
+   "change": "+0.95%",
+   "est": 1371138990.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Centers for Medicare & Medicaid Services (CMS) - Medicaid",
+   "outlays": 610988020000.0,
+   "raw_outlays": "$610,988.02 M",
+   "rate": 6.12,
+   "change": "+1.03%",
+   "est": 37392466824.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Centers for Medicare & Medicaid Services (CMS) - Medicare Advantage (Part C)",
+   "outlays": 388716840000.0,
+   "raw_outlays": "$388,716.84 M",
+   "rate": 6.09,
+   "change": "+0.48%",
+   "est": 23672855556.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Centers for Medicare & Medicaid Services (CMS) - Medicare Fee-for-Service (FFS)",
+   "outlays": 439878690000.0,
+   "raw_outlays": "$439,878.69 M",
+   "rate": 6.55,
+   "change": "-1.11%",
+   "est": 28812054195.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Health and Human Services",
+   "name": "Centers for Medicare & Medicaid Services (CMS) - Medicare Prescription Drug Benefit (Part D)",
+   "outlays": 105559080000.0,
+   "raw_outlays": "$105,559.08 M",
+   "rate": 4.0,
+   "change": "+0.3%",
+   "est": 4222363200.0
+  },
+  {
+   "kind": "program",
+   "agency": "Social Security Administration",
+   "name": "Disability Insurance (DI)",
+   "outlays": 143442520000.0,
+   "raw_outlays": "$143,442.52 M",
+   "rate": 1.63,
+   "change": "N/A",
+   "est": 2338113075.9999995
+  },
+  {
+   "kind": "program",
+   "agency": "Social Security Administration",
+   "name": "Old-Age and Survivors Insurance (OASI)",
+   "outlays": 1287478750000.0,
+   "raw_outlays": "$1,287,478.75 M",
+   "rate": 0.13,
+   "change": "-0.18%",
+   "est": 1673722375.0
+  },
+  {
+   "kind": "program",
+   "agency": "Social Security Administration",
+   "name": "Supplemental Security Income (SSI)",
+   "outlays": 63290880000.0,
+   "raw_outlays": "$63,290.88 M",
+   "rate": 11.58,
+   "change": "+0.96%",
+   "est": 7329083904.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of War",
+   "name": "Civilian Pay \u2013 Army",
+   "outlays": null,
+   "raw_outlays": "Did not report",
+   "rate": null,
+   "change": "N/A",
+   "est": null
+  },
+  {
+   "kind": "program",
+   "agency": "Department of War",
+   "name": "Civilian Pay \u2013 Other Defense Organization (ODO)",
+   "outlays": 11127950000.0,
+   "raw_outlays": "$11,127.95 M",
+   "rate": 1.47,
+   "change": "+0.03%",
+   "est": 163580865.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of War",
+   "name": "Commercial Pay \u2013 Mechanization of Contract Administration Services (MOCAS)",
+   "outlays": 225038870000.0,
+   "raw_outlays": "$225,038.87 M",
+   "rate": 0.54,
+   "change": "+0.5%",
+   "est": 1215209898.0000002
+  },
+  {
+   "kind": "program",
+   "agency": "Department of War",
+   "name": "Military Pay Army \u2013 National Guard",
+   "outlays": null,
+   "raw_outlays": "Did not report",
+   "rate": null,
+   "change": "N/A",
+   "est": null
+  },
+  {
+   "kind": "program",
+   "agency": "Department of War",
+   "name": "Travel Pay Army \u2013 Defense Travel System (DTS)",
+   "outlays": 2533200000.0,
+   "raw_outlays": "$2,533.2 M",
+   "rate": 6.27,
+   "change": "-0.64%",
+   "est": 158831639.99999997
+  },
+  {
+   "kind": "program",
+   "agency": "Department of War",
+   "name": "Travel Pay Department of Air Force (DAF) \u2013 Defense Travel System (DTS)",
+   "outlays": 2558900000.0,
+   "raw_outlays": "$2,558.9 M",
+   "rate": 6.47,
+   "change": "-0.98%",
+   "est": 165560830.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of War",
+   "name": "Travel Pay Other Defense Organization (ODO) \u2013 Defense Travel System (DTS)",
+   "outlays": 415000000.0,
+   "raw_outlays": "$415.0 M",
+   "rate": 7.39,
+   "change": "N/A",
+   "est": 30668500.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of War",
+   "name": "Travel Pay Other Defense Organization (ODO) \u2013 Integrated Automated Travel System (IATS)",
+   "outlays": 14730000.0,
+   "raw_outlays": "$14.73 M",
+   "rate": 7.54,
+   "change": "N/A",
+   "est": 1110642.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Veterans Affairs",
+   "name": "Beneficiary Travel",
+   "outlays": 2053350000.0,
+   "raw_outlays": "$2,053.35 M",
+   "rate": 5.95,
+   "change": "-1.19%",
+   "est": 122174325.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Veterans Affairs",
+   "name": "Compensation",
+   "outlays": 157452950000.0,
+   "raw_outlays": "$157,452.95 M",
+   "rate": 0.55,
+   "change": "N/A",
+   "est": 865991225.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Veterans Affairs",
+   "name": "Medical Care Contracts and Agreements",
+   "outlays": 1333360000.0,
+   "raw_outlays": "$1,333.36 M",
+   "rate": 1.12,
+   "change": "+1.03%",
+   "est": 14933632.000000002
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Veterans Affairs",
+   "name": "Pension",
+   "outlays": 3549890000.0,
+   "raw_outlays": "$3,549.89 M",
+   "rate": 8.75,
+   "change": "-2.04%",
+   "est": 310615375.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Veterans Affairs",
+   "name": "Purchased Long Term Services and Supports",
+   "outlays": 7330110000.0,
+   "raw_outlays": "$7,330.11 M",
+   "rate": 4.11,
+   "change": "-7.58%",
+   "est": 301267521.00000006
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Veterans Affairs",
+   "name": "Supplies and Materials",
+   "outlays": 3939200000.0,
+   "raw_outlays": "$3,939.2 M",
+   "rate": 0.02,
+   "change": "-5.79%",
+   "est": 787840.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Veterans Affairs",
+   "name": "VA Community Care",
+   "outlays": 25444180000.0,
+   "raw_outlays": "$25,444.18 M",
+   "rate": 2.23,
+   "change": "+0.33%",
+   "est": 567405214.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Education",
+   "name": "Education Stabilization Fund",
+   "outlays": 55570270000.0,
+   "raw_outlays": "$55,570.27 M",
+   "rate": 0.0,
+   "change": "0.0%",
+   "est": 0.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Education",
+   "name": "Federal Pell Grant Program",
+   "outlays": 39934400000.0,
+   "raw_outlays": "$39,934.4 M",
+   "rate": 1.05,
+   "change": "-1.56%",
+   "est": 419311200.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Education",
+   "name": "William D. Ford Federal Direct Loan Program",
+   "outlays": 90202940000.0,
+   "raw_outlays": "$90,202.94 M",
+   "rate": 0.99,
+   "change": "+0.05%",
+   "est": 893009106.0
+  },
+  {
+   "kind": "program",
+   "agency": "Office of Personnel Management",
+   "name": "Federal Employees Health Benefits - Experience Rated Carriers",
+   "outlays": 67219300000.0,
+   "raw_outlays": "$67,219.3 M",
+   "rate": 0.11,
+   "change": "+0.11%",
+   "est": 73941230.0
+  },
+  {
+   "kind": "program",
+   "agency": "Office of Personnel Management",
+   "name": "Federal Retirement Services",
+   "outlays": 109364530000.0,
+   "raw_outlays": "$109,364.53 M",
+   "rate": 0.33,
+   "change": "+0.02%",
+   "est": 360902949.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "Agriculture Risk/Price Loss Coverage Program",
+   "outlays": 278070000.0,
+   "raw_outlays": "$278.07 M",
+   "rate": 6.71,
+   "change": "-6.07%",
+   "est": 18658497.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "Commodity Credit Corporation (CCC) Livestock Forage Disaster Program",
+   "outlays": 1201470000.0,
+   "raw_outlays": "$1,201.47 M",
+   "rate": 6.41,
+   "change": "-6.48%",
+   "est": 77014227.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "Emergency Conservation Program",
+   "outlays": 132830000.00000001,
+   "raw_outlays": "$132.83 M",
+   "rate": 55.5,
+   "change": "+10.34%",
+   "est": 73720650.00000001
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "Federal Crop Insurance Corporation (FCIC)",
+   "outlays": 22925060000.0,
+   "raw_outlays": "$22,925.06 M",
+   "rate": 3.29,
+   "change": "+0.87%",
+   "est": 754234474.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "Food and Nutrition Service (FNS) Child and Adult Care Food Program",
+   "outlays": 4245000000.0,
+   "raw_outlays": "$4,245.0 M",
+   "rate": 10.5,
+   "change": "N/A",
+   "est": 445725000.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "Food and Nutrition Service (FNS) Summer Food Service Program (SFSP)",
+   "outlays": null,
+   "raw_outlays": "Did not report",
+   "rate": null,
+   "change": "N/A",
+   "est": null
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "National School Lunch Program",
+   "outlays": 19914000000.0,
+   "raw_outlays": "$19,914.0 M",
+   "rate": 6.98,
+   "change": "-0.39%",
+   "est": 1389997200.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "Noninsured Crop Disaster Assistance Program",
+   "outlays": 185780000.0,
+   "raw_outlays": "$185.78 M",
+   "rate": 10.56,
+   "change": "-1.05%",
+   "est": 19618368.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "School Breakfast Program",
+   "outlays": 5914000000.0,
+   "raw_outlays": "$5,914.0 M",
+   "rate": 7.24,
+   "change": "-0.36%",
+   "est": 428173600.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Agriculture",
+   "name": "Supplemental Nutrition Assistance Program",
+   "outlays": 93509720000.0,
+   "raw_outlays": "$93,509.72 M",
+   "rate": 10.93,
+   "change": "-0.75%",
+   "est": 10220612396.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of the Treasury",
+   "name": "Departmental Offices - Emergency Rental Assistance",
+   "outlays": null,
+   "raw_outlays": "Did not report",
+   "rate": null,
+   "change": "N/A",
+   "est": null
+  },
+  {
+   "kind": "program",
+   "agency": "Department of the Treasury",
+   "name": "Internal Revenue Service - Additional Child Tax Credit",
+   "outlays": 33434809999.999996,
+   "raw_outlays": "$33,434.81 M",
+   "rate": 13.61,
+   "change": "+2.88%",
+   "est": 4550477640.999999
+  },
+  {
+   "kind": "program",
+   "agency": "Department of the Treasury",
+   "name": "Internal Revenue Service - American Opportunity Tax Credit",
+   "outlays": 5008070000.0,
+   "raw_outlays": "$5,008.07 M",
+   "rate": 30.68,
+   "change": "+3.03%",
+   "est": 1536475876.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of the Treasury",
+   "name": "Internal Revenue Service - Earned Income Tax Credit",
+   "outlays": 64676800000.0,
+   "raw_outlays": "$64,676.8 M",
+   "rate": 32.69,
+   "change": "+5.41%",
+   "est": 21142845919.999996
+  },
+  {
+   "kind": "program",
+   "agency": "Department of the Treasury",
+   "name": "Internal Revenue Service - Refundable Premium Assistance Tax Credit",
+   "outlays": 2623050000.0,
+   "raw_outlays": "$2,623.05 M",
+   "rate": 31.61,
+   "change": "+3.07%",
+   "est": 829146105.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of the Treasury",
+   "name": "Internal Revenue Service - US Coronavirus Payments",
+   "outlays": null,
+   "raw_outlays": "Did not report",
+   "rate": null,
+   "change": "N/A",
+   "est": null
+  },
+  {
+   "kind": "program",
+   "agency": "Department of the Treasury",
+   "name": "Internal Revenue Service - US Coronavirus Refundable Credits",
+   "outlays": null,
+   "raw_outlays": "Did not report",
+   "rate": null,
+   "change": "N/A",
+   "est": null
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Transportation",
+   "name": "Federal Highway Administration Highway Planning and Construction",
+   "outlays": 61788590000.0,
+   "raw_outlays": "$61,788.59 M",
+   "rate": 3.86,
+   "change": "+1.9%",
+   "est": 2385039574.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Transportation",
+   "name": "Federal Transit Administration Transit Infrastructure Grants - COVID Relief Funds",
+   "outlays": 5279300000.0,
+   "raw_outlays": "$5,279.3 M",
+   "rate": 0.16,
+   "change": "-1.4%",
+   "est": 8446880.0
+  },
+  {
+   "kind": "program",
+   "agency": "Small Business Administration",
+   "name": "504 Certified Development Loans Approvals",
+   "outlays": 7392040000.0,
+   "raw_outlays": "$7,392.04 M",
+   "rate": 4.58,
+   "change": "+0.84%",
+   "est": 338555432.0
+  },
+  {
+   "kind": "program",
+   "agency": "Small Business Administration",
+   "name": "7(a) Loan Guarantees Approvals",
+   "outlays": 26614890000.0,
+   "raw_outlays": "$26,614.89 M",
+   "rate": 6.13,
+   "change": "+0.7%",
+   "est": 1631492757.0
+  },
+  {
+   "kind": "program",
+   "agency": "Small Business Administration",
+   "name": "7(a) Loan Guarantees Purchases",
+   "outlays": 2115500000.0,
+   "raw_outlays": "$2,115.5 M",
+   "rate": 1.07,
+   "change": "-4.28%",
+   "est": 22635850.0
+  },
+  {
+   "kind": "program",
+   "agency": "Small Business Administration",
+   "name": "Disaster Assistance Loans",
+   "outlays": 3223820000.0,
+   "raw_outlays": "$3,223.82 M",
+   "rate": 4.87,
+   "change": "+1.25%",
+   "est": 157000034.0
+  },
+  {
+   "kind": "program",
+   "agency": "Small Business Administration",
+   "name": "Paycheck Protection Program (PPP) Loan Forgiveness",
+   "outlays": 303850000.0,
+   "raw_outlays": "$303.85 M",
+   "rate": 19.04,
+   "change": "-2.04%",
+   "est": 57853040.0
+  },
+  {
+   "kind": "program",
+   "agency": "Small Business Administration",
+   "name": "Paycheck Protection Program (PPP) Loan Guaranty Purchases",
+   "outlays": 1398230000.0,
+   "raw_outlays": "$1,398.23 M",
+   "rate": 5.17,
+   "change": "-19.3%",
+   "est": 72288491.0
+  },
+  {
+   "kind": "program",
+   "agency": "Small Business Administration",
+   "name": "Section 1112 Payments for SBA\u2019s business loan programs",
+   "outlays": 10585150000.0,
+   "raw_outlays": "$10,585.15 M",
+   "rate": 0.34,
+   "change": "N/A",
+   "est": 35989510.00000001
+  },
+  {
+   "kind": "program",
+   "agency": "Small Business Administration",
+   "name": "Shuttered Venue Operators Grant Program",
+   "outlays": 14604950000.0,
+   "raw_outlays": "$14,604.95 M",
+   "rate": 39.89,
+   "change": "+39.89%",
+   "est": 5825914555.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Housing and Urban Development",
+   "name": "Housing - Rental Housing Assistance Program (RHAP) - Project Based Rental Assistance - Project Based Section 8 - Rental Housing Assistance Program- Section 236 - Housing for Persons with Disability- Section 811",
+   "outlays": 16458250000.0,
+   "raw_outlays": "$16,458.25 M",
+   "rate": 0.0,
+   "change": "0.0%",
+   "est": 0.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Housing and Urban Development",
+   "name": "Public and Indian Housing - Rental Housing Assistance Program (RHAP) - Tenant Based Rental Assistance Section 8 - Housing Certificate Fund & Tenant Based Rental Assistance",
+   "outlays": 33980760000.000004,
+   "raw_outlays": "$33,980.76 M",
+   "rate": 0.0,
+   "change": "0.0%",
+   "est": 0.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Labor",
+   "name": "Employment & Training Administration - Federal State Unemployment Insurance",
+   "outlays": 37679470000.0,
+   "raw_outlays": "$37,679.47 M",
+   "rate": 13.14,
+   "change": "-1.27%",
+   "est": 4951082358.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Labor",
+   "name": "Office of Workers' Compensation - Federal Employees' Compensation Act",
+   "outlays": 3954920000.0,
+   "raw_outlays": "$3,954.92 M",
+   "rate": 2.78,
+   "change": "+0.43%",
+   "est": 109946776.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Homeland Security",
+   "name": "Federal Emergency Management Agency - Funeral Assistance",
+   "outlays": 301490000.0,
+   "raw_outlays": "$301.49 M",
+   "rate": 4.31,
+   "change": "+0.81%",
+   "est": 12994219.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Homeland Security",
+   "name": "Federal Emergency Management Agency - Public Assistance - Validate as You Go",
+   "outlays": 21313030000.0,
+   "raw_outlays": "$21,313.03 M",
+   "rate": 0.1,
+   "change": "-0.25%",
+   "est": 21313030.0
+  },
+  {
+   "kind": "program",
+   "agency": "Department of Homeland Security",
+   "name": "Immigration and Customs Enforcement - Procurement, Construction, and Improvements - Disaster Supplemental Funds",
+   "outlays": 16000000.0,
+   "raw_outlays": "$16.0 M",
+   "rate": 0.23,
+   "change": "N/A",
+   "est": 36800.0
+  },
+  {
+   "kind": "program",
+   "agency": "Federal Communications Commission",
+   "name": "Universal Service Fund - High Cost Legacy",
+   "outlays": 1911350000.0,
+   "raw_outlays": "$1,911.35 M",
+   "rate": 3.26,
+   "change": "-1.2%",
+   "est": 62310010.0
+  },
+  {
+   "kind": "program",
+   "agency": "Federal Communications Commission",
+   "name": "Universal Service Fund \u2013 Lifeline",
+   "outlays": 829600000.0,
+   "raw_outlays": "$829.6 M",
+   "rate": 9.12,
+   "change": "+3.14%",
+   "est": 75659519.99999999
+  },
+  {
+   "kind": "program",
+   "agency": "Corporation for National and Community Service",
+   "name": "AmeriCorps State and National",
+   "outlays": 384390000.0,
+   "raw_outlays": "$384.39 M",
+   "rate": 2.55,
+   "change": "+0.63%",
+   "est": 9801944.999999998
+  },
+  {
+   "kind": "program",
+   "agency": "Corporation for National and Community Service",
+   "name": "The Foster Grandparent Program (FGP)",
+   "outlays": 93850000.0,
+   "raw_outlays": "$93.85 M",
+   "rate": 2.99,
+   "change": "-0.13%",
+   "est": 2806115.0
+  }
+ ]
+}

@@ -3,6 +3,7 @@ import asyncio, html, os
 from playwright.async_api import async_playwright
 from content import CASES, TIERS, LEVELS
 import content_soft  # noqa: F401  (adds soft-fraud cases and tiers)
+import content_more as M  # round-3 cases + ledger totals
 
 SITE = os.path.join(os.path.dirname(__file__), "site")
 F = "file://" + SITE
@@ -74,12 +75,25 @@ TRANSP = f"""<html><head>{BASE}<style>
 </body></html>"""
 
 
+LEDGER = f"""<html><head>{BASE}<style>
+.yr{{position:absolute;right:64px;top:150px;width:470px;height:250px;display:flex;align-items:flex-end;gap:5px;border-bottom:3px solid #fff}}
+.yr i{{flex:1;background:#fff;display:block}} .yr i.h{{background:#ff4438}}
+</style></head><body>
+<div class="mark"><span class="f">Fraud</span>Bad</div>
+<div class="lvl">The ledger · every program</div>
+<div class="fig" style="font-size:170px;top:132px">${M.CUM/1e12:.2f}T</div>
+<div class="scale" style="top:312px;font-size:40px">paid wrong since {M.FIRST_YEAR}</div>
+<div class="title" style="top:388px;width:560px;font-size:36px">Every federal program's error rate, from the government's own dataset.</div>
+<div class="yr">{''.join(f'<i class="{"h" if y==max(M.YEARS) else ""}" style="height:{M.YEARS[y]["amount_m"]/max(v["amount_m"] for v in M.YEARS.values())*100:.0f}%"></i>' for y in sorted(M.YEARS))}</div>
+<div class="bar"><b>Want to stop it? <span>Sign the Receipts Act.</span></b><i>fraudbad.com/ledger</i></div>
+</body></html>"""
+
 SOFT = f"""<html><head>{BASE}</head><body>
 <div class="mark"><span class="f">Fraud</span>Bad</div>
 <div class="lvl">Soft fraud</div>
 <div class="tier" style="top:96px;border-color:#e9b949;color:#e9b949">Bigger than the crimes</div>
-<div class="fig" style="font-size:190px;top:122px">$2.8</div>
-<div class="scale" style="top:318px;color:#e9b949">trillion paid without proof since 2003</div>
+<div class="fig" style="font-size:190px;top:122px">${M.CUM/1e12:.2f}</div>
+<div class="scale" style="top:318px;color:#e9b949">trillion paid wrong since {M.FIRST_YEAR}</div>
 <div class="title">Soft fraud: paying without proof, overpaying, paying twice, never collecting. Here's how we search for it.</div>
 <div class="bar"><b>Want to stop it? <span>Sign the Receipts Act.</span></b><i>fraudbad.com/soft-fraud</i></div>
 </body></html>"""
@@ -89,7 +103,7 @@ async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch(executable_path="/usr/bin/google-chrome", args=["--no-sandbox", "--allow-file-access-from-files"])
         pg = await b.new_page(viewport={"width": 1200, "height": 630})
-        jobs = [("og-home.png", HOME), ("og-transparency.png", TRANSP), ("og-soft-fraud.png", SOFT)] + [(f"og-{c['slug']}.png", case_card(c)) for c in CASES]
+        jobs = [("og-home.png", HOME), ("og-transparency.png", TRANSP), ("og-soft-fraud.png", SOFT), ("og-ledger.png", LEDGER)] + [(f"og-{c['slug']}.png", case_card(c)) for c in CASES]
         for name, doc in jobs:
             tmp = os.path.join(os.path.dirname(__file__), "qa", "_og.html")
             open(tmp, "w", encoding="utf-8").write(doc)

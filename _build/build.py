@@ -5,10 +5,11 @@ from content import (UPDATED, UPDATED_HUMAN, SITE, CTA_URL, SOCIALS, S, TIERS, L
                      DIVE_ROWS, DIVE, DARK_MONEY, LOCAL_TYPES)
 import content_soft  # noqa: F401  (adds soft-fraud cases, tiers and sources)
 from content_soft import TYPES, SIGNALS, SOFT_BIG, BLANK, SHORT, BLANK_TOTAL, SHORT_TOTAL, TOP_TOTAL, SIG
+import content_more as M  # official improper-payment ledger + round-3 cases
 
 OUT = os.path.join(os.path.dirname(__file__), "site")
 ASSETS = os.path.join(os.path.dirname(__file__), "assets")
-V = "20261108"
+V = "20261109"
 e = lambda s: html.escape(str(s), quote=True)
 
 LEVEL_ORDER = {"federal": 0, "state": 1, "local": 2}
@@ -17,19 +18,22 @@ ORDER = [
     "federal-fraud-estimate", "pandemic-unemployment-fraud", "ppp-eidl-loan-fraud", "employee-retention-credit",
     "operation-gold-rush", "health-care-fraud-takedown-2026", "minnesota-medicaid-programs", "california-unemployment-fraud",
     "michigan-unemployment-fraud", "arizona-sober-living-fraud", "washington-unemployment-theft", "feeding-our-future",
-    "mississippi-welfare-scandal", "los-angeles-hospice-fraud",
+    "mississippi-welfare-scandal", "los-angeles-hospice-fraud", "false-claims-act-2025", "snap-card-skimming",
     # soft fraud
     "improper-payments-since-2003", "medicare-advantage-overpayments", "health-care-waste", "tax-gap", "unfixed-gao-savings",
-    "improper-payments-2025", "contracts-with-no-description", "weapons-cost-overruns", "federal-it-legacy-systems",
-    "medicare-medicaid-no-receipts", "pentagon-failed-audits", "afghanistan-reconstruction", "tax-credit-errors",
-    "snap-payment-errors", "new-york-unemployment-overpayments", "los-angeles-homelessness-spending"]
+    "federal-debt-never-collected", "improper-payments-2025", "data-existed-nobody-checked", "september-spending-rush",
+    "california-high-speed-rail", "contracts-with-no-description", "sentinel-icbm-overrun", "weapons-cost-overruns",
+    "federal-it-legacy-systems", "medicare-medicaid-no-receipts", "pentagon-failed-audits", "social-security-overpayments",
+    "shuttered-venue-grants", "afghanistan-reconstruction", "tax-credit-errors", "snap-payment-errors",
+    "hud-rental-assistance-unverified", "honolulu-rail", "medicare-generic-drug-prices",
+    "new-york-unemployment-overpayments", "los-angeles-homelessness-spending"]
 _by = {c["slug"]: c for c in CASES}
 assert sorted(ORDER) == sorted(_by), "ORDER must list every case exactly once"
 ORDERED = [_by[s] for s in ORDER]
 
 STAMP = {"confirmed": "CONFIRMED", "charged": "CHARGED", "settled": "SETTLED", "estimated": "NO RECEIPT",
          "noproof": "NO RECEIPT", "frozen": "FROZEN", "unauditable": "UNAUDITABLE",
-         "overrun": "OVER BUDGET", "unfixed": "NOT FIXED"}
+         "overrun": "OVER BUDGET", "unfixed": "NOT FIXED", "measured": "MEASURED", "uncollected": "UNCOLLECTED"}
 
 
 def src_title(sid):
@@ -82,7 +86,7 @@ def header(active=""):
         return f'<a href="{href}"{cur}>{label}</a>'
     return f"""<header class="top"><div class="wrap">
 <a class="mark" href="/" aria-label="FraudBad home"><span class="f">Fraud</span><span class="b">Bad</span><small>No taxation without receipts</small></a>
-<nav class="nav" aria-label="Main">{a('/#cases','The cases','cases')}{a('/soft-fraud','Soft fraud','soft')}{a('/transparency','Where receipts stop','transparency')}{a('/method','How we judge','method')}<a class="btn sm" href="{CTA_URL}">Sign the Receipts Act</a></nav>
+<nav class="nav" aria-label="Main">{a('/#cases','The cases','cases')}{a('/soft-fraud','Soft fraud','soft')}{a('/ledger','The ledger','ledger')}{a('/transparency','Where receipts stop','transparency')}{a('/method','How we judge','method')}<a class="btn sm" href="{CTA_URL}">Sign the Receipts Act</a></nav>
 </div></header>
 """
 
@@ -111,7 +115,7 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
 <div><a class="mark" href="/"><span class="f">Fraud</span><span class="b">Bad</span></a>
 <p style="margin-top:14px">An independent public-interest site. Not a government website. Every figure links to the auditor, inspector general, court record or agency report it came from.</p></div>
-<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="{CTA_URL}">Sign the Receipts Act</a></nav>
+<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="{CTA_URL}">Sign the Receipts Act</a></nav>
 <nav aria-label="America.co"><a href="https://america.co/">America.co</a>{''.join(f'<a href="{u}" rel="noopener">{n}</a>' for n,u in SOCIALS)}<a href="https://america.co/work-with-us">Send a correction</a></nav>
 <p class="fine">Updated {UPDATED_HUMAN}. Charges are accusations; everyone charged is presumed innocent until proven guilty. Improper payments are not all fraud — each page says what kind of number it is.</p>
 </div></footer>
@@ -184,7 +188,7 @@ def build_home():
         ("$186B", "paid in error by federal agencies in fiscal 2025", "gao_ip"),
         ("0 for 8", "Pentagon financial audits passed since 2018", "dn_audit"),
         ("74%", "of federal grant dollars can't be traced to a local place", "pogo"),
-        ("$2.8T", "paid without proof since 2003 — the soft fraud nobody adds up", "gao_ip_cum"),
+        (f"${M.CUM/1e12:.2f}T", f"paid wrong or without proof since {M.FIRST_YEAR} — the soft fraud nobody adds up", "pa_data"),
     ]
     stat_html = "".join(
         f'<div class="stat"><b>{e(n)}</b><p>{e(t)}</p><span class="src"><a href="{e(S[sid][3])}" rel="noopener">{e(S[sid][1])}, {e(S[sid][2])}</a></span></div>'
@@ -417,7 +421,7 @@ def build_soft():
         return "".join(out)
     soft_cases = "\n".join(card(c) for c in ORDERED if c["type"] == "soft")
     title = "Soft fraud: the trillions lost to negligence, and how we search for it | FraudBad"
-    desc = "Paying without proof, overpaying, paying twice, losing track, never collecting. $2.8 trillion in improper payments since 2003 is just the start. Here's every official number and the seven signals we use to find more."
+    desc = f"Paying without proof, overpaying, paying twice, losing track, never collecting. ${M.CUM/1e12:.2f} trillion in improper payments since {M.FIRST_YEAR} is just the start. Here's every official number and the seven signals we use to find more."
     ld = [ORG_LD, {"@context": "https://schema.org", "@type": "Article", "headline": "Soft fraud", "description": desc, "url": SITE + "/soft-fraud",
                    "datePublished": UPDATED, "dateModified": UPDATED, "image": SITE + "/og-soft-fraud.png", "author": {"@type": "Organization", "name": "FraudBad"}}]
     body = f"""{header('soft')}
@@ -455,6 +459,107 @@ def build_soft():
     write("soft-fraud.html", head(title, desc, "/soft-fraud", "og-soft-fraud.png", ld) + body)
 
 
+# ---------------------------------------------------------------- ledger (official improper-payment dataset)
+def build_ledger():
+    pa = json.load(open(os.path.join(os.path.dirname(__file__), "data", "paymentaccuracy_fy2025.json")))
+    dnr = [p for p in pa["programs"] if p["raw_outlays"] == "Did not report"]
+    yrs = sorted(M.YEARS)
+    top = max(M.YEARS[y]["amount_m"] for y in yrs)
+    peak = max(yrs, key=lambda y: M.YEARS[y]["amount_m"])
+    keep = {yrs[0], peak, yrs[-1]}
+    bars = "".join(
+        f'<div class="y{" hi" if y in keep else ""}" style="--h:{M.YEARS[y]["amount_m"]/top*100:.1f}%" title="FY{y}: ${M.YEARS[y]["amount_m"]/1000:,.1f} billion across {M.YEARS[y]["programs"]} programs">'
+        + (f'<b>${M.YEARS[y]["amount_m"]/1000:,.0f}B</b>' if y in keep else "") + '</div>' for y in yrs)
+    shown = set(keep) | {y for y in yrs if y % 5 == 0 and all(abs(y - k) >= 3 for k in keep)}
+    xl = "".join(f'<span{" class=k" if y in shown else ""}>{str(y)[2:] if y not in keep else y}</span>' for y in yrs)
+    def money(m):
+        if m >= 1000: return f"${m/1000:,.2f}B" if m < 10000 else f"${m/1000:,.1f}B"
+        return f"${m:,.0f}M" if m >= 1 else "<$1M"
+    rc = [("Data existed and was accessible — nobody checked it", M.RC_FAIL), ("The data needed didn't exist", M.RC_NOEXIST),
+          ("Not enough paperwork to tell either way", M.RC_DOCS), ("Data existed, but the agency couldn't get it", M.RC_INAB),
+          ("Right amount, but the rules weren't followed", M.RC_TECH)]
+    rcmax = max(v for _, v in rc)
+    rc_html = "".join(f'<div class="bar-row"><span>{e(lab)}</span><div class="track"><div class="fill" style="--w:{v/rcmax*100:.1f}%"></div></div><b>${v/1e9:,.1f}B</b></div>' for lab, v in rc)
+    rec_y = [y for y in sorted(M.REC) if y >= 2016]
+    rmax = max(M.REC[y]["identified_m"] for y in rec_y)
+    rec_html = "".join(
+        f'<div class="rec-y"><span class="yy">{y}</span><div class="rec-bars"><i class="flag" style="width:{M.REC[y]["identified_m"]/rmax*100:.1f}%"></i><i class="got" style="width:{M.REC[y]["recovered_m"]/rmax*100:.1f}%"></i></div><span class="vv">${M.REC[y]["recovered_m"]/1000:,.1f}B of ${M.REC[y]["identified_m"]/1000:,.1f}B</span></div>'
+        for y in rec_y)
+    rows = []
+    for i, p in enumerate(M.PROGS, 1):
+        r = p["rate"] or 0
+        pr = p["prev_rate"]
+        chg = ""
+        if pr is not None:
+            d = (r - pr) * 100
+            chg = f'<span class="{"up" if d > 0.05 else ("dn" if d < -0.05 else "")}">{pr*100:.1f}%</span>'
+        else:
+            chg = '<span class="na" title="Not reported under this name in FY2024">—</span>'
+        rows.append(f'<tr><td class="rk">{i}</td><td><b>{e(p["program"])}</b><span class="ag">{e(M.agency(p["agency"]))}</span></td>'
+                    f'<td class="num">{money(p["outlays_m"])}</td><td class="num">{money(p["total_m"])}</td>'
+                    f'<td class="rt"><span class="rbar"><i style="width:{min(r,1)*100:.1f}%"></i></span>{r*100:.1f}%</td><td class="pv">{chg}</td></tr>')
+    nc = ", ".join(M.agency(a) for a in M.NONCOMP)
+    dnr_html = "".join(f'<li><b>{e(p["name"])}</b><span>{e(p["agency"])}</span></li>' for p in dnr)
+    tiles = [
+        (f"${M.CUM/1e12:.2f}T", f"paid wrong or without proof, FY{M.FIRST_YEAR}–FY2025", "pa_data", "#years"),
+        (f"${M.FY25/1e9:,.1f}B", "in fiscal 2025 alone, across 64 programs", "pa_data", "#programs"),
+        (f"${M.RC_FAIL/1e9:,.1f}B", "of it paid when the data to catch it already existed", "pa_data", "#why"),
+        (f"{M.OVER10}", "programs got more than 1 in 10 dollars wrong", "pa_data", "#programs"),
+        (f"${M.REC25['recovered_m']/1000:,.1f}B", f"recovered, of ${M.REC25['identified_m']/1000:,.1f}B flagged to claw back", "pa_data", "#recovery"),
+        (f"{len(M.NONCOMP)} of {M.N_AGENCIES}", "agencies out of compliance with the payment-integrity law (FY2024)", "pa_data", "#law"),
+    ]
+    big = "".join(f'<a class="big" href="{h}"><b>{e(n)}</b><span>{e(t)}</span><i class="src">{e(S[sid][1].split(";")[0])}</i></a>' for n, t, sid, h in tiles)
+    title = f"The ledger: every federal program's error rate, and ${M.CUM/1e12:.2f} trillion since {M.FIRST_YEAR} | FraudBad"
+    desc = f"Every federal program that reports improper payments, from the government's own dataset: ${M.FY25/1e9:,.1f} billion paid wrong or without proof in fiscal 2025, ${M.CUM/1e12:.2f} trillion since {M.FIRST_YEAR}, and why."
+    ld = [ORG_LD, {"@context": "https://schema.org", "@type": "Dataset", "name": "Federal improper payments by program, FY2004–FY2025",
+                   "description": desc, "url": SITE + "/ledger", "creator": {"@type": "Organization", "name": "Office of Management and Budget"},
+                   "isBasedOn": S["pa_data"][3], "dateModified": UPDATED, "license": "https://www.usa.gov/government-works"}]
+    body = f"""{header('ledger')}
+<main id="main">
+<section class="page-hero"><div class="wrap">
+<p class="kicker" style="color:#ff4438">The government's own receipt</p>
+<h1>The ledger</h1>
+<p class="lede">Every year, federal agencies have to measure how much they paid in the wrong amount, to the wrong person, or without the paperwork to prove it was right. They report it to the White House budget office, which publishes one spreadsheet. We read every row. Here it is.</p>
+</div></section>
+<section class="sec"><div class="wrap"><div class="big-grid">{big}</div></div></section>
+<section class="sec" id="years" style="background:#fff;border-top:1px solid var(--rule)"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:var(--red)">{len(yrs)} years</p><h2>Paid wrong, year by year</h2></div>
+<p>Improper and unverifiable payments reported each fiscal year, all programs combined. The total through 2024 — ${M.CUM24/1e12:.2f} trillion — matches the roughly $2.8 trillion GAO reports. Fiscal 2025 takes it to ${M.CUM/1e12:.2f} trillion.</p></div>
+<div class="yrs" role="img" aria-label="Bar chart of improper payments by fiscal year, from ${M.YEARS[yrs[0]]['amount_m']/1000:,.0f} billion in {yrs[0]} to a peak of ${M.YEARS[peak]['amount_m']/1000:,.0f} billion in {peak} and ${M.YEARS[yrs[-1]]['amount_m']/1000:,.0f} billion in {yrs[-1]}">{bars}</div>
+<div class="yrs-x" aria-hidden="true">{xl}</div>
+<p class="src" style="margin-top:14px">Source: <a href="{e(S['pa_data'][3])}" rel="noopener">PaymentAccuracy.gov FY2025 dataset</a>, "All Program Results," column "Improper Payment and Unknown Payment Amount," summed by fiscal year. Programs reporting each year range from {min(M.YEARS[y]['programs'] for y in yrs)} to {max(M.YEARS[y]['programs'] for y in yrs)}.</p>
+</div></section>
+<section class="sec" id="why"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:var(--red)">Root causes, FY2025</p><h2>Why it happened</h2></div>
+<p>Each program has to say why its payments went wrong, using categories the White House budget office defines. Two-thirds of the money went out wrong even though the information to stop it existed and the agency could get to it.</p></div>
+<div class="bars-chart wide">{rc_html}</div>
+<p class="src" style="margin-top:14px">Category definitions: <a href="{e(S['omb_m2119'][3])}" rel="noopener">OMB M-21-19, Table 3</a>. Amounts: FY2025 dataset, "Improper Payment Root Causes," summed by FraudBad (total ${sum(v for _, v in rc)/1e9:,.1f}B).</p>
+</div></section>
+<section class="sec" id="programs" style="background:var(--paper-2)"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:var(--red)">{len(M.PROGS)} programs</p><h2>Every program that reported, fiscal 2025</h2></div>
+<p>Ranked by dollars paid wrong or without proof. "Rate" is the share of the program's payments. The last column is the same program's rate a year earlier.</p></div>
+<div class="tbl-wrap"><table class="tbl ledger"><thead><tr><th>#</th><th>Program</th><th>Paid out</th><th>Wrong or unproven</th><th>Rate</th><th>FY2024</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
+<p class="src" style="margin-top:14px">Source: <a href="{e(S['pa_data'][3])}" rel="noopener">FY2025 dataset</a>, "All Program Results," fiscal year 2025 rows. Includes improper payments and "unknown" payments the agency couldn't verify. Not all of it is fraud; each agency's own report explains its number.</p>
+</div></section>
+<section class="sec" id="recovery"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:var(--red)">Clawbacks</p><h2>How much comes back</h2></div>
+<p>Overpayments agencies flagged to recover each year (full bar), and what they actually recovered (red). Recoveries in a year can include money flagged in earlier years.</p></div>
+<div class="rec">{rec_html}</div>
+<p class="src" style="margin-top:14px">Source: FY2025 dataset, "Rate and Amt of Recovery," summed across agencies by FraudBad.</p>
+</div></section>
+<section class="sec" id="law" style="background:var(--ink);color:#e8ebf2"><div class="wrap ledger-dark">
+<div><p class="kicker" style="color:#ff4438">The law</p><h2 style="color:#fff">{len(M.NONCOMP)} of {M.N_AGENCIES} agencies broke it</h2>
+<p>The Payment Integrity Information Act of 2019 requires agencies to measure improper payments, publish them and cut them. Inspectors general check every year. For fiscal 2024, these agencies were rated non-compliant: {e(nc)}.</p>
+<p class="src">Source: FY2025 dataset, "Compliance Trend Table," fiscal 2024 column. Fiscal 2025 ratings come out in 2026's dataset.</p></div>
+<div><p class="kicker" style="color:#ff4438">Not in the total</p><h2 style="color:#fff">Programs that didn't report</h2>
+<ul class="dnr">{dnr_html}</ul>
+<p class="src">Listed as "Did not report" for FY2025 on <a href="{e(S['pa_site'][3])}" rel="noopener" style="color:#fff">PaymentAccuracy.gov</a>. Their errors aren't in any number above.</p></div>
+</div></section>
+</main>
+{cta()}{footer()}"""
+    write("ledger.html", head(title, desc, "/ledger", "og-ledger.png", ld) + body)
+
+
 # ---------------------------------------------------------------- method
 def build_method():
     tiers = "".join(f'<div>{tier_chip(t)}<p style="margin:0">{e(TIERS[t][1])}</p></div>' for t in TIERS)
@@ -468,7 +573,7 @@ def build_method():
     for d in DARK_MONEY:
         for s in (d[3] if isinstance(d[3], list) else [d[3]]):
             if s not in used: used.append(s)
-    for s in ("census", "dodig", "mil_soap", "receipts_act"):
+    for s in ("census", "dodig", "mil_soap", "receipts_act", "pa_data", "pa_site", "omb_m2119", "gao_cfs"):
         if s not in used: used.append(s)
     srcs = "".join(f'<li><div><a href="{e(S[s][3])}" rel="noopener">{e(S[s][0])}</a><span class="src">{e(S[s][1])} · {e(S[s][2])}</span></div></li>' for s in used)
     title = "How FraudBad judges cases | FraudBad"
@@ -510,7 +615,7 @@ def build_404():
 
 
 def build_meta():
-    urls = ["/", "/soft-fraud", "/transparency", "/method"] + [f"/{c['slug']}" for c in ORDERED]
+    urls = ["/", "/soft-fraud", "/ledger", "/transparency", "/method"] + [f"/{c['slug']}" for c in ORDERED]
     sm = "".join(f"<url><loc>{SITE}{u if u!='/' else '/'}</loc><lastmod>{UPDATED}</lastmod></url>" for u in urls)
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n')
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
@@ -524,7 +629,7 @@ def build_meta():
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    for f in ("site.css", "site.js", "favicon.svg"):
+    for f in ("site.css", "site.js", "favicon.svg", "anton-latin.woff2", "plexmono-400-latin.woff2", "plexmono-600-latin.woff2", "publicsans-var-latin.woff2"):
         if os.path.exists(os.path.join(ASSETS, f)):
             shutil.copy(os.path.join(ASSETS, f), os.path.join(OUT, f))
     for f in os.listdir(os.path.join(OUT, "fonts")) if os.path.isdir(os.path.join(OUT, "fonts")) else []:
@@ -536,6 +641,7 @@ def main():
         build_case(i, c)
     build_transparency()
     build_soft()
+    build_ledger()
     build_method()
     build_404()
     build_meta()
