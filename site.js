@@ -54,20 +54,28 @@
   // Bars fill when seen.
   onView([...document.querySelectorAll('.bar-row')], (b) => b.classList.add('in'), 0.4);
 
-  // Case filters on the home page.
-  const chips = [...document.querySelectorAll('.chip[data-filter]')];
+  // Case filters on the home page: kind (hard/soft) x level.
+  const chips = [...document.querySelectorAll('.chip[data-group]')];
   const cards = [...document.querySelectorAll('.card[data-level]')];
-  const apply = (f) => {
-    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.filter === f)));
-    cards.forEach((c) => { c.hidden = !(f === 'all' || c.dataset.level === f); });
+  const state = { type: 'all', level: 'all' };
+  const apply = () => {
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(state[c.dataset.group] === c.dataset.filter)));
+    cards.forEach((c) => {
+      const ok = (state.type === 'all' || c.dataset.type === state.type) && (state.level === 'all' || c.dataset.level === state.level);
+      c.hidden = !ok;
+    });
   };
   chips.forEach((c) => c.addEventListener('click', () => {
-    apply(c.dataset.filter);
-    try { history.replaceState(null, '', c.dataset.filter === 'all' ? location.pathname : '#' + c.dataset.filter); } catch (_) {}
+    state[c.dataset.group] = c.dataset.filter; apply();
+    const h = [state.type, state.level].filter((v) => v !== 'all').join('-');
+    try { history.replaceState(null, '', h ? '#' + h : location.pathname); } catch (_) {}
   }));
   if (chips.length) {
-    const h = location.hash.slice(1);
-    if (['federal', 'state', 'local'].includes(h)) apply(h);
+    location.hash.slice(1).split('-').forEach((v) => {
+      if (['hard', 'soft'].includes(v)) state.type = v;
+      if (['federal', 'state', 'local'].includes(v)) state.level = v;
+    });
+    apply();
   }
 
   // Live fraud ticker at GAO's estimated yearly rate.

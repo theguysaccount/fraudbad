@@ -2,6 +2,7 @@
 import asyncio, html, os
 from playwright.async_api import async_playwright
 from content import CASES, TIERS, LEVELS
+import content_soft  # noqa: F401  (adds soft-fraud cases and tiers)
 
 SITE = os.path.join(os.path.dirname(__file__), "site")
 F = "file://" + SITE
@@ -73,11 +74,22 @@ TRANSP = f"""<html><head>{BASE}<style>
 </body></html>"""
 
 
+SOFT = f"""<html><head>{BASE}</head><body>
+<div class="mark"><span class="f">Fraud</span>Bad</div>
+<div class="lvl">Soft fraud</div>
+<div class="tier" style="top:96px;border-color:#e9b949;color:#e9b949">Bigger than the crimes</div>
+<div class="fig" style="font-size:190px;top:122px">$2.8</div>
+<div class="scale" style="top:318px;color:#e9b949">trillion paid without proof since 2003</div>
+<div class="title">Soft fraud: paying without proof, overpaying, paying twice, never collecting. Here's how we search for it.</div>
+<div class="bar"><b>Want to stop it? <span>Sign the Receipts Act.</span></b><i>fraudbad.com/soft-fraud</i></div>
+</body></html>"""
+
+
 async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch(executable_path="/usr/bin/google-chrome", args=["--no-sandbox", "--allow-file-access-from-files"])
         pg = await b.new_page(viewport={"width": 1200, "height": 630})
-        jobs = [("og-home.png", HOME), ("og-transparency.png", TRANSP)] + [(f"og-{c['slug']}.png", case_card(c)) for c in CASES]
+        jobs = [("og-home.png", HOME), ("og-transparency.png", TRANSP), ("og-soft-fraud.png", SOFT)] + [(f"og-{c['slug']}.png", case_card(c)) for c in CASES]
         for name, doc in jobs:
             tmp = os.path.join(os.path.dirname(__file__), "qa", "_og.html")
             open(tmp, "w", encoding="utf-8").write(doc)

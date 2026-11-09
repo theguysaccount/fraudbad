@@ -3,6 +3,8 @@
 import html, json, os, shutil, re, urllib.parse
 from content import (UPDATED, UPDATED_HUMAN, SITE, CTA_URL, SOCIALS, S, TIERS, LEVELS, CASES,
                      DIVE_ROWS, DIVE, DARK_MONEY, LOCAL_TYPES)
+import content_soft  # noqa: F401  (adds soft-fraud cases, tiers and sources)
+from content_soft import TYPES, SIGNALS, SOFT_BIG, BLANK, SHORT, BLANK_TOTAL, SHORT_TOTAL, TOP_TOTAL, SIG
 
 OUT = os.path.join(os.path.dirname(__file__), "site")
 ASSETS = os.path.join(os.path.dirname(__file__), "assets")
@@ -10,19 +12,24 @@ V = "20261108"
 e = lambda s: html.escape(str(s), quote=True)
 
 LEVEL_ORDER = {"federal": 0, "state": 1, "local": 2}
-ORDER = ["federal-fraud-estimate", "pandemic-unemployment-fraud", "ppp-eidl-loan-fraud", "employee-retention-credit",
-         "improper-payments-2025", "medicare-medicaid-no-receipts", "medicare-advantage-overpayments", "pentagon-failed-audits",
-         "afghanistan-reconstruction", "tax-credit-errors", "operation-gold-rush", "snap-payment-errors",
-         "health-care-fraud-takedown-2026", "minnesota-medicaid-programs", "california-unemployment-fraud",
-         "new-york-unemployment-overpayments", "michigan-unemployment-fraud", "arizona-sober-living-fraud",
-         "washington-unemployment-theft", "feeding-our-future", "mississippi-welfare-scandal",
-         "los-angeles-homelessness-spending", "los-angeles-hospice-fraud"]
+ORDER = [
+    # hard fraud
+    "federal-fraud-estimate", "pandemic-unemployment-fraud", "ppp-eidl-loan-fraud", "employee-retention-credit",
+    "operation-gold-rush", "health-care-fraud-takedown-2026", "minnesota-medicaid-programs", "california-unemployment-fraud",
+    "michigan-unemployment-fraud", "arizona-sober-living-fraud", "washington-unemployment-theft", "feeding-our-future",
+    "mississippi-welfare-scandal", "los-angeles-hospice-fraud",
+    # soft fraud
+    "improper-payments-since-2003", "medicare-advantage-overpayments", "health-care-waste", "tax-gap", "unfixed-gao-savings",
+    "improper-payments-2025", "contracts-with-no-description", "weapons-cost-overruns", "federal-it-legacy-systems",
+    "medicare-medicaid-no-receipts", "pentagon-failed-audits", "afghanistan-reconstruction", "tax-credit-errors",
+    "snap-payment-errors", "new-york-unemployment-overpayments", "los-angeles-homelessness-spending"]
 _by = {c["slug"]: c for c in CASES}
 assert sorted(ORDER) == sorted(_by), "ORDER must list every case exactly once"
 ORDERED = [_by[s] for s in ORDER]
 
 STAMP = {"confirmed": "CONFIRMED", "charged": "CHARGED", "settled": "SETTLED", "estimated": "NO RECEIPT",
-         "noproof": "NO RECEIPT", "frozen": "FROZEN", "unauditable": "UNAUDITABLE"}
+         "noproof": "NO RECEIPT", "frozen": "FROZEN", "unauditable": "UNAUDITABLE",
+         "overrun": "OVER BUDGET", "unfixed": "NOT FIXED"}
 
 
 def src_title(sid):
@@ -75,7 +82,7 @@ def header(active=""):
         return f'<a href="{href}"{cur}>{label}</a>'
     return f"""<header class="top"><div class="wrap">
 <a class="mark" href="/" aria-label="FraudBad home"><span class="f">Fraud</span><span class="b">Bad</span><small>No taxation without receipts</small></a>
-<nav class="nav" aria-label="Main">{a('/#cases','The cases','cases')}{a('/transparency','Where receipts stop','transparency')}{a('/method','How we judge','method')}<a class="btn sm" href="{CTA_URL}">Sign the Receipts Act</a></nav>
+<nav class="nav" aria-label="Main">{a('/#cases','The cases','cases')}{a('/soft-fraud','Soft fraud','soft')}{a('/transparency','Where receipts stop','transparency')}{a('/method','How we judge','method')}<a class="btn sm" href="{CTA_URL}">Sign the Receipts Act</a></nav>
 </div></header>
 """
 
@@ -134,13 +141,17 @@ def receipt(lines, redact=None, head_title="Public receipt", head_sub="", foot=(
 </div>"""
 
 
+def type_chip(t):
+    return f'<span class="ty ty-{t}" title="{e(TYPES[t][1])}">{e(TYPES[t][0])}</span>'
+
+
 def tier_chip(t):
     return f'<span class="tier t-{t}" title="{e(TIERS[t][1])}">{e(TIERS[t][0])}</span>'
 
 
 def card(c):
-    return f"""<a class="card" href="/{c['slug']}" data-level="{c['level']}" data-tier="{c['tier']}">
-<div class="card-top"><span class="lvl">{LEVELS[c['level']]} · {e(c['place'])}</span></div>
+    return f"""<a class="card card-{c['type']}" href="/{c['slug']}" data-level="{c['level']}" data-type="{c['type']}" data-tier="{c['tier']}">
+<div class="card-top">{type_chip(c['type'])}<span class="lvl">{LEVELS[c['level']]} · {e(c['place'])}</span></div>
 <div class="card-fig">{e(c['fig'])}<small>{e(c['scale'])}</small></div>
 <h3>{e(c['title'])}</h3>
 <div class="card-place">{tier_chip(c['tier'])}</div>
@@ -161,6 +172,7 @@ def write(path, text):
 # ---------------------------------------------------------------- home
 def build_home():
     counts = {k: sum(1 for c in CASES if c["level"] == k) for k in LEVELS}
+    tcounts = {k: sum(1 for c in CASES if c["type"] == k) for k in TYPES}
     hero_lines = [
         ("Federal spending, FY2026", "$7,395,799,983,313", "mts"),
         ("Lost to fraud each year (GAO est.)", "$233B–$521B", "gao_fraud"),
@@ -172,7 +184,7 @@ def build_home():
         ("$186B", "paid in error by federal agencies in fiscal 2025", "gao_ip"),
         ("0 for 8", "Pentagon financial audits passed since 2018", "dn_audit"),
         ("74%", "of federal grant dollars can't be traced to a local place", "pogo"),
-        ("56%", "of America's local governments list no website", "census"),
+        ("$2.8T", "paid without proof since 2003 — the soft fraud nobody adds up", "gao_ip_cum"),
     ]
     stat_html = "".join(
         f'<div class="stat"><b>{e(n)}</b><p>{e(t)}</p><span class="src"><a href="{e(S[sid][3])}" rel="noopener">{e(S[sid][1])}, {e(S[sid][2])}</a></span></div>'
@@ -191,6 +203,7 @@ def build_home():
             mini.append(f'<div class="mc {stt}{fd}">{ {"open":"Visible","partial":"Partly","dark":"Dark"}[stt] }</div>')
     mini_html = "".join(mini)
     cards = "\n".join(card(c) for c in ORDERED)
+    soft_tiles = "".join(f'<a class="big" href="/{slug}"><b>{e(n)}</b><span>{e(t)}</span><i class="src">{e(S[sid][1])}</i></a>' for n, t, slug, sid in SOFT_BIG)
     legend = "".join(f'<div style="display:flex;gap:8px;align-items:center">{tier_chip(t)}<span class="t">{e(TIERS[t][1].split(".")[0])}.</span></div>' for t in TIERS)
     ld = [ORG_LD,
           {"@context": "https://schema.org", "@type": "WebSite", "name": "FraudBad", "url": SITE,
@@ -206,7 +219,8 @@ def build_home():
 <p class="kicker">No taxation without receipts</p>
 <h1>$233–521 billion<span class="u">lost to fraud every year</span></h1>
 <p class="lede">That's the federal government's own estimate. Below is every case big enough to matter — sourced to the auditors, inspectors general and courts that found it — and a map of where the receipts stop.</p>
-<div class="actions"><a class="btn" href="#cases">See every case ↓</a><a class="btn ghost" href="/transparency">Where the receipts stop →</a></div>
+<p class="soft-line">And that only counts the crimes. <a href="/soft-fraud">Soft fraud</a> — paying without proof, overpaying, paying twice, never collecting — runs into the trillions.</p>
+<div class="actions"><a class="btn" href="#cases">See every case ↓</a><a class="btn ghost" href="/soft-fraud">Soft fraud →</a><a class="btn ghost" href="/transparency">Where the receipts stop →</a></div>
 <div class="ticker" data-ticker aria-live="off"><span>Since you opened this page, at GAO's estimated rate</span><b>$0–$0</b><span>Based on GAO's estimate of $233B–$521B a year (2018–2022 data)</span></div>
 </div>
 {receipt(hero_lines, ("Itemized receipt", "NOT AVAILABLE"), "Federal spending", "Fiscal year 2026", link_mode="direct")}
@@ -215,14 +229,26 @@ def build_home():
 <section class="sec" id="cases"><div class="wrap">
 <div class="sec-head"><div><p class="kicker" style="color:var(--red)">{len(CASES)} cases</p><h2>The cases</h2></div>
 <p>Every case here was found by an auditor, an inspector general, a prosecutor, a court or the agency that paid the money. Each page shows the numbers, where they came from, and how sure anyone can be.</p></div>
-<div class="filters" role="group" aria-label="Filter cases">
-<button class="chip" data-filter="all" aria-pressed="true">All<span class="c">{len(CASES)}</span></button>
-<button class="chip" data-filter="federal" aria-pressed="false">Federal<span class="c">{counts['federal']}</span></button>
-<button class="chip" data-filter="state" aria-pressed="false">State<span class="c">{counts['state']}</span></button>
-<button class="chip" data-filter="local" aria-pressed="false">Local<span class="c">{counts['local']}</span></button>
+<div class="filterbar">
+<div class="filters" role="group" aria-label="Filter by kind">
+<button class="chip" data-group="type" data-filter="all" aria-pressed="true">All<span class="c">{len(CASES)}</span></button>
+<button class="chip" data-group="type" data-filter="hard" aria-pressed="false">Hard fraud<span class="c">{tcounts['hard']}</span></button>
+<button class="chip" data-group="type" data-filter="soft" aria-pressed="false">Soft fraud<span class="c">{tcounts['soft']}</span></button>
 </div>
+<div class="filters" role="group" aria-label="Filter by level">
+<button class="chip" data-group="level" data-filter="all" aria-pressed="true">Every level</button>
+<button class="chip" data-group="level" data-filter="federal" aria-pressed="false">Federal<span class="c">{counts['federal']}</span></button>
+<button class="chip" data-group="level" data-filter="state" aria-pressed="false">State<span class="c">{counts['state']}</span></button>
+<button class="chip" data-group="level" data-filter="local" aria-pressed="false">Local<span class="c">{counts['local']}</span></button>
+</div></div>
 <div class="grid" style="margin-top:22px">{cards}</div>
 <div class="legend" aria-label="How sure we are">{legend}</div>
+</div></section>
+<section class="sec soft-teaser" aria-labelledby="soft-h"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:#ff4438">Bigger than the crimes</p><h2 id="soft-h">Soft fraud</h2></div>
+<p>Money lost without anyone breaking a law: paid without proof, paid too much, paid twice, lost track of, or never collected. Each of these is an official or peer-reviewed number.</p></div>
+<div class="big-grid">{soft_tiles}</div>
+<p style="margin-top:26px"><a class="btn" href="/soft-fraud">How we search for soft fraud →</a></p>
 </div></section>
 <section class="sec" style="background:#fff;border-top:1px solid var(--rule)"><div class="wrap">
 <div class="sec-head"><div><p class="kicker" style="color:var(--red)">Federal · State · Local</p><h2>Where the receipts stop</h2></div>
@@ -265,7 +291,7 @@ def build_case(i, c):
 <section class="case-hero"><div class="wrap">
 <div>
 <p class="crumbs"><a href="/#cases">All cases</a> / <a href="/#{c['level']}">{LEVELS[c['level']]}</a> / {e(c['place'])}</p>
-<div class="tags"><span class="lvl">{LEVELS[c['level']]} · {e(c['place'])}</span>{tier_chip(c['tier'])}</div>
+<div class="tags">{type_chip(c['type'])}<span class="lvl">{LEVELS[c['level']]} · {e(c['place'])}</span>{tier_chip(c['tier'])}</div>
 <p class="fig" aria-hidden="true">{e(c['fig'])}<small>{e(c['scale'])}</small></p>
 <h1><span class="sr">{e(c['fig'])} {e(c['scale'])}: </span>{e(c['title'])}</h1>
 <p class="lede">{e(c['dek'])}</p>
@@ -373,6 +399,62 @@ def build_transparency():
     write("transparency.html", head(title, desc, "/transparency", "og-transparency.png", ld) + body)
 
 
+def build_soft():
+    big = "".join(f'<a class="big" href="/{slug}"><b>{e(n)}</b><span>{e(t)}</span><i class="src">{e(S[sid][1])}, {e(S[sid][2])}</i></a>' for n, t, slug, sid in SOFT_BIG)
+    by = {c["slug"]: c for c in CASES}
+    sig = []
+    for num, name, what, where, measure, ex in SIGNALS:
+        exl = "".join(f'<a href="/{x}">{e(by[x]["fig"])} {e(by[x]["scale"])}: {e(by[x]["title"])} →</a>' for x in ex)
+        sig.append(f'<article class="sig"><i>{num}</i><h3>{e(name)}</h3><p class="what">{e(what)}</p><dl><dt>Where we look</dt><dd>{e(where)}</dd><dt>What we measure</dt><dd>{e(measure)}</dd></dl>{("<div class=ex>"+exl+"</div>") if exl else ""}</article>')
+    def rows(items):
+        out = []
+        for f in items:
+            d = f["desc"] if f["desc"] else "(blank)"
+            amt = "${:,.2f}B".format(f["amount"] / 1e9)
+            rec = f["recipient"].title()
+            ag = f["agency"].replace("Department of ", "")
+            out.append(f'<tr><td class="num">{e(amt)}</td><td>{e(rec)}</td><td>{e(ag)}</td><td class="mono">{e(d[:60])}</td><td><a href="{e(f["url"])}" rel="noopener">Award ↗</a></td></tr>')
+        return "".join(out)
+    soft_cases = "\n".join(card(c) for c in ORDERED if c["type"] == "soft")
+    title = "Soft fraud: the trillions lost to negligence, and how we search for it | FraudBad"
+    desc = "Paying without proof, overpaying, paying twice, losing track, never collecting. $2.8 trillion in improper payments since 2003 is just the start. Here's every official number and the seven signals we use to find more."
+    ld = [ORG_LD, {"@context": "https://schema.org", "@type": "Article", "headline": "Soft fraud", "description": desc, "url": SITE + "/soft-fraud",
+                   "datePublished": UPDATED, "dateModified": UPDATED, "image": SITE + "/og-soft-fraud.png", "author": {"@type": "Organization", "name": "FraudBad"}}]
+    body = f"""{header('soft')}
+<main id="main">
+<section class="page-hero"><div class="wrap">
+<p class="kicker" style="color:#ff4438">Bigger than the crimes</p>
+<h1>Soft fraud</h1>
+<p class="lede">Hard fraud is someone stealing. Soft fraud is everyone shrugging: money paid without proof, paid too much, paid twice, lost track of, or never collected. No one has to break a law, so no one gets charged — and it runs into the trillions.</p>
+</div></section>
+<section class="sec"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:var(--red)">Official numbers</p><h2>The soft-fraud receipt</h2></div>
+<p>Each figure comes from GAO, the IRS, Congress's Medicare advisers, a peer-reviewed study, or the government's own spending data. We don't add them together: they overlap and measure different things.</p></div>
+<div class="big-grid">{big}</div>
+</div></section>
+<section class="sec" id="search" style="background:#fff;border-top:1px solid var(--rule)"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:var(--red)">The method</p><h2>How we search for soft fraud</h2></div>
+<p>Seven signals. Each one names where to look and what to measure, so anyone can repeat the search and check our work.</p></div>
+<div class="sigs">{''.join(sig)}</div>
+</div></section>
+<section class="sec" id="contracts"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:var(--red)">Signal 06, run live</p><h2>The biggest contracts with no explanation</h2></div>
+<p>We pulled the 100 largest federal contracts with spending activity in fiscal 2026 from USAspending.gov — worth {e(f"${TOP_TOTAL/1e9:,.1f}B")} together — and checked what each one says it's for.</p></div>
+<h3 class="tbl-h">Blank, or only a filing code: {len(BLANK)} contracts, {e(f"${BLANK_TOTAL/1e9:,.1f}B")}</h3>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Award value</th><th>Recipient</th><th>Agency</th><th>Published description</th><th></th></tr></thead><tbody>{rows(BLANK)}</tbody></table></div>
+<h3 class="tbl-h">Three words or fewer: {len(SHORT)} more, {e(f"${SHORT_TOTAL/1e9:,.1f}B")}</h3>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Award value</th><th>Recipient</th><th>Agency</th><th>Published description</th><th></th></tr></thead><tbody>{rows(SHORT)}</tbody></table></div>
+<p class="src" style="margin-top:14px">Query: {e(SIG["query"])}. Pulled {e(SIG["pulled"])}. Award values are lifetime totals for awards with any action in fiscal 2026. A blank description is not proof of waste; it means the public can't tell what was bought.</p>
+</div></section>
+<section class="sec" style="background:var(--paper-2)"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:var(--red)">{sum(1 for c in CASES if c["type"]=="soft")} cases</p><h2>Every soft-fraud case</h2></div></div>
+<div class="grid">{soft_cases}</div>
+</div></section>
+</main>
+{cta()}{footer()}"""
+    write("soft-fraud.html", head(title, desc, "/soft-fraud", "og-soft-fraud.png", ld) + body)
+
+
 # ---------------------------------------------------------------- method
 def build_method():
     tiers = "".join(f'<div>{tier_chip(t)}<p style="margin:0">{e(TIERS[t][1])}</p></div>' for t in TIERS)
@@ -399,6 +481,8 @@ def build_method():
 <h2>How a case makes the list</h2>
 <p>A case is listed when an official body has put a dollar figure on fraud, likely fraud, or payments nobody can prove were right, and the amount runs to hundreds of millions of dollars or more. That body can be the Government Accountability Office, an inspector general, a state auditor or comptroller, the Justice Department, a court, or the agency itself.</p>
 <p>News reports are used to show what officials said and when. Wherever we could, we link to the official document itself.</p>
+<h2>Hard fraud and soft fraud</h2>
+<p><strong>Hard fraud</strong> is theft and deception: schemes, crimes, and official estimates of fraud. <strong>Soft fraud</strong> is negligence: money paid without proof, paid too much, paid twice, lost track of, or never collected. Nobody has to break a law for soft fraud to happen, and nobody gets charged — which is why it's bigger. <a href="/soft-fraud#search">Here's exactly how we search for it.</a></p>
 <h2>How sure are we?</h2>
 <p>Every case carries one label. It tells you what kind of number you're looking at.</p>
 <div class="tier-list">{tiers}</div>
@@ -426,7 +510,7 @@ def build_404():
 
 
 def build_meta():
-    urls = ["/", "/transparency", "/method"] + [f"/{c['slug']}" for c in ORDERED]
+    urls = ["/", "/soft-fraud", "/transparency", "/method"] + [f"/{c['slug']}" for c in ORDERED]
     sm = "".join(f"<url><loc>{SITE}{u if u!='/' else '/'}</loc><lastmod>{UPDATED}</lastmod></url>" for u in urls)
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n')
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
@@ -451,6 +535,7 @@ def main():
     for i, c in enumerate(ORDERED):
         build_case(i, c)
     build_transparency()
+    build_soft()
     build_method()
     build_404()
     build_meta()
