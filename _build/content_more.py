@@ -24,6 +24,8 @@ S.update({
     "kalw_hsr": ("High-speed rail business plan approved, envisions passenger service by 2033", "KALW", "Jun 3, 2026", "https://www.kalw.org/bay-area-news/2026-06-03/high-speed-rail-business-plan-approved-envisions-passenger-service-by-2033"),
     "ra_hsr": ("CHSRA issues draft 2026 business plan", "Railway Age", "2026 (on the Feb 28, 2026 draft)", "https://www.railwayage.com/passenger/high-performance/chsra-issues-draft-2026-business-plan/"),
     "civilbeat_hart": ("Cost of Honolulu rail line may be climbing again", "Honolulu Civil Beat", "Aug 5, 2026", "https://www.civilbeat.org/2026/08/cost-of-honolulu-rail-line-may-be-climbing-again/"),
+    "gothamist_sas": ("Cost of 2nd Avenue Subway extension to East Harlem balloons to $7.7B", "Gothamist", "Mar 9, 2023", "https://gothamist.com/news/cost-of-second-ave-subway-extension-to-east-harlem-balloons-to-77b"),
+    "sb_sas": ("Does Hochul's 125th Street subway have to be that expensive?", "Streetsblog NYC", "Feb 3, 2026", "https://nyc.streetsblog.org/2026/02/03/does-hochuls-125th-street-subway-have-to-be-that-expensive"),
     "medecon_cuban": ("Medicare could save billions buying generics through Mark Cuban prescription drug company (on Lalani et al., Annals of Internal Medicine)", "Medical Economics", "Jun 2022", "https://www.medicaleconomics.com/view/medicare-could-save-billions-buying-generics-through-mark-cuban-prescription-drug-company"),
 })
 
@@ -401,6 +403,35 @@ NEW = [
         "sources": ["civilbeat_hart"],
     },
     {
+        "slug": "second-avenue-subway",
+        "level": "state", "place": "MTA, New York City", "tier": "overrun", "type": "soft",
+        "fig": "$7.7", "scale": "billion for 1.5 miles",
+        "title": "Second Avenue subway: $7.7 billion for a mile and a half",
+        "dek": "The Second Avenue subway's extension to East Harlem — 1.5 miles and three stations — rose to $7.7 billion, about $5.1 billion a mile. The next extension west along 125th Street is also priced at $7.7 billion.",
+        "sort": 7.7e9,
+        "receipt": [
+            ("Length of the East Harlem extension", "1.5 miles", "gothamist_sas"),
+            ("New stations", "3", "gothamist_sas"),
+            ("Cost now", "$7.7B", "gothamist_sas"),
+            ("Earlier federal estimate", "$6.9B", "gothamist_sas"),
+            ("Earlier MTA estimate (without financing)", "$6.3B", "gothamist_sas"),
+            ("Per mile (our math)", "About $5.1B", "gothamist_sas"),
+            ("Next extension, 125th Street west", "$7.7B", "sb_sas"),
+            ("Of that, soft costs (design, management)", "43%", "sb_sas"),
+        ],
+        "redact": None,
+        "happened": [
+            "The extension carries the Second Avenue subway from 96th Street to 125th Street in East Harlem: 1.5 miles, with new stations at 106th and 116th Streets and a new level under the Lexington Avenue–125th Street station.",
+            "Its cost rose to $7.7 billion, $800 million more than the federal government's earlier figure of $6.9 billion. That works out to about $5.1 billion a mile.",
+        ],
+        "missed": [
+            "A further extension west along 125th Street is now estimated at $7.7 billion as well, with 43% of it in soft costs like design and management. On the first phase, soft costs were 21%.",
+            "Cutting soft costs to first-phase levels would save about $1.7 billion on that extension, by Streetsblog's reporting.",
+        ],
+        "sure": "Official estimates, as reported by Gothamist (2023) and Streetsblog (2026). The per-mile figure is our arithmetic. High cost isn't fraud; it's what the public pays without a line-item receipt.",
+        "sources": ["gothamist_sas", "sb_sas"],
+    },
+    {
         "slug": "medicare-generic-drug-prices",
         "level": "federal", "place": "Medicare Part D", "tier": "estimated", "type": "soft",
         "fig": "$3.6", "scale": "billion in one year",
@@ -471,7 +502,7 @@ SOFT_BIG.append((_bn(R25["sep"]/1e6, 0), "in contracts signed in the last month 
 # Signals: point each at its new examples.
 _ex = {"01": ["data-existed-nobody-checked", "shuttered-venue-grants", "hud-rental-assistance-unverified"],
        "02": ["medicare-generic-drug-prices"],
-       "03": ["sentinel-icbm-overrun", "california-high-speed-rail", "honolulu-rail"],
+       "03": ["sentinel-icbm-overrun", "california-high-speed-rail", "honolulu-rail", "second-avenue-subway"],
        "05": ["federal-debt-never-collected", "social-security-overpayments"],
        "07": ["september-spending-rush"]}
 for i, s in enumerate(SIGNALS):

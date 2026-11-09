@@ -25,7 +25,7 @@ ORDER = [
     "california-high-speed-rail", "contracts-with-no-description", "sentinel-icbm-overrun", "weapons-cost-overruns",
     "federal-it-legacy-systems", "medicare-medicaid-no-receipts", "pentagon-failed-audits", "social-security-overpayments",
     "shuttered-venue-grants", "afghanistan-reconstruction", "tax-credit-errors", "snap-payment-errors",
-    "hud-rental-assistance-unverified", "honolulu-rail", "medicare-generic-drug-prices",
+    "hud-rental-assistance-unverified", "honolulu-rail", "second-avenue-subway", "medicare-generic-drug-prices",
     "new-york-unemployment-overpayments", "los-angeles-homelessness-spending"]
 _by = {c["slug"]: c for c in CASES}
 assert sorted(ORDER) == sorted(_by), "ORDER must list every case exactly once"
