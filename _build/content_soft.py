@@ -121,7 +121,7 @@ NEW_SOFT = [
         "level": "federal", "place": "Internal Revenue Service", "tier": "estimated", "type": "soft",
         "fig": "$696", "scale": "billion a year",
         "title": "Taxes owed that never get paid",
-        "dek": "The IRS projects $696 billion in taxes went unpaid on time for 2022. After enforcement, $606 billion was never collected.",
+        "dek": "The IRS projects $696 billion in taxes went unpaid on time for 2022. After enforcement and late payments, $606 billion is projected to go uncollected.",
         "sort": 696e9,
         "receipt": [
             ("Gross tax gap, tax year 2022", "$696B", "irs_gap"),
@@ -133,7 +133,7 @@ NEW_SOFT = [
         ],
         "redact": ("Who owes it", "NOT PUBLISHED"),
         "happened": [
-            "The IRS estimates how much tax should have been paid and wasn't. For tax year 2022, the latest projection, the gap was $696 billion. Enforcement and late payments bring it down to $606 billion that is never collected.",
+            "The IRS estimates how much tax should have been paid and wasn't. For tax year 2022, the latest projection, the gap was $696 billion. Enforcement and late payments bring it down to $606 billion, which the IRS projects will never be collected.",
             "Three-quarters of the gap comes from income that was never reported.",
         ],
         "missed": [
