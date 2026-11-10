@@ -10,7 +10,7 @@ import content_more as M  # official improper-payment ledger + round-3 cases
 
 OUT = os.path.join(os.path.dirname(__file__), "site")
 ASSETS = os.path.join(os.path.dirname(__file__), "assets")
-V = "20261110"
+V = "20261110b"
 e = lambda s: html.escape(str(s), quote=True)
 
 LEVEL_ORDER = {"federal": 0, "state": 1, "local": 2}

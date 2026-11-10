@@ -1,0 +1,82 @@
+[
+ {
+  "report_id": "2024-06-GSAFAC-0000355889",
+  "auditee_name": "State of North Dakota",
+  "auditee_state": "ND",
+  "auditor_firm_name": "State Auditors Office",
+  "fy_end_date": "2024-06-30",
+  "total_amount_expended": 6855427141,
+  "audit_year": "2024",
+  "fac_accepted_date": "2025-03-20"
+ },
+ {
+  "report_id": "2024-06-GSAFAC-0000400802",
+  "auditee_name": "State of Arizona",
+  "auditee_state": "AZ",
+  "auditor_firm_name": "Arizona Auditor General",
+  "fy_end_date": "2024-06-30",
+  "total_amount_expended": 28586474697,
+  "audit_year": "2024",
+  "fac_accepted_date": "2026-04-27"
+ },
+ {
+  "report_id": "2024-06-GSAFAC-0000417199",
+  "auditee_name": "STATE OF MISSISSIPPI",
+  "auditee_state": "MS",
+  "auditor_firm_name": "Mississippi Office of the State Auditor",
+  "fy_end_date": "2024-06-30",
+  "total_amount_expended": 11038763487,
+  "audit_year": "2024",
+  "fac_accepted_date": "2026-04-30"
+ },
+ {
+  "report_id": "2024-06-GSAFAC-0000426063",
+  "auditee_name": "STATE OF OKLAHOMA",
+  "auditee_state": "OK",
+  "auditor_firm_name": "OKLAHOMA STATE AUDITOR AND INSPECTOR",
+  "fy_end_date": "2024-06-30",
+  "total_amount_expended": 13888461712,
+  "audit_year": "2024",
+  "fac_accepted_date": "2026-08-14"
+ },
+ {
+  "report_id": "2024-06-GSAFAC-0000425653",
+  "auditee_name": "STATE OF NEVADA OFFICE OF STATE CONTROLLER",
+  "auditee_state": "NV",
+  "auditor_firm_name": "Eide Bailly LLP",
+  "fy_end_date": "2024-06-30",
+  "total_amount_expended": 9824469002,
+  "audit_year": "2024",
+  "fac_accepted_date": "2026-09-18"
+ },
+ {
+  "report_id": "2025-06-GSAFAC-0000405197",
+  "auditee_name": "State of New Mexico Health Care Authority",
+  "auditee_state": "NM",
+  "auditor_firm_name": "Baker Tilly US, LLP",
+  "fy_end_date": "2025-06-30",
+  "total_amount_expended": 9446809996,
+  "audit_year": "2025",
+  "fac_accepted_date": "2026-03-10"
+ },
+ {
+  "report_id": "2025-06-GSAFAC-0000408579",
+  "auditee_name": "State of Wyoming",
+  "auditee_state": "WY",
+  "auditor_firm_name": "McGee, Hearne & Paiz, LLP dba MHP Assurance Services, LLP",
+  "fy_end_date": "2025-06-30",
+  "total_amount_expended": 1482396834,
+  "audit_year": "2025",
+  "fac_accepted_date": "2026-03-31"
+ },
+ {
+  "report_id": "2025-06-GSAFAC-0000409928",
+  "auditee_name": "DEPARTMENT OF HUMAN SERVICES",
+  "auditee_state": "HI",
+  "auditor_firm_name": "ACCUITY LLP",
+  "fy_end_date": "2025-06-30",
+  "total_amount_expended": 3213277288,
+  "audit_year": "2025",
+  "fac_accepted_date": "2026-03-30"
+ }
+]

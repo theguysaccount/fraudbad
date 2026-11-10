@@ -51,6 +51,14 @@ Today the endpoint answers the preflight with `405`. After this change, fraudbad
 
 **Done when:** a signup made on a fraudbad.com case page lands with `ref=fraudbad` and that case's slug, without leaving the page.
 
-## After all four
+## 2.3 "Endorsed by" block (ship hidden, turn on at the first yes)
 
-Tell the FraudBad plan doc ("FraudBad: the rest of the plan") so items 0.4–0.7 can be ticked, and run one test signature end to end.
+1. Add a block under the form on `/receipts-act`: heading "Endorsed by", then one row per group: logo (max 40 px tall, grayscale), group name, a one-line quote, a link to their statement.
+2. Drive it from a small list in the code (`endorsers = []`). When the list is empty, render nothing — no heading, no empty state.
+3. Add a group only with a written yes from someone at that group who can speak for it, and keep that message.
+
+**Done when:** adding one entry to the list shows the block; an empty list shows nothing.
+
+## After all of these
+
+Tell the FraudBad plan doc ("FraudBad: the rest of the plan") so items 0.4–0.7 and the 2.3 block can be ticked, and run one test signature end to end.

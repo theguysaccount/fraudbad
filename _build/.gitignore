@@ -1,3 +1,5 @@
 site/
 qa/
 __pycache__/
+data/congress/raw/
+data/states/auditors/raw/

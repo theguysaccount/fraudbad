@@ -405,6 +405,7 @@ def build_data(B):
 
 # ------------------------------------------------------------------ about + corrections
 CORRECTIONS = [
+    ("2026-11-10", "transparency", "Updated the federal \"Who got it\" cell: a law signed Sept 11, 2026 (Public Law 119-106, the Stop Secret Spending Act) now requires other transaction agreements to be reported to USAspending.gov. The page had said only that they aren't consistently reported."),
     ("2026-11-10", "health-care-waste", "Replaced a dead link to the 2019 JAMA study's press release with a news report of the same figures. The figures didn't change."),
     ("2026-11-09", "improper-payments-since-2003",
      "Updated the running total of improper payments from GAO's figure through fiscal 2024 (about $2.8 trillion) to our sum of the government's own dataset through fiscal 2025 ($2.98 trillion). Removed a line saying no government-wide recovery total is published; the dataset does report recoveries."),
@@ -419,7 +420,7 @@ def build_about(B):
 <p>FraudBad collects the biggest known cases of fraud, waste and lost money in American government — federal, state and local — and links every number to the auditor, inspector general, prosecutor, court or agency report it came from.</p>
 <p>It also tracks <a href="/soft-fraud">soft fraud</a>: money paid wrong, paid without proof, or never collected, which adds up to far more than the crimes. And it shows <a href="/transparency">where public spending records stop</a>.</p>
 <h2>Why</h2>
-<p>Almost every case here was possible because nobody had to show the receipt in time for anyone to check it. Every page ends by asking you to support the <a href="__SIGN_inline__">RECEIPTS Act</a>, a citizen-authored working draft hosted on America.co. It has not been introduced in Congress.</p>
+<p>Almost every case here was possible because nobody had to show the receipt in time for anyone to check it. Every page ends by asking you to support the <a href="__SIGN_inline__">RECEIPTS Act</a>, a citizen-authored working draft hosted on America.co. It has not been introduced in Congress. It is not S. 3902, a Senate bill on Pentagon audits that shares the name.</p>
 <h2>How we judge a case</h2>
 <p>Every case carries an evidence level — from proven in court to an official estimate — and a type: hard fraud (someone set out to steal) or soft fraud (money lost to errors, missing paperwork or neglect). <a href="/method">The full method</a>.</p>
 <h2>What we don't do</h2>
@@ -482,6 +483,7 @@ def _rfc822(d):
 
 def build_all(B, added_by_slug):
     rows = build_states(B)
+    build_state_audits(B, rows)
     build_your_share(B, rows)
     build_contracts(B)
     build_answers(B, rows)
@@ -528,6 +530,24 @@ def states_data():
     return rows, snap["United States"]
 
 
+BASIS = {"known": "counted by the auditors", "likely": "projected by the auditors from a sample", "total": "the audit's own total for the year",
+         "report": "from the auditor's own report", "none": "no dollar amount"}
+
+
+def audit_block(B, code, name, heading=True):
+    from state_audits import A
+    a = A.get(code)
+    if not a:
+        return ""
+    B.S[f"audit_{code}"] = (a["report"], a["auditor"], a["date"], a["url"])
+    big = "" if a["basis"] == "none" else f'<p class="aud-fig"><b>{B.e(a["figure"])}</b><span>{B.e(a["program"])} · {BASIS[a["basis"]]}</span></p>'
+    also = "".join(f'<p><b>Also:</b> {B.e(x["figure"])} {B.e(x["text"])} <span class="src"><a href="{B.e(x["url"])}" rel="noopener">{B.e(x["report"])}</a>, {B.e(x["date"])}</span></p>' for x in a.get("also", []))
+    ref = f', finding {B.e(a["ref"])}' if a.get("ref") else ""
+    h = f'<h2>What {B.e(name)}\'s auditors found</h2>' if heading else ""
+    return f"""{h}{big}<p>{B.e(a["finding"])}</p>
+<p class="src">{B.e(a["auditor"])}: <a href="{B.e(a["url"])}" rel="noopener">{B.e(a["report"])}</a>{ref}. Filed {B.e(a["date"])}. <a href="/state-audits">How we picked this</a>.</p>{also}"""
+
+
 def build_states(B):
     B.S.update(STATE_SOURCES)
     rows, usr = states_data()
@@ -557,11 +577,12 @@ def build_states(B):
 {f'<tr><td class="mono">2024</td><td class="mono">—</td><td class="mono">—</td><td class="num">{r["rate24"]:.2f}%</td></tr>' if r['rate24'] is not None else ''}
 </tbody></table></div>
 <p class="src">USDA measures errors over a small tolerance (${57} per case in fiscal 2025). An error is not the same as fraud: the rate counts paying too much and too little.</p>
+{audit_block(B, r['code'], r['name'])}
 <h2>Unemployment insurance</h2>
 <p>The Labor Department publishes every state's unemployment-insurance error rate on its <a href="https://www.dol.gov/agencies/eta/unemployment-insurance-payment-accuracy" rel="noopener">payment accuracy page</a>. We'll add it here.</p>
 </div></section>
 {f'<section class="sec"><div class="wrap"><h2>Cases in {B.e(r["name"])}</h2><div class="grid" style="margin-top:22px">{cards}</div></div></section>' if cards else ''}
-{src_line(B, ['snap_fy25', 'snap_fy24', 'usas_state', 'census_pop'])}"""
+{src_line(B, ['snap_fy25', 'snap_fy24', 'usas_state', 'census_pop'] + ([f"audit_{r['code']}"] if f"audit_{r['code']}" in B.S else []))}"""
         page(B, f"state/{code}.html", "", f"{r['name']}: SNAP error rate {r['rate25']:.2f}% (#{r['rank']} of {n}) and federal spending | FraudBad",
              f"{r['name']} paid {r['rate25']:.2f}% of SNAP food benefits wrong in fiscal 2025, #{r['rank']} of {n}. Plus {fmt(r['awards']/1e6)} in federal awards and every FraudBad case in the state.",
              "og-ledger.png", "State", B.e(r["name"]), B.e(lede), body)
@@ -570,6 +591,7 @@ def build_states(B):
         f'<td class="mono hide-sm">{"—" if r["rate24"] is None else f"{r["rate24"]:.2f}%"}</td><td class="mono">${r["awards"]/r["pop"]:,.0f}</td></tr>' for r in rows)
     body = f"""<section class="sec"><div class="wrap">
 <div class="tbl-wrap"><table class="tbl ledger fit"><thead><tr><th>#</th><th>State</th><th>SNAP error rate, FY2025</th><th class="hide-sm">FY2024</th><th>Federal awards per resident</th></tr></thead><tbody>{trs}</tbody></table></div>
+<p style="margin:0 0 18px"><a class="btn sm" href="/state-audits">What every state's own auditors found →</a></p>
 <p class="src" style="margin-top:14px">Ranked worst first. Error rates: USDA. Awards per resident: our math from USAspending.gov fiscal 2025 prime awards and Census 2024 population.</p>
 </div></section>
 {src_line(B, ['snap_fy25', 'snap_fy24', 'usas_state', 'census_pop'])}"""
@@ -577,6 +599,36 @@ def build_states(B):
          f"All {n} states and DC ranked by how much of their SNAP food benefits they paid wrong in fiscal 2025, with federal awards per resident.",
          "og-ledger.png", "50 states + DC", "Every state, ranked", f"How much of its food-benefit payments each state got wrong in fiscal 2025. The national rate was {usr['2025']['rate']:.2f}%.", body)
     return rows
+
+
+def build_state_audits(B, rows):
+    """3.6: every state's own audit finding on one page."""
+    from state_audits import A
+    names = {r["code"]: r["name"] for r in rows}
+    trs = []
+    for code in sorted(A, key=lambda c: names.get(c, c)):
+        a = A[code]
+        B.S[f"audit_{code}"] = (a["report"], a["auditor"], a["date"], a["url"])
+        fig = "—" if a["basis"] == "none" else a["figure"]
+        trs.append(f'<tr><td><b><a href="/state/{code.lower()}">{B.e(names.get(code, code))}</a></b></td><td class="num">{B.e(fig)}</td>'
+                   f'<td>{B.e(a["finding"])}<span class="src" style="display:block;margin-top:4px">{"" if a["basis"] == "none" else B.e(BASIS[a["basis"]].capitalize()) + ". "}'
+                   f'<a href="{B.e(a["url"])}" rel="noopener">{B.e(a["auditor"])}</a>, filed {B.e(a["date"])}</span></td></tr>')
+    n_none = sum(1 for a in A.values() if a["basis"] == "none")
+    n_fac = sum(1 for a in A.values() if a["url"].startswith("https://app.fac.gov"))
+    body = f"""<section class="sec"><div class="wrap prose">
+<p>Every state that spends $1 million or more in federal money a year must get a <b>single audit</b>: an outside check of how it spent that money, filed with the federal government. Most states' own auditors do it; some hire accounting firms. When auditors find spending that broke the rules or that the state couldn't back up with records, they list it as <b>questioned costs</b>.</p>
+<p>For each state we read its latest single audit ({n_fac} of {len(A)} rows) and show the largest questioned cost in it, or the report's own total when it gives one. Where the state's auditor published a bigger finding in its own report, we show that instead and say so. "Projected" means the auditors found a small amount in a sample and estimated the rest; we show both numbers.</p>
+<p>Questioned costs are not fraud findings. Some are bookkeeping errors. They show where the receipts didn't hold up. {n_none} states' audits put no dollar figure on any finding.</p>
+</div></section>
+<section class="sec" style="background:#fff;border-top:1px solid var(--rule)"><div class="wrap">
+<div class="tbl-wrap"><table class="tbl fit"><thead><tr><th>State</th><th>Amount</th><th>What the auditors found</th></tr></thead><tbody>{"".join(trs)}</tbody></table></div>
+<p class="src" style="margin-top:14px">Reports read Nov 10, 2026 from the <a href="https://www.fac.gov/" rel="noopener">Federal Audit Clearinghouse</a> and state auditors' sites. Seen something newer or bigger? <a href="/corrections">Tell us</a>.</p>
+</div></section>
+{src_line(B, [f"audit_{c}" for c in sorted(A, key=lambda c: names.get(c, c))])}"""
+    page(B, "state-audits.html", "", "What every state's own auditors found | FraudBad",
+         "For all 50 states and DC, the biggest questioned cost in the state's latest federal single audit, read from the auditor's report.",
+         "og-ledger.png", "50 states + DC", "What every state's auditors found",
+         "The biggest problem each state's own audit put a dollar figure on, read from the report itself.", body)
 
 
 def build_your_share(B, rows):

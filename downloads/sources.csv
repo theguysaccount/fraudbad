@@ -1,5 +1,56 @@
 id,title,publisher,date,url
 acct_tigta,IRS improper payments on tax credits increased last year (TIGTA review),Accounting Today,Jul 2026,https://www.accountingtoday.com/news/irs-improper-payments-on-tax-credits-increased-last-year
+audit_AK,"State of Alaska single audit, fiscal year ended June 30, 2025",Alaska Division of Legislative Audit,"Apr 22, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000403514
+audit_AL,"Special Report on the Alabama Department of Public Health, July 2020 – June 2025",Alabama Department of Examiners of Public Accounts,"Sep 11, 2026",https://alison.legislature.state.al.us/files/pdf/eopa/audit_reports/26-513_26-513-Special%20Report-Public%20Health.pdf
+audit_AR,"State of Arkansas single audit, fiscal year ended June 30, 2025",Arkansas Legislative Audit,"Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000404702
+audit_AZ,"State of Arizona single audit, fiscal year ended June 30, 2024",Arizona Auditor General,"Apr 27, 2026",https://app.fac.gov/dissemination/report/pdf/2024-06-GSAFAC-0000400802
+audit_CA,State High-Risk Audit Program (2025-601),California State Auditor,"Dec 11, 2025",https://www.auditor.ca.gov/reports/2025-601/
+audit_CO,"State of Colorado single audit, fiscal year ended June 30, 2025",Colorado Office of the State Auditor,"Mar 9, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000400118
+audit_CT,"Statewide Single Audit, fiscal year ended June 30, 2025",Connecticut Auditors of Public Accounts,"May 28, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000419171
+audit_DC,"Government of the District of Columbia single audit, fiscal year ended Sep 30, 2025","BDO USA, P.C.","Jun 29, 2026",https://app.fac.gov/dissemination/report/pdf/2025-09-GSAFAC-0000420163
+audit_DE,"State of Delaware single audit, fiscal year ended June 30, 2025",CliftonLarsonAllen LLP,"Mar 27, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000411427
+audit_FL,"State of Florida single audit, fiscal year ended June 30, 2025",Florida Auditor General,"Mar 30, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000402515
+audit_GA,"State of Georgia single audit, fiscal year ended June 30, 2025",Georgia Department of Audits and Accounts,"May 7, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000404394
+audit_HI,"Hawaii Department of Human Services single audit, fiscal year ended June 30, 2025",Accuity LLP,"Mar 30, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000409928
+audit_IA,"State of Iowa single audit, fiscal year ended June 30, 2025",Iowa Office of Auditor of State,"Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000406236
+audit_ID,"State of Idaho single audit, fiscal year ended June 30, 2025","Idaho Legislative Services Office, Audit Division","Oct 5, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000430316
+audit_IL,"State of Illinois single audit, fiscal year ended June 30, 2025","KPMG LLP, for the Illinois Auditor General","Oct 22, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000432778
+audit_IN,"State of Indiana single audit, fiscal year ended June 30, 2025",Indiana State Board of Accounts,"Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000405804
+audit_KS,"State of Kansas single audit, fiscal year ended June 30, 2025",CliftonLarsonAllen LLP,"Mar 24, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000408209
+audit_KY,"Commonwealth of Kentucky single audit, fiscal year ended June 30, 2025",Kentucky Auditor of Public Accounts,"Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000396391
+audit_LA,"State of Louisiana single audit, fiscal year ended June 30, 2025",Louisiana Legislative Auditor,"Mar 30, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000405806
+audit_MA,"Commonwealth of Massachusetts single audit, fiscal year ended June 30, 2025",CliftonLarsonAllen LLP,"May 7, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000408310
+audit_MD,"State of Maryland single audit, fiscal year ended June 30, 2025","SB & Company, LLC","Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000411359
+audit_ME,"State of Maine single audit, fiscal year ended June 30, 2025",Maine Office of the State Auditor,"Mar 26, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000407077
+audit_MI,"State of Michigan single audit, fiscal year ended Sep 30, 2025",Michigan Office of the Auditor General,"Jun 25, 2026",https://app.fac.gov/dissemination/report/pdf/2025-09-GSAFAC-0000408805
+audit_MN,"State of Minnesota single audit, fiscal year ended June 30, 2025",Minnesota Office of the Legislative Auditor,"Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000408110
+audit_MO,"State of Missouri single audit, fiscal year ended June 30, 2025",Missouri State Auditor,"Sep 23, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000411287
+audit_MS,"State of Mississippi single audit, fiscal year ended June 30, 2024 (latest filed)",Mississippi Office of the State Auditor,"Apr 30, 2026",https://app.fac.gov/dissemination/report/pdf/2024-06-GSAFAC-0000417199
+audit_MT,"State of Montana single audit, fiscal year ended June 30, 2025",Montana Legislative Audit Division,"Sep 18, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000424755
+audit_NC,"State of North Carolina single audit, fiscal year ended June 30, 2025",North Carolina Office of the State Auditor,"Mar 26, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000409828
+audit_ND,"State of North Dakota single audit, fiscal year ended June 30, 2024 (latest filed)",North Dakota State Auditor's Office,"Mar 20, 2025",https://app.fac.gov/dissemination/report/pdf/2024-06-GSAFAC-0000355889
+audit_NE,"State of Nebraska single audit, fiscal year ended June 30, 2025",Nebraska Auditor of Public Accounts,"Mar 16, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000405646
+audit_NH,"State of New Hampshire single audit, fiscal year ended June 30, 2025",KPMG LLP,"Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000402775
+audit_NJ,"State of New Jersey single audit, fiscal year ended June 30, 2025",CliftonLarsonAllen LLP,"Mar 30, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000411243
+audit_NM,"New Mexico Health Care Authority single audit, fiscal year ended June 30, 2025","Baker Tilly US, LLP","Mar 10, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000405197
+audit_NV,"State of Nevada single audit, fiscal year ended June 30, 2024 (latest filed)",Eide Bailly LLP,"Sep 18, 2026",https://app.fac.gov/dissemination/report/pdf/2024-06-GSAFAC-0000425653
+audit_NY,"State of New York single audit, fiscal year ended Mar 31, 2025",KPMG LLP,"Dec 30, 2025",https://app.fac.gov/dissemination/report/pdf/2025-03-GSAFAC-0000394112
+audit_OH,"State of Ohio single audit, fiscal year ended June 30, 2025",Ohio Auditor of State,"Mar 26, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000403196
+audit_OK,"State of Oklahoma single audit, fiscal year ended June 30, 2024 (latest filed)",Oklahoma State Auditor and Inspector,"Aug 14, 2026",https://app.fac.gov/dissemination/report/pdf/2024-06-GSAFAC-0000426063
+audit_OR,"State of Oregon single audit, fiscal year ended June 30, 2025","Oregon Secretary of State, Audits Division","Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000409930
+audit_PA,"Commonwealth of Pennsylvania single audit, fiscal year ended June 30, 2025",Pennsylvania Department of the Auditor General,"Mar 18, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000388507
+audit_RI,"State of Rhode Island single audit, fiscal year ended June 30, 2025",Rhode Island Office of the Auditor General,"Jul 30, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000423546
+audit_SC,"State of South Carolina single audit, fiscal year ended June 30, 2025",South Carolina Office of the State Auditor,"Mar 25, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000408027
+audit_SD,"State of South Dakota single audit, fiscal year ended June 30, 2025",South Dakota Department of Legislative Audit,"Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000412792
+audit_TN,"State of Tennessee single audit, fiscal year ended June 30, 2025",Tennessee Comptroller of the Treasury,"Mar 26, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000400248
+audit_TX,"State of Texas single audit, fiscal year ended Aug 31, 2025",CliftonLarsonAllen LLP,"Mar 18, 2026",https://app.fac.gov/dissemination/report/pdf/2025-08-GSAFAC-0000404470
+audit_UT,"State of Utah single audit, fiscal year ended June 30, 2025",Utah Office of the State Auditor,"Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000409964
+audit_VA,"Commonwealth of Virginia single audit, fiscal year ended June 30, 2025",Virginia Auditor of Public Accounts,"Mar 11, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000388108
+audit_VT,"State of Vermont single audit, fiscal year ended June 30, 2025",CliftonLarsonAllen LLP,"Mar 25, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000409669
+audit_WA,"State of Washington single audit, fiscal year ended June 30, 2025",Washington State Auditor's Office,"Mar 30, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000396786
+audit_WI,"State of Wisconsin single audit, fiscal year ended June 30, 2025",Wisconsin Legislative Audit Bureau,"Mar 25, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000393599
+audit_WV,"State of West Virginia single audit, fiscal year ended June 30, 2025",CliftonLarsonAllen LLP,"Mar 4, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000406687
+audit_WY,"State of Wyoming single audit, fiscal year ended June 30, 2025",MHP Assurance Services LLP,"Mar 31, 2026",https://app.fac.gov/dissemination/report/pdf/2025-06-GSAFAC-0000408579
 axios_az,Arizona AG still investigating about 200 sober living home fraud cases,Axios Phoenix,"Jun 9, 2026",https://www.axios.com/local/phoenix/2026/06/09/sober-living-home-arizona-medicaid-fraud-investigation-200-active-cases
 cbs_bock,Feeding Our Future fraud ringleader Aimee Bock sentenced,CBS News,"May 21, 2026",https://www.cbsnews.com/minnesota/news/feeding-our-future-fraud-ringleader-aimee-bock-sentenced/
 census,2026 Census of Governments: government units file (Govt_Units_2026_Final.xlsx),U.S. Census Bureau,Sep 2026,https://www2.census.gov/programs-surveys/gus/datasets/2026/gov_units_2026.zip

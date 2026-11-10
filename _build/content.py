@@ -680,7 +680,7 @@ DIVE = {
         "label": "Federal", "sub": "$7.4 trillion spent in FY2026",
         "cells": {
             "total": ("open", "Treasury posts the total every month: $7,395,799,983,313 spent in fiscal 2026.", "mts"),
-            "who": ("partial", "USAspending.gov names prime award recipients, but other transaction agreements aren't consistently reported.", "gao_transp"),
+            "who": ("partial", "USAspending.gov names prime award recipients. GAO found other transaction agreements weren't consistently reported; a law signed Sept 11, 2026 (Public Law 119-106) now requires them.", "gao_transp"),
             "where": ("partial", "74% of FY2024 federal grant dollars ($712.6B of $958.6B) had no county, city or ZIP attached.", "pogo"),
             "next": ("dark", "About 70% of prime recipients pass money on to others. Only about 10% report it.", "pogo"),
             "what": ("dark", "97% of 2.4 million prime transactions used duplicate descriptions that say nothing about what was bought.", "pogo"),

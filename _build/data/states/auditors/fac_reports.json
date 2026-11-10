@@ -1,0 +1,418 @@
+{
+ "AK": {
+  "report_id": "2025-06-GSAFAC-0000403514",
+  "auditee": "State of Alaska",
+  "auditor": "Division of Legislative Audit",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-04-22",
+  "expended": 5912468018
+ },
+ "AL": {
+  "report_id": "2025-09-GSAFAC-0000417320",
+  "auditee": "STATE OF ALABAMA DEPARTMENT OF FINANCE",
+  "auditor": "Department of Examiners of Public Accounts",
+  "fy_end": "2025-09-30",
+  "accepted": "2026-06-26",
+  "expended": 14221961652
+ },
+ "AR": {
+  "report_id": "2025-06-GSAFAC-0000404702",
+  "auditee": "State of Arkansas",
+  "auditor": "Arkansas Legislative Audit",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 12381472420
+ },
+ "CA": {
+  "report_id": "2025-06-GSAFAC-0000425245",
+  "auditee": "STATE OF CALIFORNIA",
+  "auditor": "CliftonLarsonAllen LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-08-07",
+  "expended": 176145204758
+ },
+ "CO": {
+  "report_id": "2025-06-GSAFAC-0000400118",
+  "auditee": "State of Colorado",
+  "auditor": "Office of the State Auditor",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-09",
+  "expended": 20822547330
+ },
+ "CT": {
+  "report_id": "2025-06-GSAFAC-0000419171",
+  "auditee": "State of Connecticut",
+  "auditor": "Auditors of Public Accounts",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-05-28",
+  "expended": 14393050861
+ },
+ "DC": {
+  "report_id": "2025-09-GSAFAC-0000420163",
+  "auditee": "GOVERNMENT OF THE DISTRICT OF COLUMBIA",
+  "auditor": "BDO USA, P.C.",
+  "fy_end": "2025-09-30",
+  "accepted": "2026-06-29",
+  "expended": 5595867162
+ },
+ "DE": {
+  "report_id": "2025-06-GSAFAC-0000411427",
+  "auditee": "State of Delaware",
+  "auditor": "CLIFTONLARSONALLEN LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-27",
+  "expended": 4170993237
+ },
+ "FL": {
+  "report_id": "2025-06-GSAFAC-0000402515",
+  "auditee": "State of Florida",
+  "auditor": "Florida Auditor General",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-30",
+  "expended": 55766539327
+ },
+ "GA": {
+  "report_id": "2025-06-GSAFAC-0000404394",
+  "auditee": "State of Georgia/State Accounting Office",
+  "auditor": "Georgia Department of Audits and Accounts",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-05-07",
+  "expended": 32686818565
+ },
+ "IA": {
+  "report_id": "2025-06-GSAFAC-0000406236",
+  "auditee": "State of Iowa",
+  "auditor": "OFFICE OF AUDITOR OF STATE",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 13602870863
+ },
+ "ID": {
+  "report_id": "2025-06-GSAFAC-0000430316",
+  "auditee": "EXECUTIVE OFFICE OF THE STATE OF IDAHO",
+  "auditor": "Legislative Services Office - Audit Division",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-10-05",
+  "expended": 5480280656
+ },
+ "IL": {
+  "report_id": "2025-06-GSAFAC-0000432778",
+  "auditee": "STATE OF ILLINOIS",
+  "auditor": "KPMG LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-10-22",
+  "expended": 39962596657
+ },
+ "IN": {
+  "report_id": "2025-06-GSAFAC-0000405804",
+  "auditee": "State of Indiana",
+  "auditor": "Indiana State Board of Accounts",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 22611561057
+ },
+ "KS": {
+  "report_id": "2025-06-GSAFAC-0000408209",
+  "auditee": "State of Kansas",
+  "auditor": "CliftonLarsonAllen LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-24",
+  "expended": 8678892324
+ },
+ "KY": {
+  "report_id": "2025-06-GSAFAC-0000396391",
+  "auditee": "Commonwealth of Kentucky",
+  "auditor": "Kentucky Auditor of Public Accounts",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 22835827856
+ },
+ "LA": {
+  "report_id": "2025-06-GSAFAC-0000405806",
+  "auditee": "STATE OF LOUISIANA",
+  "auditor": "LOUISIANA LEGISLATIVE AUDITOR",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-30",
+  "expended": 25281411750
+ },
+ "MA": {
+  "report_id": "2025-06-GSAFAC-0000408310",
+  "auditee": "Commonwealth of Massachusetts",
+  "auditor": "CliftonLarsonAllen, LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-05-07",
+  "expended": 28769475197
+ },
+ "MD": {
+  "report_id": "2025-06-GSAFAC-0000411359",
+  "auditee": "STATE OF MARYLAND",
+  "auditor": "202153727",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 22712501833
+ },
+ "ME": {
+  "report_id": "2025-06-GSAFAC-0000407077",
+  "auditee": "State of Maine",
+  "auditor": "STATE OF MAINE, OFFICE OF THE STATE AUDITOR",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-26",
+  "expended": 6028140506
+ },
+ "MI": {
+  "report_id": "2025-09-GSAFAC-0000408805",
+  "auditee": "State of Michigan",
+  "auditor": "Office of the Auditor General",
+  "fy_end": "2025-09-30",
+  "accepted": "2026-06-25",
+  "expended": 37086672798
+ },
+ "MN": {
+  "report_id": "2025-06-GSAFAC-0000408110",
+  "auditee": "State of Minnesota",
+  "auditor": "Minnesota Office of the State Auditor",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 20815212884
+ },
+ "MO": {
+  "report_id": "2025-06-GSAFAC-0000411287",
+  "auditee": "State of Missouri",
+  "auditor": "Office of the Missouri State Auditor",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-09-23",
+  "expended": 20509341199
+ },
+ "MT": {
+  "report_id": "2025-06-GSAFAC-0000424755",
+  "auditee": "State of Montana",
+  "auditor": "Montana Legislative Audit Division",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-09-18",
+  "expended": 11081990689
+ },
+ "NC": {
+  "report_id": "2025-06-GSAFAC-0000409828",
+  "auditee": "State of North Carolina",
+  "auditor": "North Carolina Office of the State Auditor",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-26",
+  "expended": 43872964991
+ },
+ "NE": {
+  "report_id": "2025-06-GSAFAC-0000405646",
+  "auditee": "STATE OF NEBRASKA",
+  "auditor": "NEBRASKA AUDITOR OF PUBLIC ACCOUNTS",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-16",
+  "expended": 5842242697
+ },
+ "NH": {
+  "report_id": "2025-06-GSAFAC-0000402775",
+  "auditee": "State of New Hampshire",
+  "auditor": "KPMG LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 3423961276
+ },
+ "NJ": {
+  "report_id": "2025-06-GSAFAC-0000411243",
+  "auditee": "State of New Jersey",
+  "auditor": "CliftonLarsonAllen LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-30",
+  "expended": 31097764169
+ },
+ "NY": {
+  "report_id": "2025-03-GSAFAC-0000394112",
+  "auditee": "State of New York",
+  "auditor": "KPMG LLP",
+  "fy_end": "2025-03-31",
+  "accepted": "2025-12-30",
+  "expended": 115820650082
+ },
+ "OH": {
+  "report_id": "2025-06-GSAFAC-0000403196",
+  "auditee": "State of Ohio",
+  "auditor": "Keith Faber, Auditor of State",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-26",
+  "expended": 45359926637
+ },
+ "OR": {
+  "report_id": "2025-06-GSAFAC-0000409930",
+  "auditee": "State of Oregon",
+  "auditor": "Oregon Secretary of State Audits Division",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 21071592165
+ },
+ "PA": {
+  "report_id": "2025-06-GSAFAC-0000388507",
+  "auditee": "COMMONWEALTH OF PENNSYLVANIA",
+  "auditor": "AUDITOR GENERAL TIMOTHY DEFOOR",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-18",
+  "expended": 48535970000
+ },
+ "PR": {
+  "report_id": "2025-06-GSAFAC-0000413483",
+  "auditee": "Department of Health of the Commonwealth of Puerto Rico",
+  "auditor": "Galindez, LLC",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 4822600438
+ },
+ "RI": {
+  "report_id": "2025-06-GSAFAC-0000423546",
+  "auditee": "State of Rhode Island",
+  "auditor": "Office of the Auditor General",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-07-30",
+  "expended": 7047135950
+ },
+ "SC": {
+  "report_id": "2025-06-GSAFAC-0000408027",
+  "auditee": "State of South Carolina",
+  "auditor": "South Carolina Office of the State Auditor",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-25",
+  "expended": 13258579720
+ },
+ "SD": {
+  "report_id": "2025-06-GSAFAC-0000412792",
+  "auditee": "State of South Dakota",
+  "auditor": "South Dakota Department of Legislative Audit",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 3775453110
+ },
+ "TN": {
+  "report_id": "2025-06-GSAFAC-0000400248",
+  "auditee": "State of Tennessee",
+  "auditor": "Comptroller of the Treasury - Division of State Audit",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-26",
+  "expended": 23718734512
+ },
+ "TX": {
+  "report_id": "2025-08-GSAFAC-0000404470",
+  "auditee": "State of Texas C/O Comptroller of Public Accounts",
+  "auditor": "CliftonLarsonAllen LLP",
+  "fy_end": "2025-08-31",
+  "accepted": "2026-03-18",
+  "expended": 83214002538
+ },
+ "UT": {
+  "report_id": "2025-06-GSAFAC-0000409964",
+  "auditee": "State of Utah",
+  "auditor": "Office of the State Auditor",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 9287887774
+ },
+ "VA": {
+  "report_id": "2025-06-GSAFAC-0000388108",
+  "auditee": "Commonwealth of Virginia",
+  "auditor": "Auditor of Public Accounts",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-11",
+  "expended": 28924844870
+ },
+ "VT": {
+  "report_id": "2025-06-GSAFAC-0000409669",
+  "auditee": "State of Vermont",
+  "auditor": "CLIFTONLARSONALLEN, LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-25",
+  "expended": 3635985340
+ },
+ "WA": {
+  "report_id": "2025-06-GSAFAC-0000396786",
+  "auditee": "STATE OF WASHINGTON C/O OFFICE OF FINANCIAL MANAGEMENT",
+  "auditor": "Washington State Auditor's Office",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-30",
+  "expended": 29542865542
+ },
+ "WI": {
+  "report_id": "2025-06-GSAFAC-0000393599",
+  "auditee": "STATE OF WISCONSIN",
+  "auditor": "STATE OF WISCONSIN LEGISLATIVE AUDIT BUREAU",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-25",
+  "expended": 18151166717
+ },
+ "WV": {
+  "report_id": "2025-06-GSAFAC-0000406687",
+  "auditee": "State of West Virginia",
+  "auditor": "CLIFTONLARSONALLEN, LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-04",
+  "expended": 8455276265
+ },
+ "AZ": {
+  "report_id": "2024-06-GSAFAC-0000400802",
+  "auditee": "State of Arizona",
+  "auditor": "Arizona Auditor General",
+  "fy_end": "2024-06-30",
+  "accepted": "2026-04-27",
+  "expended": 28586474697
+ },
+ "HI": {
+  "report_id": "2025-06-GSAFAC-0000409928",
+  "auditee": "DEPARTMENT OF HUMAN SERVICES",
+  "auditor": "ACCUITY LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-30",
+  "expended": 3213277288
+ },
+ "MS": {
+  "report_id": "2024-06-GSAFAC-0000417199",
+  "auditee": "STATE OF MISSISSIPPI",
+  "auditor": "Mississippi Office of the State Auditor",
+  "fy_end": "2024-06-30",
+  "accepted": "2026-04-30",
+  "expended": 11038763487
+ },
+ "ND": {
+  "report_id": "2024-06-GSAFAC-0000355889",
+  "auditee": "State of North Dakota",
+  "auditor": "State Auditors Office",
+  "fy_end": "2024-06-30",
+  "accepted": "2025-03-20",
+  "expended": 6855427141
+ },
+ "NM": {
+  "report_id": "2025-06-GSAFAC-0000405197",
+  "auditee": "State of New Mexico Health Care Authority",
+  "auditor": "Baker Tilly US, LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-10",
+  "expended": 9446809996
+ },
+ "NV": {
+  "report_id": "2024-06-GSAFAC-0000425653",
+  "auditee": "STATE OF NEVADA OFFICE OF STATE CONTROLLER",
+  "auditor": "Eide Bailly LLP",
+  "fy_end": "2024-06-30",
+  "accepted": "2026-09-18",
+  "expended": 9824469002
+ },
+ "OK": {
+  "report_id": "2024-06-GSAFAC-0000426063",
+  "auditee": "STATE OF OKLAHOMA",
+  "auditor": "OKLAHOMA STATE AUDITOR AND INSPECTOR",
+  "fy_end": "2024-06-30",
+  "accepted": "2026-08-14",
+  "expended": 13888461712
+ },
+ "WY": {
+  "report_id": "2025-06-GSAFAC-0000408579",
+  "auditee": "State of Wyoming",
+  "auditor": "McGee, Hearne & Paiz, LLP dba MHP Assurance Services, LLP",
+  "fy_end": "2025-06-30",
+  "accepted": "2026-03-31",
+  "expended": 1482396834
+ }
+}

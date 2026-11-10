@@ -430,3 +430,4 @@ body.embed .yrs{margin-top:28px;height:240px}
 .answers a{font:700 22px/1.3 var(--body);color:var(--ink)}
 .answers span{display:block;margin-top:6px;color:#2b3140}
 .page-hero .lede:empty{display:none}
+.aud-fig{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 10px}.aud-fig b{font:400 clamp(44px,7vw,64px)/1 var(--display);color:var(--red)}.aud-fig span{font:600 13px/1.4 var(--mono,monospace);text-transform:uppercase;letter-spacing:.06em;color:var(--muted,#555)}
