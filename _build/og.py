@@ -1,4 +1,5 @@
 # Render 1200x630 social cards and icon PNGs with headless Chrome.
+from browser import launch_args
 import asyncio, html, os
 from playwright.async_api import async_playwright
 from content import CASES, TIERS, LEVELS
@@ -101,11 +102,12 @@ SOFT = f"""<html><head>{BASE}</head><body>
 
 async def main():
     async with async_playwright() as p:
-        b = await p.chromium.launch(executable_path="/usr/bin/google-chrome", args=["--no-sandbox", "--allow-file-access-from-files"])
+        b = await p.chromium.launch(**launch_args())
         pg = await b.new_page(viewport={"width": 1200, "height": 630})
         jobs = [("og-home.png", HOME), ("og-transparency.png", TRANSP), ("og-soft-fraud.png", SOFT), ("og-ledger.png", LEDGER)] + [(f"og-{c['slug']}.png", case_card(c)) for c in CASES]
+        os.makedirs(os.path.join(os.path.dirname(os.path.abspath(__file__)), "qa"), exist_ok=True)
         for name, doc in jobs:
-            tmp = os.path.join(os.path.dirname(__file__), "qa", "_og.html")
+            tmp = os.path.join(os.path.dirname(os.path.abspath(__file__)), "qa", "_og.html")
             open(tmp, "w", encoding="utf-8").write(doc)
             await pg.goto("file://" + tmp)
             await pg.evaluate("document.fonts.ready")

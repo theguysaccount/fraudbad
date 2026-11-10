@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Build fraudbad.com into ./site as flat static files (GitHub Pages serves /slug from slug.html)."""
 import html, json, os, shutil, re, urllib.parse
+from content import GSC_FILE, INDEXNOW_KEY
 from content import (UPDATED, UPDATED_HUMAN, SITE, CTA_URL, SOCIALS, S, TIERS, LEVELS, CASES,
                      DIVE_ROWS, DIVE, DARK_MONEY, LOCAL_TYPES)
 import content_soft  # noqa: F401  (adds soft-fraud cases, tiers and sources)
@@ -86,7 +87,7 @@ def header(active=""):
         return f'<a href="{href}"{cur}>{label}</a>'
     return f"""<header class="top"><div class="wrap">
 <a class="mark" href="/" aria-label="FraudBad home"><span class="f">Fraud</span><span class="b">Bad</span><small>No taxation without receipts</small></a>
-<nav class="nav" aria-label="Main">{a('/#cases','The cases','cases')}{a('/soft-fraud','Soft fraud','soft')}{a('/ledger','The ledger','ledger')}{a('/transparency','Where receipts stop','transparency')}{a('/method','How we judge','method')}<a class="btn sm" href="{CTA_URL}">Sign the Receipts Act</a></nav>
+<nav class="nav" aria-label="Main">{a('/#cases','The cases','cases')}{a('/soft-fraud','Soft fraud','soft')}{a('/ledger','The ledger','ledger')}{a('/transparency','Where receipts stop','transparency')}{a('/method','How we judge','method')}<a class="btn sm" href="__SIGN_nav__">Sign the Receipts Act</a></nav>
 </div></header>
 """
 
@@ -103,7 +104,7 @@ def cta():
 <p>Public money should come with a receipt anyone can check. The RECEIPTS Act starts with one rule for federal purchases over $25,000 from GSA's buying catalog: publish the price paid next to what other agencies paid for the same thing.</p>
 </div>
 <div class="side">
-<a class="btn white" href="{CTA_URL}">Sign the Receipts Act ↗</a>
+<a class="btn white" href="__SIGN_band__">Sign the Receipts Act ↗</a>
 <p class="follow">Follow the movement: {social_links()}</p>
 <p class="note">A citizen-authored working draft hosted on America.co. It has not been introduced in Congress.</p>
 </div>
@@ -115,7 +116,7 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
 <div><a class="mark" href="/"><span class="f">Fraud</span><span class="b">Bad</span></a>
 <p style="margin-top:14px">An independent public-interest site. Not a government website. Every figure links to the auditor, inspector general, court record or agency report it came from.</p></div>
-<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="{CTA_URL}">Sign the Receipts Act</a></nav>
+<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
 <nav aria-label="America.co"><a href="https://america.co/">America.co</a>{''.join(f'<a href="{u}" rel="noopener">{n}</a>' for n,u in SOCIALS)}<a href="https://america.co/work-with-us">Send a correction</a></nav>
 <p class="fine">Updated {UPDATED_HUMAN}. Charges are accusations; everyone charged is presumed innocent until proven guilty. Improper payments are not all fraud — each page says what kind of number it is.</p>
 </div></footer>
@@ -167,8 +168,33 @@ ORG_LD = {"@context": "https://schema.org", "@type": "Organization", "name": "Fr
           "logo": SITE + "/icon-512.png", "sameAs": [u for _, u in SOCIALS]}
 
 
+SIGN_BASE = CTA_URL.split("#")[0]
+
+
+def page_slug(path):
+    """The case/page tag carried on every Sign link: index.html -> home, program/x.html -> program-x."""
+    s = path[:-5] if path.endswith(".html") else path
+    return "home" if s == "index" else s.replace("/", "-")
+
+
+def tag_sign_links(path, text):
+    slug = page_slug(path)
+    for pos in ("nav", "band", "footer", "inline", "bar"):
+        text = text.replace(f"__SIGN_{pos}__", f"{SIGN_BASE}?ref=fraudbad&amp;case={slug}&amp;pos={pos}#sign")
+    # Gate (plan item 0.2): every link to the signing page must say where it came from.
+    for m in re.finditer(r'href="(https://america\.co/receipts-act[^"]*#sign)"', text):
+        if "ref=fraudbad" not in m.group(1) or "case=" not in m.group(1):
+            raise SystemExit(f"untagged Sign link in {path}: {m.group(1)}")
+    if "__SIGN_" in text:
+        raise SystemExit(f"unknown Sign placeholder in {path}")
+    return text
+
+
 def write(path, text):
+    if path.endswith(".html"):
+        text = tag_sign_links(path, text)
     full = os.path.join(OUT, path)
+    os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f:
         f.write(text)
 
@@ -313,7 +339,7 @@ def build_case(i, c):
 <div class="receipt flat static" style="padding:20px">
 <p class="kicker" style="color:var(--red);margin-bottom:8px">Want to stop it?</p>
 <p style="font:400 30px/1 var(--display);text-transform:uppercase;margin:0 0 14px">Sign the Receipts Act.</p>
-<a class="btn" href="{CTA_URL}">Sign it on America.co ↗</a>
+<a class="btn" href="__SIGN_inline__">Sign it on America.co ↗</a>
 </div>
 <div class="share"><button class="btn ink sm" data-copy="{url}">Copy link</button><a class="btn ink sm" href="{e(x_url)}" rel="noopener">Post on X</a><button class="btn ink sm" data-share="{url}">Share</button><p class="status" aria-live="polite"></p></div>
 </aside>
@@ -395,7 +421,7 @@ def build_transparency():
 <h2>The $149,072 soap dispensers</h2>
 <p class="lede" style="margin-top:16px">When the Pentagon's inspector general compared what the Air Force paid for 46 spare parts against what they should cost, it found a soap dispenser marked up 7,943%. For 25 of the 46 parts, the Air Force couldn't even say whether the price was fair.</p>
 <p>Nobody needed an investigation to see it. They needed the price paid next to what everyone else pays. The RECEIPTS Act would make that kind of comparison public, starting with federal orders over $25,000 placed through GSA's schedules.</p>
-<p><a class="btn" href="{CTA_URL}">Sign the Receipts Act ↗</a></p>
+<p><a class="btn" href="__SIGN_inline__">Sign the Receipts Act ↗</a></p>
 </div>
 </div></section>
 </main>
@@ -620,6 +646,8 @@ def build_meta():
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n')
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
     write("CNAME", "fraudbad.com\n")
+    write(GSC_FILE, f"google-site-verification: {GSC_FILE}")
+    write(f"{INDEXNOW_KEY}.txt", INDEXNOW_KEY)
     write(".nojekyll", "")
     write("site.webmanifest", json.dumps({"name": "FraudBad", "short_name": "FraudBad", "start_url": "/", "display": "standalone",
                                           "background_color": "#0a1f44", "theme_color": "#0a1f44",
