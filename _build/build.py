@@ -10,7 +10,7 @@ import content_more as M  # official improper-payment ledger + round-3 cases
 
 OUT = os.path.join(os.path.dirname(__file__), "site")
 ASSETS = os.path.join(os.path.dirname(__file__), "assets")
-V = "20261110b"
+V = "20261110c"
 e = lambda s: html.escape(str(s), quote=True)
 
 LEVEL_ORDER = {"federal": 0, "state": 1, "local": 2}
@@ -49,7 +49,32 @@ def src_title(sid):
     return f"{pub}, {date}: {t}"
 
 
+BRAND = " | FraudBad"
+
+
+def fit_title(title, limit=70):
+    """SEO-STANDARD.md: one clear title per page, short enough to show in full. `title` may be a list of candidates,
+    best first; the first that fits wins, with the brand dropped before anything is cut."""
+    cands = list(title) if isinstance(title, (list, tuple)) else [title]
+    for c in cands + [c[:-len(BRAND)] for c in cands if c.endswith(BRAND)]:
+        if len(c) <= limit:
+            return c
+    c = cands[-1][:-len(BRAND)] if cands[-1].endswith(BRAND) else cands[-1]
+    return c[:limit - 1].rsplit(" ", 1)[0].rstrip(",:;—–-") + "…"
+
+
+def fit_desc(desc, limit=165):
+    if len(desc) <= limit:
+        return desc
+    cut = desc[:limit]
+    end = max(cut.rfind(". "), cut.rfind("? "))
+    if end >= 70:
+        return cut[:end + 1]
+    return cut[:limit - 1].rsplit(" ", 1)[0].rstrip(",:;—–-") + "…"
+
+
 def head(title, desc, path, og, jsonld=None, extra=""):
+    title, desc = fit_title(title), fit_desc(desc)
     url = SITE + path
     ld = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in (jsonld or []))
     return f"""<!doctype html>
@@ -198,9 +223,23 @@ def tag_sign_links(path, text):
     return text
 
 
+def own_brand_nofollow(text):
+    """Jack's SEO rule (SEO-STANDARD.md): never pass ranking between his own sites. Links to america.co stay as plain
+    calls to action, marked rel="nofollow"."""
+    def fix(m):
+        a = m.group(0)
+        if 'href="https://america.co' not in a:
+            return a
+        r = re.search(r'rel="([^"]*)"', a)
+        if r:
+            return a if "nofollow" in r.group(1).split() else a.replace(r.group(0), f'rel="{r.group(1)} nofollow"')
+        return a[:-1] + ' rel="nofollow">'
+    return re.sub(r"<a\b[^>]*>", fix, text)
+
+
 def write(path, text):
     if path.endswith(".html"):
-        text = tag_sign_links(path, text)
+        text = own_brand_nofollow(tag_sign_links(path, text))
     full = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f:
@@ -303,7 +342,7 @@ def build_home():
 <section class="sec" style="background:#fff;border-top:1px solid var(--rule)"><div class="wrap">
 <div class="sec-head"><div><p class="kicker" style="color:var(--red)">Federal · State · Local</p><h2>Where the receipts stop</h2></div>
 <p>You can see the total. Follow a dollar down and the trail goes dark: who got paid next, what was bought, and whether it ever showed up.</p></div>
-<div class="mini" role="table" aria-label="How far you can follow a public dollar">{mini_html}</div>
+<div class="mini" role="group" aria-label="How far you can follow a public dollar">{mini_html}</div>
 <p style="margin-top:26px"><a class="btn ink" href="/transparency">See the full map →</a></p>
 </div></section>
 </main>
@@ -317,7 +356,7 @@ def build_case(i, c):
     prev_c = ORDERED[i - 1] if i > 0 else ORDERED[-1]
     next_c = ORDERED[(i + 1) % len(ORDERED)]
     url = f"{SITE}/{c['slug']}"
-    title = f"{c['fig']} {c['scale']}: {c['title']} | FraudBad"
+    title = [f"{c['fig']} {c['scale']}: {c['title']} | FraudBad", f"{c['fig']} {c['scale']}: {c['title']}", f"{c['title']} | FraudBad"]
     desc = c["dek"]
     happened = "".join(f"<p>{e(p)}</p>" for p in c["happened"])
     missed = "".join(f"<li>{e(m)}</li>" for m in c["missed"])
@@ -407,7 +446,7 @@ def build_transparency():
         ("Parts the Air Force overpaid for", "12 of 46", "mil_soap"),
         ("Parts it couldn't tell if the price was fair", "25 of 46", "mil_soap"),
     ]
-    title = "Where the receipts stop: the limits of federal, state and city spending transparency | FraudBad"
+    title = "Spending transparency: where the receipts stop | FraudBad"
     desc = "Follow a public dollar down and the records run out. 74% of federal grant dollars can't be traced to a local place; most subawards go unreported; 56% of local governments list no website."
     ld = [ORG_LD, {"@context": "https://schema.org", "@type": "Article", "headline": "Where the receipts stop", "description": desc,
                    "url": SITE + "/transparency", "datePublished": UPDATED, "dateModified": UPDATED, "image": SITE + "/og-transparency.png",
@@ -467,7 +506,7 @@ def build_soft():
             out.append(f'<tr><td class="num">{e(amt)}</td><td>{e(rec)}</td><td>{e(ag)}</td><td class="mono">{e(d[:60])}</td><td><a href="{e(f["url"])}" rel="noopener">Award ↗</a></td></tr>')
         return "".join(out)
     soft_cases = "\n".join(card(c) for c in ORDERED if c["type"] == "soft")
-    title = "Soft fraud: the trillions lost to negligence, and how we search for it | FraudBad"
+    title = ["Soft fraud: the trillions lost to negligence, and how we search for it | FraudBad", "Soft fraud: the trillions lost to negligence | FraudBad"]
     desc = f"Paying without proof, overpaying, paying twice, losing track, never collecting. ${M.CUM/1e12:.2f} trillion in improper payments since {M.FIRST_YEAR} is just the start. Here's every official number and the seven signals we use to find more."
     ld = [ORG_LD, {"@context": "https://schema.org", "@type": "Article", "headline": "Soft fraud", "description": desc, "url": SITE + "/soft-fraud",
                    "datePublished": UPDATED, "dateModified": UPDATED, "image": SITE + "/og-soft-fraud.png", "author": {"@type": "Organization", "name": "FraudBad"}}]
@@ -559,7 +598,7 @@ def build_ledger():
         (f"{len(M.NONCOMP)} of {M.N_AGENCIES}", "agencies out of compliance with the payment-integrity law (FY2024)", "pa_data", "#law"),
     ]
     big = "".join(f'<a class="big" href="{h}"><b>{e(n)}</b><span>{e(t)}</span><i class="src">{e(S[sid][1].split(";")[0])}</i></a>' for n, t, sid, h in tiles)
-    title = f"The ledger: every federal program's error rate, and ${M.CUM/1e12:.2f} trillion since {M.FIRST_YEAR} | FraudBad"
+    title = [f"The ledger: every federal program's error rate, and ${M.CUM/1e12:.2f} trillion since {M.FIRST_YEAR} | FraudBad", f"Improper payments since {M.FIRST_YEAR}: ${M.CUM/1e12:.2f} trillion, by program | FraudBad"]
     desc = f"Every federal program that reports improper payments, from the government's own dataset: ${M.FY25/1e9:,.1f} billion paid wrong or without proof in fiscal 2025, ${M.CUM/1e12:.2f} trillion since {M.FIRST_YEAR}, and why."
     ld = [ORG_LD, {"@context": "https://schema.org", "@type": "Dataset", "name": "Federal improper payments by program, FY2004–FY2025",
                    "description": desc, "url": SITE + "/ledger", "creator": {"@type": "Organization", "name": "Office of Management and Budget"},

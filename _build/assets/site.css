@@ -431,3 +431,9 @@ body.embed .yrs{margin-top:28px;height:240px}
 .answers span{display:block;margin-top:6px;color:#2b3140}
 .page-hero .lede:empty{display:none}
 .aud-fig{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 10px}.aud-fig b{font:400 clamp(44px,7vw,64px)/1 var(--display);color:var(--red)}.aud-fig span{font:600 13px/1.4 var(--mono,monospace);text-transform:uppercase;letter-spacing:.06em;color:var(--muted,#555)}
+/* contrast fixes (Lighthouse, Nov 10) */
+.nav .btn{color:#fff}
+.case-hero .crumbs,.page-hero .crumbs{color:var(--muted-d)}
+.case-hero .crumbs a,.page-hero .crumbs a{color:#fff}
+.cta .note{opacity:1;color:#fff}
+.case-hero .crumbs span{color:var(--muted-d)}

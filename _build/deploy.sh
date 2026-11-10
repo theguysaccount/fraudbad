@@ -6,6 +6,7 @@ python3 build.py
 python3 og.py
 [ -d site/share-kit ] || python3 share_kit.py   # ~8 minutes; cards and clips persist in site/ between runs
 python3 check.py
+python3 seo_audit.py
 cd ..
 find . -maxdepth 1 -type f ! -name README.md -delete
 find . -mindepth 1 -maxdepth 1 -type d ! -name _build ! -name .git -exec rm -rf {} +

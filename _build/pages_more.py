@@ -45,7 +45,11 @@ def program_parts(p):
     """(sub-agency prefix or '', program's own name)"""
     if " - " in p:
         head, _, tail = p.rpartition(" - ")
-        return head.strip(), tail.strip()
+        head, tail = head.strip(), tail.strip()
+        acr = re.search(r"\(([A-Z]{2,6})\)$", tail)
+        if acr and tail.startswith("U.S. "):  # 'Commercial Pay - U.S. Army Corps of Engineers (USACE)': the program is the head
+            return tail, f"{head} ({acr.group(1)})"
+        return head, tail
     return "", p
 
 
@@ -246,7 +250,7 @@ def build_programs(B):
 <section class="sec"><div class="wrap prose">{rc_html}<p>{comp_line} <a href="/agency/{agency_slug(a)}">Every {B.e(a)} program →</a></p>
 <p class="src">Improper payments include mistakes and missing paperwork as well as fraud. This page shows how much, not why in any one case.</p></div></section>
 {src_line(B, ['pa_data', 'pa_site'])}"""
-        title = f"{p} ({a}): improper payments by year | FraudBad"
+        title = [f"{p} ({a}): improper payments by year | FraudBad", f"{p}: improper payments by year | FraudBad", f"{program_parts(p)[1]} ({a}): improper payments by year | FraudBad", f"{program_parts(p)[1]}: improper payments by year | FraudBad", f"{program_parts(p)[1]} improper payments | FraudBad"]
         desc = f"{p}, {agency_name(a)}: {fmt(total)} paid wrong or without proof over {len(rs)} years of official results. Latest: {pct(last['rate'])} in fiscal {last['fy']}."
         pre, core = program_parts(p)
         page(B, url[1:] + ".html", "ledger", title[:120], desc, "og-ledger.png", B.e(agency_name(a) + (" · " + pre if pre else "")), B.e(core), B.e(lede), body)
@@ -290,7 +294,7 @@ def build_agencies(B):
 {f'<h2>Overpayments flagged and recovered</h2><div class="tbl-wrap"><table class="tbl" style="min-width:0"><thead><tr><th>Year</th><th>Flagged to recover</th><th>Recovered</th></tr></thead><tbody>{rec_rows}</tbody></table></div>' if rec_rows else ''}
 </div></section>
 {src_line(B, ['pa_data', 'pa_site'])}"""
-        title = f"{agency_name(a)}: every improper payment it has reported | FraudBad"
+        title = [f"{agency_name(a)}: every improper payment it has reported | FraudBad", f"{re.sub(r' *\(.*?\)', '', agency_name(a))}: every improper payment it reported | FraudBad", f"{re.sub(r' *\(.*?\)', '', agency_name(a))} improper payments | FraudBad"]
         desc = f"{agency_name(a)}: {fmt(total)} in improper and unverifiable payments since fiscal {series[0][0]}, program by program, from the government's own data."
         page(B, f"agency/{agency_slug(a)}.html", "ledger", title[:120], desc, "og-ledger.png", "Agency", B.e(agency_name(a)), B.e(lede), body)
 
@@ -334,7 +338,7 @@ def build_years(B):
 <div class="tbl-wrap"><table class="tbl ledger fit"><thead><tr><th>#</th><th>Program</th><th>Wrong or unproven</th><th>Rate</th></tr></thead><tbody>{top}</tbody></table></div>
 </div></section>
 {src_line(B, ['pa_data', 'pa_site'])}"""
-        title = f"Fiscal {fy}: {fmt(tot)} in improper federal payments, program by program | FraudBad"
+        title = f"Fiscal {fy} improper payments: {fmt(tot)}, by program | FraudBad"
         desc = f"Every federal program that reported improper payments in fiscal {fy}: {fmt(tot)} paid wrong or without proof across {len(rs)} programs."
         page(B, f"year/{fy}.html", "ledger", title, desc, "og-ledger.png", "The ledger", f"Fiscal {fy}", B.e(lede), body)
 
@@ -398,7 +402,7 @@ def build_data(B):
 <p>Found an error? <a href="/corrections">See the corrections log</a> or <a href="https://america.co/work-with-us">send the source</a>.</p>
 </div></section>
 {src_line(B, ['pa_data', 'usas_month'])}"""
-    page(B, "data.html", "", "Open data: every federal improper payment, every case, every source | FraudBad",
+    page(B, "data.html", "", "Open data: every federal improper payment and case | FraudBad",
          "Download the data behind FraudBad: every federal program's improper payments FY2004–FY2025, every case with its sources, and monthly contract spending.",
          "og-ledger.png", "Open data", "The data", "Everything on this site comes from public records. Here it is in files you can open in a spreadsheet.", body)
 
@@ -509,7 +513,35 @@ STATE_SOURCES = {
     "snap_fy24": ("SNAP payment error rates, fiscal year 2024 (by state)", "USDA Food and Nutrition Service", "Jun 30, 2025", "https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy24QC-PER.pdf"),
     "usas_state": ("State profiles: federal prime awards to recipients in each state, fiscal year 2025", "USAspending.gov (U.S. Treasury), pulled by FraudBad", "Nov 10, 2026", "https://www.usaspending.gov/state"),
     "census_pop": ("State population totals, vintage 2024 (NST-EST2024)", "U.S. Census Bureau", "Dec 2024", "https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/NST-EST2024-ALLDATA.csv"),
+    "ui_scorecard": ("UI State Performance Scorecard: improper payment and fraud rates, 12 months ending Mar 31, 2026 and 2025", "U.S. Department of Labor, Employment and Training Administration", "pulled Nov 10, 2026", "https://oui.doleta.gov/unemploy/performance/StatePerfScorecard.html"),
 }
+
+
+def ui_data():
+    """Unemployment insurance improper-payment and fraud rates by state (DOL scorecard, Benefit Accuracy Measurement data)."""
+    d = json.load(open(os.path.join(HERE, "data", "states", "ui", "ui_rates.json")))["states"]
+    return d
+
+
+def ui_block(B, r, ui, rank, n):
+    u = ui.get(r["code"], {})
+    cur, prev, us = u.get("2026-03-31"), u.get("2025-03-31"), ui["US"]["2026-03-31"]
+    if not cur:
+        return "<h2>Unemployment benefits paid wrong</h2><p>The Labor Department's scorecard has no improper-payment rate for this state.</p>"
+    chg = ""
+    if prev:
+        dlt = cur["ipr"] - prev["ipr"]
+        chg = f", {'up' if dlt > 0 else 'down'} from {prev['ipr']:.2f}% a year earlier"
+    over = "above" if cur["ipr"] >= 10 else "under"
+    fraud = f'<p>The same sample found <b>{cur["fraud"]:.2f}%</b> of benefits went out on payments the Labor Department counts as fraud (national: {us["fraud"]:.2f}%).</p>' if cur.get("fraud") is not None else ""
+    prow = f'<tr><td class="mono">Apr 2024 – Mar 2025</td><td class="num">{prev["ipr"]:.2f}%</td><td class="mono">{"—" if prev.get("fraud") is None else f"{prev['fraud']:.2f}%"}</td></tr>' if prev else ""
+    return f"""<h2>Unemployment benefits paid wrong</h2>
+<p class="aud-fig"><b>{cur['ipr']:.2f}%</b><span>of unemployment benefits overpaid or underpaid · #{rank[r['code']]} of {n}, #1 worst</span></p>
+<p>In the 12 months ending March 31, 2026, {B.e(r['name'])} paid {cur['ipr']:.2f}% of its unemployment benefits in the wrong amount{chg}. The national rate was {us['ipr']:.2f}%. The federal goal is under 10%; {B.e(r['name'])} is {over} it.</p>{fraud}
+<div class="tbl-wrap"><table class="tbl fit"><thead><tr><th>12 months</th><th>Paid wrong</th><th>Fraud</th></tr></thead><tbody>
+<tr><td class="mono">Apr 2025 – Mar 2026</td><td class="num">{cur['ipr']:.2f}%</td><td class="mono">{"—" if cur.get("fraud") is None else f"{cur['fraud']:.2f}%"}</td></tr>{prow}
+</tbody></table></div>
+<p class="src">The Labor Department checks a random sample of each state's payments every year (its Benefit Accuracy Measurement program). Like the SNAP rate, "paid wrong" counts paying too much and too little.</p>"""
 
 
 def states_data():
@@ -552,6 +584,12 @@ def build_states(B):
     B.S.update(STATE_SOURCES)
     rows, usr = states_data()
     n = len(rows)
+    ui = ui_data()
+    codes = {r["code"] for r in rows}
+    ui_sorted = sorted((c for c in ui if c in codes and "2026-03-31" in ui[c]), key=lambda c: -ui[c]["2026-03-31"]["ipr"])
+    ui_rank = {c: i for i, c in enumerate(ui_sorted, 1)}
+    for r in rows:
+        r["ui"] = ui.get(r["code"], {}).get("2026-03-31", {}).get("ipr")
     by_slug = {c["slug"]: c for c in B.ORDERED}
     for r in rows:
         code = r["code"].lower()
@@ -578,24 +616,23 @@ def build_states(B):
 </tbody></table></div>
 <p class="src">USDA measures errors over a small tolerance (${57} per case in fiscal 2025). An error is not the same as fraud: the rate counts paying too much and too little.</p>
 {audit_block(B, r['code'], r['name'])}
-<h2>Unemployment insurance</h2>
-<p>The Labor Department publishes every state's unemployment-insurance error rate on its <a href="https://www.dol.gov/agencies/eta/unemployment-insurance-payment-accuracy" rel="noopener">payment accuracy page</a>. We'll add it here.</p>
+{ui_block(B, r, ui, ui_rank, len(ui_rank))}
 </div></section>
 {f'<section class="sec"><div class="wrap"><h2>Cases in {B.e(r["name"])}</h2><div class="grid" style="margin-top:22px">{cards}</div></div></section>' if cards else ''}
-{src_line(B, ['snap_fy25', 'snap_fy24', 'usas_state', 'census_pop'] + ([f"audit_{r['code']}"] if f"audit_{r['code']}" in B.S else []))}"""
-        page(B, f"state/{code}.html", "", f"{r['name']}: SNAP error rate {r['rate25']:.2f}% (#{r['rank']} of {n}) and federal spending | FraudBad",
+{src_line(B, ['snap_fy25', 'snap_fy24', 'ui_scorecard', 'usas_state', 'census_pop'] + ([f"audit_{r['code']}"] if f"audit_{r['code']}" in B.S else []))}"""
+        page(B, f"state/{code}.html", "", f"{r['name']}: SNAP error rate {r['rate25']:.2f}%, #{r['rank']} of {n} | FraudBad",
              f"{r['name']} paid {r['rate25']:.2f}% of SNAP food benefits wrong in fiscal 2025, #{r['rank']} of {n}. Plus {fmt(r['awards']/1e6)} in federal awards and every FraudBad case in the state.",
              "og-ledger.png", "State", B.e(r["name"]), B.e(lede), body)
     trs = "".join(
         f'<tr><td class="rk">{r["rank"]}</td><td><b><a href="/state/{r["code"].lower()}">{B.e(r["name"])}</a></b></td><td class="num">{r["rate25"]:.2f}%</td>'
-        f'<td class="mono hide-sm">{"—" if r["rate24"] is None else f"{r["rate24"]:.2f}%"}</td><td class="mono">${r["awards"]/r["pop"]:,.0f}</td></tr>' for r in rows)
+        f'<td class="mono hide-sm">{"—" if r["rate24"] is None else f"{r["rate24"]:.2f}%"}</td><td class="num">{"—" if r["ui"] is None else f"{r["ui"]:.2f}%"}</td><td class="mono hide-sm">${r["awards"]/r["pop"]:,.0f}</td></tr>' for r in rows)
     body = f"""<section class="sec"><div class="wrap">
-<div class="tbl-wrap"><table class="tbl ledger fit"><thead><tr><th>#</th><th>State</th><th>SNAP error rate, FY2025</th><th class="hide-sm">FY2024</th><th>Federal awards per resident</th></tr></thead><tbody>{trs}</tbody></table></div>
+<div class="tbl-wrap"><table class="tbl ledger fit"><thead><tr><th>#</th><th>State</th><th>SNAP error rate, FY2025</th><th class="hide-sm">FY2024</th><th>Jobless benefits paid wrong, year to Mar 2026</th><th class="hide-sm">Federal awards per resident</th></tr></thead><tbody>{trs}</tbody></table></div>
 <p style="margin:0 0 18px"><a class="btn sm" href="/state-audits">What every state's own auditors found →</a></p>
-<p class="src" style="margin-top:14px">Ranked worst first. Error rates: USDA. Awards per resident: our math from USAspending.gov fiscal 2025 prime awards and Census 2024 population.</p>
+<p class="src" style="margin-top:14px">Ranked worst first on SNAP. SNAP error rates: USDA. Jobless (unemployment insurance) benefits paid wrong: Labor Department scorecard. Awards per resident: our math from USAspending.gov fiscal 2025 prime awards and Census 2024 population.</p>
 </div></section>
-{src_line(B, ['snap_fy25', 'snap_fy24', 'usas_state', 'census_pop'])}"""
-    page(B, "states.html", "", "Every state ranked: SNAP payment error rates and federal spending | FraudBad",
+{src_line(B, ['snap_fy25', 'snap_fy24', 'ui_scorecard', 'usas_state', 'census_pop'])}"""
+    page(B, "states.html", "", "Every state ranked: SNAP and jobless-benefit error rates | FraudBad",
          f"All {n} states and DC ranked by how much of their SNAP food benefits they paid wrong in fiscal 2025, with federal awards per resident.",
          "og-ledger.png", "50 states + DC", "Every state, ranked", f"How much of its food-benefit payments each state got wrong in fiscal 2025. The national rate was {usr['2025']['rate']:.2f}%.", body)
     return rows
@@ -690,7 +727,7 @@ def build_contracts(B):
   q.addEventListener('input', go); f.addEventListener('change', go); }})();
 </script>
 {src_line(B, ['usas_signal'])}"""
-    page(B, "contracts.html", "soft", "The 100 biggest federal contracts, and which ones don't say what they're for | FraudBad",
+    page(B, "contracts.html", "soft", "The biggest federal contracts that don't say what they're for | FraudBad",
          f"Search the 100 largest federal contracts active in fiscal 2026. {nflag} of them list no description, only a filing code, or three words or fewer.",
          "og-soft-fraud.png", "Contract explorer", "What did we buy?", f"The 100 biggest federal contracts active this fiscal year. {nflag} of them don't say what they're for in the public record.", body)
 
@@ -774,6 +811,6 @@ def build_answers(B, state_rows):
         page(B, f"answers/{slug_}.html", "", f"{q} | FraudBad", a[:300], "og-home.png", "Answer", B.e(q), "", body, ld)
         items.append(f'<li><a href="/answers/{slug_}">{B.e(q)}</a><span>{B.e(a)}</span></li>')
     body = f"""<section class="sec"><div class="wrap prose"><ul class="answers">{"".join(items)}</ul></div></section>"""
-    page(B, "answers/index.html", "", "Questions about government fraud and waste, answered with sources | FraudBad",
+    page(B, "answers/index.html", "", "Fraud and waste questions, answered with sources | FraudBad",
          "Short, sourced answers to the most common questions about fraud, improper payments and waste in American government.",
          "og-home.png", "Answers", "Straight answers", "The questions people ask most, each answered with one sourced number first.", body)
