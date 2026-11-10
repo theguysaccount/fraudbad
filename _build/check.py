@@ -50,14 +50,14 @@ for dp, _, fs in os.walk(ROOT):
     for f in fs:
         if f.endswith(".html") and f != "404.html" and not f.startswith("google"):
             rel = os.path.relpath(os.path.join(dp, f), ROOT)[:-5]
-            on_disk.add("/" if rel == "index" else "/" + rel)
+            on_disk.add("/" if rel == "index" else "/" + (rel[:-5] if rel.endswith("/index") else rel))
 for p in sorted(on_disk - set(paths)):
     if not p.startswith(("/embed/", "/share-kit")):
         fails.append(f"not in sitemap: {p}")
 
 # static checks on every page
 for p in sorted(on_disk):
-    f = os.path.join(ROOT, "index.html" if p == "/" else p.lstrip("/") + ".html")
+    f = os.path.join(ROOT, "index.html" if p == "/" else (p.strip("/") + "/index.html" if p.endswith("/") else p.lstrip("/") + ".html"))
     L = Links(); L.feed(open(f, encoding="utf-8").read())
     if not L.title.strip(): fails.append(f"{p}: no <title>")
     if not p.startswith(("/embed/", "/share-kit")):

@@ -31,6 +31,11 @@ ORDER = [
 _by = {c["slug"]: c for c in CASES}
 assert sorted(ORDER) == sorted(_by), "ORDER must list every case exactly once"
 ORDERED = [_by[s] for s in ORDER]
+# Date each case was added (a case dict may also carry its own "added"); drives the home strip and the feed.
+ADDED = {c["slug"]: "2026-11-08" for c in CASES}
+ADDED.update({c["slug"]: "2026-11-09" for c in content_soft.NEW_SOFT + M.NEW})
+for _c in CASES:
+    ADDED[_c["slug"]] = _c.get("added", ADDED[_c["slug"]])
 PROGRAM_LINKS = {}  # (agency, program) -> /program/<slug>
 EXTRA_URLS = []  # pages added by pages_more (program, agency, year, data, about...)
 
@@ -118,7 +123,7 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
 <div><a class="mark" href="/"><span class="f">Fraud</span><span class="b">Bad</span></a>
 <p style="margin-top:14px">An independent public-interest site. Not a government website. Every figure links to the auditor, inspector general, court record or agency report it came from.</p></div>
-<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="/contracts">Contract explorer</a><a href="/states">Every state, ranked</a><a href="/your-share">Your share</a><a href="/data">Open data</a><a href="/about">About</a><a href="/corrections">Corrections</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
+<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="/answers/">Answers</a><a href="/contracts">Contract explorer</a><a href="/states">Every state, ranked</a><a href="/your-share">Your share</a><a href="/data">Open data</a><a href="/about">About</a><a href="/corrections">Corrections</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
 <nav aria-label="America.co"><a href="https://america.co/">America.co</a>{''.join(f'<a href="{u}" rel="noopener">{n}</a>' for n,u in SOCIALS)}<a href="https://america.co/work-with-us">Send a correction</a></nav>
 <p class="fine">Updated {UPDATED_HUMAN}. Charges are accusations; everyone charged is presumed innocent until proven guilty. Improper payments are not all fraud — each page says what kind of number it is.</p>
 </div></footer>
@@ -203,6 +208,17 @@ def write(path, text):
 
 
 # ---------------------------------------------------------------- home
+def new_strip():
+    newest = max(ADDED.values())
+    fresh = sorted([c for c in ORDERED if ADDED[c["slug"]] == newest], key=lambda c: -c["sort"])[:6]
+    import datetime as _dt
+    when = _dt.date.fromisoformat(newest).strftime("%b %-d, %Y")
+    links = "".join(f'<a href="{h}">{t} →</a>' for h, t in (("/ledger", "Every program's error rate"), ("/states", "Every state, ranked"), ("/contracts", "The 100 biggest contracts"), ("/your-share", "Your share")))
+    return f"""<section class="sec new-strip" aria-labelledby="new-h"><div class="wrap">
+<div class="sec-head"><div><p class="kicker" style="color:var(--red)">Added {when}</p><h2 id="new-h">New this week</h2></div><p class="new-links">{links}</p></div>
+<div class="grid">{"".join(card(c) for c in fresh)}</div></div></section>"""
+
+
 def build_home():
     counts = {k: sum(1 for c in CASES if c["level"] == k) for k in LEVELS}
     tcounts = {k: sum(1 for c in CASES if c["type"] == k) for k in TYPES}
@@ -259,6 +275,7 @@ def build_home():
 {receipt(hero_lines, ("Itemized receipt", "NOT AVAILABLE"), "Federal spending", "Fiscal year 2026", link_mode="direct")}
 </div></section>
 <section class="stats" aria-label="Key numbers"><div class="wrap">{stat_html}</div></section>
+{new_strip()}
 <section class="sec" id="cases"><div class="wrap">
 <div class="sec-head"><div><p class="kicker" style="color:var(--red)">{len(CASES)} cases</p><h2>The cases</h2></div>
 <p>Every case here was found by an auditor, an inspector general, a prosecutor, a court or the agency that paid the money. Each page shows the numbers, where they came from, and how sure anyone can be.</p></div>
@@ -561,6 +578,7 @@ def build_ledger():
 <div class="yrs" role="img" aria-label="Bar chart of improper payments by fiscal year, from ${M.YEARS[yrs[0]]['amount_m']/1000:,.0f} billion in {yrs[0]} to a peak of ${M.YEARS[peak]['amount_m']/1000:,.0f} billion in {peak} and ${M.YEARS[yrs[-1]]['amount_m']/1000:,.0f} billion in {yrs[-1]}">{bars}</div>
 <div class="yrs-x" aria-hidden="true">{xl}</div>
 <p class="src" style="margin-top:14px">Source: <a href="{e(S['pa_data'][3])}" rel="noopener">PaymentAccuracy.gov FY2025 dataset</a>, "All Program Results," column "Improper Payment and Unknown Payment Amount," summed by fiscal year. Programs reporting each year range from {min(M.YEARS[y]['programs'] for y in yrs)} to {max(M.YEARS[y]['programs'] for y in yrs)}.</p>
+{__import__("pages_more").embed_code(__import__("sys").modules[__name__], "ledger", "Federal improper payments by year", 420)}
 </div></section>
 <section class="sec" id="why"><div class="wrap">
 <div class="sec-head"><div><p class="kicker" style="color:var(--red)">Root causes, FY2025</p><h2>Why it happened</h2></div>
@@ -681,9 +699,8 @@ def main():
     PROGRAM_LINKS.update(pages_more.data()["links"])
     build_ledger()
     build_method()
-    import content_soft as _cs, content_more as _cm, sys as _sys
-    added = {c["slug"]: "2026-11-09" for c in _cs.NEW_SOFT + _cm.NEW}
-    pages_more.build_all(_sys.modules[__name__], added)
+    import sys as _sys
+    pages_more.build_all(_sys.modules[__name__], ADDED)
     build_404()
     build_meta()
     print("built", len(os.listdir(OUT)), "files")

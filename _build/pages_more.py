@@ -184,12 +184,13 @@ def src_line(B, ids):
 
 
 def page(B, path, active, title, desc, og, kicker, h1, lede, body, ld=None):
-    head = B.head(title, desc, "/" + path[:-5] if path != "index.html" else "/", og, [B.ORG_LD] + (ld or []))
+    url_path = "/" + (path[:-10] if path.endswith("/index.html") else path[:-5])
+    head = B.head(title, desc, url_path, og, [B.ORG_LD] + (ld or []))
     hero = f"""<section class="page-hero"><div class="wrap">
 <p class="kicker" style="color:#ff4438">{kicker}</p><h1 class="h1-mid">{h1}</h1><p class="lede">{lede}</p></div></section>"""
     B.write(path, head + B.header(active) + '<main id="main">' + hero + body + "</main>" + B.cta() + B.footer())
     if path.endswith(".html") and not path.startswith("embed/"):
-        u = "/" + path[:-5]
+        u = "/" + (path[:-10] if path.endswith("/index.html") else path[:-5])
         B.EXTRA_URLS.append(u)
 
 
@@ -483,12 +484,14 @@ def build_all(B, added_by_slug):
     rows = build_states(B)
     build_your_share(B, rows)
     build_contracts(B)
+    build_answers(B, rows)
     build_programs(B)
     build_agencies(B)
     build_years(B)
     build_data(B)
     build_about(B)
     build_embeds(B)
+    build_ledger_embed(B)
     build_feed(B, added_by_slug)
 
 
@@ -638,3 +641,87 @@ def build_contracts(B):
     page(B, "contracts.html", "soft", "The 100 biggest federal contracts, and which ones don't say what they're for | FraudBad",
          f"Search the 100 largest federal contracts active in fiscal 2026. {nflag} of them list no description, only a filing code, or three words or fewer.",
          "og-soft-fraud.png", "Contract explorer", "What did we buy?", f"The 100 biggest federal contracts active this fiscal year. {nflag} of them don't say what they're for in the public record.", body)
+
+
+# ------------------------------------------------------------------ ledger chart embed (1.4)
+def build_ledger_embed(B):
+    import content_more as M
+    series = [(y, M.YEARS[y]["amount_m"]) for y in sorted(M.YEARS)]
+    html_ = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Federal improper payments by year — FraudBad</title><meta name="robots" content="noindex">
+<link rel="canonical" href="{B.SITE}/ledger"><link rel="stylesheet" href="/site.css?v={B.V}"></head>
+<body class="embed"><div class="embed-wrap wide"><p class="embed-title">Federal payments made wrong or without proof, by fiscal year</p>
+{year_bars(series, B)}
+<p class="embed-credit"><a href="{B.SITE}/ledger" target="_blank" rel="noopener"><b>${M.CUM/1e12:.2f} trillion since {M.FIRST_YEAR}.</b> Source: PaymentAccuracy.gov (OMB). Every program on <b>FraudBad</b> ↗</a></p></div></body></html>"""
+    B.write("embed/ledger.html", html_)
+
+
+def embed_code(B, path, title, height):
+    code = f'<iframe src="{B.SITE}/embed/{path}" title="{B.e(title)} — FraudBad" width="100%" height="{height}" style="border:0;max-width:760px" loading="lazy"></iframe>'
+    return f'<details class="embed-code"><summary>Embed this chart</summary><textarea readonly rows="3" onclick="this.select()">{B.e(code)}</textarea><p class="src">Free to use with the credit link.</p></details>'
+
+
+# ------------------------------------------------------------------ answer pages (3.7)
+def build_answers(B, state_rows):
+    import content_more as M
+    D = data()
+    latest = max(D["years"])
+    f25 = sorted([r for r in D["R"] if r["fy"] == latest], key=lambda r: -(r["total"] or 0))
+    by = {c["slug"]: c for c in B.ORDERED}
+
+    def cards(*slugs):
+        return '<div class="grid" style="margin-top:22px">' + "".join(B.card(by[x]) for x in slugs if x in by) + "</div>"
+
+    def nm(r):
+        k = (r["agency"], r["program"])
+        core = program_parts(r["program"])[1]
+        return f'<a href="{D["links"][k]}">{B.e(core)}</a>' if k in D["links"] else B.e(core)
+    top10 = "".join(f'<tr><td class="rk">{i}</td><td><b>{nm(r)}</b><span class="ag">{B.e(agency_name(r["agency"]))}</span></td><td class="num">{fmt(r["total"])}</td><td class="mono">{pct(r["rate"])}</td></tr>' for i, r in enumerate(f25[:10], 1))
+    st = sorted(state_rows, key=lambda r: -r["rate25"])
+    st_rows = "".join(f'<tr><td class="rk">{r["rank"]}</td><td><b><a href="/state/{r["code"].lower()}">{B.e(r["name"])}</a></b></td><td class="num">{r["rate25"]:.2f}%</td></tr>' for r in st[:10])
+    lo_rows = "".join(f'<tr><td class="rk">{r["rank"]}</td><td><b><a href="/state/{r["code"].lower()}">{B.e(r["name"])}</a></b></td><td class="num">{r["rate25"]:.2f}%</td></tr>' for r in st[-5:])
+    us_rate = json.load(open(os.path.join(HERE, "data", "states", "snap_per.json")))["United States"]["2025"]["rate"]
+    QA = [
+        ("how-much-fraud-is-in-the-federal-government", "How much fraud is there in the federal government?",
+         "The Government Accountability Office estimates the federal government loses $233 billion to $521 billion a year to fraud.",
+         f"""<p>That's GAO's estimate, based on fiscal years 2018 through 2022. It's a range because most fraud is never caught, so it can't be counted directly.</p>
+<p>A separate, official number is often confused with it: improper payments, money paid in the wrong amount, to the wrong person or without proof. Agencies reported {fmt(M.FY25/1e6)} of those in fiscal {latest}. Some improper payments are fraud; many are mistakes. <a href="/answers/what-is-an-improper-payment">What counts as an improper payment</a>.</p>
+{cards("federal-fraud-estimate", "pandemic-unemployment-fraud", "ppp-eidl-loan-fraud")}""", ["gao_fraud", "pa_data"]),
+        ("what-is-an-improper-payment", "What is an improper payment?",
+         f"An improper payment is federal money paid in the wrong amount, to the wrong person, or without the records to prove it was right. Agencies reported {fmt(M.FY25/1e6)} of them in fiscal {latest}.",
+         f"""<p>The Payment Integrity Information Act of 2019 requires agencies to measure these payments every year, publish them and cut them. Payments the agency can't prove right or wrong are counted too, as \"unknown\" payments.</p>
+<p>Most improper payments aren't fraud. By the government's own root-cause count, {fmt(M.RC_FAIL/1e6)} of fiscal {latest}'s total went out wrong even though the information to stop it existed and the agency could get to it. <a href="/data-existed-nobody-checked">More on that</a>.</p>
+<p>See <a href="/ledger">every program's numbers</a>, or <a href="/answers/which-federal-programs-have-the-most-improper-payments">the ten biggest</a>.</p>""", ["omb_m2119", "pa_data", "gao_ip"]),
+        ("how-much-money-has-the-government-paid-wrong", "How much money has the federal government paid wrong?",
+         f"Federal agencies have reported ${M.CUM/1e12:.2f} trillion in improper and unverifiable payments since fiscal {M.FIRST_YEAR}, by our sum of the government's own data.",
+         f"""<p>Through fiscal 2024 the total is ${M.CUM24/1e12:.2f} trillion, which matches GAO's published figure of about $2.8 trillion. Fiscal {latest} alone added {fmt(M.FY25/1e6)}.</p>
+<p>The total only counts programs that report. Some large programs, such as Temporary Assistance for Needy Families, have never been included.</p>
+{embed_code(B, "ledger", "Federal improper payments by year", 420)}
+<p><a href="/ledger">The year-by-year chart and every program →</a></p>""", ["pa_data", "gao_ip_cum"]),
+        ("which-federal-programs-have-the-most-improper-payments", "Which federal programs have the most improper payments?",
+         f"{program_parts(f25[0]['program'])[1]} had the most in fiscal {latest}: {fmt(f25[0]['total'])} paid wrong or without proof. The ten biggest programs made up {sum(r['total'] or 0 for r in f25[:10])/sum(r['total'] or 0 for r in f25)*100:.0f}% of the {fmt(M.FY25/1e6)} total (our math).",
+         f"""<div class="tbl-wrap"><table class="tbl ledger fit"><thead><tr><th>#</th><th>Program</th><th>Wrong or unproven, FY{latest}</th><th>Rate</th></tr></thead><tbody>{top10}</tbody></table></div>
+<p style="margin-top:18px">All {len(f25)} programs that reported are on <a href="/ledger">the ledger</a>.</p>""", ["pa_data", "pa_site"]),
+        ("how-much-pandemic-money-was-lost-to-fraud", "How much pandemic relief money was lost to fraud?",
+         f"Estimates run to hundreds of billions of dollars. {by['ppp-eidl-loan-fraud']['dek'] if 'ppp-eidl-loan-fraud' in by else ''}",
+         f"""<p>No single official total covers every pandemic program. These are the biggest estimates, each from the agency or watchdog that made it:</p>
+{cards("ppp-eidl-loan-fraud", "pandemic-unemployment-fraud", "employee-retention-credit", "feeding-our-future", "shuttered-venue-grants")}""",
+         sorted({x for sl in ("ppp-eidl-loan-fraud", "pandemic-unemployment-fraud", "employee-retention-credit") if sl in by for x in by[sl]["sources"]})),
+        ("which-states-have-the-highest-snap-error-rates", "Which states have the highest SNAP error rates?",
+         f"{st[0]['name']} had the highest SNAP payment error rate in fiscal 2025, at {st[0]['rate25']:.2f}%. The national rate was {us_rate:.2f}%.",
+         f"""<div class="two"><div><h2>Highest</h2><div class="tbl-wrap"><table class="tbl ledger fit"><tbody>{st_rows}</tbody></table></div></div>
+<div><h2>Lowest</h2><div class="tbl-wrap"><table class="tbl ledger fit"><tbody>{lo_rows}</tbody></table></div></div></div>
+<p style="margin-top:18px">The rate counts benefits paid too much and too little. It isn't a fraud rate. <a href="/states">All 51, ranked →</a></p>""", ["snap_fy25", "snap_fy24"]),
+    ]
+    items = []
+    for slug_, q, a, more, srcs in QA:
+        ld = [{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}]}]
+        body = f"""<section class="sec"><div class="wrap prose">{crumbs(('Answers', '/answers'), (B.e(q), None))}
+<p class="answer">{B.e(a)}</p>{more}</div></section>
+{src_line(B, srcs)}"""
+        page(B, f"answers/{slug_}.html", "", f"{q} | FraudBad", a[:300], "og-home.png", "Answer", B.e(q), "", body, ld)
+        items.append(f'<li><a href="/answers/{slug_}">{B.e(q)}</a><span>{B.e(a)}</span></li>')
+    body = f"""<section class="sec"><div class="wrap prose"><ul class="answers">{"".join(items)}</ul></div></section>"""
+    page(B, "answers/index.html", "", "Questions about government fraud and waste, answered with sources | FraudBad",
+         "Short, sourced answers to the most common questions about fraud, improper payments and waste in American government.",
+         "og-home.png", "Answers", "Straight answers", "The questions people ask most, each answered with one sourced number first.", body)

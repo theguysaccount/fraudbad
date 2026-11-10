@@ -1,0 +1,193 @@
+[
+ {
+  "sid": "kff_kaiser",
+  "pub": "KFF Health News",
+  "authors": [
+   "Fred Schulte"
+  ]
+ },
+ {
+  "sid": "acct_tigta",
+  "pub": "Accounting Today",
+  "authors": [
+   "Michael Cohn"
+  ]
+ },
+ {
+  "sid": "dn_audit",
+  "pub": "Defense News",
+  "authors": [
+   "Tanya Noury"
+  ]
+ },
+ {
+  "sid": "sigar",
+  "pub": "Defense One",
+  "authors": [
+   "Thomas Novelly"
+  ]
+ },
+ {
+  "sid": "kaxe_mn",
+  "pub": "KAXE / Minnesota News",
+  "authors": []
+ },
+ {
+  "sid": "qz_mn",
+  "pub": "Quartz",
+  "authors": []
+ },
+ {
+  "sid": "cbs_bock",
+  "pub": "CBS News",
+  "authors": [
+   "Anthony  Bettin",
+   "Beret  Leone"
+  ]
+ },
+ {
+  "sid": "axios_az",
+  "pub": "Axios Phoenix",
+  "authors": []
+ },
+ {
+  "sid": "kjzz_az",
+  "pub": "KJZZ",
+  "authors": []
+ },
+ {
+  "sid": "edd",
+  "pub": "10News (ABC San Diego)",
+  "authors": [
+   "Associated Press"
+  ]
+ },
+ {
+  "sid": "mi_uia",
+  "pub": "CBS Detroit",
+  "authors": []
+ },
+ {
+  "sid": "ny_ui",
+  "pub": "WSHU Public Radio",
+  "authors": [
+   "Karen DeWitt"
+  ]
+ },
+ {
+  "sid": "wa_esd",
+  "pub": "The Daily Herald (Everett)",
+  "authors": [
+   "RACHEL LA CORTE Associated Press",
+   "Wire Service"
+  ]
+ },
+ {
+  "sid": "ms_tanf",
+  "pub": "Mississippi Free Press",
+  "authors": [
+   "Ashton Pittman"
+  ]
+ },
+ {
+  "sid": "spectrum_la",
+  "pub": "Spectrum News",
+  "authors": []
+ },
+ {
+  "sid": "laist_la",
+  "pub": "LAist",
+  "authors": [
+   "Josie Huang"
+  ]
+ },
+ {
+  "sid": "wex_hospice",
+  "pub": "Washington Examiner",
+  "authors": [
+   "Mia Cathell"
+  ]
+ },
+ {
+  "sid": "jama_pr",
+  "pub": "RevCycleIntelligence",
+  "authors": []
+ },
+ {
+  "sid": "dn_weapons",
+  "pub": "Defense News",
+  "authors": [
+   "Michael Peck"
+  ]
+ },
+ {
+  "sid": "route50_snap",
+  "pub": "Route Fifty",
+  "authors": [
+   "Natalie Alms"
+  ]
+ },
+ {
+  "sid": "govexec_ssa",
+  "pub": "Government Executive",
+  "authors": [
+   "Jodie Fleischer"
+  ]
+ },
+ {
+  "sid": "fnn_sentinel",
+  "pub": "Federal News Network",
+  "authors": [
+   "Anastasia Obis"
+  ]
+ },
+ {
+  "sid": "ktvu_hsr",
+  "pub": "KTVU Fox 2",
+  "authors": [
+   "Alexa Mae Asperin"
+  ]
+ },
+ {
+  "sid": "kalw_hsr",
+  "pub": "KALW",
+  "authors": [
+   "Gerardo Zavala",
+   "CapRadio"
+  ]
+ },
+ {
+  "sid": "ra_hsr",
+  "pub": "Railway Age",
+  "authors": []
+ },
+ {
+  "sid": "civilbeat_hart",
+  "pub": "Honolulu Civil Beat",
+  "authors": [
+   "Kevin Dayton"
+  ]
+ },
+ {
+  "sid": "gothamist_sas",
+  "pub": "Gothamist",
+  "authors": [
+   "Stephen Nessen",
+   "Clayton Guse"
+  ]
+ },
+ {
+  "sid": "sb_sas",
+  "pub": "Streetsblog NYC",
+  "authors": [
+   "Dave Colon"
+  ]
+ },
+ {
+  "sid": "medecon_cuban",
+  "pub": "Medical Economics",
+  "authors": [
+   "Richard Payerchin"
+  ]
+ }
+]

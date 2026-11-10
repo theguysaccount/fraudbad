@@ -89,13 +89,11 @@ async def main(clips):
         w.writerow(["slug", "caption", "link"])
         for c in B.ORDERED:
             link = f"{B.SITE}/{c['slug']}"
-            w.writerow([c["slug"], f"{c['fig']} {c['scale']}. {c['title']}. Every number, sourced:", link])
-    index_page()
+            w.writerow([c["slug"], f"{c['fig']} {c['scale']}. {c['title'].rstrip('.')}. Every number, sourced:", link])
     print("share kit:", len(os.listdir(OUT)), "files")
 
 
-if __name__ == "__main__" and "--index-only" not in sys.argv:
-    asyncio.run(main("--no-clips" not in sys.argv))
+
 
 
 def index_page():
@@ -109,10 +107,40 @@ def index_page():
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Share kit | FraudBad</title><meta name="robots" content="noindex"><link rel="stylesheet" href="/site.css?v={B.V}"></head>
 <body><main class="sec"><div class="wrap"><p class="kicker" style="color:var(--red)">For whoever posts</p><h1 style="font-size:64px">Share kit</h1>
-<p class="lede" style="margin:12px 0 28px">Every case as a square card, a vertical card and an 8-second clip, with a caption. <a href="/share-kit/captions.csv" download>All captions (CSV)</a>.</p>
+<p class="lede" style="margin:12px 0 28px">Every case as a square card, a vertical card and an 8-second clip, with a caption. <a href="/share-kit/captions.csv" download>All captions (CSV)</a> · <a href="/share-kit/calendar.csv" download>Six-week posting calendar (CSV)</a>.</p>
 <div class="tbl-wrap"><table class="tbl fit"><thead><tr><th>Case and caption</th><th>Files</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div></div></main></body></html>"""
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(page)
 
 
-if __name__ == "__main__" and "--index-only" in sys.argv:
-    index_page()
+
+
+
+def calendar():
+    """Plan item 2.7: 43 posts, one a day, alternating hard and soft fraud, biggest first. Sign links tagged by platform."""
+    hard = sorted([c for c in B.ORDERED if c["type"] == "hard"], key=lambda c: -c["sort"])
+    soft = sorted([c for c in B.ORDERED if c["type"] == "soft"], key=lambda c: -c["sort"])
+    order = []
+    while hard or soft:
+        if soft: order.append(soft.pop(0))
+        if hard: order.append(hard.pop(0))
+    with open(os.path.join(OUT, "calendar.csv"), "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["day", "week", "case", "caption", "x_and_youtube_link", "instagram", "square", "vertical", "clip"])
+        for i, c in enumerate(order, 1):
+            s_ = c["slug"]
+            sign = lambda ref: f"https://america.co/receipts-act?ref={ref}&case={s_}#sign"
+            w.writerow([i, (i - 1) // 7 + 1, s_, f"{c['fig']} {c['scale']}. {c['title'].rstrip('.')}. Every number, sourced: fraudbad.com/{s_} — Want to stop it? Sign the RECEIPTS Act.",
+                        sign("x"), "Sign link in bio: " + sign("ig"), f"{B.SITE}/share-kit/{s_}-square.png", f"{B.SITE}/share-kit/{s_}-vertical.png", f"{B.SITE}/share-kit/{s_}-clip.mp4"])
+    return len(order)
+
+
+if __name__ == "__main__":
+    if "--calendar" in sys.argv:
+        print(calendar(), "posts")
+        index_page()
+    elif "--index-only" in sys.argv:
+        index_page()
+    else:
+        asyncio.run(main("--no-clips" not in sys.argv))
+        calendar()
+        index_page()
