@@ -115,3 +115,22 @@
     b.addEventListener('click', () => navigator.share({ title: document.title, url: b.dataset.share }).catch(() => {}));
   });
 })();
+
+/* Sign bar on phones (hidden while the red band is on screen) + two-version wording test.
+   The version rides on every Sign link as ref=fraudbad-a / ref=fraudbad-b so signatures can be split by it. */
+(() => {
+  let v = 'a';
+  try { v = sessionStorage.getItem('fb_v') || (Math.random() < 0.5 ? 'a' : 'b'); sessionStorage.setItem('fb_v', v); }
+  catch (e) { v = Math.random() < 0.5 ? 'a' : 'b'; }
+  const line = document.querySelector('.cta-line');
+  if (v === 'b' && line && line.dataset.b) line.textContent = line.dataset.b;
+  document.querySelectorAll('a[href*="america.co/receipts-act"][href*="ref=fraudbad"]').forEach(a => {
+    a.href = a.href.replace('ref=fraudbad&', 'ref=fraudbad-' + v + '&');
+  });
+  const bar = document.querySelector('.signbar'), band = document.querySelector('.cta');
+  if (!bar) return;
+  let past = false, bandOn = false;
+  const show = () => bar.classList.toggle('on', past && !bandOn);
+  window.addEventListener('scroll', () => { past = window.scrollY > 600; show(); }, { passive: true });
+  if (band && 'IntersectionObserver' in window) new IntersectionObserver(es => { bandOn = es[0].isIntersecting; show(); }).observe(band);
+})();

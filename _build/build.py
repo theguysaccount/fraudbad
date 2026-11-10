@@ -10,7 +10,7 @@ import content_more as M  # official improper-payment ledger + round-3 cases
 
 OUT = os.path.join(os.path.dirname(__file__), "site")
 ASSETS = os.path.join(os.path.dirname(__file__), "assets")
-V = "20261109"
+V = "20261110"
 e = lambda s: html.escape(str(s), quote=True)
 
 LEVEL_ORDER = {"federal": 0, "state": 1, "local": 2}
@@ -31,6 +31,8 @@ ORDER = [
 _by = {c["slug"]: c for c in CASES}
 assert sorted(ORDER) == sorted(_by), "ORDER must list every case exactly once"
 ORDERED = [_by[s] for s in ORDER]
+PROGRAM_LINKS = {}  # (agency, program) -> /program/<slug>
+EXTRA_URLS = []  # pages added by pages_more (program, agency, year, data, about...)
 
 STAMP = {"confirmed": "CONFIRMED", "charged": "CHARGED", "settled": "SETTLED", "estimated": "NO RECEIPT",
          "noproof": "NO RECEIPT", "frozen": "FROZEN", "unauditable": "UNAUDITABLE",
@@ -101,7 +103,7 @@ def cta():
 <div>
 <p class="kicker">America.co · The RECEIPTS Act</p>
 <h2 id="cta-h">Want to stop it?<span>Sign the Receipts Act.</span></h2>
-<p>Public money should come with a receipt anyone can check. The RECEIPTS Act starts with one rule for federal purchases over $25,000 from GSA's buying catalog: publish the price paid next to what other agencies paid for the same thing.</p>
+<p class="cta-line" data-b="Every number on this site was counted after the money was already spent. The RECEIPTS Act starts with one rule: when the government buys from GSA's catalog for over $25,000, it publishes the price next to what other agencies paid for the same thing. Add your name.">Public money should come with a receipt anyone can check. The RECEIPTS Act starts with one rule for federal purchases over $25,000 from GSA's buying catalog: publish the price paid next to what other agencies paid for the same thing.</p>
 </div>
 <div class="side">
 <a class="btn white" href="__SIGN_band__">Sign the Receipts Act ↗</a>
@@ -116,10 +118,11 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
 <div><a class="mark" href="/"><span class="f">Fraud</span><span class="b">Bad</span></a>
 <p style="margin-top:14px">An independent public-interest site. Not a government website. Every figure links to the auditor, inspector general, court record or agency report it came from.</p></div>
-<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
+<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="/data">Open data</a><a href="/about">About</a><a href="/corrections">Corrections</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
 <nav aria-label="America.co"><a href="https://america.co/">America.co</a>{''.join(f'<a href="{u}" rel="noopener">{n}</a>' for n,u in SOCIALS)}<a href="https://america.co/work-with-us">Send a correction</a></nav>
 <p class="fine">Updated {UPDATED_HUMAN}. Charges are accusations; everyone charged is presumed innocent until proven guilty. Improper payments are not all fraud — each page says what kind of number it is.</p>
 </div></footer>
+<div class="signbar" aria-hidden="true"><span>Want to stop it?</span><a class="btn sm" href="__SIGN_bar__" tabindex="-1">Sign the Receipts Act</a></div>
 <script src="/site.js?v={V}" defer></script>
 </body></html>
 """
@@ -342,6 +345,7 @@ def build_case(i, c):
 <a class="btn" href="__SIGN_inline__">Sign it on America.co ↗</a>
 </div>
 <div class="share"><button class="btn ink sm" data-copy="{url}">Copy link</button><a class="btn ink sm" href="{e(x_url)}" rel="noopener">Post on X</a><button class="btn ink sm" data-share="{url}">Share</button><p class="status" aria-live="polite"></p></div>
+{__import__("pages_more").embed_snippet(__import__("sys").modules[__name__], c)}
 </aside>
 </div>
 <div class="wrap"><nav class="pager" aria-label="More cases"><a href="/{prev_c['slug']}"><span class="k">← Previous case</span><b>{e(prev_c['fig'])} {e(prev_c['scale'])}: {e(prev_c['title'])}</b></a><a class="next" href="/{next_c['slug']}"><span class="k">Next case →</span><b>{e(next_c['fig'])} {e(next_c['scale'])}: {e(next_c['title'])}</b></a></nav></div>
@@ -494,8 +498,8 @@ def build_ledger():
     peak = max(yrs, key=lambda y: M.YEARS[y]["amount_m"])
     keep = {yrs[0], peak, yrs[-1]}
     bars = "".join(
-        f'<div class="y{" hi" if y in keep else ""}" style="--h:{M.YEARS[y]["amount_m"]/top*100:.1f}%" title="FY{y}: ${M.YEARS[y]["amount_m"]/1000:,.1f} billion across {M.YEARS[y]["programs"]} programs">'
-        + (f'<b>${M.YEARS[y]["amount_m"]/1000:,.0f}B</b>' if y in keep else "") + '</div>' for y in yrs)
+        f'<a class="y{" hi" if y in keep else ""}" href="/year/{y}" style="--h:{M.YEARS[y]["amount_m"]/top*100:.1f}%" title="FY{y}: ${M.YEARS[y]["amount_m"]/1000:,.1f} billion across {M.YEARS[y]["programs"]} programs">'
+        + (f'<b>${M.YEARS[y]["amount_m"]/1000:,.0f}B</b>' if y in keep else "") + '</a>' for y in yrs)
     shown = set(keep) | {y for y in yrs if y % 5 == 0 and all(abs(y - k) >= 3 for k in keep)}
     xl = "".join(f'<span{" class=k" if y in shown else ""}>{str(y)[2:] if y not in keep else y}</span>' for y in yrs)
     def money(m):
@@ -521,7 +525,10 @@ def build_ledger():
             chg = f'<span class="{"up" if d > 0.05 else ("dn" if d < -0.05 else "")}">{pr*100:.1f}%</span>'
         else:
             chg = '<span class="na" title="Not reported under this name in FY2024">—</span>'
-        rows.append(f'<tr><td class="rk">{i}</td><td><b>{e(p["program"])}</b><span class="ag">{e(M.agency(p["agency"]))}</span></td>'
+        _k = (p["agency"], " ".join(p["program"].split()))
+        _pn = f'<a href="{PROGRAM_LINKS[_k]}">{e(p["program"])}</a>' if _k in PROGRAM_LINKS else e(p["program"])
+        import pages_more as _pm
+        rows.append(f'<tr><td class="rk">{i}</td><td><b>{_pn}</b><span class="ag"><a href="/agency/{_pm.agency_slug(p["agency"])}">{e(M.agency(p["agency"]))}</a></span></td>'
                     f'<td class="num">{money(p["outlays_m"])}</td><td class="num">{money(p["total_m"])}</td>'
                     f'<td class="rt"><span class="rbar"><i style="width:{min(r,1)*100:.1f}%"></i></span>{r*100:.1f}%</td><td class="pv">{chg}</td></tr>')
     nc = ", ".join(M.agency(a) for a in M.NONCOMP)
@@ -641,7 +648,7 @@ def build_404():
 
 
 def build_meta():
-    urls = ["/", "/soft-fraud", "/ledger", "/transparency", "/method"] + [f"/{c['slug']}" for c in ORDERED]
+    urls = ["/", "/soft-fraud", "/ledger", "/transparency", "/method"] + [f"/{c['slug']}" for c in ORDERED] + EXTRA_URLS
     sm = "".join(f"<url><loc>{SITE}{u if u!='/' else '/'}</loc><lastmod>{UPDATED}</lastmod></url>" for u in urls)
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n')
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
@@ -669,8 +676,14 @@ def main():
         build_case(i, c)
     build_transparency()
     build_soft()
+    import pages_more
+    pages_more.data()
+    PROGRAM_LINKS.update(pages_more.data()["links"])
     build_ledger()
     build_method()
+    import content_soft as _cs, content_more as _cm, sys as _sys
+    added = {c["slug"]: "2026-11-09" for c in _cs.NEW_SOFT + _cm.NEW}
+    pages_more.build_all(_sys.modules[__name__], added)
     build_404()
     build_meta()
     print("built", len(os.listdir(OUT)), "files")

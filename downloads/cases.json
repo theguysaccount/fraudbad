@@ -1,0 +1,2233 @@
+{
+ "updated": "2026-11-08",
+ "license": "Data from U.S. government sources is public domain; FraudBad's compilation is CC BY 4.0",
+ "cases": [
+  {
+   "slug": "federal-fraud-estimate",
+   "url": "https://fraudbad.com/federal-fraud-estimate",
+   "title": "What the government loses to fraud every year",
+   "type": "hard",
+   "level": "federal",
+   "place": "All federal programs",
+   "evidence": "Estimated",
+   "figure": "$233–521 billion a year",
+   "receipt": [
+    {
+     "line": "Yearly fraud losses, GAO estimate",
+     "value": "$233B–$521B",
+     "source": "https://www.gao.gov/products/gao-24-105833"
+    },
+    {
+     "line": "Share of what the government obligates",
+     "value": "3%–7%",
+     "source": "https://www.gao.gov/products/gao-24-105833"
+    },
+    {
+     "line": "Years of data behind it",
+     "value": "FY2018–FY2022",
+     "source": "https://www.gao.gov/products/gao-24-105833"
+    },
+    {
+     "line": "Fraud against tax revenue counted",
+     "value": "No",
+     "source": "https://www.gao.gov/products/gao-24-105833"
+    }
+   ],
+   "sources": [
+    {
+     "title": "GAO-24-105833: federal government loses an estimated $233B–$521B a year to fraud",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Apr 16, 2024",
+     "url": "https://www.gao.gov/products/gao-24-105833"
+    }
+   ]
+  },
+  {
+   "slug": "pandemic-unemployment-fraud",
+   "url": "https://fraudbad.com/pandemic-unemployment-fraud",
+   "title": "Stolen from pandemic unemployment benefits",
+   "type": "hard",
+   "level": "federal",
+   "place": "All 50 states",
+   "evidence": "Estimated",
+   "figure": "$100–135 billion",
+   "receipt": [
+    {
+     "line": "Fraud, GAO estimate",
+     "value": "$100B–$135B",
+     "source": "https://www.gao.gov/products/gao-23-106696"
+    },
+    {
+     "line": "Share of all benefits paid",
+     "value": "11%–15%",
+     "source": "https://www.gao.gov/products/gao-23-106696"
+    },
+    {
+     "line": "Period",
+     "value": "Apr 2020–May 2023",
+     "source": "https://www.gao.gov/products/gao-23-106696"
+    },
+    {
+     "line": "Fraud states had identified",
+     "value": "$5.3B",
+     "source": "https://www.gao.gov/products/gao-23-106696"
+    },
+    {
+     "line": "Recovered",
+     "value": "$1.2B",
+     "source": "https://www.gao.gov/products/gao-23-106696"
+    }
+   ],
+   "sources": [
+    {
+     "title": "GAO-23-106696: estimated amount of unemployment insurance fraud during the pandemic",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Sep 12, 2023",
+     "url": "https://www.gao.gov/products/gao-23-106696"
+    }
+   ]
+  },
+  {
+   "slug": "ppp-eidl-loan-fraud",
+   "url": "https://fraudbad.com/ppp-eidl-loan-fraud",
+   "title": "Pandemic small-business loans that went to likely fraud",
+   "type": "hard",
+   "level": "federal",
+   "place": "Small Business Administration",
+   "evidence": "Estimated",
+   "figure": "$200 billion+",
+   "receipt": [
+    {
+     "line": "Potentially fraudulent PPP and EIDL money",
+     "value": "Over $200B",
+     "source": "https://www.sba.gov/document/report-23-09-covid-19-pandemic-eidl-ppp-loan-fraud-landscape"
+    },
+    {
+     "line": "Share of all PPP and EIDL money",
+     "value": "At least 17%",
+     "source": "https://www.sba.gov/document/report-23-09-covid-19-pandemic-eidl-ppp-loan-fraud-landscape"
+    },
+    {
+     "line": "Total disbursed",
+     "value": "About $1.2 trillion",
+     "source": "https://www.sba.gov/document/report-23-09-covid-19-pandemic-eidl-ppp-loan-fraud-landscape"
+    },
+    {
+     "line": "Seized or returned to SBA",
+     "value": "Nearly $30B",
+     "source": "https://www.sba.gov/document/report-23-09-covid-19-pandemic-eidl-ppp-loan-fraud-landscape"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Report 23-09: COVID-19 pandemic EIDL and PPP loan fraud landscape",
+     "publisher": "SBA Office of Inspector General",
+     "date": "Jun 27, 2023",
+     "url": "https://www.sba.gov/document/report-23-09-covid-19-pandemic-eidl-ppp-loan-fraud-landscape"
+    }
+   ]
+  },
+  {
+   "slug": "employee-retention-credit",
+   "url": "https://fraudbad.com/employee-retention-credit",
+   "title": "A pandemic tax credit nobody measured for fraud",
+   "type": "hard",
+   "level": "federal",
+   "place": "Internal Revenue Service",
+   "evidence": "Estimated",
+   "figure": "$283 billion paid",
+   "receipt": [
+    {
+     "line": "Paid to employers, as of June 2025",
+     "value": "About $283B",
+     "source": "https://www.gao.gov/products/GAO-26-107456"
+    },
+    {
+     "line": "Claims the IRS reviewed in 2024",
+     "value": "1M+ claims, $86B+",
+     "source": "https://www.irs.gov/newsroom/irs-enters-next-stage-of-employee-retention-credit-work-review-indicates-vast-majority-show-risk-of-being-improper"
+    },
+    {
+     "line": "Showing clear signs of being wrong",
+     "value": "10%–20%",
+     "source": "https://www.irs.gov/newsroom/irs-enters-next-stage-of-employee-retention-credit-work-review-indicates-vast-majority-show-risk-of-being-improper"
+    },
+    {
+     "line": "Showing an unacceptable level of risk",
+     "value": "60%–70%",
+     "source": "https://www.irs.gov/newsroom/irs-enters-next-stage-of-employee-retention-credit-work-review-indicates-vast-majority-show-risk-of-being-improper"
+    },
+    {
+     "line": "Criminal cases opened by May 31, 2024",
+     "value": "450 (≈$7B in claims)",
+     "source": "https://www.irs.gov/newsroom/irs-enters-next-stage-of-employee-retention-credit-work-review-indicates-vast-majority-show-risk-of-being-improper"
+    }
+   ],
+   "sources": [
+    {
+     "title": "GAO-26-107456: lessons from the Employee Retention Credit",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Feb 10, 2026",
+     "url": "https://www.gao.gov/products/GAO-26-107456"
+    },
+    {
+     "title": "IR-2024-169: IRS review indicates vast majority of ERC claims show risk of being improper",
+     "publisher": "Internal Revenue Service",
+     "date": "Jun 20, 2024",
+     "url": "https://www.irs.gov/newsroom/irs-enters-next-stage-of-employee-retention-credit-work-review-indicates-vast-majority-show-risk-of-being-improper"
+    }
+   ]
+  },
+  {
+   "slug": "operation-gold-rush",
+   "url": "https://fraudbad.com/operation-gold-rush",
+   "title": "Fake catheter claims using a million stolen identities",
+   "type": "hard",
+   "level": "federal",
+   "place": "Medicare",
+   "evidence": "Charged",
+   "figure": "$10.6 billion billed",
+   "receipt": [
+    {
+     "line": "Fraudulent claims billed to Medicare",
+     "value": "$10.6B",
+     "source": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-324-defendants-charged-connection-over-146"
+    },
+    {
+     "line": "Stolen identities used",
+     "value": "1M+ Americans, all 50 states",
+     "source": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-324-defendants-charged-connection-over-146"
+    },
+    {
+     "line": "Claims scheduled for payment",
+     "value": "≈$4.45B",
+     "source": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-324-defendants-charged-connection-over-146"
+    },
+    {
+     "line": "Stopped by Medicare before payment",
+     "value": "All but ≈$41M",
+     "source": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-324-defendants-charged-connection-over-146"
+    },
+    {
+     "line": "Paid by Medicare supplemental insurers",
+     "value": "≈$900M",
+     "source": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-324-defendants-charged-connection-over-146"
+    },
+    {
+     "line": "Defendants charged",
+     "value": "19",
+     "source": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-324-defendants-charged-connection-over-146"
+    }
+   ],
+   "sources": [
+    {
+     "title": "National health care fraud takedown results in 324 defendants charged in connection with over $14.6 billion in alleged fraud",
+     "publisher": "U.S. Department of Justice",
+     "date": "Jun 30, 2025",
+     "url": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-324-defendants-charged-connection-over-146"
+    }
+   ]
+  },
+  {
+   "slug": "health-care-fraud-takedown-2026",
+   "url": "https://fraudbad.com/health-care-fraud-takedown-2026",
+   "title": "455 people charged in one health care fraud sweep",
+   "type": "hard",
+   "level": "federal",
+   "place": "56 federal districts",
+   "evidence": "Charged",
+   "figure": "$6.5 billion",
+   "receipt": [
+    {
+     "line": "Alleged false claims",
+     "value": "Over $6.5B",
+     "source": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-455-defendants-charged-connection-over-65"
+    },
+    {
+     "line": "People charged",
+     "value": "455",
+     "source": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-455-defendants-charged-connection-over-65"
+    },
+    {
+     "line": "Doctors and other licensed medical professionals",
+     "value": "90",
+     "source": "https://hallrender.com/2026/07/07/dojs-continued-focus-on-medicare-and-medicaid-fraud-produces-6-5-billion-health-care-fraud-takedown/"
+    },
+    {
+     "line": "Federal districts",
+     "value": "56",
+     "source": "https://hallrender.com/2026/07/07/dojs-continued-focus-on-medicare-and-medicaid-fraud-produces-6-5-billion-health-care-fraud-takedown/"
+    },
+    {
+     "line": "States and territories",
+     "value": "45",
+     "source": "https://hallrender.com/2026/07/07/dojs-continued-focus-on-medicare-and-medicaid-fraud-produces-6-5-billion-health-care-fraud-takedown/"
+    },
+    {
+     "line": "Heart tests billed on student athletes (S.D. Fla.)",
+     "value": "$89M",
+     "source": "https://hallrender.com/2026/07/07/dojs-continued-focus-on-medicare-and-medicaid-fraud-produces-6-5-billion-health-care-fraud-takedown/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "National health care fraud takedown results in 455 defendants charged in connection with over $6.5 billion",
+     "publisher": "U.S. Department of Justice",
+     "date": "Jun 23, 2026",
+     "url": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-455-defendants-charged-connection-over-65"
+    },
+    {
+     "title": "DOJ's continued focus on Medicare and Medicaid fraud produces $6.5 billion takedown",
+     "publisher": "Hall Render",
+     "date": "Jul 7, 2026",
+     "url": "https://hallrender.com/2026/07/07/dojs-continued-focus-on-medicare-and-medicaid-fraud-produces-6-5-billion-health-care-fraud-takedown/"
+    }
+   ]
+  },
+  {
+   "slug": "minnesota-medicaid-programs",
+   "url": "https://fraudbad.com/minnesota-medicaid-programs",
+   "title": "Minnesota programs where prosecutors say half may be fraud",
+   "type": "hard",
+   "level": "state",
+   "place": "Minnesota",
+   "evidence": "Charged",
+   "figure": "$18 billion billed",
+   "receipt": [
+    {
+     "line": "Billed to 14 high-risk programs since 2018",
+     "value": "$18B",
+     "source": "https://www.kaxe.org/minnesota-news/2025-12-19/us-attorney-fraud-likely-exceeds-9-billion-in-mn-run-medicaid-services"
+    },
+    {
+     "line": "Prosecutor's estimate of the fraudulent share",
+     "value": "\"Half or more\"",
+     "source": "https://www.kaxe.org/minnesota-news/2025-12-19/us-attorney-fraud-likely-exceeds-9-billion-in-mn-run-medicaid-services"
+    },
+    {
+     "line": "One program's payouts, 2021 vs. 2024",
+     "value": "$4.6M → $170M",
+     "source": "https://www.kaxe.org/minnesota-news/2025-12-19/us-attorney-fraud-likely-exceeds-9-billion-in-mn-run-medicaid-services"
+    },
+    {
+     "line": "Charged in May 2026, across 7 programs",
+     "value": "15 people, $90M",
+     "source": "https://qz.com/doj-charges-15-minnesota-medicaid-fraud-90-million-052226"
+    },
+    {
+     "line": "Medicaid money CMS withheld from Minnesota",
+     "value": "Over $250M",
+     "source": "https://www.wilmerhale.com/en/insights/client-alerts/20260521-cms-announces-moratorium-on-new-medicare-enrollment-for-hospices-and-home-health-agencies"
+    }
+   ],
+   "sources": [
+    {
+     "title": "U.S. Attorney: fraud likely exceeds $9 billion in Minnesota-run Medicaid services",
+     "publisher": "KAXE / Minnesota News",
+     "date": "Dec 19, 2025",
+     "url": "https://www.kaxe.org/minnesota-news/2025-12-19/us-attorney-fraud-likely-exceeds-9-billion-in-mn-run-medicaid-services"
+    },
+    {
+     "title": "DOJ charges 15 in $90 million Minnesota Medicaid fraud",
+     "publisher": "Quartz",
+     "date": "May 22, 2026",
+     "url": "https://qz.com/doj-charges-15-minnesota-medicaid-fraud-90-million-052226"
+    },
+    {
+     "title": "CMS announces moratorium on new Medicare enrollment for hospices and home health agencies",
+     "publisher": "WilmerHale",
+     "date": "May 21, 2026",
+     "url": "https://www.wilmerhale.com/en/insights/client-alerts/20260521-cms-announces-moratorium-on-new-medicare-enrollment-for-hospices-and-home-health-agencies"
+    }
+   ]
+  },
+  {
+   "slug": "california-unemployment-fraud",
+   "url": "https://fraudbad.com/california-unemployment-fraud",
+   "title": "Unemployment money California paid to fraudsters",
+   "type": "hard",
+   "level": "state",
+   "place": "California",
+   "evidence": "Confirmed",
+   "figure": "$20 billion+",
+   "receipt": [
+    {
+     "line": "Fraudulent benefits, confirmed by EDD",
+     "value": "At least $20B",
+     "source": "https://www.10news.com/news/californias-unemployment-fraud-reaches-at-least-20-billion"
+    },
+    {
+     "line": "Share of all benefits paid since the pandemic began",
+     "value": "More than 11%",
+     "source": "https://www.10news.com/news/californias-unemployment-fraud-reaches-at-least-20-billion"
+    },
+    {
+     "line": "Confirmed at",
+     "value": "Legislative oversight hearing, Oct 2021",
+     "source": "https://www.10news.com/news/californias-unemployment-fraud-reaches-at-least-20-billion"
+    }
+   ],
+   "sources": [
+    {
+     "title": "California's unemployment fraud reaches at least $20 billion",
+     "publisher": "10News (ABC San Diego)",
+     "date": "Oct 25, 2021",
+     "url": "https://www.10news.com/news/californias-unemployment-fraud-reaches-at-least-20-billion"
+    }
+   ]
+  },
+  {
+   "slug": "michigan-unemployment-fraud",
+   "url": "https://fraudbad.com/michigan-unemployment-fraud",
+   "title": "Fraudulent jobless claims Michigan likely paid",
+   "type": "hard",
+   "level": "state",
+   "place": "Michigan",
+   "evidence": "Estimated",
+   "figure": "$8.5 billion",
+   "receipt": [
+    {
+     "line": "Fraudulent benefits, 19 months (Deloitte estimate)",
+     "value": "≈$8.5B",
+     "source": "https://www.cbsnews.com/detroit/news/report-says-michigan-paid-8-5b-in-fraudulent-pandemic-unemployment-claims/"
+    },
+    {
+     "line": "Paid to impostors",
+     "value": "$2.7B–$2.8B",
+     "source": "https://www.cbsnews.com/detroit/news/report-says-michigan-paid-8-5b-in-fraudulent-pandemic-unemployment-claims/"
+    },
+    {
+     "line": "Paid to claimants who misrepresented eligibility",
+     "value": "$5.6B–$5.7B",
+     "source": "https://www.cbsnews.com/detroit/news/report-says-michigan-paid-8-5b-in-fraudulent-pandemic-unemployment-claims/"
+    },
+    {
+     "line": "Improper payments found by the state auditor",
+     "value": "$3.9B (may overlap)",
+     "source": "https://www.cbsnews.com/detroit/news/report-says-michigan-paid-8-5b-in-fraudulent-pandemic-unemployment-claims/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Report says Michigan paid $8.5B in fraudulent pandemic unemployment claims",
+     "publisher": "CBS Detroit",
+     "date": "Dec 29, 2021",
+     "url": "https://www.cbsnews.com/detroit/news/report-says-michigan-paid-8-5b-in-fraudulent-pandemic-unemployment-claims/"
+    }
+   ]
+  },
+  {
+   "slug": "arizona-sober-living-fraud",
+   "url": "https://fraudbad.com/arizona-sober-living-fraud",
+   "title": "Fake addiction treatment billed to Arizona Medicaid",
+   "type": "hard",
+   "level": "state",
+   "place": "Arizona",
+   "evidence": "Charged",
+   "figure": "$2.8 billion",
+   "receipt": [
+    {
+     "line": "Fraudulent billing since 2021",
+     "value": "≈$2.8B",
+     "source": "https://www.axios.com/local/phoenix/2026/06/09/sober-living-home-arizona-medicaid-fraud-investigation-200-active-cases"
+    },
+    {
+     "line": "State indictments so far",
+     "value": "≈140",
+     "source": "https://www.axios.com/local/phoenix/2026/06/09/sober-living-home-arizona-medicaid-fraud-investigation-200-active-cases"
+    },
+    {
+     "line": "Convictions or settlements",
+     "value": "≈89",
+     "source": "https://www.axios.com/local/phoenix/2026/06/09/sober-living-home-arizona-medicaid-fraud-investigation-200-active-cases"
+    },
+    {
+     "line": "Open investigations",
+     "value": "≈200",
+     "source": "https://www.axios.com/local/phoenix/2026/06/09/sober-living-home-arizona-medicaid-fraud-investigation-200-active-cases"
+    },
+    {
+     "line": "Victims in a class-action suit",
+     "value": "≈7,000",
+     "source": "https://www.axios.com/local/phoenix/2026/06/09/sober-living-home-arizona-medicaid-fraud-investigation-200-active-cases"
+    },
+    {
+     "line": "Behavioral health billing after the crackdown",
+     "value": "Down 92%",
+     "source": "https://www.kjzz.org/text/politics/2026-05-14/crackdown-on-arizona-medicaid-fraud-is-working-attorney-general-says"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Arizona AG still investigating about 200 sober living home fraud cases",
+     "publisher": "Axios Phoenix",
+     "date": "Jun 9, 2026",
+     "url": "https://www.axios.com/local/phoenix/2026/06/09/sober-living-home-arizona-medicaid-fraud-investigation-200-active-cases"
+    },
+    {
+     "title": "Crackdown on Arizona Medicaid fraud is working, attorney general says",
+     "publisher": "KJZZ",
+     "date": "May 14, 2026",
+     "url": "https://www.kjzz.org/text/politics/2026-05-14/crackdown-on-arizona-medicaid-fraud-is-working-attorney-general-says"
+    }
+   ]
+  },
+  {
+   "slug": "washington-unemployment-theft",
+   "url": "https://fraudbad.com/washington-unemployment-theft",
+   "title": "Unemployment money stolen in weeks",
+   "type": "hard",
+   "level": "state",
+   "place": "Washington",
+   "evidence": "Confirmed",
+   "figure": "$550–650 million",
+   "receipt": [
+    {
+     "line": "Stolen through impostor claims",
+     "value": "$550M–$650M",
+     "source": "https://www.heraldnet.com/northwest/washington-unemployment-fraud-might-be-up-to-650-million/"
+    },
+    {
+     "line": "Recovered by June 4, 2020",
+     "value": "$333M",
+     "source": "https://www.heraldnet.com/northwest/washington-unemployment-fraud-might-be-up-to-650-million/"
+    },
+    {
+     "line": "Method",
+     "value": "Identities from old data breaches",
+     "source": "https://www.heraldnet.com/northwest/washington-unemployment-fraud-might-be-up-to-650-million/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Washington unemployment fraud might be up to $650 million",
+     "publisher": "The Daily Herald (Everett)",
+     "date": "Jun 4, 2020",
+     "url": "https://www.heraldnet.com/northwest/washington-unemployment-fraud-might-be-up-to-650-million/"
+    }
+   ]
+  },
+  {
+   "slug": "feeding-our-future",
+   "url": "https://fraudbad.com/feeding-our-future",
+   "title": "Stolen from meals for hungry kids",
+   "type": "hard",
+   "level": "state",
+   "place": "Minnesota",
+   "evidence": "Confirmed",
+   "figure": "$250 million",
+   "receipt": [
+    {
+     "line": "Stolen from federal child nutrition money",
+     "value": "$250M",
+     "source": "https://www.cbsnews.com/minnesota/news/feeding-our-future-fraud-ringleader-aimee-bock-sentenced/"
+    },
+    {
+     "line": "Ringleader's sentence (May 21, 2026)",
+     "value": "500 months",
+     "source": "https://www.cbsnews.com/minnesota/news/feeding-our-future-fraud-ringleader-aimee-bock-sentenced/"
+    },
+    {
+     "line": "Restitution ordered",
+     "value": "Nearly $243M",
+     "source": "https://www.cbsnews.com/minnesota/news/feeding-our-future-fraud-ringleader-aimee-bock-sentenced/"
+    },
+    {
+     "line": "Others convicted",
+     "value": "Dozens",
+     "source": "https://www.cbsnews.com/minnesota/news/feeding-our-future-fraud-ringleader-aimee-bock-sentenced/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Feeding Our Future fraud ringleader Aimee Bock sentenced",
+     "publisher": "CBS News",
+     "date": "May 21, 2026",
+     "url": "https://www.cbsnews.com/minnesota/news/feeding-our-future-fraud-ringleader-aimee-bock-sentenced/"
+    }
+   ]
+  },
+  {
+   "slug": "mississippi-welfare-scandal",
+   "url": "https://fraudbad.com/mississippi-welfare-scandal",
+   "title": "Welfare money for the poorest, steered elsewhere",
+   "type": "hard",
+   "level": "state",
+   "place": "Mississippi",
+   "evidence": "Confirmed",
+   "figure": "$77 million",
+   "receipt": [
+    {
+     "line": "Welfare money misspent",
+     "value": "$77M",
+     "source": "https://www.mississippifreepress.org/accountant-anne-mcgrew-is-first-person-sentenced-in-mississippi-welfare-scandal-but-6-remain-unsentenced/"
+    },
+    {
+     "line": "People who pleaded guilty",
+     "value": "7",
+     "source": "https://www.mississippifreepress.org/accountant-anne-mcgrew-is-first-person-sentenced-in-mississippi-welfare-scandal-but-6-remain-unsentenced/"
+    },
+    {
+     "line": "Sentenced as of May 2026",
+     "value": "1",
+     "source": "https://www.mississippifreepress.org/accountant-anne-mcgrew-is-first-person-sentenced-in-mississippi-welfare-scandal-but-6-remain-unsentenced/"
+    },
+    {
+     "line": "Including the former head of the state welfare agency",
+     "value": "Yes",
+     "source": "https://www.mississippifreepress.org/accountant-anne-mcgrew-is-first-person-sentenced-in-mississippi-welfare-scandal-but-6-remain-unsentenced/"
+    },
+    {
+     "line": "TANF in the federal improper-payment estimate",
+     "value": "No",
+     "source": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Accountant Anne McGrew is first person sentenced in Mississippi welfare scandal, but 6 remain unsentenced",
+     "publisher": "Mississippi Free Press",
+     "date": "May 5, 2026",
+     "url": "https://www.mississippifreepress.org/accountant-anne-mcgrew-is-first-person-sentenced-in-mississippi-welfare-scandal-but-6-remain-unsentenced/"
+    },
+    {
+     "title": "GAO reports improper payments rose to an estimated $186 billion in fiscal year 2025",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Apr 27, 2026",
+     "url": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    }
+   ]
+  },
+  {
+   "slug": "los-angeles-hospice-fraud",
+   "url": "https://fraudbad.com/los-angeles-hospice-fraud",
+   "title": "Los Angeles hospices cut off over suspected fraud",
+   "type": "hard",
+   "level": "local",
+   "place": "Los Angeles",
+   "evidence": "Payments frozen",
+   "figure": "$600 million",
+   "receipt": [
+    {
+     "line": "Hospices with payments suspended, April 2026",
+     "value": "447",
+     "source": "https://www.washingtonexaminer.com/news/crime/4529943/hundreds-hospice-providers-suspended-suspected-fraud/"
+    },
+    {
+     "line": "Home health agencies suspended, April 2026",
+     "value": "23",
+     "source": "https://www.washingtonexaminer.com/news/crime/4529943/hundreds-hospice-providers-suspended-suspected-fraud/"
+    },
+    {
+     "line": "Suspected fraudulent spending",
+     "value": "≈$600M",
+     "source": "https://www.foley.com/insights/publications/2026/04/medicare-payment-suspensions-emerge-as-a-key-tool-in-federal-anti-fraud-efforts-focus-on-california-hospices/"
+    },
+    {
+     "line": "LA hospices and home health agencies suspended by May",
+     "value": "≈800",
+     "source": "https://www.wilmerhale.com/en/insights/client-alerts/20260521-cms-announces-moratorium-on-new-medicare-enrollment-for-hospices-and-home-health-agencies"
+    },
+    {
+     "line": "Nationwide freeze on new hospice enrollment",
+     "value": "6 months from May 13, 2026",
+     "source": "https://www.wilmerhale.com/en/insights/client-alerts/20260521-cms-announces-moratorium-on-new-medicare-enrollment-for-hospices-and-home-health-agencies"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Hundreds of hospice providers suspended in Los Angeles over $600 million in suspected fraud",
+     "publisher": "Washington Examiner",
+     "date": "Apr 15, 2026",
+     "url": "https://www.washingtonexaminer.com/news/crime/4529943/hundreds-hospice-providers-suspended-suspected-fraud/"
+    },
+    {
+     "title": "Medicare payment suspensions emerge as a key tool in federal anti-fraud efforts: California hospices",
+     "publisher": "Foley & Lardner",
+     "date": "Apr 28, 2026",
+     "url": "https://www.foley.com/insights/publications/2026/04/medicare-payment-suspensions-emerge-as-a-key-tool-in-federal-anti-fraud-efforts-focus-on-california-hospices/"
+    },
+    {
+     "title": "CMS announces moratorium on new Medicare enrollment for hospices and home health agencies",
+     "publisher": "WilmerHale",
+     "date": "May 21, 2026",
+     "url": "https://www.wilmerhale.com/en/insights/client-alerts/20260521-cms-announces-moratorium-on-new-medicare-enrollment-for-hospices-and-home-health-agencies"
+    }
+   ]
+  },
+  {
+   "slug": "false-claims-act-2025",
+   "url": "https://fraudbad.com/false-claims-act-2025",
+   "title": "What the government won back from fraud in court",
+   "type": "hard",
+   "level": "federal",
+   "place": "Department of Justice",
+   "evidence": "Settled",
+   "figure": "$6.8 billion clawed back, a record",
+   "receipt": [
+    {
+     "line": "Settlements and judgments, FY2025",
+     "value": "Over $6.8B",
+     "source": "https://www.justice.gov/opa/pr/false-claims-act-settlements-and-judgments-exceed-68b-fiscal-year-2025"
+    },
+    {
+     "line": "From health care fraud",
+     "value": "Over $5.7B",
+     "source": "https://www.justice.gov/opa/pr/false-claims-act-settlements-and-judgments-exceed-68b-fiscal-year-2025"
+    },
+    {
+     "line": "Whistleblower suits filed",
+     "value": "1,297",
+     "source": "https://www.justice.gov/opa/pr/false-claims-act-settlements-and-judgments-exceed-68b-fiscal-year-2025"
+    },
+    {
+     "line": "Investigations DOJ opened on its own",
+     "value": "401",
+     "source": "https://www.justice.gov/opa/pr/false-claims-act-settlements-and-judgments-exceed-68b-fiscal-year-2025"
+    },
+    {
+     "line": "Recovered since 1986",
+     "value": "Over $85B",
+     "source": "https://www.justice.gov/opa/pr/false-claims-act-settlements-and-judgments-exceed-68b-fiscal-year-2025"
+    },
+    {
+     "line": "Versus one year of estimated fraud ($233B–$521B)",
+     "value": "1.3%–2.9%",
+     "source": "https://www.gao.gov/products/gao-24-105833"
+    }
+   ],
+   "sources": [
+    {
+     "title": "False Claims Act settlements and judgments exceed $6.8B in fiscal year 2025",
+     "publisher": "U.S. Department of Justice",
+     "date": "Jan 16, 2026",
+     "url": "https://www.justice.gov/opa/pr/false-claims-act-settlements-and-judgments-exceed-68b-fiscal-year-2025"
+    },
+    {
+     "title": "GAO-24-105833: federal government loses an estimated $233B–$521B a year to fraud",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Apr 16, 2024",
+     "url": "https://www.gao.gov/products/gao-24-105833"
+    }
+   ]
+  },
+  {
+   "slug": "snap-card-skimming",
+   "url": "https://fraudbad.com/snap-card-skimming",
+   "title": "Food benefits skimmed straight off EBT cards",
+   "type": "hard",
+   "level": "federal",
+   "place": "SNAP, run by the states for USDA",
+   "evidence": "Confirmed",
+   "figure": "$320 million stolen and replaced",
+   "receipt": [
+    {
+     "line": "Stolen benefits USDA replaced, Oct 2022–Dec 20, 2024",
+     "value": "$320M",
+     "source": "https://www.route-fifty.com/digital-government/2025/12/agriculture-focuses-snap-fraud-while-experts-worry-ebt-theft-will-go-unabated/410362"
+    },
+    {
+     "line": "Federal replacements after Dec 20, 2024",
+     "value": "Not funded",
+     "source": "https://www.route-fifty.com/digital-government/2025/12/agriculture-focuses-snap-fraud-while-experts-worry-ebt-theft-will-go-unabated/410362"
+    },
+    {
+     "line": "Stolen Jan–Jun 2025 (Propel estimate, not USDA)",
+     "value": "$349M",
+     "source": "https://www.route-fifty.com/digital-government/2025/12/agriculture-focuses-snap-fraud-while-experts-worry-ebt-theft-will-go-unabated/410362"
+    },
+    {
+     "line": "States that moved to chip cards",
+     "value": "1 (California)",
+     "source": "https://www.route-fifty.com/digital-government/2025/12/agriculture-focuses-snap-fraud-while-experts-worry-ebt-theft-will-go-unabated/410362"
+    },
+    {
+     "line": "Counterfeit EBT terminals blocked by USDA",
+     "value": "450+",
+     "source": "https://www.route-fifty.com/digital-government/2025/12/agriculture-focuses-snap-fraud-while-experts-worry-ebt-theft-will-go-unabated/410362"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Agriculture focuses on SNAP fraud, while experts worry EBT theft will go unabated",
+     "publisher": "Route Fifty",
+     "date": "Dec 23, 2025",
+     "url": "https://www.route-fifty.com/digital-government/2025/12/agriculture-focuses-snap-fraud-while-experts-worry-ebt-theft-will-go-unabated/410362"
+    }
+   ]
+  },
+  {
+   "slug": "improper-payments-since-2003",
+   "url": "https://fraudbad.com/improper-payments-since-2003",
+   "title": "Paid out without proof, year after year",
+   "type": "soft",
+   "level": "federal",
+   "place": "All reporting federal programs",
+   "evidence": "Paid without proof",
+   "figure": "$2.98 trillion since 2004",
+   "receipt": [
+    {
+     "line": "Improper and unverifiable payments, FY2004–FY2025",
+     "value": "$2.98 trillion",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Of that, FY2004–FY2024 (GAO: ≈$2.8T)",
+     "value": "$2.80 trillion",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "FY2025 alone",
+     "value": "$185.8B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Programs with error rates over 10%, FY2025",
+     "value": "19",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Overpayments flagged for recovery, FY2025",
+     "value": "$77.5B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Actually recovered, FY2025",
+     "value": "$47.8B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "TANF's error rate",
+     "value": "Never reported",
+     "source": "https://www.gao.gov/products/GAO-25-108172"
+    }
+   ],
+   "sources": [
+    {
+     "title": "FY2025 improper payments dataset: every program's results, root causes, recoveries and compliance (FY2004–FY2025)",
+     "publisher": "PaymentAccuracy.gov (OMB and CFO Council); totals summed by FraudBad",
+     "date": "Nov 9, 2026",
+     "url": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "title": "GAO-25-108172: improper payments — about $2.8 trillion estimated since fiscal year 2003",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Mar 11, 2025",
+     "url": "https://www.gao.gov/products/GAO-25-108172"
+    },
+    {
+     "title": "GAO reports improper payments rose to an estimated $186 billion in fiscal year 2025",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Apr 27, 2026",
+     "url": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    }
+   ]
+  },
+  {
+   "slug": "medicare-advantage-overpayments",
+   "url": "https://fraudbad.com/medicare-advantage-overpayments",
+   "title": "What Medicare overpays private insurance plans",
+   "type": "soft",
+   "level": "federal",
+   "place": "Medicare Advantage",
+   "evidence": "Settled",
+   "figure": "$76 billion in 2026",
+   "receipt": [
+    {
+     "line": "Extra paid for Medicare Advantage enrollees, 2026",
+     "value": "≈$76B (14% more)",
+     "source": "https://www.medpac.gov/wp-content/uploads/2026/03/March_2026_MedPAC_Report_Press_Release_SEC.pdf"
+    },
+    {
+     "line": "Projected overpayments, 2027–2036",
+     "value": "$1.3 trillion",
+     "source": "https://www.crfb.org/blogs/new-data-suggests-ma-overpayments-13-trillion-over-next-decade"
+    },
+    {
+     "line": "From coding patients as sicker",
+     "value": "Risk scores ≈4% higher",
+     "source": "https://www.medpac.gov/wp-content/uploads/2026/03/March_2026_MedPAC_Report_Press_Release_SEC.pdf"
+    },
+    {
+     "line": "From enrolling healthier people",
+     "value": "≈11% higher payments",
+     "source": "https://www.medpac.gov/wp-content/uploads/2026/03/March_2026_MedPAC_Report_Press_Release_SEC.pdf"
+    },
+    {
+     "line": "Medicare Advantage paid in error, FY2025",
+     "value": "$23.67B",
+     "source": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    },
+    {
+     "line": "Largest Medicare Advantage fraud settlement",
+     "value": "$556M, Kaiser, Jan 2026",
+     "source": "https://kffhealthnews.org/news/article/medicare-advantage-record-fraud-settlement-kaiser-permanente-556-million/"
+    },
+    {
+     "line": "Diagnoses the government says were added",
+     "value": "≈500,000 (2009–2018)",
+     "source": "https://kffhealthnews.org/news/article/medicare-advantage-record-fraud-settlement-kaiser-permanente-556-million/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "March 2026 report to the Congress: Medicare payment policy (press release)",
+     "publisher": "Medicare Payment Advisory Commission",
+     "date": "Mar 2026",
+     "url": "https://www.medpac.gov/wp-content/uploads/2026/03/March_2026_MedPAC_Report_Press_Release_SEC.pdf"
+    },
+    {
+     "title": "New data suggests Medicare Advantage overpayments of $1.3 trillion over the next decade",
+     "publisher": "Committee for a Responsible Federal Budget",
+     "date": "Jan 23, 2026 (updated Mar 5, 2026)",
+     "url": "https://www.crfb.org/blogs/new-data-suggests-ma-overpayments-13-trillion-over-next-decade"
+    },
+    {
+     "title": "Kaiser Permanente to pay $556 million in record Medicare Advantage fraud settlement",
+     "publisher": "KFF Health News",
+     "date": "Jan 15, 2026",
+     "url": "https://kffhealthnews.org/news/article/medicare-advantage-record-fraud-settlement-kaiser-permanente-556-million/"
+    },
+    {
+     "title": "Fiscal year 2025 improper payments fact sheet",
+     "publisher": "Centers for Medicare & Medicaid Services",
+     "date": "Jan 15, 2026",
+     "url": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    }
+   ]
+  },
+  {
+   "slug": "health-care-waste",
+   "url": "https://fraudbad.com/health-care-waste",
+   "title": "Wasted in American health care every year",
+   "type": "soft",
+   "level": "federal",
+   "place": "U.S. health care, public and private",
+   "evidence": "Estimated",
+   "figure": "$760–935 billion a year",
+   "receipt": [
+    {
+     "line": "Waste per year, all U.S. health care",
+     "value": "$760B–$935B",
+     "source": "https://revcycleintelligence.com/news/25-of-total-healthcare-spending-attributed-to-waste-study-finds"
+    },
+    {
+     "line": "Share of total health spending",
+     "value": "About 25%",
+     "source": "https://revcycleintelligence.com/news/25-of-total-healthcare-spending-attributed-to-waste-study-finds"
+    },
+    {
+     "line": "Administrative complexity",
+     "value": "$265.6B",
+     "source": "https://revcycleintelligence.com/news/25-of-total-healthcare-spending-attributed-to-waste-study-finds"
+    },
+    {
+     "line": "Pricing failure (paying too much)",
+     "value": "$230.7B–$240.5B",
+     "source": "https://revcycleintelligence.com/news/25-of-total-healthcare-spending-attributed-to-waste-study-finds"
+    },
+    {
+     "line": "Failure of care delivery",
+     "value": "$102.4B–$165.7B",
+     "source": "https://revcycleintelligence.com/news/25-of-total-healthcare-spending-attributed-to-waste-study-finds"
+    },
+    {
+     "line": "Overtreatment and low-value care",
+     "value": "$75.7B–$101.2B",
+     "source": "https://revcycleintelligence.com/news/25-of-total-healthcare-spending-attributed-to-waste-study-finds"
+    },
+    {
+     "line": "Fraud and abuse",
+     "value": "$58.5B–$83.9B",
+     "source": "https://revcycleintelligence.com/news/25-of-total-healthcare-spending-attributed-to-waste-study-finds"
+    },
+    {
+     "line": "Failure of care coordination",
+     "value": "$27.2B–$78.2B",
+     "source": "https://revcycleintelligence.com/news/25-of-total-healthcare-spending-attributed-to-waste-study-finds"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Waste in the US health care system: estimated costs and potential for savings (Shrank et al., JAMA)",
+     "publisher": "JAMA",
+     "date": "Oct 7, 2019",
+     "url": "https://doi.org/10.1001/jama.2019.13978"
+    },
+    {
+     "title": "25% of total healthcare spending attributed to waste, study finds (on Shrank et al., JAMA)",
+     "publisher": "RevCycleIntelligence",
+     "date": "Oct 2019",
+     "url": "https://revcycleintelligence.com/news/25-of-total-healthcare-spending-attributed-to-waste-study-finds"
+    }
+   ]
+  },
+  {
+   "slug": "tax-gap",
+   "url": "https://fraudbad.com/tax-gap",
+   "title": "Taxes owed that never get paid",
+   "type": "soft",
+   "level": "federal",
+   "place": "Internal Revenue Service",
+   "evidence": "Estimated",
+   "figure": "$696 billion a year",
+   "receipt": [
+    {
+     "line": "Gross tax gap, tax year 2022",
+     "value": "$696B",
+     "source": "https://www.irs.gov/newsroom/irs-releases-2022-tax-gap-projections-voluntary-compliance-rate-among-taxpayers-remains-steady"
+    },
+    {
+     "line": "Net tax gap, after enforcement and late payments",
+     "value": "$606B",
+     "source": "https://www.irs.gov/newsroom/irs-releases-2022-tax-gap-projections-voluntary-compliance-rate-among-taxpayers-remains-steady"
+    },
+    {
+     "line": "From underreported income",
+     "value": "$539B",
+     "source": "https://www.irs.gov/newsroom/irs-releases-2022-tax-gap-projections-voluntary-compliance-rate-among-taxpayers-remains-steady"
+    },
+    {
+     "line": "From people who never filed",
+     "value": "$63B",
+     "source": "https://www.irs.gov/newsroom/irs-releases-2022-tax-gap-projections-voluntary-compliance-rate-among-taxpayers-remains-steady"
+    },
+    {
+     "line": "From taxes reported but not paid",
+     "value": "$94B",
+     "source": "https://www.irs.gov/newsroom/irs-releases-2022-tax-gap-projections-voluntary-compliance-rate-among-taxpayers-remains-steady"
+    },
+    {
+     "line": "Paid voluntarily and on time",
+     "value": "About 85%",
+     "source": "https://www.irs.gov/newsroom/irs-releases-2022-tax-gap-projections-voluntary-compliance-rate-among-taxpayers-remains-steady"
+    }
+   ],
+   "sources": [
+    {
+     "title": "IR-2024-262: IRS releases 2022 tax gap projections",
+     "publisher": "Internal Revenue Service",
+     "date": "Oct 10, 2024",
+     "url": "https://www.irs.gov/newsroom/irs-releases-2022-tax-gap-projections-voluntary-compliance-rate-among-taxpayers-remains-steady"
+    }
+   ]
+  },
+  {
+   "slug": "unfixed-gao-savings",
+   "url": "https://fraudbad.com/unfixed-gao-savings",
+   "title": "Savings the government's auditors found — and nobody took",
+   "type": "soft",
+   "level": "federal",
+   "place": "Congress and federal agencies",
+   "evidence": "Fix ignored",
+   "figure": "$132–251 billion left on the table",
+   "receipt": [
+    {
+     "line": "Future savings from open recommendations",
+     "value": "$132B–$251B",
+     "source": "https://www.gao.gov/press-release/gao-identifies-major-opportunity-implementing-open-recommendations-could-deliver-132-251-billion-future-savings"
+    },
+    {
+     "line": "Saved since 2011 by acting on GAO's findings",
+     "value": "≈$774B",
+     "source": "https://www.gao.gov/press-release/gao-identifies-major-opportunity-implementing-open-recommendations-could-deliver-132-251-billion-future-savings"
+    },
+    {
+     "line": "New recommendations in 2026",
+     "value": "97",
+     "source": "https://www.gao.gov/press-release/gao-identifies-major-opportunity-implementing-open-recommendations-could-deliver-132-251-billion-future-savings"
+    },
+    {
+     "line": "One fix: equal Medicare rates for office visits",
+     "value": "$156.9B over 10 years",
+     "source": "https://www.gao.gov/press-release/gao-identifies-major-opportunity-implementing-open-recommendations-could-deliver-132-251-billion-future-savings"
+    }
+   ],
+   "sources": [
+    {
+     "title": "GAO identifies major opportunity: implementing open recommendations could deliver $132–251 billion in future savings",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "May 12, 2026",
+     "url": "https://www.gao.gov/press-release/gao-identifies-major-opportunity-implementing-open-recommendations-could-deliver-132-251-billion-future-savings"
+    },
+    {
+     "title": "GAO-26-108505: 2026 annual report on duplication, overlap and fragmentation",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "May 2026",
+     "url": "https://www.gao.gov/products/GAO-26-108505"
+    }
+   ]
+  },
+  {
+   "slug": "federal-debt-never-collected",
+   "url": "https://fraudbad.com/federal-debt-never-collected",
+   "title": "Money owed to the government that it isn't collecting",
+   "type": "soft",
+   "level": "federal",
+   "place": "Every federal agency owed money",
+   "evidence": "Never collected",
+   "figure": "$217 billion owed and overdue",
+   "receipt": [
+    {
+     "line": "Non-tax money owed to agencies",
+     "value": "$2.36 trillion",
+     "source": "https://fiscal.treasury.gov/files/debt-management/debt24.pdf"
+    },
+    {
+     "line": "Overdue",
+     "value": "$217.3B",
+     "source": "https://fiscal.treasury.gov/files/debt-management/debt24.pdf"
+    },
+    {
+     "line": "Overdue more than two years",
+     "value": "$156.2B (72%)",
+     "source": "https://fiscal.treasury.gov/files/debt-management/debt24.pdf"
+    },
+    {
+     "line": "Overdue debt collected in FY2024",
+     "value": "$21.5B",
+     "source": "https://fiscal.treasury.gov/files/debt-management/debt24.pdf"
+    },
+    {
+     "line": "Written off or closed out in FY2024",
+     "value": "$57.7B",
+     "source": "https://fiscal.treasury.gov/files/debt-management/debt24.pdf"
+    },
+    {
+     "line": "Education",
+     "value": "$145.1B overdue",
+     "source": "https://fiscal.treasury.gov/files/debt-management/debt24.pdf"
+    },
+    {
+     "line": "Small Business Administration",
+     "value": "$32.3B overdue",
+     "source": "https://fiscal.treasury.gov/files/debt-management/debt24.pdf"
+    },
+    {
+     "line": "Social Security",
+     "value": "$6.9B overdue",
+     "source": "https://fiscal.treasury.gov/files/debt-management/debt24.pdf"
+    }
+   ],
+   "sources": [
+    {
+     "title": "U.S. Government Receivables and Debt Collection Activities of Federal Agencies, FY2024 report to Congress",
+     "publisher": "U.S. Department of the Treasury, Bureau of the Fiscal Service",
+     "date": "FY2024 report",
+     "url": "https://fiscal.treasury.gov/files/debt-management/debt24.pdf"
+    }
+   ]
+  },
+  {
+   "slug": "improper-payments-2025",
+   "url": "https://fraudbad.com/improper-payments-2025",
+   "title": "Paid out in error in fiscal 2025",
+   "type": "soft",
+   "level": "federal",
+   "place": "64 federal programs",
+   "evidence": "Paid without proof",
+   "figure": "$186 billion in one year",
+   "receipt": [
+    {
+     "line": "Improper payments, FY2025",
+     "value": "$186B",
+     "source": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    },
+    {
+     "line": "Of that, overpayments",
+     "value": "$153B",
+     "source": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    },
+    {
+     "line": "Programs reporting",
+     "value": "64 at 15 agencies",
+     "source": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    },
+    {
+     "line": "Programs with error rates over 10%",
+     "value": "19",
+     "source": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    },
+    {
+     "line": "Programs with error rates over 25%",
+     "value": "6",
+     "source": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    },
+    {
+     "line": "Share in Medicare, Medicaid, EITC, SNAP and the Shuttered Venue grants",
+     "value": "73%",
+     "source": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    }
+   ],
+   "sources": [
+    {
+     "title": "GAO reports improper payments rose to an estimated $186 billion in fiscal year 2025",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Apr 27, 2026",
+     "url": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    },
+    {
+     "title": "GAO-26-108694: improper payments government-wide, FY2025",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Apr 2026",
+     "url": "https://www.gao.gov/products/GAO-26-108694"
+    }
+   ]
+  },
+  {
+   "slug": "data-existed-nobody-checked",
+   "url": "https://fraudbad.com/data-existed-nobody-checked",
+   "title": "The data to stop it existed. Nobody checked.",
+   "type": "soft",
+   "level": "federal",
+   "place": "All reporting federal programs",
+   "evidence": "Paid without proof",
+   "figure": "$123 billion paid wrong",
+   "receipt": [
+    {
+     "line": "Improper and unverifiable payments, FY2025",
+     "value": "$185.8B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Data existed and was accessible; not checked",
+     "value": "$123.0B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Data existed; agency couldn't get it",
+     "value": "$13.6B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Data needed didn't exist",
+     "value": "$26.5B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Not enough paperwork to tell either way",
+     "value": "$14.3B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Right amount, rules not followed",
+     "value": "$8.4B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Agencies out of compliance with the payment-integrity law, FY2024",
+     "value": "15 of 63",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    }
+   ],
+   "sources": [
+    {
+     "title": "FY2025 improper payments dataset: every program's results, root causes, recoveries and compliance (FY2004–FY2025)",
+     "publisher": "PaymentAccuracy.gov (OMB and CFO Council); totals summed by FraudBad",
+     "date": "Nov 9, 2026",
+     "url": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "title": "M-21-19: Appendix C to Circular A-123, Requirements for Payment Integrity Improvement (root-cause definitions, Table 3)",
+     "publisher": "Office of Management and Budget",
+     "date": "Mar 5, 2021",
+     "url": "https://www.whitehouse.gov/wp-content/uploads/2021/03/M-21-19.pdf"
+    },
+    {
+     "title": "GAO reports improper payments rose to an estimated $186 billion in fiscal year 2025",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Apr 27, 2026",
+     "url": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    }
+   ]
+  },
+  {
+   "slug": "september-spending-rush",
+   "url": "https://fraudbad.com/september-spending-rush",
+   "title": "The September rush: spend it before it expires",
+   "type": "soft",
+   "level": "federal",
+   "place": "Every federal agency that buys things",
+   "evidence": "Measured",
+   "figure": "$162 billion in one month",
+   "receipt": [
+    {
+     "line": "Contract obligations, FY2025",
+     "value": "$828.6B",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "September 2025 alone",
+     "value": "$161.9B",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "Share of the year",
+     "value": "19.5% (an even month: 8.3%)",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "Versus an average October–August month",
+     "value": "2.7×",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "September's share, FY2018–FY2025",
+     "value": "14.7%–19.5%",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "Years September was the biggest month",
+     "value": "8 of 8",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "Last-week IT projects rated lower quality",
+     "value": "2–6× more likely",
+     "source": "https://www.nber.org/digest/mar14/use-it-or-lose-it-budget-rules"
+    }
+   ],
+   "sources": [
+    {
+     "title": "USAspending.gov spending-over-time data: federal contract obligations by fiscal month, FY2018–FY2025",
+     "publisher": "USAspending.gov (U.S. Treasury), pulled by FraudBad",
+     "date": "Nov 9, 2026",
+     "url": "https://www.usaspending.gov/search"
+    },
+    {
+     "title": "Use-it-or-lose-it budget rules (Liebman & Mahoney, NBER Working Paper 19481)",
+     "publisher": "National Bureau of Economic Research",
+     "date": "Mar 2014",
+     "url": "https://www.nber.org/digest/mar14/use-it-or-lose-it-budget-rules"
+    }
+   ]
+  },
+  {
+   "slug": "california-high-speed-rail",
+   "url": "https://fraudbad.com/california-high-speed-rail",
+   "title": "California's bullet train: $33 billion promised, up to $231 billion now",
+   "type": "soft",
+   "level": "state",
+   "place": "California High-Speed Rail Authority",
+   "evidence": "Over budget",
+   "figure": "$126–231 billion, from $33B promised",
+   "receipt": [
+    {
+     "line": "Price voters approved, 2008",
+     "value": "$33B",
+     "source": "https://www.ktvu.com/news/california-high-speed-rail-cost-soars-231-billion"
+    },
+    {
+     "line": "Promised completion",
+     "value": "2020",
+     "source": "https://www.ktvu.com/news/california-high-speed-rail-cost-soars-231-billion"
+    },
+    {
+     "line": "2026 estimate, San Francisco–L.A./Anaheim",
+     "value": "$126B–$231B",
+     "source": "https://www.kalw.org/bay-area-news/2026-06-03/high-speed-rail-business-plan-approved-envisions-passenger-service-by-2033"
+    },
+    {
+     "line": "Merced–Bakersfield segment alone",
+     "value": "$34.76B",
+     "source": "https://www.railwayage.com/passenger/high-performance/chsra-issues-draft-2026-business-plan/"
+    },
+    {
+     "line": "First passenger service (Merced–Bakersfield)",
+     "value": "2033",
+     "source": "https://www.kalw.org/bay-area-news/2026-06-03/high-speed-rail-business-plan-approved-envisions-passenger-service-by-2033"
+    },
+    {
+     "line": "Still to be secured",
+     "value": "Nearly $87B",
+     "source": "https://www.kalw.org/bay-area-news/2026-06-03/high-speed-rail-business-plan-approved-envisions-passenger-service-by-2033"
+    },
+    {
+     "line": "Federal money pulled, July 2025",
+     "value": "$4B",
+     "source": "https://www.ktvu.com/news/california-high-speed-rail-cost-soars-231-billion"
+    }
+   ],
+   "sources": [
+    {
+     "title": "California high-speed rail costs soar to $231 billion",
+     "publisher": "KTVU Fox 2",
+     "date": "Apr 30, 2026",
+     "url": "https://www.ktvu.com/news/california-high-speed-rail-cost-soars-231-billion"
+    },
+    {
+     "title": "High-speed rail business plan approved, envisions passenger service by 2033",
+     "publisher": "KALW",
+     "date": "Jun 3, 2026",
+     "url": "https://www.kalw.org/bay-area-news/2026-06-03/high-speed-rail-business-plan-approved-envisions-passenger-service-by-2033"
+    },
+    {
+     "title": "CHSRA issues draft 2026 business plan",
+     "publisher": "Railway Age",
+     "date": "2026 (on the Feb 28, 2026 draft)",
+     "url": "https://www.railwayage.com/passenger/high-performance/chsra-issues-draft-2026-business-plan/"
+    }
+   ]
+  },
+  {
+   "slug": "contracts-with-no-description",
+   "url": "https://fraudbad.com/contracts-with-no-description",
+   "title": "Giant contracts the public can't read",
+   "type": "soft",
+   "level": "federal",
+   "place": "USAspending.gov",
+   "evidence": "Can't be checked",
+   "figure": "$160.4 billion with no description",
+   "receipt": [
+    {
+     "line": "Biggest contracts active in FY2026, checked",
+     "value": "100 (worth $1,171.8B)",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "Description blank",
+     "value": "5",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "Description is only a filing code",
+     "value": "4",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "Value of those contracts",
+     "value": "$160.4B",
+     "source": "https://www.usaspending.gov/search"
+    },
+    {
+     "line": "Three words or fewer",
+     "value": "14 more ($125.1B)",
+     "source": "https://www.usaspending.gov/search"
+    }
+   ],
+   "sources": [
+    {
+     "title": "USAspending.gov award search: contracts with spending activity in FY2026, award value $2B+, top 100 by value",
+     "publisher": "USAspending.gov (U.S. Treasury), pulled by FraudBad",
+     "date": "Nov 9, 2026",
+     "url": "https://www.usaspending.gov/search"
+    }
+   ]
+  },
+  {
+   "slug": "sentinel-icbm-overrun",
+   "url": "https://fraudbad.com/sentinel-icbm-overrun",
+   "title": "The nuclear missile that's 81% over budget",
+   "type": "soft",
+   "level": "federal",
+   "place": "U.S. Air Force",
+   "evidence": "Over budget",
+   "figure": "$141 billion, 81% over estimate",
+   "receipt": [
+    {
+     "line": "Current cost estimate",
+     "value": "$140.9B",
+     "source": "https://federalnewsnetwork.com/defense-main/2024/07/dods-troubled-sentinel-program-will-continue-despite-ballooning-costs/"
+    },
+    {
+     "line": "Growth over the September 2020 estimate",
+     "value": "81%",
+     "source": "https://federalnewsnetwork.com/defense-main/2024/07/dods-troubled-sentinel-program-will-continue-despite-ballooning-costs/"
+    },
+    {
+     "line": "Overrun that triggered the legal review",
+     "value": "37%",
+     "source": "https://federalnewsnetwork.com/defense-main/2024/07/dods-troubled-sentinel-program-will-continue-despite-ballooning-costs/"
+    },
+    {
+     "line": "Threshold in the law",
+     "value": "25%",
+     "source": "https://federalnewsnetwork.com/defense-main/2024/07/dods-troubled-sentinel-program-will-continue-despite-ballooning-costs/"
+    },
+    {
+     "line": "Outcome",
+     "value": "Program continues",
+     "source": "https://federalnewsnetwork.com/defense-main/2024/07/dods-troubled-sentinel-program-will-continue-despite-ballooning-costs/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "DoD's troubled Sentinel program will continue despite ballooning costs",
+     "publisher": "Federal News Network",
+     "date": "Jul 2024",
+     "url": "https://federalnewsnetwork.com/defense-main/2024/07/dods-troubled-sentinel-program-will-continue-despite-ballooning-costs/"
+    }
+   ]
+  },
+  {
+   "slug": "weapons-cost-overruns",
+   "url": "https://fraudbad.com/weapons-cost-overruns",
+   "title": "Weapons programs that went over budget this year",
+   "type": "soft",
+   "level": "federal",
+   "place": "Department of Defense",
+   "evidence": "Over budget",
+   "figure": "$122 billion in new cost growth",
+   "receipt": [
+    {
+     "line": "Planned spend on the costliest weapons programs",
+     "value": "Over $2.4 trillion",
+     "source": "https://www.defensenews.com/news/pentagon-congress/2026/07/06/pentagons-top-new-weapons-programs-are-12-years-behind-schedule-watchdog/"
+    },
+    {
+     "line": "Programs reporting cost increases",
+     "value": "46 of 72",
+     "source": "https://www.defensenews.com/news/pentagon-congress/2026/07/06/pentagons-top-new-weapons-programs-are-12-years-behind-schedule-watchdog/"
+    },
+    {
+     "line": "Total of those increases",
+     "value": "$122B",
+     "source": "https://www.defensenews.com/news/pentagon-congress/2026/07/06/pentagons-top-new-weapons-programs-are-12-years-behind-schedule-watchdog/"
+    },
+    {
+     "line": "Programs reporting decreases",
+     "value": "16, totaling $47B",
+     "source": "https://www.defensenews.com/news/pentagon-congress/2026/07/06/pentagons-top-new-weapons-programs-are-12-years-behind-schedule-watchdog/"
+    },
+    {
+     "line": "Average time to deliver a new capability",
+     "value": "Over 12 years",
+     "source": "https://www.defensenews.com/news/pentagon-congress/2026/07/06/pentagons-top-new-weapons-programs-are-12-years-behind-schedule-watchdog/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "GAO-26-108457: Weapon systems annual assessment",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Jul 2026",
+     "url": "https://www.gao.gov/products/gao-26-108457"
+    },
+    {
+     "title": "Pentagon's top new weapons programs are 12 years behind schedule: watchdog",
+     "publisher": "Defense News",
+     "date": "Jul 6, 2026",
+     "url": "https://www.defensenews.com/news/pentagon-congress/2026/07/06/pentagons-top-new-weapons-programs-are-12-years-behind-schedule-watchdog/"
+    }
+   ]
+  },
+  {
+   "slug": "federal-it-legacy-systems",
+   "url": "https://fraudbad.com/federal-it-legacy-systems",
+   "title": "Federal tech money spent keeping old systems alive",
+   "type": "soft",
+   "level": "federal",
+   "place": "Federal agencies",
+   "evidence": "Fix ignored",
+   "figure": "$100 billion+ a year",
+   "receipt": [
+    {
+     "line": "Federal IT spending per year",
+     "value": "Over $100B",
+     "source": "https://www.gao.gov/products/GAO-25-107795"
+    },
+    {
+     "line": "Share spent operating existing systems",
+     "value": "About 80%",
+     "source": "https://www.gao.gov/products/GAO-25-107795"
+    },
+    {
+     "line": "Critical legacy systems GAO flagged in 2019",
+     "value": "10",
+     "source": "https://www.gao.gov/products/GAO-25-107795"
+    },
+    {
+     "line": "Of those, modernized by Feb 2025",
+     "value": "3",
+     "source": "https://www.gao.gov/products/GAO-25-107795"
+    },
+    {
+     "line": "With no planned completion date",
+     "value": "1",
+     "source": "https://www.gao.gov/products/GAO-25-107795"
+    }
+   ],
+   "sources": [
+    {
+     "title": "GAO-25-107795: agencies need to continue addressing critical legacy systems",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Jul 17, 2025",
+     "url": "https://www.gao.gov/products/GAO-25-107795"
+    }
+   ]
+  },
+  {
+   "slug": "medicare-medicaid-no-receipts",
+   "url": "https://fraudbad.com/medicare-medicaid-no-receipts",
+   "title": "Health care money paid with no proof it was right",
+   "type": "soft",
+   "level": "federal",
+   "place": "Medicare, Medicaid, CHIP",
+   "evidence": "Paid without proof",
+   "figure": "$95.5 billion",
+   "receipt": [
+    {
+     "line": "Medicaid",
+     "value": "$37.39B (6.12%)",
+     "source": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    },
+    {
+     "line": "Medicare fee-for-service",
+     "value": "$28.83B (6.55%)",
+     "source": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    },
+    {
+     "line": "Medicare Advantage",
+     "value": "$23.67B (6.09%)",
+     "source": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    },
+    {
+     "line": "Medicare Part D drugs",
+     "value": "$4.23B (4.00%)",
+     "source": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    },
+    {
+     "line": "CHIP",
+     "value": "$1.37B (7.05%)",
+     "source": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    },
+    {
+     "line": "Total of the five",
+     "value": "$95.49B",
+     "source": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    },
+    {
+     "line": "Medicaid errors caused by missing documentation",
+     "value": "77.17%",
+     "source": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Fiscal year 2025 improper payments fact sheet",
+     "publisher": "Centers for Medicare & Medicaid Services",
+     "date": "Jan 15, 2026",
+     "url": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2025-improper-payments-fact-sheet"
+    }
+   ]
+  },
+  {
+   "slug": "pentagon-failed-audits",
+   "url": "https://fraudbad.com/pentagon-failed-audits",
+   "title": "Eight audits. Eight failures.",
+   "type": "soft",
+   "level": "federal",
+   "place": "Department of Defense",
+   "evidence": "Can't be checked",
+   "figure": "$4.65 trillion in assets",
+   "receipt": [
+    {
+     "line": "Full audits attempted since 2018",
+     "value": "8",
+     "source": "https://www.defensenews.com/pentagon/2025/12/19/pentagon-fails-financial-audit-for-8th-year-in-a-row/"
+    },
+    {
+     "line": "Audits passed",
+     "value": "0",
+     "source": "https://www.defensenews.com/pentagon/2025/12/19/pentagon-fails-financial-audit-for-8th-year-in-a-row/"
+    },
+    {
+     "line": "Assets covered",
+     "value": "$4.65 trillion",
+     "source": "https://www.defensenews.com/pentagon/2025/12/19/pentagon-fails-financial-audit-for-8th-year-in-a-row/"
+    },
+    {
+     "line": "Liabilities",
+     "value": "$4.7 trillion",
+     "source": "https://www.defensenews.com/pentagon/2025/12/19/pentagon-fails-financial-audit-for-8th-year-in-a-row/"
+    },
+    {
+     "line": "Material weaknesses found",
+     "value": "26",
+     "source": "https://www.defensenews.com/pentagon/2025/12/19/pentagon-fails-financial-audit-for-8th-year-in-a-row/"
+    },
+    {
+     "line": "Major agencies that have never passed",
+     "value": "1 of 24: DoD",
+     "source": "https://www.defensenews.com/pentagon/2025/12/19/pentagon-fails-financial-audit-for-8th-year-in-a-row/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Pentagon fails financial audit for 8th year in a row",
+     "publisher": "Defense News",
+     "date": "Dec 19, 2025",
+     "url": "https://www.defensenews.com/pentagon/2025/12/19/pentagon-fails-financial-audit-for-8th-year-in-a-row/"
+    }
+   ]
+  },
+  {
+   "slug": "social-security-overpayments",
+   "url": "https://fraudbad.com/social-security-overpayments",
+   "title": "Social Security overpayments that haven't come back",
+   "type": "soft",
+   "level": "federal",
+   "place": "Social Security Administration",
+   "evidence": "Never collected",
+   "figure": "$23 billion not yet recovered",
+   "receipt": [
+    {
+     "line": "Uncollected overpayments, Oct 1, 2023",
+     "value": "$23B",
+     "source": "https://www.govexec.com/oversight/2023/11/new-social-security-report-shows-growing-overpayment-problem-tops-23b/392143/"
+    },
+    {
+     "line": "A year earlier",
+     "value": "$21.6B",
+     "source": "https://www.govexec.com/oversight/2023/11/new-social-security-report-shows-growing-overpayment-problem-tops-23b/392143/"
+    },
+    {
+     "line": "New overpayments, FY2022",
+     "value": "About $11.1B",
+     "source": "https://www.govexec.com/oversight/2023/11/new-social-security-report-shows-growing-overpayment-problem-tops-23b/392143/"
+    },
+    {
+     "line": "Of those, caused by SSA, not the recipient",
+     "value": "About $1.9B",
+     "source": "https://www.govexec.com/oversight/2023/11/new-social-security-report-shows-growing-overpayment-problem-tops-23b/392143/"
+    },
+    {
+     "line": "Retirement and disability overpayments, FY2022–23",
+     "value": "Almost $10B",
+     "source": "https://www.oversight.gov/sites/default/files/documents/reports/2026-07/072301.pdf"
+    },
+    {
+     "line": "Booked as recovered, but wasn't",
+     "value": "About $904M",
+     "source": "https://www.oversight.gov/sites/default/files/documents/reports/2026-07/072301.pdf"
+    },
+    {
+     "line": "Miscalculated, mostly never to be recovered",
+     "value": "Almost $245M",
+     "source": "https://www.oversight.gov/sites/default/files/documents/reports/2026-07/072301.pdf"
+    }
+   ],
+   "sources": [
+    {
+     "title": "New Social Security report shows growing overpayment problem tops $23B",
+     "publisher": "Government Executive",
+     "date": "Nov 2023",
+     "url": "https://www.govexec.com/oversight/2023/11/new-social-security-report-shows-growing-overpayment-problem-tops-23b/392143/"
+    },
+    {
+     "title": "Audit 072301: processing Old-Age, Survivors and Disability Insurance overpayments",
+     "publisher": "Social Security Administration Office of the Inspector General",
+     "date": "Sep 30, 2025",
+     "url": "https://www.oversight.gov/sites/default/files/documents/reports/2026-07/072301.pdf"
+    }
+   ]
+  },
+  {
+   "slug": "shuttered-venue-grants",
+   "url": "https://fraudbad.com/shuttered-venue-grants",
+   "title": "Venue grants: 69% paid wrong or without proof",
+   "type": "soft",
+   "level": "federal",
+   "place": "Small Business Administration",
+   "evidence": "Paid without proof",
+   "figure": "$10.1 billion paid wrong or unproven",
+   "receipt": [
+    {
+     "line": "Payments reviewed",
+     "value": "$14.6B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Improper",
+     "value": "$5.83B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Can't tell either way (no documentation)",
+     "value": "$4.24B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Wrong or unverifiable",
+     "value": "68.9%",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Rank among 64 programs reporting",
+     "value": "#1 by error rate",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    }
+   ],
+   "sources": [
+    {
+     "title": "FY2025 improper payments dataset: every program's results, root causes, recoveries and compliance (FY2004–FY2025)",
+     "publisher": "PaymentAccuracy.gov (OMB and CFO Council); totals summed by FraudBad",
+     "date": "Nov 9, 2026",
+     "url": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "title": "Agencies & programs: improper payment rates, FY2025",
+     "publisher": "PaymentAccuracy.gov",
+     "date": "accessed Nov 9, 2026",
+     "url": "https://www.paymentaccuracy.gov/agencies-and-programs"
+    },
+    {
+     "title": "GAO reports improper payments rose to an estimated $186 billion in fiscal year 2025",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Apr 27, 2026",
+     "url": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    }
+   ]
+  },
+  {
+   "slug": "afghanistan-reconstruction",
+   "url": "https://fraudbad.com/afghanistan-reconstruction",
+   "title": "Lost to waste, fraud and abuse rebuilding Afghanistan",
+   "type": "soft",
+   "level": "federal",
+   "place": "Afghanistan",
+   "evidence": "Estimated",
+   "figure": "$26–29 billion",
+   "receipt": [
+    {
+     "line": "Spent on reconstruction",
+     "value": "Over $148B",
+     "source": "https://www.defenseone.com/threats/2025/12/watchdogs-final-report-highlights-us-govs-148-billion-afghanistan-reconstruction-failure/409909/"
+    },
+    {
+     "line": "Lost to waste, fraud and abuse",
+     "value": "$26B–$29B",
+     "source": "https://www.defenseone.com/threats/2025/12/watchdogs-final-report-highlights-us-govs-148-billion-afghanistan-reconstruction-failure/409909/"
+    },
+    {
+     "line": "Power plant built, then run at under 1% capacity",
+     "value": "$355M",
+     "source": "https://www.defenseone.com/threats/2025/12/watchdogs-final-report-highlights-us-govs-148-billion-afghanistan-reconstruction-failure/409909/"
+    },
+    {
+     "line": "Afghan air force planes, later scrapped",
+     "value": "$486M for 20",
+     "source": "https://www.defenseone.com/threats/2025/12/watchdogs-final-report-highlights-us-govs-148-billion-afghanistan-reconstruction-failure/409909/"
+    },
+    {
+     "line": "People convicted with the watchdog's help",
+     "value": "171",
+     "source": "https://www.defenseone.com/threats/2025/12/watchdogs-final-report-highlights-us-govs-148-billion-afghanistan-reconstruction-failure/409909/"
+    },
+    {
+     "line": "Fines, restitution and other recoveries",
+     "value": "≈$1.7B",
+     "source": "https://www.defenseone.com/threats/2025/12/watchdogs-final-report-highlights-us-govs-148-billion-afghanistan-reconstruction-failure/409909/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Watchdog's final report highlights the U.S. government's $148 billion Afghanistan reconstruction failure",
+     "publisher": "Defense One",
+     "date": "Dec 3, 2025",
+     "url": "https://www.defenseone.com/threats/2025/12/watchdogs-final-report-highlights-us-govs-148-billion-afghanistan-reconstruction-failure/409909/"
+    }
+   ]
+  },
+  {
+   "slug": "tax-credit-errors",
+   "url": "https://fraudbad.com/tax-credit-errors",
+   "title": "Refundable tax credits paid out in error",
+   "type": "soft",
+   "level": "federal",
+   "place": "Internal Revenue Service",
+   "evidence": "Paid without proof",
+   "figure": "$28.1 billion",
+   "receipt": [
+    {
+     "line": "Improper payments, refundable credits, FY2025",
+     "value": "≈$28.1B",
+     "source": "https://www.accountingtoday.com/news/irs-improper-payments-on-tax-credits-increased-last-year"
+    },
+    {
+     "line": "Improper payment rate, FY2025",
+     "value": "26.5%",
+     "source": "https://www.accountingtoday.com/news/irs-improper-payments-on-tax-credits-increased-last-year"
+    },
+    {
+     "line": "Improper payment rate, FY2024",
+     "value": "21.9%",
+     "source": "https://www.accountingtoday.com/news/irs-improper-payments-on-tax-credits-increased-last-year"
+    },
+    {
+     "line": "Earned Income Tax Credit, yearly cost (FY2026)",
+     "value": "$67B",
+     "source": "https://www.crfb.org/blogs/jct-projects-tax-expenditures-will-be-23t-2026"
+    }
+   ],
+   "sources": [
+    {
+     "title": "IRS improper payments on tax credits increased last year (TIGTA review)",
+     "publisher": "Accounting Today",
+     "date": "Jul 2026",
+     "url": "https://www.accountingtoday.com/news/irs-improper-payments-on-tax-credits-increased-last-year"
+    },
+    {
+     "title": "GAO reports improper payments rose to an estimated $186 billion in fiscal year 2025",
+     "publisher": "U.S. Government Accountability Office",
+     "date": "Apr 27, 2026",
+     "url": "https://www.gao.gov/press-release/gao-reports-improper-payments-rose-estimated-186-billion-across-federal-government-fiscal-year-2025"
+    },
+    {
+     "title": "JCT projects tax expenditures will be $2.3T in 2026",
+     "publisher": "Committee for a Responsible Federal Budget",
+     "date": "Feb 9, 2026",
+     "url": "https://www.crfb.org/blogs/jct-projects-tax-expenditures-will-be-23t-2026"
+    }
+   ]
+  },
+  {
+   "slug": "snap-payment-errors",
+   "url": "https://fraudbad.com/snap-payment-errors",
+   "title": "Food aid paid in the wrong amount",
+   "type": "soft",
+   "level": "federal",
+   "place": "SNAP, run by the states",
+   "evidence": "Paid without proof",
+   "figure": "$10.1 billion",
+   "receipt": [
+    {
+     "line": "SNAP payment error rate, FY2025",
+     "value": "10.62%",
+     "source": "https://www.fns.usda.gov/newsroom/usda-0082.26"
+    },
+    {
+     "line": "Federal threshold",
+     "value": "6%",
+     "source": "https://www.fns.usda.gov/newsroom/usda-0082.26"
+    },
+    {
+     "line": "Improper payments, over + under",
+     "value": "$10.1B",
+     "source": "https://www.fns.usda.gov/newsroom/usda-0082.26"
+    },
+    {
+     "line": "SNAP spending with no local tracking on USAspending, FY2024",
+     "value": "$84.8B",
+     "source": "https://docs.pogo.org/report/2026/Tracking-Taxpayer-Dollars-Fixing-a-Flawed-System-for-Federal-Final.pdf"
+    }
+   ],
+   "sources": [
+    {
+     "title": "USDA announces FY2025 state payment error rates in SNAP",
+     "publisher": "USDA Food and Nutrition Service",
+     "date": "Jun 24, 2026",
+     "url": "https://www.fns.usda.gov/newsroom/usda-0082.26"
+    },
+    {
+     "title": "Tracking Taxpayer Dollars: fixing a flawed system for federal spending transparency",
+     "publisher": "Project On Government Oversight",
+     "date": "Jul 21, 2026",
+     "url": "https://docs.pogo.org/report/2026/Tracking-Taxpayer-Dollars-Fixing-a-Flawed-System-for-Federal-Final.pdf"
+    }
+   ]
+  },
+  {
+   "slug": "hud-rental-assistance-unverified",
+   "url": "https://fraudbad.com/hud-rental-assistance-unverified",
+   "title": "Rent subsidies HUD can't verify",
+   "type": "soft",
+   "level": "federal",
+   "place": "Department of Housing and Urban Development",
+   "evidence": "Can't be checked",
+   "figure": "$4.35 billion HUD can't verify",
+   "receipt": [
+    {
+     "line": "Program payments reviewed, FY2025",
+     "value": "$16.46B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Payments HUD can't verify",
+     "value": "$4.35B",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Share of the program",
+     "value": "26.4%",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Same measure, FY2024",
+     "value": "$45M (0.3%)",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "line": "Improper payments it confirmed",
+     "value": "$0",
+     "source": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    }
+   ],
+   "sources": [
+    {
+     "title": "FY2025 improper payments dataset: every program's results, root causes, recoveries and compliance (FY2004–FY2025)",
+     "publisher": "PaymentAccuracy.gov (OMB and CFO Council); totals summed by FraudBad",
+     "date": "Nov 9, 2026",
+     "url": "https://paymentaccuracy.gov/assets/files/FY2025_Dataset.xlsx"
+    },
+    {
+     "title": "Agencies & programs: improper payment rates, FY2025",
+     "publisher": "PaymentAccuracy.gov",
+     "date": "accessed Nov 9, 2026",
+     "url": "https://www.paymentaccuracy.gov/agencies-and-programs"
+    }
+   ]
+  },
+  {
+   "slug": "honolulu-rail",
+   "url": "https://fraudbad.com/honolulu-rail",
+   "title": "Honolulu's rail line: twice the cost, a mile shorter",
+   "type": "soft",
+   "level": "local",
+   "place": "Honolulu Authority for Rapid Transportation",
+   "evidence": "Over budget",
+   "figure": "$10.1 billion, double the plan",
+   "receipt": [
+    {
+     "line": "Estimate when construction began, 2011",
+     "value": "About $5B",
+     "source": "https://www.civilbeat.org/2026/08/cost-of-honolulu-rail-line-may-be-climbing-again/"
+    },
+    {
+     "line": "Official budget now",
+     "value": "$10.079B",
+     "source": "https://www.civilbeat.org/2026/08/cost-of-honolulu-rail-line-may-be-climbing-again/"
+    },
+    {
+     "line": "Risk analysis, with financing",
+     "value": "Up to $10.19B",
+     "source": "https://www.civilbeat.org/2026/08/cost-of-honolulu-rail-line-may-be-climbing-again/"
+    },
+    {
+     "line": "Length",
+     "value": "18.9 miles, elevated",
+     "source": "https://www.civilbeat.org/2026/08/cost-of-honolulu-rail-line-may-be-climbing-again/"
+    },
+    {
+     "line": "Cut from the route",
+     "value": "About 1 mile (to Ala Moana)",
+     "source": "https://www.civilbeat.org/2026/08/cost-of-honolulu-rail-line-may-be-climbing-again/"
+    },
+    {
+     "line": "Full service target",
+     "value": "2031",
+     "source": "https://www.civilbeat.org/2026/08/cost-of-honolulu-rail-line-may-be-climbing-again/"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Cost of Honolulu rail line may be climbing again",
+     "publisher": "Honolulu Civil Beat",
+     "date": "Aug 5, 2026",
+     "url": "https://www.civilbeat.org/2026/08/cost-of-honolulu-rail-line-may-be-climbing-again/"
+    }
+   ]
+  },
+  {
+   "slug": "second-avenue-subway",
+   "url": "https://fraudbad.com/second-avenue-subway",
+   "title": "Second Avenue subway: $7.7 billion for a mile and a half",
+   "type": "soft",
+   "level": "state",
+   "place": "MTA, New York City",
+   "evidence": "Over budget",
+   "figure": "$7.7 billion for 1.5 miles",
+   "receipt": [
+    {
+     "line": "Length of the East Harlem extension",
+     "value": "1.5 miles",
+     "source": "https://gothamist.com/news/cost-of-second-ave-subway-extension-to-east-harlem-balloons-to-77b"
+    },
+    {
+     "line": "New stations",
+     "value": "3",
+     "source": "https://gothamist.com/news/cost-of-second-ave-subway-extension-to-east-harlem-balloons-to-77b"
+    },
+    {
+     "line": "Cost now",
+     "value": "$7.7B",
+     "source": "https://gothamist.com/news/cost-of-second-ave-subway-extension-to-east-harlem-balloons-to-77b"
+    },
+    {
+     "line": "Earlier federal estimate",
+     "value": "$6.9B",
+     "source": "https://gothamist.com/news/cost-of-second-ave-subway-extension-to-east-harlem-balloons-to-77b"
+    },
+    {
+     "line": "Earlier MTA estimate (without financing)",
+     "value": "$6.3B",
+     "source": "https://gothamist.com/news/cost-of-second-ave-subway-extension-to-east-harlem-balloons-to-77b"
+    },
+    {
+     "line": "Per mile (our math)",
+     "value": "About $5.1B",
+     "source": "https://gothamist.com/news/cost-of-second-ave-subway-extension-to-east-harlem-balloons-to-77b"
+    },
+    {
+     "line": "Next extension, 125th Street west",
+     "value": "$7.7B",
+     "source": "https://nyc.streetsblog.org/2026/02/03/does-hochuls-125th-street-subway-have-to-be-that-expensive"
+    },
+    {
+     "line": "Of that, soft costs (design, management)",
+     "value": "43%",
+     "source": "https://nyc.streetsblog.org/2026/02/03/does-hochuls-125th-street-subway-have-to-be-that-expensive"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Cost of 2nd Avenue Subway extension to East Harlem balloons to $7.7B",
+     "publisher": "Gothamist",
+     "date": "Mar 9, 2023",
+     "url": "https://gothamist.com/news/cost-of-second-ave-subway-extension-to-east-harlem-balloons-to-77b"
+    },
+    {
+     "title": "Does Hochul's 125th Street subway have to be that expensive?",
+     "publisher": "Streetsblog NYC",
+     "date": "Feb 3, 2026",
+     "url": "https://nyc.streetsblog.org/2026/02/03/does-hochuls-125th-street-subway-have-to-be-that-expensive"
+    }
+   ]
+  },
+  {
+   "slug": "medicare-generic-drug-prices",
+   "url": "https://fraudbad.com/medicare-generic-drug-prices",
+   "title": "Medicare paid far more for cheap generics than an online pharmacy charges",
+   "type": "soft",
+   "level": "federal",
+   "place": "Medicare Part D",
+   "evidence": "Estimated",
+   "figure": "$3.6 billion in one year",
+   "receipt": [
+    {
+     "line": "Estimated savings, one year",
+     "value": "$3.6B",
+     "source": "https://www.medicaleconomics.com/view/medicare-could-save-billions-buying-generics-through-mark-cuban-prescription-drug-company"
+    },
+    {
+     "line": "Generic drugs compared",
+     "value": "89",
+     "source": "https://www.medicaleconomics.com/view/medicare-could-save-billions-buying-generics-through-mark-cuban-prescription-drug-company"
+    },
+    {
+     "line": "Drugs where Medicare paid more",
+     "value": "77",
+     "source": "https://www.medicaleconomics.com/view/medicare-could-save-billions-buying-generics-through-mark-cuban-prescription-drug-company"
+    },
+    {
+     "line": "Esomeprazole, 90 pills: Medicare",
+     "value": "$160",
+     "source": "https://www.medicaleconomics.com/view/medicare-could-save-billions-buying-generics-through-mark-cuban-prescription-drug-company"
+    },
+    {
+     "line": "Esomeprazole, 90 pills: Cost Plus",
+     "value": "$17",
+     "source": "https://www.medicaleconomics.com/view/medicare-could-save-billions-buying-generics-through-mark-cuban-prescription-drug-company"
+    },
+    {
+     "line": "Savings on esomeprazole alone",
+     "value": "$293M of $327M spent",
+     "source": "https://www.medicaleconomics.com/view/medicare-could-save-billions-buying-generics-through-mark-cuban-prescription-drug-company"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Medicare could save billions buying generics through Mark Cuban prescription drug company (on Lalani et al., Annals of Internal Medicine)",
+     "publisher": "Medical Economics",
+     "date": "Jun 2022",
+     "url": "https://www.medicaleconomics.com/view/medicare-could-save-billions-buying-generics-through-mark-cuban-prescription-drug-company"
+    }
+   ]
+  },
+  {
+   "slug": "new-york-unemployment-overpayments",
+   "url": "https://fraudbad.com/new-york-unemployment-overpayments",
+   "title": "Unemployment money New York overpaid",
+   "type": "soft",
+   "level": "state",
+   "place": "New York",
+   "evidence": "Paid without proof",
+   "figure": "$11 billion+",
+   "receipt": [
+    {
+     "line": "Overpayments found by the State Comptroller",
+     "value": "At least $11B",
+     "source": "https://www.wshu.org/2022-11-15/new-york-lost-at-least-11b-in-overpaid-unemployment-during-the-pandemic-dinapoli-says"
+    },
+    {
+     "line": "Includes fraud",
+     "value": "Yes, share not stated",
+     "source": "https://www.wshu.org/2022-11-15/new-york-lost-at-least-11b-in-overpaid-unemployment-during-the-pandemic-dinapoli-says"
+    },
+    {
+     "line": "Why the exact amount is unclear",
+     "value": "Agency was slow to provide records",
+     "source": "https://www.wshu.org/2022-11-15/new-york-lost-at-least-11b-in-overpaid-unemployment-during-the-pandemic-dinapoli-says"
+    }
+   ],
+   "sources": [
+    {
+     "title": "New York lost at least $11B in overpaid unemployment during the pandemic, DiNapoli says",
+     "publisher": "WSHU Public Radio",
+     "date": "Nov 15, 2022",
+     "url": "https://www.wshu.org/2022-11-15/new-york-lost-at-least-11b-in-overpaid-unemployment-during-the-pandemic-dinapoli-says"
+    }
+   ]
+  },
+  {
+   "slug": "los-angeles-homelessness-spending",
+   "url": "https://fraudbad.com/los-angeles-homelessness-spending",
+   "title": "Homelessness money LA couldn't fully trace",
+   "type": "soft",
+   "level": "local",
+   "place": "Los Angeles",
+   "evidence": "Can't be checked",
+   "figure": "$2.3 billion",
+   "receipt": [
+    {
+     "line": "City homelessness funding identified by auditors",
+     "value": "$2.3B",
+     "source": "https://spectrumlocalnews.com/ca/california/homelessness/2025/03/06/lack-of-clarity--oversight-hamper-la-s-homeless-programs"
+    },
+    {
+     "line": "Spending per program fully quantified",
+     "value": "No",
+     "source": "https://spectrumlocalnews.com/ca/california/homelessness/2025/03/06/lack-of-clarity--oversight-hamper-la-s-homeless-programs"
+    },
+    {
+     "line": "Provider invoices",
+     "value": "Many lacked dates or support",
+     "source": "https://laist.com/news/housing-homelessness/audit-la-homelessness-spending-poor-accounting-inconsistent-care"
+    },
+    {
+     "line": "Case managers at one site vs. case managers billed",
+     "value": "2 vs. 10",
+     "source": "https://laist.com/news/housing-homelessness/audit-la-homelessness-spending-poor-accounting-inconsistent-care"
+    },
+    {
+     "line": "City staff tasked with monitoring results",
+     "value": "None",
+     "source": "https://spectrumlocalnews.com/ca/california/homelessness/2025/03/06/lack-of-clarity--oversight-hamper-la-s-homeless-programs"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Lack of clarity, oversight hamper LA's homeless programs (court-ordered audit)",
+     "publisher": "Spectrum News",
+     "date": "Mar 6, 2025",
+     "url": "https://spectrumlocalnews.com/ca/california/homelessness/2025/03/06/lack-of-clarity--oversight-hamper-la-s-homeless-programs"
+    },
+    {
+     "title": "Audit finds poor accounting and inconsistent care in LA homelessness spending",
+     "publisher": "LAist",
+     "date": "Oct 2, 2024",
+     "url": "https://laist.com/news/housing-homelessness/audit-la-homelessness-spending-poor-accounting-inconsistent-care"
+    }
+   ]
+  }
+ ]
+}
