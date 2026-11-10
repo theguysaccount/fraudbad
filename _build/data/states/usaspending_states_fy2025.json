@@ -1,0 +1,422 @@
+{
+ "pulled": "2026-11-10",
+ "source": "https://api.usaspending.gov/api/v2/recipient/state/{fips}/?year=2025",
+ "states": {
+  "01": {
+   "name": "Alabama",
+   "code": "AL",
+   "pop2024": 5157699,
+   "prime_fy2025": 76005277342.22,
+   "outlays_fy2025": 58494834947.66,
+   "awards_fy2025": 143685
+  },
+  "02": {
+   "name": "Alaska",
+   "code": "AK",
+   "pop2024": 740133,
+   "prime_fy2025": 18578889020.98,
+   "outlays_fy2025": 18162823336.37,
+   "awards_fy2025": 24965
+  },
+  "04": {
+   "name": "Arizona",
+   "code": "AZ",
+   "pop2024": 7582384,
+   "prime_fy2025": 115642648702.27,
+   "outlays_fy2025": 108166110451.74,
+   "awards_fy2025": 89429
+  },
+  "05": {
+   "name": "Arkansas",
+   "code": "AR",
+   "pop2024": 3088354,
+   "prime_fy2025": 35202358509.51,
+   "outlays_fy2025": 37791727665.08,
+   "awards_fy2025": 125658
+  },
+  "06": {
+   "name": "California",
+   "code": "CA",
+   "pop2024": 39431263,
+   "prime_fy2025": 486893854265.2,
+   "outlays_fy2025": 556353306274.21,
+   "awards_fy2025": 661469
+  },
+  "08": {
+   "name": "Colorado",
+   "code": "CO",
+   "pop2024": 5957493,
+   "prime_fy2025": 70156347652.79,
+   "outlays_fy2025": 66014369245.65,
+   "awards_fy2025": 121805
+  },
+  "09": {
+   "name": "Connecticut",
+   "code": "CT",
+   "pop2024": 3675069,
+   "prime_fy2025": 153891638771.31,
+   "outlays_fy2025": 125554124471.66,
+   "awards_fy2025": 84133
+  },
+  "10": {
+   "name": "Delaware",
+   "code": "DE",
+   "pop2024": 1051917,
+   "prime_fy2025": 12240376465.55,
+   "outlays_fy2025": 13863656312.34,
+   "awards_fy2025": 12152
+  },
+  "11": {
+   "name": "District of Columbia",
+   "code": "DC",
+   "pop2024": 702250,
+   "prime_fy2025": 48990573257.41,
+   "outlays_fy2025": 49488763063.92,
+   "awards_fy2025": 60678
+  },
+  "12": {
+   "name": "Florida",
+   "code": "FL",
+   "pop2024": 23372215,
+   "prime_fy2025": 327714286600.72,
+   "outlays_fy2025": 308995997182.32,
+   "awards_fy2025": 514163
+  },
+  "13": {
+   "name": "Georgia",
+   "code": "GA",
+   "pop2024": 11180878,
+   "prime_fy2025": 106252692344.65,
+   "outlays_fy2025": 105670201687.52,
+   "awards_fy2025": 251114
+  },
+  "15": {
+   "name": "Hawaii",
+   "code": "HI",
+   "pop2024": 1446146,
+   "prime_fy2025": 22680097161.96,
+   "outlays_fy2025": 17611728861.62,
+   "awards_fy2025": 39808
+  },
+  "16": {
+   "name": "Idaho",
+   "code": "ID",
+   "pop2024": 2001619,
+   "prime_fy2025": 22884100790.43,
+   "outlays_fy2025": 24417426914.16,
+   "awards_fy2025": 56513
+  },
+  "17": {
+   "name": "Illinois",
+   "code": "IL",
+   "pop2024": 12710158,
+   "prime_fy2025": 135263079956.64,
+   "outlays_fy2025": 147071496526.24,
+   "awards_fy2025": 939737
+  },
+  "18": {
+   "name": "Indiana",
+   "code": "IN",
+   "pop2024": 6924275,
+   "prime_fy2025": 208675168285.7,
+   "outlays_fy2025": 213967311063.99,
+   "awards_fy2025": 153462
+  },
+  "19": {
+   "name": "Iowa",
+   "code": "IA",
+   "pop2024": 3241488,
+   "prime_fy2025": 37799467491.59,
+   "outlays_fy2025": 36465254032.11,
+   "awards_fy2025": 240071
+  },
+  "20": {
+   "name": "Kansas",
+   "code": "KS",
+   "pop2024": 2970606,
+   "prime_fy2025": 31122191388.84,
+   "outlays_fy2025": 29550582357.04,
+   "awards_fy2025": 344828
+  },
+  "21": {
+   "name": "Kentucky",
+   "code": "KY",
+   "pop2024": 4588372,
+   "prime_fy2025": 173821536983.22,
+   "outlays_fy2025": 178071386565.68,
+   "awards_fy2025": 152685
+  },
+  "22": {
+   "name": "Louisiana",
+   "code": "LA",
+   "pop2024": 4597740,
+   "prime_fy2025": 60053958479.26,
+   "outlays_fy2025": 66098422984.19,
+   "awards_fy2025": 107832
+  },
+  "23": {
+   "name": "Maine",
+   "code": "ME",
+   "pop2024": 1405012,
+   "prime_fy2025": 22027191757.25,
+   "outlays_fy2025": 21696756152.55,
+   "awards_fy2025": 26389
+  },
+  "24": {
+   "name": "Maryland",
+   "code": "MD",
+   "pop2024": 6263220,
+   "prime_fy2025": 106699294131.85,
+   "outlays_fy2025": 101671113045.86,
+   "awards_fy2025": 152998
+  },
+  "25": {
+   "name": "Massachusetts",
+   "code": "MA",
+   "pop2024": 7136171,
+   "prime_fy2025": 105339779094.57,
+   "outlays_fy2025": 107999965260.09,
+   "awards_fy2025": 161502
+  },
+  "26": {
+   "name": "Michigan",
+   "code": "MI",
+   "pop2024": 10140459,
+   "prime_fy2025": 129136971008.17,
+   "outlays_fy2025": 140960631476.36,
+   "awards_fy2025": 413473
+  },
+  "27": {
+   "name": "Minnesota",
+   "code": "MN",
+   "pop2024": 5793151,
+   "prime_fy2025": 242654774081.99,
+   "outlays_fy2025": 250804614772.74,
+   "awards_fy2025": 236002
+  },
+  "28": {
+   "name": "Mississippi",
+   "code": "MS",
+   "pop2024": 2943045,
+   "prime_fy2025": 38757966339.25,
+   "outlays_fy2025": 36309439929.61,
+   "awards_fy2025": 172212
+  },
+  "29": {
+   "name": "Missouri",
+   "code": "MO",
+   "pop2024": 6245466,
+   "prime_fy2025": 95051740719.11,
+   "outlays_fy2025": 94107493099.95,
+   "awards_fy2025": 304567
+  },
+  "30": {
+   "name": "Montana",
+   "code": "MT",
+   "pop2024": 1137233,
+   "prime_fy2025": 15369144862.12,
+   "outlays_fy2025": 16707868280.41,
+   "awards_fy2025": 62441
+  },
+  "31": {
+   "name": "Nebraska",
+   "code": "NE",
+   "pop2024": 2005465,
+   "prime_fy2025": 27804764900.93,
+   "outlays_fy2025": 27589902424.82,
+   "awards_fy2025": 204513
+  },
+  "32": {
+   "name": "Nevada",
+   "code": "NV",
+   "pop2024": 3267467,
+   "prime_fy2025": 34085474130.28,
+   "outlays_fy2025": 33812467830.9,
+   "awards_fy2025": 44977
+  },
+  "33": {
+   "name": "New Hampshire",
+   "code": "NH",
+   "pop2024": 1409032,
+   "prime_fy2025": 17481786983.68,
+   "outlays_fy2025": 15793825011.75,
+   "awards_fy2025": 14146
+  },
+  "34": {
+   "name": "New Jersey",
+   "code": "NJ",
+   "pop2024": 9500851,
+   "prime_fy2025": 96825027212.26,
+   "outlays_fy2025": 107429991827.54,
+   "awards_fy2025": 580672
+  },
+  "35": {
+   "name": "New Mexico",
+   "code": "NM",
+   "pop2024": 2130256,
+   "prime_fy2025": 41471262404.97,
+   "outlays_fy2025": 46833137515.2,
+   "awards_fy2025": 39498
+  },
+  "36": {
+   "name": "New York",
+   "code": "NY",
+   "pop2024": 19867248,
+   "prime_fy2025": 263947045946.58,
+   "outlays_fy2025": 349209041191.73,
+   "awards_fy2025": 389285
+  },
+  "37": {
+   "name": "North Carolina",
+   "code": "NC",
+   "pop2024": 11046024,
+   "prime_fy2025": 129563426340.32,
+   "outlays_fy2025": 138343962169.58,
+   "awards_fy2025": 304139
+  },
+  "38": {
+   "name": "North Dakota",
+   "code": "ND",
+   "pop2024": 796568,
+   "prime_fy2025": 98426905710.24,
+   "outlays_fy2025": 97343998810.93,
+   "awards_fy2025": 85353
+  },
+  "39": {
+   "name": "Ohio",
+   "code": "OH",
+   "pop2024": 11883304,
+   "prime_fy2025": 129301941604.81,
+   "outlays_fy2025": 146298299300.62,
+   "awards_fy2025": 261064
+  },
+  "40": {
+   "name": "Oklahoma",
+   "code": "OK",
+   "pop2024": 4095393,
+   "prime_fy2025": 50314117421.75,
+   "outlays_fy2025": 51136841171.93,
+   "awards_fy2025": 201933
+  },
+  "41": {
+   "name": "Oregon",
+   "code": "OR",
+   "pop2024": 4272371,
+   "prime_fy2025": 57351002866.43,
+   "outlays_fy2025": 70077846686.0,
+   "awards_fy2025": 56726
+  },
+  "42": {
+   "name": "Pennsylvania",
+   "code": "PA",
+   "pop2024": 13078751,
+   "prime_fy2025": 284783059067.23,
+   "outlays_fy2025": 292516906511.31,
+   "awards_fy2025": 795367
+  },
+  "44": {
+   "name": "Rhode Island",
+   "code": "RI",
+   "pop2024": 1112308,
+   "prime_fy2025": 15143393485.13,
+   "outlays_fy2025": 17363080073.13,
+   "awards_fy2025": 15494
+  },
+  "45": {
+   "name": "South Carolina",
+   "code": "SC",
+   "pop2024": 5478831,
+   "prime_fy2025": 137245632251.57,
+   "outlays_fy2025": 135387422452.82,
+   "awards_fy2025": 110037
+  },
+  "46": {
+   "name": "South Dakota",
+   "code": "SD",
+   "pop2024": 924669,
+   "prime_fy2025": 11503097655.65,
+   "outlays_fy2025": 11798440370.46,
+   "awards_fy2025": 111632
+  },
+  "47": {
+   "name": "Tennessee",
+   "code": "TN",
+   "pop2024": 7227750,
+   "prime_fy2025": 121799662291.56,
+   "outlays_fy2025": 126290222180.16,
+   "awards_fy2025": 140774
+  },
+  "48": {
+   "name": "Texas",
+   "code": "TX",
+   "pop2024": 31290831,
+   "prime_fy2025": 320562236062.99,
+   "outlays_fy2025": 256958704759.55,
+   "awards_fy2025": 681605
+  },
+  "49": {
+   "name": "Utah",
+   "code": "UT",
+   "pop2024": 3503613,
+   "prime_fy2025": 29197941911.72,
+   "outlays_fy2025": 28921958958.61,
+   "awards_fy2025": 44144
+  },
+  "50": {
+   "name": "Vermont",
+   "code": "VT",
+   "pop2024": 648493,
+   "prime_fy2025": 8878907990.12,
+   "outlays_fy2025": 9847978947.81,
+   "awards_fy2025": 16088
+  },
+  "51": {
+   "name": "Virginia",
+   "code": "VA",
+   "pop2024": 8811195,
+   "prime_fy2025": 218767768633.26,
+   "outlays_fy2025": 129809572263.95,
+   "awards_fy2025": 579756
+  },
+  "53": {
+   "name": "Washington",
+   "code": "WA",
+   "pop2024": 7958180,
+   "prime_fy2025": 89594120197.82,
+   "outlays_fy2025": 94757113394.55,
+   "awards_fy2025": 164912
+  },
+  "54": {
+   "name": "West Virginia",
+   "code": "WV",
+   "pop2024": 1769979,
+   "prime_fy2025": 23984840643.96,
+   "outlays_fy2025": 27269381010.78,
+   "awards_fy2025": 39965
+  },
+  "55": {
+   "name": "Wisconsin",
+   "code": "WI",
+   "pop2024": 5960975,
+   "prime_fy2025": 114118082219.67,
+   "outlays_fy2025": 115915523543.03,
+   "awards_fy2025": 196353
+  },
+  "56": {
+   "name": "Wyoming",
+   "code": "WY",
+   "pop2024": 587618,
+   "prime_fy2025": 6993378515.41,
+   "outlays_fy2025": 6515881701.61,
+   "awards_fy2025": 24498
+  },
+  "72": {
+   "name": "Puerto Rico",
+   "code": "PR",
+   "pop2024": 3203295,
+   "prime_fy2025": 38437347623.72,
+   "outlays_fy2025": 43106861707.36,
+   "awards_fy2025": 37990
+  }
+ }
+}

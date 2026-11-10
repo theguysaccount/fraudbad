@@ -479,6 +479,8 @@ def _rfc822(d):
 
 
 def build_all(B, added_by_slug):
+    rows = build_states(B)
+    build_your_share(B, rows)
     build_programs(B)
     build_agencies(B)
     build_years(B)
@@ -486,3 +488,117 @@ def build_all(B, added_by_slug):
     build_about(B)
     build_embeds(B)
     build_feed(B, added_by_slug)
+
+
+# ------------------------------------------------------------------ states (SNAP error rates + federal awards)
+STATE_CASES = {
+    "MN": ["feeding-our-future", "minnesota-medicaid-programs"], "AZ": ["arizona-sober-living-fraud"],
+    "CA": ["california-unemployment-fraud", "los-angeles-hospice-fraud", "california-high-speed-rail", "los-angeles-homelessness-spending"],
+    "MI": ["michigan-unemployment-fraud"], "WA": ["washington-unemployment-theft"], "MS": ["mississippi-welfare-scandal"],
+    "NY": ["new-york-unemployment-overpayments", "second-avenue-subway"], "HI": ["honolulu-rail"],
+}
+STATE_SOURCES = {
+    "snap_fy25": ("SNAP payment error rates, fiscal year 2025 (by state)", "USDA Food and Nutrition Service", "Jun 24, 2026", "https://www.fns.usda.gov/sites/default/files/resource-files/snap-qcfy25-per.pdf"),
+    "snap_fy24": ("SNAP payment error rates, fiscal year 2024 (by state)", "USDA Food and Nutrition Service", "Jun 30, 2025", "https://www.fns.usda.gov/sites/default/files/resource-files/snap-fy24QC-PER.pdf"),
+    "usas_state": ("State profiles: federal prime awards to recipients in each state, fiscal year 2025", "USAspending.gov (U.S. Treasury), pulled by FraudBad", "Nov 10, 2026", "https://www.usaspending.gov/state"),
+    "census_pop": ("State population totals, vintage 2024 (NST-EST2024)", "U.S. Census Bureau", "Dec 2024", "https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/state/totals/NST-EST2024-ALLDATA.csv"),
+}
+
+
+def states_data():
+    snap = json.load(open(os.path.join(HERE, "data", "states", "snap_per.json")))
+    us = json.load(open(os.path.join(HERE, "data", "states", "usaspending_states_fy2025.json")))["states"]
+    rows = []
+    for fips, s in us.items():
+        k = s["name"].replace("District Of Columbia", "District of Columbia")
+        sn = snap.get(k)
+        if not sn or "2025" not in sn:
+            continue
+        rows.append({"fips": fips, "name": s["name"], "code": s["code"], "pop": s["pop2024"], "awards": s["prime_fy2025"],
+                     "rate25": sn["2025"]["rate"], "over25": sn["2025"]["over"], "under25": sn["2025"]["under"],
+                     "rate24": sn.get("2024", {}).get("rate")})
+    rows.sort(key=lambda r: -r["rate25"])
+    for i, r in enumerate(rows, 1):
+        r["rank"] = i
+    return rows, snap["United States"]
+
+
+def build_states(B):
+    B.S.update(STATE_SOURCES)
+    rows, usr = states_data()
+    n = len(rows)
+    by_slug = {c["slug"]: c for c in B.ORDERED}
+    for r in rows:
+        code = r["code"].lower()
+        per = r["awards"] / r["pop"]
+        chg = ""
+        if r["rate24"] is not None:
+            d = r["rate25"] - r["rate24"]
+            chg = f"{'up' if d > 0 else 'down'} {abs(d):.2f} points from {r['rate24']:.2f}% in fiscal 2024"
+        cases = [by_slug[s] for s in STATE_CASES.get(r["code"], []) if s in by_slug]
+        cards = "".join(B.card(c) for c in cases)
+        lede = (f"In fiscal 2025, {r['name']} got {r['rate25']:.2f}% of its food-benefit (SNAP) payments wrong — "
+                f"#{r['rank']} of {n}, where #1 is worst. The national rate was {usr['2025']['rate']:.2f}%.")
+        body = f"""<section class="sec"><div class="wrap">{crumbs(('All states', '/states'), (B.e(r['name']), None))}
+<div class="big-grid">
+<div class="big"><b>{r['rate25']:.2f}%</b><span>of SNAP benefits paid in the wrong amount, fiscal 2025{', ' + chg if chg else ''}</span><i class="src">USDA</i></div>
+<div class="big"><b>{fmt(r['awards']/1e6)}</b><span>in federal awards to recipients in {B.e(r['name'])}, fiscal 2025</span><i class="src">USAspending.gov</i></div>
+<div class="big"><b>${per:,.0f}</b><span>per resident (our math: awards ÷ {r['pop']:,} people)</span><i class="src">USAspending.gov · Census</i></div>
+</div></div></section>
+<section class="sec" style="background:#fff;border-top:1px solid var(--rule)"><div class="wrap prose">
+<h2>Food benefits paid wrong</h2>
+<div class="tbl-wrap"><table class="tbl fit"><thead><tr><th>Fiscal year</th><th>Paid too much</th><th>Paid too little</th><th>Error rate</th></tr></thead><tbody>
+<tr><td class="mono">2025</td><td class="mono">{r['over25']:.2f}%</td><td class="mono">{r['under25']:.2f}%</td><td class="num">{r['rate25']:.2f}%</td></tr>
+{f'<tr><td class="mono">2024</td><td class="mono">—</td><td class="mono">—</td><td class="num">{r["rate24"]:.2f}%</td></tr>' if r['rate24'] is not None else ''}
+</tbody></table></div>
+<p class="src">USDA measures errors over a small tolerance (${57} per case in fiscal 2025). An error is not the same as fraud: the rate counts paying too much and too little.</p>
+<h2>Unemployment insurance</h2>
+<p>The Labor Department publishes every state's unemployment-insurance error rate on its <a href="https://www.dol.gov/agencies/eta/unemployment-insurance-payment-accuracy" rel="noopener">payment accuracy page</a>. We'll add it here.</p>
+</div></section>
+{f'<section class="sec"><div class="wrap"><h2>Cases in {B.e(r["name"])}</h2><div class="grid" style="margin-top:22px">{cards}</div></div></section>' if cards else ''}
+{src_line(B, ['snap_fy25', 'snap_fy24', 'usas_state', 'census_pop'])}"""
+        page(B, f"state/{code}.html", "", f"{r['name']}: SNAP error rate {r['rate25']:.2f}% (#{r['rank']} of {n}) and federal spending | FraudBad",
+             f"{r['name']} paid {r['rate25']:.2f}% of SNAP food benefits wrong in fiscal 2025, #{r['rank']} of {n}. Plus {fmt(r['awards']/1e6)} in federal awards and every FraudBad case in the state.",
+             "og-ledger.png", "State", B.e(r["name"]), B.e(lede), body)
+    trs = "".join(
+        f'<tr><td class="rk">{r["rank"]}</td><td><b><a href="/state/{r["code"].lower()}">{B.e(r["name"])}</a></b></td><td class="num">{r["rate25"]:.2f}%</td>'
+        f'<td class="mono hide-sm">{"—" if r["rate24"] is None else f"{r["rate24"]:.2f}%"}</td><td class="mono">${r["awards"]/r["pop"]:,.0f}</td></tr>' for r in rows)
+    body = f"""<section class="sec"><div class="wrap">
+<div class="tbl-wrap"><table class="tbl ledger fit"><thead><tr><th>#</th><th>State</th><th>SNAP error rate, FY2025</th><th class="hide-sm">FY2024</th><th>Federal awards per resident</th></tr></thead><tbody>{trs}</tbody></table></div>
+<p class="src" style="margin-top:14px">Ranked worst first. Error rates: USDA. Awards per resident: our math from USAspending.gov fiscal 2025 prime awards and Census 2024 population.</p>
+</div></section>
+{src_line(B, ['snap_fy25', 'snap_fy24', 'usas_state', 'census_pop'])}"""
+    page(B, "states.html", "", "Every state ranked: SNAP payment error rates and federal spending | FraudBad",
+         f"All {n} states and DC ranked by how much of their SNAP food benefits they paid wrong in fiscal 2025, with federal awards per resident.",
+         "og-ledger.png", "50 states + DC", "Every state, ranked", f"How much of its food-benefit payments each state got wrong in fiscal 2025. The national rate was {usr['2025']['rate']:.2f}%.", body)
+    return rows
+
+
+def build_your_share(B, rows):
+    pop = sum(r["pop"] for r in rows)
+    D = data()
+    latest = max(D["years"])
+    ip = sum(r["total"] or 0 for r in D["R"] if r["fy"] == latest) * 1e6
+    lo, hi = 233e9, 521e9
+    lines = [
+        (f"Federal improper and unverifiable payments, FY{latest}", f"${ip/1e9:,.1f}B", "pa_data"),
+        ("People in the 50 states and DC, 2024", f"{pop:,}", "census_pop"),
+        ("Your share of payments made wrong (our math)", f"${ip/pop:,.0f}", "pa_data"),
+        ("Lost to fraud each year, GAO estimate", "$233B–$521B", "gao_fraud"),
+        ("Your share of fraud losses (our math)", f"${lo/pop:,.0f}–${hi/pop:,.0f}", "gao_fraud"),
+    ]
+    rc = B.receipt(lines, ("Receipt the government gave you", "NONE"), head_title="Your receipt", head_sub=f"Fiscal {latest}", link_mode="external", stamp="NO RECEIPT")
+    opts = "".join(f'<option value="/state/{r["code"].lower()}">{B.e(r["name"])}</option>' for r in sorted(rows, key=lambda r: r["name"]))
+    body = f"""<section class="sec"><div class="wrap two">
+<div>{rc}</div>
+<div class="prose"><h2>What this means</h2>
+<p>Divide what the government paid wrong in one year by everyone in the country, and each person's share is about <b>${ip/pop:,.0f}</b>. Divide GAO's estimate of yearly fraud losses the same way and it's <b>${lo/pop:,.0f} to ${hi/pop:,.0f}</b>.</p>
+<p>These are averages, not bills: no one is charged this. They show the size of the problem in terms anyone can picture.</p>
+<h2>See your state</h2>
+<form class="pick" action="/states" onsubmit="event.preventDefault();location.href=this.s.value"><label for="s">Pick a state</label><select id="s" name="s">{opts}</select><button class="btn sm" type="submit">Go</button></form>
+<p><a class="btn" href="__SIGN_inline__">Ask for the receipt: sign the RECEIPTS Act ↗</a></p>
+</div></div></section>
+{src_line(B, ['pa_data', 'gao_fraud', 'census_pop'])}"""
+    page(B, "your-share.html", "", f"Your share: ${ip/pop:,.0f} per person in federal payments made wrong | FraudBad",
+         f"Federal agencies paid ${ip/1e9:,.1f} billion wrong or without proof in fiscal {latest}. That's about ${ip/pop:,.0f} for every person in the country.",
+         "og-ledger.png", "Your receipt", "Your share", f"The government paid ${ip/1e9:,.1f} billion wrong in fiscal {latest}. Here's what that comes to per person.", body)
