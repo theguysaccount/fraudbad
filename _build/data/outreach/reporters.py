@@ -1,5 +1,5 @@
 """Plan item 2.5: statehouse/watchdog reporters per state, read Nov 10, 2026 from each outlet's own staff page
-(titles exactly as the page shows them). Builds reporters_wave4.csv + .md with each state's hook from FraudBad's data.
+(titles as the page shows them). Builds reporters_wave4.csv + .md with each state's hook from FraudBad's data.
 Usage: python3 -I reporters.py"""
 import csv, json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -11,10 +11,10 @@ R = {  # code: (outlet, staff page, [(name, title), ...])
  "AR": ("Arkansas Advocate", "https://arkansasadvocate.com/about", [("Andrew DeMillo", "Editor-in-Chief"), ("Tess Vrbin", "Reporter")]),
  "CA": ("CalMatters", "https://calmatters.org/about/team/", [("Kristen Go", "Editor in Chief"), ("Jeanne Kuang", "Capitol Reporter")]),
  "CO": ("Colorado Newsline", "https://coloradonewsline.com/about", [("Quentin Young", "Editor"), ("Chase Woodruff", "Senior Reporter")]),
- "CT": ("CT Mirror", "https://ctmirror.org/about/", [("Keith Phaneuf", "State budget reporter")]),
+ "CT": ("CT Mirror", "https://ctmirror.org/about/staff/", [("Mark Pazniokas", "Capitol Bureau Chief"), ("Keith Phaneuf", "State Budget Reporter")]),
  "FL": ("Florida Phoenix", "https://floridaphoenix.com/about", [("Michael Moline", "Editor-in-Chief"), ("Christine Sexton", "Senior Reporter")]),
  "GA": ("Georgia Recorder", "https://georgiarecorder.com/about", [("Jill Nolin", "Editor-in-Chief"), ("Ross Williams", "Deputy Editor")]),
- "HI": ("Honolulu Civil Beat", "https://www.civilbeat.org/2026/11/blue-tsunami-missed-hawaiis-capitol-but-dems-nabbed-3-seats/", [("Chad Blair", "Wrote Civil Beat's Nov 2026 Capitol election story (title not checked)")]),
+ "HI": ("Honolulu Civil Beat", "https://www.civilbeat.org/about/the-team-2/", [("Amy Pyle", "Executive Editor-In-Chief"), ("Chad Blair", "Politics Editor")]),
  "ID": ("Idaho Capital Sun", "https://idahocapitalsun.com/about", [("Christina Lords", "Editor-in-Chief"), ("Clark Corbin", "Senior Reporter")]),
  "IN": ("Indiana Capital Chronicle", "https://indianacapitalchronicle.com/about", [("Niki Kelly", "Editor-in-Chief"), ("Casey Smith", "Senior Reporter")]),
  "IA": ("Iowa Capital Dispatch", "https://iowacapitaldispatch.com/about/", [("Kathie Obradovich", "Editor-in-Chief"), ("Clark Kauffman", "Deputy Editor")]),
@@ -25,7 +25,7 @@ R = {  # code: (outlet, staff page, [(name, title), ...])
  "MD": ("Maryland Matters", "https://marylandmatters.org/about/", [("Steve Crane", "Editor-in-chief"), ("Bryan Sears", "Reporter")]),
  "MI": ("Michigan Advance", "https://michiganadvance.com/about/", [("Jon King", "Editor-in-Chief"), ("Ben Solis", "Senior Reporter")]),
  "MN": ("Minnesota Reformer", "https://minnesotareformer.com/about", [("J. Patrick Coolican", "Editor-in-Chief"), ("Michelle Griffith", "Reporter")]),
- "MS": ("Mississippi Today", "https://mississippitoday.org/2025/09/29/emily-wagster-pettus-editor-chief/", [("Emily Wagster Pettus", "Editor-in-Chief (named Sep 29, 2025)")]),
+ "MS": ("Mississippi Today", "https://mississippitoday.org/staff/", [("Emily Wagster Pettus", "Editor-in-Chief"), ("Anna Wolfe", "Investigative Reporter")]),
  "MO": ("Missouri Independent", "https://missouriindependent.com/about/", [("Jason Hancock", "Editor-in-Chief"), ("Rudi Keller", "Deputy Editor")]),
  "MT": ("Daily Montanan", "https://dailymontanan.com/about/", [("Darrell Ehrlick", "Editor-in-chief"), ("Keila Szpaller", "Deputy Editor")]),
  "NE": ("Nebraska Examiner", "https://nebraskaexaminer.com/about/", [("Joan von Kampen", "Editor in Chief"), ("Cindy Gonzalez", "Senior Reporter")]),
@@ -47,18 +47,17 @@ R = {  # code: (outlet, staff page, [(name, title), ...])
  "WV": ("West Virginia Watch", "https://westvirginiawatch.com/about/", [("Leann Ray", "Editor"), ("Lori Kersey", "Deputy Editor")]),
  "WI": ("Wisconsin Examiner", "https://wisconsinexaminer.com/about/", [("Ruth Conniff", "Editor-in-Chief"), ("Erik Gunn", "Deputy Editor")]),
  "WY": ("WyoFile", "https://wyofile.com/about/staff/", [("Joshua Wolfson", "Editor-in-chief"), ("Maggie Mullen", "State government and politics reporter")]),
+ "IL": ("Capitol News Illinois", "https://capitolnewsillinois.com/about-us/the-news-team/", [("Jerry Nowicki", "Editor-in-Chief"), ("Ben Szalinski", "Statehouse Reporter")]),
+ "ND": ("North Dakota Monitor", "https://northdakotamonitor.com/about/", [("Amy Dalrymple", "Editor"), ("Jeff Beach", "Deputy Editor")]),
+ "UT": ("Utah News Dispatch", "https://utahnewsdispatch.com/about/", [("McKenzie Romero", "Editor"), ("Katie McKellar", "Senior Reporter")]),
+ "NJ": ("New Jersey Monitor", "https://newjerseymonitor.com/about/", [("Terrence T. McDonald", "Editor"), ("Dana DiFilippo", "Senior Reporter")]),
+ "VA": ("Virginia Mercury", "https://virginiamercury.com/about/", [("Samantha Willis", "Editor-in-Chief"), ("Markus Schmidt", "Senior Politics Reporter/Deputy Editor")]),
+ "DE": ("Spotlight Delaware", "https://spotlightdelaware.org/team/", [("Jacob Owens", "Editor in Chief"), ("Karl Baker", "Deputy Editor")]),
+ "DC": ("The 51st", "https://51st.news/our-team/", [("Christina Sturdivant Sani", "Executive Editor"), ("Alex Koma", "Senior Reporter")]),
+ "MA": ("CommonWealth Beacon", "https://commonwealthbeacon.org/about/people/", [("Laura Colarusso", "Editor"), ("Chris Lisinski", "Senior Reporter")]),
+ "NY": ("New York Focus", "https://nysfocus.com/team", [("Akash Mehta", "Editor-in-Chief"), ("Chris Bragg", "Albany Bureau Chief")]),
 }
-OPEN = {  # outlet whose staff page refused automated reading: open it in a browser to fill the names
- "IL": ("Capitol News Illinois", "https://capitolnewsillinois.com/about-us/", "general desk: editors@capitolnewsillinois.com"),
- "ND": ("North Dakota Monitor", "https://northdakotamonitor.com/about/", ""),
- "UT": ("Utah News Dispatch", "https://utahnewsdispatch.com/about/", ""),
- "NJ": ("New Jersey Monitor", "https://newjerseymonitor.com/about/", ""),
- "VA": ("Virginia Mercury", "https://virginiamercury.com/about/", ""),
- "DE": ("Spotlight Delaware", "https://spotlightdelaware.org/", "not checked"),
- "DC": ("The 51st", "https://51st.news/", "not checked"),
- "MA": ("CommonWealth Beacon", "https://commonwealthbeacon.org/", "not checked"),
- "NY": ("New York Focus", "https://nysfocus.com/", "not checked"),
-}
+OPEN = {}  # every state's staff page has now been read (9 of them in a normal browser, Nov 10)
 if __name__ == "__main__":
     sys.path.insert(0, B)
     import pages_more as P
