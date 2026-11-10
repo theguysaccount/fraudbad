@@ -4,6 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 python3 build.py
 python3 og.py
+[ -d site/share-kit ] || python3 share_kit.py   # ~8 minutes; cards and clips persist in site/ between runs
 python3 check.py
 cd ..
 find . -maxdepth 1 -type f ! -name README.md -delete

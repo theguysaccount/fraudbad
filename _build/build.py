@@ -118,7 +118,7 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
 <div><a class="mark" href="/"><span class="f">Fraud</span><span class="b">Bad</span></a>
 <p style="margin-top:14px">An independent public-interest site. Not a government website. Every figure links to the auditor, inspector general, court record or agency report it came from.</p></div>
-<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="/states">Every state, ranked</a><a href="/your-share">Your share</a><a href="/data">Open data</a><a href="/about">About</a><a href="/corrections">Corrections</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
+<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="/contracts">Contract explorer</a><a href="/states">Every state, ranked</a><a href="/your-share">Your share</a><a href="/data">Open data</a><a href="/about">About</a><a href="/corrections">Corrections</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
 <nav aria-label="America.co"><a href="https://america.co/">America.co</a>{''.join(f'<a href="{u}" rel="noopener">{n}</a>' for n,u in SOCIALS)}<a href="https://america.co/work-with-us">Send a correction</a></nav>
 <p class="fine">Updated {UPDATED_HUMAN}. Charges are accusations; everyone charged is presumed innocent until proven guilty. Improper payments are not all fraud — each page says what kind of number it is.</p>
 </div></footer>

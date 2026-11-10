@@ -446,7 +446,8 @@ def build_embeds(B):
 <title>{B.e(c['title'])} — FraudBad receipt</title><meta name="robots" content="noindex">
 <link rel="canonical" href="{B.SITE}/{c['slug']}"><link rel="stylesheet" href="/site.css?v={B.V}"></head>
 <body class="embed"><div class="embed-wrap">{r}
-<p class="embed-credit"><a href="{B.SITE}/{c['slug']}" target="_blank" rel="noopener"><b>{B.e(c['fig'])} {B.e(c['scale'])}</b> — {B.e(c['title'])}. Sources and the full case on <b>FraudBad</b> ↗</a></p></div></body></html>"""
+<p class="embed-credit"><a href="{B.SITE}/{c['slug']}" target="_blank" rel="noopener"><b>{B.e(c['fig'])} {B.e(c['scale'])}</b> — {B.e(c['title'])}. Sources and the full case on <b>FraudBad</b> ↗</a></p></div>
+<script src="/site.js?v={B.V}" defer></script></body></html>"""
         B.write(f"embed/{c['slug']}.html", html_)
 
 
@@ -481,6 +482,7 @@ def _rfc822(d):
 def build_all(B, added_by_slug):
     rows = build_states(B)
     build_your_share(B, rows)
+    build_contracts(B)
     build_programs(B)
     build_agencies(B)
     build_years(B)
@@ -602,3 +604,37 @@ def build_your_share(B, rows):
     page(B, "your-share.html", "", f"Your share: ${ip/pop:,.0f} per person in federal payments made wrong | FraudBad",
          f"Federal agencies paid ${ip/1e9:,.1f} billion wrong or without proof in fiscal {latest}. That's about ${ip/pop:,.0f} for every person in the country.",
          "og-ledger.png", "Your receipt", "Your share", f"The government paid ${ip/1e9:,.1f} billion wrong in fiscal {latest}. Here's what that comes to per person.", body)
+
+
+# ------------------------------------------------------------------ contract explorer (3.9)
+def build_contracts(B):
+    top = json.load(open(os.path.join(HERE, "data", "fy2026_top_contracts.json")))
+    sig = json.load(open(os.path.join(HERE, "data", "signal_contract_descriptions.json")))
+    kind = {f["id"]: f["kind"] for f in sig["flagged"]}
+    label = {"blank": "No description", "code": "Only a filing code", "short": "Three words or fewer"}
+    rows = []
+    for t in sorted(top, key=lambda t: -t["Award Amount"]):
+        k = kind.get(t["Award ID"])
+        desc = (t.get("Description") or "").strip()
+        url = f'https://www.usaspending.gov/award/{t["generated_internal_id"]}'
+        flag = f'<span class="flag">{label[k]}</span>' if k else ""
+        hay = B.e(f'{t["Recipient Name"]} {t["Awarding Agency"]} {t.get("Awarding Sub Agency") or ""} {desc} {label.get(k, "")}'.lower())
+        rows.append(f'<tr data-q="{hay}" data-flag="{k or ""}"><td class="num">{fmt(t["Award Amount"]/1e6)}</td>'
+                    f'<td><b>{B.e(t["Recipient Name"].title())}</b><span class="ag">{B.e(t["Awarding Agency"])}{" · " + B.e(t["Awarding Sub Agency"]) if t.get("Awarding Sub Agency") else ""}</span></td>'
+                    f'<td class="mono hide-sm">{B.e(desc[:140]) if desc else "—"} {flag}</td><td><a href="{url}" rel="noopener">Record ↗</a></td></tr>')
+    nflag = len(kind)
+    body = f"""<section class="sec"><div class="wrap">
+<div class="pick"><label for="cq">Search</label><input id="cq" type="search" placeholder="Company, agency or word" autocomplete="off">
+<label class="chk"><input id="cf" type="checkbox"> Only the {nflag} with no real description</label></div>
+<div class="tbl-wrap"><table class="tbl fit" id="ct"><thead><tr><th>Award amount</th><th>Who got it</th><th class="hide-sm">What the public record says it's for</th><th>Record</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
+<p class="src" style="margin-top:14px">The 100 largest federal contracts with activity in fiscal 2026, from USAspending.gov ({B.e(sig['pulled'])}). "Award amount" is the contract's total to date. A short description isn't proof of waste; it means the public can't tell what was bought.</p>
+</div></section>
+<script>
+(() => {{ const q = document.getElementById('cq'), f = document.getElementById('cf'), rows = [...document.querySelectorAll('#ct tbody tr')];
+  const go = () => {{ const s = q.value.trim().toLowerCase(); rows.forEach(r => {{ r.hidden = (s && !r.dataset.q.includes(s)) || (f.checked && !r.dataset.flag); }}); }};
+  q.addEventListener('input', go); f.addEventListener('change', go); }})();
+</script>
+{src_line(B, ['usas_signal'])}"""
+    page(B, "contracts.html", "soft", "The 100 biggest federal contracts, and which ones don't say what they're for | FraudBad",
+         f"Search the 100 largest federal contracts active in fiscal 2026. {nflag} of them list no description, only a filing code, or three words or fewer.",
+         "og-soft-fraud.png", "Contract explorer", "What did we buy?", f"The 100 biggest federal contracts active this fiscal year. {nflag} of them don't say what they're for in the public record.", body)

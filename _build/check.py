@@ -52,7 +52,7 @@ for dp, _, fs in os.walk(ROOT):
             rel = os.path.relpath(os.path.join(dp, f), ROOT)[:-5]
             on_disk.add("/" if rel == "index" else "/" + rel)
 for p in sorted(on_disk - set(paths)):
-    if not p.startswith("/embed/"):
+    if not p.startswith(("/embed/", "/share-kit")):
         fails.append(f"not in sitemap: {p}")
 
 # static checks on every page
@@ -60,7 +60,7 @@ for p in sorted(on_disk):
     f = os.path.join(ROOT, "index.html" if p == "/" else p.lstrip("/") + ".html")
     L = Links(); L.feed(open(f, encoding="utf-8").read())
     if not L.title.strip(): fails.append(f"{p}: no <title>")
-    if not p.startswith("/embed/"):
+    if not p.startswith(("/embed/", "/share-kit")):
         for k in ("description", "og:image"):
             if not L.meta.get(k): fails.append(f"{p}: no {k}")
     for h in L.hrefs:
