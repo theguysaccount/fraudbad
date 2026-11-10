@@ -10,7 +10,7 @@ import content_more as M  # official improper-payment ledger + round-3 cases
 
 OUT = os.path.join(os.path.dirname(__file__), "site")
 ASSETS = os.path.join(os.path.dirname(__file__), "assets")
-V = "20261110c"
+V = "20261110d"
 e = lambda s: html.escape(str(s), quote=True)
 
 LEVEL_ORDER = {"federal": 0, "state": 1, "local": 2}
@@ -128,7 +128,33 @@ def social_links():
     return " ".join(f'<a href="{u}" rel="noopener">{n}</a>' for n, u in SOCIALS)
 
 
+def america_accepts_posts():
+    """Plan 0.7: True once america.co answers fraudbad.com's preflight (OPTIONS 204/200 with
+    Access-Control-Allow-Origin: https://fraudbad.com). FB_INLINE=1/0 forces it. Any rebuild after america.co ships
+    0.7 turns the red band's on-page form on; until then the band keeps its plain link."""
+    if os.environ.get("FB_INLINE") in ("0", "1"):
+        return os.environ["FB_INLINE"] == "1"
+    import subprocess
+    try:
+        out = subprocess.run(["curl", "-s", "-i", "-X", "OPTIONS", "--max-time", "15", "https://america.co/api/newsletter",
+                              "-H", "Origin: https://fraudbad.com", "-H", "Access-Control-Request-Method: POST",
+                              "-H", "Access-Control-Request-Headers: content-type"], capture_output=True, text=True, timeout=20).stdout
+    except Exception:
+        return False
+    head = out.split("\r\n\r\n")[-2] if out.count("\r\n\r\n") >= 1 else out
+    status = re.search(r"^HTTP/\S+ (\d{3})", head, re.M)
+    acao = re.search(r"^access-control-allow-origin:\s*(\S+)", head, re.I | re.M)
+    return bool(status and status.group(1) in ("200", "204") and acao and acao.group(1) == "https://fraudbad.com")
+
+
+INLINE_SIGN = america_accepts_posts()
+print(f"on-page sign form: {'on' if INLINE_SIGN else 'off (america.co does not accept fraudbad.com posts yet)'}")
+
+
 def cta():
+    link_cls = "sign-alt" if INLINE_SIGN else "btn white"
+    link_txt = "Or sign on America.co ↗" if INLINE_SIGN else "Sign the Receipts Act ↗"
+    form_hidden = "" if INLINE_SIGN else " hidden"
     return f"""<section class="cta" aria-labelledby="cta-h"><div class="wrap">
 <div>
 <p class="kicker">America.co · The RECEIPTS Act</p>
@@ -136,7 +162,17 @@ def cta():
 <p class="cta-line" data-b="Every number on this site was counted after the money was already spent. The RECEIPTS Act starts with one rule: when the government buys from GSA's catalog for over $25,000, it publishes the price next to what other agencies paid for the same thing. Add your name.">Public money should come with a receipt anyone can check. The RECEIPTS Act starts with one rule for federal purchases over $25,000 from GSA's buying catalog: publish the price paid next to what other agencies paid for the same thing.</p>
 </div>
 <div class="side">
-<a class="btn white" href="__SIGN_band__">Sign the Receipts Act ↗</a>
+<a class="{link_cls}" href="__SIGN_band__" data-sign-link>{link_txt}</a>
+<form class="inline-sign" data-inline-sign{form_hidden}>
+<p class="sign-count" data-sign-count hidden></p>
+<div class="honey" aria-hidden="true"><label for="fb-website">Leave this blank</label><input type="text" id="fb-website" name="websiteAddress" tabindex="-1" autocomplete="off"></div>
+<label for="fb-name">Your name <span>(optional)</span></label><input type="text" id="fb-name" name="name" autocomplete="name" maxlength="100" placeholder="Full name">
+<label for="fb-email">Email address</label><input id="fb-email" type="email" name="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required>
+<label class="consent" for="fb-consent"><input id="fb-consent" type="checkbox" name="consent" required><span>I support the RECEIPTS Act working draft and want the America.co newsletter, including updates on this proposal and upcoming events. I can unsubscribe at any time. <a href="https://america.co/privacy#newsletter-preferences">Privacy &amp; preferences</a>.</span></label>
+<button class="btn white" type="submit">Sign &amp; subscribe <span aria-hidden="true">→</span></button>
+<p class="fine">Support for a citizen-authored working draft. Your email and signature stay private. Unsubscribe at any time.</p>
+</form>
+<p class="sign-status" data-sign-status role="status" aria-live="polite" aria-atomic="true"></p>
 <p class="follow">Follow the movement: {social_links()}</p>
 <p class="note">A citizen-authored working draft hosted on America.co. It has not been introduced in Congress.</p>
 </div>

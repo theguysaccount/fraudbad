@@ -437,3 +437,21 @@ body.embed .yrs{margin-top:28px;height:240px}
 .case-hero .crumbs a,.page-hero .crumbs a{color:#fff}
 .cta .note{opacity:1;color:#fff}
 .case-hero .crumbs span{color:var(--muted-d)}
+/* Inline sign form in the red band (plan 0.7; shown only once america.co accepts it) */
+.inline-sign{display:grid;gap:8px;width:100%;max-width:420px;min-width:0}
+.inline-sign[hidden],.inline-sign .honey{display:none}
+.inline-sign label{font:600 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.inline-sign label span{opacity:.85;text-transform:none;letter-spacing:0}
+.inline-sign input[type=text],.inline-sign input[type=email]{box-sizing:border-box;min-width:0;font:400 17px/1.3 var(--body);padding:12px 14px;border:2px solid var(--ink);border-radius:0;background:#fff;color:var(--ink);width:100%}
+.inline-sign .consent{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;font:400 14px/1.45 var(--body);letter-spacing:0;text-transform:none}
+.inline-sign .consent input{width:20px;height:20px;margin-top:1px;accent-color:var(--ink)}
+.inline-sign .consent a{color:#fff}
+.inline-sign .btn.white{font-size:20px;padding:16px 22px;margin-top:4px;justify-self:start}
+.inline-sign .fine{font:400 12px/1.45 var(--mono);margin:12px 0 0;opacity:.9}
+.inline-sign .sign-count{font:700 20px/1.2 var(--body);margin:0}
+.cta .sign-status{font-size:16px;margin:0;max-width:420px}
+.cta .sign-status:empty{display:none}
+.cta .sign-status .sign-ref,.cta .sign-status .sign-manage{display:block;font:400 12px/1.6 var(--mono);margin-top:6px}
+.cta .sign-status a{color:#fff}
+.cta .sign-alt{color:#fff;font:600 13px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.cta .side .sign-alt{order:1}.cta .side .follow{order:2}.cta .side .note{order:3}

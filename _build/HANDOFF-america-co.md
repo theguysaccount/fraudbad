@@ -49,7 +49,9 @@ https://america.co/receipts-act?ref=fraudbad-a&case=<page>&pos=<button>#sign
 
 Today the endpoint answers the preflight with `405`. After this change, fraudbad.com will add the email field, the consent box and the privacy link to its red band, posting to `https://america.co/api/newsletter` with `source=fraudbad.com/<page>`, `purpose=receipts-act` and the same three tags.
 
-**Done when:** a signup made on a fraudbad.com case page lands with `ref=fraudbad` and that case's slug, without leaving the page.
+**fraudbad.com's side is already built** (Nov 10, 2026). Its build checks this preflight and, once it passes, shows the form in the red band on every page. The form posts JSON to `https://america.co/api/newsletter` with the same fields as `newsletter.js` (`name`, `email`, `consent: true`, `websiteAddress` honeypot, `action: "subscribe"`, `requestId`, `unsubscribeToken`) plus `purpose: "receipts-act"`, `source: "fraudbad.com/<page>"` (e.g. `fraudbad.com/arizona-sober-living-fraud`), `ref` (`fraudbad-a` or `fraudbad-b`), `refCase` (the page slug) and `refPos: "band"`. It expects the same `{receipt, unsubscribeUrl}` reply. Make sure `/api/newsletter` accepts a `source` starting with `fraudbad.com/`.
+
+**Done when:** a signup made on a fraudbad.com case page lands with `ref=fraudbad-a` (or `-b`) and that case's slug, without leaving the page.
 
 ## 2.3 "Endorsed by" block (ship hidden, turn on at the first yes)
 
@@ -61,4 +63,6 @@ Today the endpoint answers the preflight with `405`. After this change, fraudbad
 
 ## After all of these
 
-Tell the FraudBad plan doc ("FraudBad: the rest of the plan") so items 0.4–0.7 and the 2.3 block can be ticked, and run one test signature end to end.
+1. Rebuild fraudbad.com so its form turns on: attach `theguysaccount/fraudbad` (push), then `cd _build && ./deploy.sh` (the build prints `on-page sign form: on`), commit as `theguysaccount <theguysaccount@users.noreply.github.com>`, push `main`.
+2. Run one test signature end to end from a fraudbad.com case page with an address you generate for testing, and confirm its row shows the page's `ref`, slug and `band`.
+3. Tick 0.4–0.7 (and note the 2.3 block) in the Claude Docs doc "FraudBad: the rest of the plan", each with a dated one-line proof.

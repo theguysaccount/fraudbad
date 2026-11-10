@@ -134,3 +134,55 @@
   window.addEventListener('scroll', () => { past = window.scrollY > 600; show(); }, { passive: true });
   if (band && 'IntersectionObserver' in window) new IntersectionObserver(es => { bandOn = es[0].isIntersecting; show(); }).observe(band);
 })();
+
+/* Sign without leaving the page (plan 0.7). The build turns the red band's form on only once america.co accepts
+   posts from fraudbad.com (build.py checks its preflight); until then the band keeps its plain link to america.co.
+   Same fields, consent text and request shape as america.co's own form, plus where the signer came from. */
+(() => {
+  const form = document.querySelector('[data-inline-sign]'), link = document.querySelector('[data-sign-link]');
+  const status = document.querySelector('[data-sign-status]');
+  if (!form || form.hidden || !link || !status || !window.fetch || !window.crypto || !crypto.randomUUID) return;
+  const API = 'https://america.co/api/newsletter', COUNT = 'https://america.co/api/receipts-act/count';
+  const keep = (s) => (s && /^[a-z0-9-]{1,64}$/.test(s) ? s : undefined);
+  if (location.hostname === 'fraudbad.com') fetch(COUNT).then(r => (r.ok ? r.json() : null)).then(j => {
+    const n = j && j.count;
+    if (typeof n === 'number' && n > 0) { const c = form.querySelector('[data-sign-count]'); c.textContent = n.toLocaleString('en-US') + ' people have signed.'; c.hidden = false; }
+  }).catch(() => {});
+  const button = form.querySelector('button[type="submit"]'), label = button.innerHTML;
+  let pending, sending = false;
+  const fallback = () => { const a = document.createElement('a'); a.href = link.href; a.rel = 'nofollow'; a.textContent = 'Or sign on America.co'; a.className = 'sign-alt'; status.append(' ', a); };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (sending || !form.reportValidity()) return;
+    const q = new URL(link.href).searchParams;
+    const data = Object.fromEntries(new FormData(form));
+    data.action = 'subscribe'; data.consent = data.consent === 'on';
+    data.source = 'fraudbad.com' + location.pathname.replace(/\.html$/, '').replace(/\/index$/, '/'); data.purpose = 'receipts-act';
+    data.ref = keep(q.get('ref')); data.refCase = keep(q.get('case')); data.refPos = 'band';
+    const snapshot = JSON.stringify(data);
+    if (!pending || pending.snapshot !== snapshot) {
+      const bytes = crypto.getRandomValues(new Uint8Array(32));
+      pending = { snapshot, id: crypto.randomUUID(), token: Array.from(bytes, x => x.toString(16).padStart(2, '0')).join('') };
+    }
+    data.requestId = pending.id; data.unsubscribeToken = pending.token;
+    sending = true; button.disabled = true; button.textContent = 'Saving…'; form.setAttribute('aria-busy', 'true');
+    status.textContent = 'Saving your signup…'; status.dataset.state = 'pending';
+    const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 20000);
+    try {
+      const response = await fetch(API, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), signal: controller.signal });
+      const result = await response.json();
+      if (!response.ok || result.receipt !== pending.id) throw new Error(result.error || 'We could not confirm your signup. Please try again.');
+      status.textContent = 'Thank you. Your support for the working draft is recorded, and your newsletter signup is saved.';
+      const ref = document.createElement('span'); ref.className = 'sign-ref'; ref.textContent = 'Reference: ' + result.receipt; status.append(ref);
+      if (result.unsubscribeUrl && /^https:\/\/america\.co\/privacy#newsletter=[a-f0-9]{64}$/.test(result.unsubscribeUrl)) {
+        const m = document.createElement('a'); m.href = result.unsubscribeUrl; m.rel = 'nofollow'; m.textContent = 'Save your unsubscribe link'; m.className = 'sign-manage'; status.append(m);
+      }
+      status.dataset.state = 'success'; form.hidden = true;
+    } catch (error) {
+      status.textContent = error.name === 'AbortError' ? 'The connection timed out. Your details are still here. Retry to confirm; the same request will not create a duplicate.'
+        : error.message === 'Failed to fetch' || error instanceof TypeError ? 'Could not connect. Your details are still here. Please try again.'
+        : error instanceof SyntaxError ? 'We could not confirm receipt. Please try again.' : error.message;
+      status.dataset.state = 'error'; fallback();
+    } finally { clearTimeout(timeout); sending = false; button.disabled = false; button.innerHTML = label; form.setAttribute('aria-busy', 'false'); }
+  });
+})();
