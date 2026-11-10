@@ -423,6 +423,8 @@ def build_about(B):
 <h2>What this is</h2>
 <p>FraudBad collects the biggest known cases of fraud, waste and lost money in American government — federal, state and local — and links every number to the auditor, inspector general, prosecutor, court or agency report it came from.</p>
 <p>It also tracks <a href="/soft-fraud">soft fraud</a>: money paid wrong, paid without proof, or never collected, which adds up to far more than the crimes. And it shows <a href="/transparency">where public spending records stop</a>.</p>
+<h2>Who publishes it</h2>
+<p>FraudBad is published by America House, Inc., which also runs America.co. The site has no ads and no paid placements. Reporters, researchers and anyone with a correction can reach a person at <a href="mailto:press@fraudbad.com">press@fraudbad.com</a>.</p>
 <h2>Why</h2>
 <p>Almost every case here was possible because nobody had to show the receipt in time for anyone to check it. Every page ends by asking you to support the <a href="__SIGN_inline__">RECEIPTS Act</a>, a citizen-authored working draft hosted on America.co. It has not been introduced in Congress. It is not S. 3902, a Senate bill on Pentagon audits that shares the name.</p>
 <h2>How we judge a case</h2>
@@ -430,7 +432,7 @@ def build_about(B):
 <h2>What we don't do</h2>
 <p>We don't name people who haven't been charged. We don't call a charge a conviction or a settlement an admission. Improper payments are not all fraud, and every page says what kind of number it shows.</p>
 <h2>Corrections and contact</h2>
-<p>We fix mistakes in public. Every change to a fact is listed in the <a href="/corrections">corrections log</a>. To report an error, <a href="https://america.co/work-with-us">send us the source</a>.</p>
+<p>We fix mistakes in public. Every change to a fact is listed in the <a href="/corrections">corrections log</a>. To report an error, email the source to <a href="mailto:press@fraudbad.com">press@fraudbad.com</a>.</p>
 <p>The data behind every page is free to download on the <a href="/data">open data page</a>.</p>
 </div></section>"""
     page(B, "about.html", "", "About FraudBad: who we are and how we work", "FraudBad links every number about fraud and waste in American government to its source. How it works, what it won't do, and how to correct it.",

@@ -198,7 +198,8 @@ def card(c):
 
 
 ORG_LD = {"@context": "https://schema.org", "@type": "Organization", "name": "FraudBad", "url": SITE,
-          "logo": SITE + "/icon-512.png", "sameAs": [u for _, u in SOCIALS]}
+          "logo": SITE + "/icon-512.png", "sameAs": [u for _, u in SOCIALS], "email": "press@fraudbad.com",
+          "parentOrganization": {"@type": "Organization", "name": "America House, Inc.", "url": "https://america.co"}}
 
 
 SIGN_BASE = CTA_URL.split("#")[0]
