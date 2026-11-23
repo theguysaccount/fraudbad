@@ -12,4 +12,4 @@ All figures below are FraudBad sums of that file, built by `make_ledger.py 2026`
 
 ## Why this isn't live yet
 - The FY2026 file renames many programs and agencies (e.g. "TREASURY", "FTA Capital Investment Grants (Section 5309)"). Switching would remove 10 existing /program/ pages (incl. the EITC and FTA Capital Investment Grants pages linked from cases) and add 13 new ones. Those need redirects.
-- About 120 hand-written lines say "FY2025", "64 programs", "matches GAO's $186B", etc., plus the SVOG, HUD rental-assistance and improper-payments cases. They need rewording to FY2026, and GAO has not yet published an FY2026 total to compare against.
+- Dozens of hand-written lines in build.py, content_more.py and pages_more.py say "FY2025", "64 programs", "matches GAO's $186B", etc., plus the SVOG, HUD rental-assistance and improper-payments cases. They need rewording to FY2026, and GAO has not yet published an FY2026 total to compare against.
