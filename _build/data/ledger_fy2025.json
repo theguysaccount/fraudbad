@@ -326,7 +326,7 @@
   },
   {
    "agency": "DOW",
-   "program": "Commercial Pay \u2013 Mechanization of Contract Administration Services (MOCAS)",
+   "program": "Commercial Pay – Mechanization of Contract Administration Services (MOCAS)",
    "outlays_m": 225038.87,
    "improper_m": 1217.55,
    "unknown_m": 169.62,
@@ -502,7 +502,7 @@
   },
   {
    "agency": "DOW",
-   "program": "Travel Pay Army \u2013 Defense Travel\u00a0System (DTS)",
+   "program": "Travel Pay Army – Defense Travel System (DTS)",
    "outlays_m": 2533.2,
    "improper_m": 158.76,
    "unknown_m": 125.81,
@@ -524,7 +524,7 @@
   },
   {
    "agency": "DOW",
-   "program": "Travel Pay Department of Air Force (DAF) \u2013 Defense Travel\u00a0System (DTS)",
+   "program": "Travel Pay Department of Air Force (DAF) – Defense Travel System (DTS)",
    "outlays_m": 2558.9,
    "improper_m": 165.44,
    "unknown_m": 28.29,
@@ -535,7 +535,7 @@
   },
   {
    "agency": "DOW",
-   "program": "Civilian Pay \u2013 Other Defense Organization (ODO)",
+   "program": "Civilian Pay – Other Defense Organization (ODO)",
    "outlays_m": 11127.95,
    "improper_m": 163.53,
    "unknown_m": 28.91,
@@ -623,7 +623,7 @@
   },
   {
    "agency": "FCC",
-   "program": "Universal Service Fund \u2013 Lifeline",
+   "program": "Universal Service Fund – Lifeline",
    "outlays_m": 829.6,
    "improper_m": 75.63,
    "unknown_m": 0,
@@ -678,7 +678,7 @@
   },
   {
    "agency": "DOW",
-   "program": "Travel Pay Other Defense Organization (ODO) \u2013 Defense Travel System (DTS)",
+   "program": "Travel Pay Other Defense Organization (ODO) – Defense Travel System (DTS)",
    "outlays_m": 415,
    "improper_m": 30.65,
    "unknown_m": 14.96,
@@ -689,7 +689,7 @@
   },
   {
    "agency": "SBA",
-   "program": "Section 1112 Payments for SBA\u2019s business loan programs",
+   "program": "Section 1112 Payments for SBA’s business loan programs",
    "outlays_m": 10585.147,
    "improper_m": 36.479,
    "unknown_m": 0,
@@ -799,7 +799,7 @@
   },
   {
    "agency": "DOW",
-   "program": "Travel Pay Other Defense Organization (ODO) \u2013 Integrated Automated Travel System (IATS)",
+   "program": "Travel Pay Other Defense Organization (ODO) – Integrated Automated Travel System (IATS)",
    "outlays_m": 14.73,
    "improper_m": 1.11,
    "unknown_m": 0.82,
@@ -829,56 +829,56 @@
  },
  "recovery_m": {
   "2013": {
-   "identified_m": 88987.78,
-   "recovered_m": 45035.56
+   "identified_m": 44493.89,
+   "recovered_m": 22517.78
   },
   "2014": {
-   "identified_m": 81566.86,
-   "recovered_m": 39126.99
+   "identified_m": 40783.43,
+   "recovered_m": 19563.5
   },
   "2015": {
-   "identified_m": 86308.72,
-   "recovered_m": 39544.0
+   "identified_m": 43154.36,
+   "recovered_m": 19772.0
   },
   "2016": {
-   "identified_m": 93786.04,
-   "recovered_m": 41615.13
+   "identified_m": 46893.02,
+   "recovered_m": 20807.56
   },
   "2017": {
-   "identified_m": 95445.01,
-   "recovered_m": 43172.68
+   "identified_m": 47722.5,
+   "recovered_m": 21586.34
   },
   "2018": {
-   "identified_m": 94889.57,
-   "recovered_m": 40695.62
+   "identified_m": 47444.79,
+   "recovered_m": 20347.81
   },
   "2019": {
-   "identified_m": 90855.05,
-   "recovered_m": 42103.65
+   "identified_m": 45427.53,
+   "recovered_m": 21051.83
   },
   "2020": {
-   "identified_m": 93669.06,
-   "recovered_m": 43878.33
+   "identified_m": 46834.53,
+   "recovered_m": 21939.16
   },
   "2021": {
-   "identified_m": 113542.03,
-   "recovered_m": 44987.14
+   "identified_m": 56771.02,
+   "recovered_m": 22493.57
   },
   "2022": {
-   "identified_m": 103455.59,
-   "recovered_m": 46446.11
+   "identified_m": 51727.79,
+   "recovered_m": 23223.06
   },
   "2023": {
-   "identified_m": 67345.23,
-   "recovered_m": 51140.8
+   "identified_m": 33672.61,
+   "recovered_m": 25570.4
   },
   "2024": {
-   "identified_m": 66939.09,
-   "recovered_m": 45149.44
+   "identified_m": 33469.55,
+   "recovered_m": 22574.72
   },
   "2025": {
-   "identified_m": 77512.19,
-   "recovered_m": 47849.24
+   "identified_m": 38764.08,
+   "recovered_m": 23928.73
   }
  },
  "compliance_fy2024": {

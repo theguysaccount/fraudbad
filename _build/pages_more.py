@@ -661,6 +661,7 @@ def build_data(B):
 
 # ------------------------------------------------------------------ about + corrections
 CORRECTIONS = [
+    ("2026-11-23", "ledger", "Fixed the overpayment-recovery totals on the ledger, year pages and the improper-payments case. Our sum had counted the dataset's own \"Grand Total\" row along with the agency rows, which doubled every year's figure. Fiscal 2025 is $38.8B flagged and $23.9B recovered, not $77.5B and $47.8B. Recovery rates didn't change."),
     ("2026-11-10", "transparency", "Updated the federal \"Who got it\" cell: a law signed Sept 11, 2026 (Public Law 119-106, the Stop Secret Spending Act) now requires other transaction agreements to be reported to USAspending.gov. The page had said only that they aren't consistently reported."),
     ("2026-11-10", "health-care-waste", "Replaced a dead link to the 2019 JAMA study's press release with a news report of the same figures. The figures didn't change."),
     ("2026-11-09", "improper-payments-since-2003",
