@@ -1,0 +1,936 @@
+{
+ "source": "https://paymentaccuracy.gov/assets/files/FY2026_Dataset.xlsx",
+ "page": "https://www.paymentaccuracy.gov/resources",
+ "pulled": "2026-11-23",
+ "years": {
+  "2004": {
+   "amount_m": 45004.16,
+   "outlays_m": 1035354.0,
+   "programs": 27
+  },
+  "2005": {
+   "amount_m": 38409.71,
+   "outlays_m": 1224920.3,
+   "programs": 43
+  },
+  "2006": {
+   "amount_m": 40587.9,
+   "outlays_m": 1394027.3,
+   "programs": 53
+  },
+  "2007": {
+   "amount_m": 42016.47,
+   "outlays_m": 1493334.8,
+   "programs": 64
+  },
+  "2008": {
+   "amount_m": 72819.6,
+   "outlays_m": 1844042.02,
+   "programs": 74
+  },
+  "2009": {
+   "amount_m": 105142.95,
+   "outlays_m": 1940897.74,
+   "programs": 65
+  },
+  "2010": {
+   "amount_m": 120837.3,
+   "outlays_m": 2285133.41,
+   "programs": 70
+  },
+  "2011": {
+   "amount_m": 115307.0,
+   "outlays_m": 2460430.42,
+   "programs": 78
+  },
+  "2012": {
+   "amount_m": 107680.5,
+   "outlays_m": 2475033.2,
+   "programs": 75
+  },
+  "2013": {
+   "amount_m": 105921.01,
+   "outlays_m": 2998079.17,
+   "programs": 84
+  },
+  "2014": {
+   "amount_m": 124607.27,
+   "outlays_m": 3102368.38,
+   "programs": 122
+  },
+  "2015": {
+   "amount_m": 136950.57,
+   "outlays_m": 3120862.22,
+   "programs": 121
+  },
+  "2016": {
+   "amount_m": 144412.65,
+   "outlays_m": 3089618.06,
+   "programs": 112
+  },
+  "2017": {
+   "amount_m": 140871.17,
+   "outlays_m": 3121995.36,
+   "programs": 88
+  },
+  "2018": {
+   "amount_m": 150660.5,
+   "outlays_m": 3287319.39,
+   "programs": 78
+  },
+  "2019": {
+   "amount_m": 174787.54,
+   "outlays_m": 3455333.89,
+   "programs": 79
+  },
+  "2020": {
+   "amount_m": 206424.06,
+   "outlays_m": 3689295.96,
+   "programs": 100
+  },
+  "2021": {
+   "amount_m": 281399.46,
+   "outlays_m": 3928325.15,
+   "programs": 87
+  },
+  "2022": {
+   "amount_m": 246973.51,
+   "outlays_m": 4822193.06,
+   "programs": 82
+  },
+  "2023": {
+   "amount_m": 235774.72,
+   "outlays_m": 4349204.79,
+   "programs": 71
+  },
+  "2024": {
+   "amount_m": 161540.13,
+   "outlays_m": 4071860.59,
+   "programs": 68
+  },
+  "2025": {
+   "amount_m": 185841.48,
+   "outlays_m": 4473697.81,
+   "programs": 64
+  },
+  "2026": {
+   "amount_m": 197476.51,
+   "outlays_m": 4809214.49,
+   "programs": 66
+  }
+ },
+ "programs_2026": [
+  {
+   "agency": "HHS",
+   "program": "Medicaid",
+   "outlays_m": 661558.8,
+   "improper_m": 46839.59,
+   "unknown_m": 0,
+   "total_m": 46839.59,
+   "rate": 0.070801855,
+   "over_m": 44120.49,
+   "prev_rate": 0.061190709
+  },
+  {
+   "agency": "HHS",
+   "program": "Medicare Fee-For-Service (FFS)",
+   "outlays_m": 464114.02,
+   "improper_m": 33956.91,
+   "unknown_m": 0,
+   "total_m": 33956.91,
+   "rate": 0.073165017,
+   "over_m": 32679.47,
+   "prev_rate": 0.065533037
+  },
+  {
+   "agency": "HHS",
+   "program": "Medicare Advantage (Part C)",
+   "outlays_m": 419935.41,
+   "improper_m": 23861.44,
+   "unknown_m": 0,
+   "total_m": 23861.44,
+   "rate": 0.056821691,
+   "over_m": 21601.58,
+   "prev_rate": 0.0608801
+  },
+  {
+   "agency": "TREASURY",
+   "program": "Internal Revenue Service - Earned Income Tax Credit",
+   "outlays_m": 70580,
+   "improper_m": 22691.47,
+   "unknown_m": 0,
+   "total_m": 22691.47,
+   "rate": 0.3215,
+   "over_m": 22691.47,
+   "prev_rate": 0.326945984
+  },
+  {
+   "agency": "USDA",
+   "program": "Supplemental Nutrition Assistance Program",
+   "outlays_m": 95033.72,
+   "improper_m": 10089.48,
+   "unknown_m": 0,
+   "total_m": 10089.48,
+   "rate": 0.106167369,
+   "over_m": 8822.95,
+   "prev_rate": 0.109299012
+  },
+  {
+   "agency": "SSA",
+   "program": "Supplemental Security Income (SSI)",
+   "outlays_m": 65732.55269881,
+   "improper_m": 8310.81752717,
+   "unknown_m": 0,
+   "total_m": 8310.81752717,
+   "rate": 0.126433817,
+   "over_m": 6950.10553082,
+   "prev_rate": 0.115798907
+  },
+  {
+   "agency": "DOL",
+   "program": "Employment & Training Administration - Federal State Unemployment Insurance",
+   "outlays_m": 40021.07,
+   "improper_m": 4961.01,
+   "unknown_m": 956.95,
+   "total_m": 5917.96,
+   "rate": 0.147871109,
+   "over_m": 4784.52,
+   "prev_rate": 0.148607186
+  },
+  {
+   "agency": "TREASURY",
+   "program": "Internal Revenue Service - Additional Child Tax Credit",
+   "outlays_m": 34298.11,
+   "improper_m": 5364.22,
+   "unknown_m": 0,
+   "total_m": 5364.22,
+   "rate": 0.156399872,
+   "over_m": 5364.22,
+   "prev_rate": 0.136072255
+  },
+  {
+   "agency": "HHS",
+   "program": "Medicare Prescription Drug Benefit (Part D)",
+   "outlays_m": 134092.86,
+   "improper_m": 5162.91,
+   "unknown_m": 0,
+   "total_m": 5162.91,
+   "rate": 0.038502497,
+   "over_m": 4830.45,
+   "prev_rate": 0.040032558
+  },
+  {
+   "agency": "VA",
+   "program": "Compensation",
+   "outlays_m": 179189.21,
+   "improper_m": 2946.61,
+   "unknown_m": 1965.4,
+   "total_m": 4912.01,
+   "rate": 0.027412421,
+   "over_m": 2457.32,
+   "prev_rate": 0.01490966
+  },
+  {
+   "agency": "SSA",
+   "program": "Old-Age and Survivors Insurance (OASI)",
+   "outlays_m": 1437540.57443977,
+   "improper_m": 4725.62791199,
+   "unknown_m": 0,
+   "total_m": 4725.62791199,
+   "rate": 0.003287301,
+   "over_m": 1747.40051309,
+   "prev_rate": 0.001256017
+  },
+  {
+   "agency": "SSA",
+   "program": "Disability Insurance (DI)",
+   "outlays_m": 149681.37233758,
+   "improper_m": 2975.99342322,
+   "unknown_m": 0,
+   "total_m": 2975.99342322,
+   "rate": 0.01988219,
+   "over_m": 2777.71123771,
+   "prev_rate": 0.016297489
+  },
+  {
+   "agency": "HHS",
+   "program": "Children's Health Insurance Program (CHIP)",
+   "outlays_m": 23067.37,
+   "improper_m": 2263.47,
+   "unknown_m": 0,
+   "total_m": 2263.47,
+   "rate": 0.09812432,
+   "over_m": 2173.23,
+   "prev_rate": 0.070529495
+  },
+  {
+   "agency": "HUD",
+   "program": "Section 8 Housing Choice Vouchers",
+   "outlays_m": 40466.882,
+   "improper_m": 1282.271,
+   "unknown_m": 818.948,
+   "total_m": 2101.219,
+   "rate": 0.051924411,
+   "over_m": 786.286,
+   "prev_rate": null
+  },
+  {
+   "agency": "SBA",
+   "program": "7(a) Loan Guarantees Approvals",
+   "outlays_m": 23912.26,
+   "improper_m": 1985.9,
+   "unknown_m": 0,
+   "total_m": 1985.9,
+   "rate": 0.083049448,
+   "over_m": 0,
+   "prev_rate": 0.061338376
+  },
+  {
+   "agency": "HUD",
+   "program": "Project-Based Rental Assistance (PBRA)",
+   "outlays_m": 16961.594,
+   "improper_m": 930.857,
+   "unknown_m": 1041.795,
+   "total_m": 1972.652,
+   "rate": 0.116301098,
+   "over_m": 171.316,
+   "prev_rate": null
+  },
+  {
+   "agency": "TREASURY",
+   "program": "Internal Revenue Service - American Opportunity Tax Credit",
+   "outlays_m": 4930.23,
+   "improper_m": 1667.4,
+   "unknown_m": 0,
+   "total_m": 1667.4,
+   "rate": 0.338199232,
+   "over_m": 1667.4,
+   "prev_rate": 0.30679683
+  },
+  {
+   "agency": "USDA",
+   "program": "National School Lunch Program",
+   "outlays_m": 19452,
+   "improper_m": 1262.34,
+   "unknown_m": 0,
+   "total_m": 1262.34,
+   "rate": 0.064895126,
+   "over_m": 933.47,
+   "prev_rate": 0.069780054
+  },
+  {
+   "agency": "USDA",
+   "program": "Federal Crop Insurance Corporation (FCIC)",
+   "outlays_m": 20704.44,
+   "improper_m": 1161.58,
+   "unknown_m": 0,
+   "total_m": 1161.58,
+   "rate": 0.056102942,
+   "over_m": 889.89,
+   "prev_rate": 0.032934701
+  },
+  {
+   "agency": "TREASURY",
+   "program": "Internal Revenue Service - Refundable Premium Assistance Tax Credit",
+   "outlays_m": 3019.63,
+   "improper_m": 1004.93,
+   "unknown_m": 0,
+   "total_m": 1004.93,
+   "rate": 0.332799052,
+   "over_m": 1004.93,
+   "prev_rate": 0.316112922
+  },
+  {
+   "agency": "DOT",
+   "program": "FHWA National Highway Performance Program",
+   "outlays_m": 25483.6075,
+   "improper_m": 902.3972,
+   "unknown_m": 0,
+   "total_m": 902.3972,
+   "rate": 0.035410889,
+   "over_m": 840.2601,
+   "prev_rate": null
+  },
+  {
+   "agency": "HHS",
+   "program": "Advance Payments of the Premium Tax Credit (APTC)",
+   "outlays_m": 99095.1,
+   "improper_m": 830.37,
+   "unknown_m": 0,
+   "total_m": 830.37,
+   "rate": 0.008379526,
+   "over_m": 830.37,
+   "prev_rate": 0.008907133
+  },
+  {
+   "agency": "DOT",
+   "program": "FHWA Surface Transportation Block Grant Program",
+   "outlays_m": 18985.7506,
+   "improper_m": 624.5237,
+   "unknown_m": 0,
+   "total_m": 624.5237,
+   "rate": 0.032894338,
+   "over_m": 405.2752,
+   "prev_rate": null
+  },
+  {
+   "agency": "ED",
+   "program": "William D. Ford Federal Direct Loan Program",
+   "outlays_m": 87040.68,
+   "improper_m": 606.09,
+   "unknown_m": 3.19,
+   "total_m": 609.28,
+   "rate": 0.006999945,
+   "over_m": 69.69,
+   "prev_rate": 0.00990001
+  },
+  {
+   "agency": "HHS",
+   "program": "Child Care and Development Fund (CCDF)",
+   "outlays_m": 11394.42,
+   "improper_m": 563.63,
+   "unknown_m": 0,
+   "total_m": 563.63,
+   "rate": 0.04946544,
+   "over_m": 514.71,
+   "prev_rate": 0.049279652
+  },
+  {
+   "agency": "USDA",
+   "program": "Child and Adult Care Food Program",
+   "outlays_m": 4246.42,
+   "improper_m": 449.82,
+   "unknown_m": 0,
+   "total_m": 449.82,
+   "rate": 0.10592923,
+   "over_m": 307.23,
+   "prev_rate": 0.105015312
+  },
+  {
+   "agency": "USDA",
+   "program": "School Breakfast Program",
+   "outlays_m": 6587,
+   "improper_m": 446.72,
+   "unknown_m": 0,
+   "total_m": 446.72,
+   "rate": 0.06781843,
+   "over_m": 336.93,
+   "prev_rate": 0.072406155
+  },
+  {
+   "agency": "OPM",
+   "program": "Federal Retirement Services",
+   "outlays_m": 114940.13,
+   "improper_m": 377.62,
+   "unknown_m": 6.61,
+   "total_m": 384.23,
+   "rate": 0.003342871,
+   "over_m": 275.1,
+   "prev_rate": 0.003456057
+  },
+  {
+   "agency": "DOW",
+   "program": "Army - DoW Travel Pay - DTS",
+   "outlays_m": 2192.8,
+   "improper_m": 194.6,
+   "unknown_m": 120.3,
+   "total_m": 314.9,
+   "rate": 0.143606348,
+   "over_m": 116.8,
+   "prev_rate": 0.112336176
+  },
+  {
+   "agency": "HHS",
+   "program": "Head Start",
+   "outlays_m": 12312,
+   "improper_m": 101.14,
+   "unknown_m": 208.7,
+   "total_m": 309.84,
+   "rate": 0.025165692,
+   "over_m": 1.9,
+   "prev_rate": 0.102916421
+  },
+  {
+   "agency": "OPM",
+   "program": "Federal Employees Health Benefits - Experience Rated Carriers",
+   "outlays_m": 71370.628,
+   "improper_m": 173.54339,
+   "unknown_m": 130.249,
+   "total_m": 303.79239,
+   "rate": 0.004256546,
+   "over_m": 78.27379,
+   "prev_rate": 0.00141077
+  },
+  {
+   "agency": "VA",
+   "program": "VA Community Care",
+   "outlays_m": 28090.87,
+   "improper_m": 207.89,
+   "unknown_m": 78.62,
+   "total_m": 286.51,
+   "rate": 0.010199399,
+   "over_m": 207.82,
+   "prev_rate": 0.023882868
+  },
+  {
+   "agency": "VA",
+   "program": "Pension",
+   "outlays_m": 3208.87,
+   "improper_m": 220.01,
+   "unknown_m": 46.13,
+   "total_m": 266.14,
+   "rate": 0.082938854,
+   "over_m": 208.85,
+   "prev_rate": 0.099856615
+  },
+  {
+   "agency": "DOW",
+   "program": "DAF - DoW Travel Pay - DTS",
+   "outlays_m": 2705.9,
+   "improper_m": 186.8,
+   "unknown_m": 61.9,
+   "total_m": 248.7,
+   "rate": 0.09191027,
+   "over_m": 107.3,
+   "prev_rate": 0.075708312
+  },
+  {
+   "agency": "DOW",
+   "program": "Navy - DoW Travel Pay - DTS",
+   "outlays_m": 1822.5,
+   "improper_m": 85.6,
+   "unknown_m": 161.2,
+   "total_m": 246.8,
+   "rate": 0.135418381,
+   "over_m": 26.9,
+   "prev_rate": null
+  },
+  {
+   "agency": "DHS",
+   "program": "Federal Emergency Management Agency - Public Assistance - Validate as You Go",
+   "outlays_m": 19308.57616453,
+   "improper_m": 83.73969735,
+   "unknown_m": 142.38060964,
+   "total_m": 226.12030699,
+   "rate": 0.011710874,
+   "over_m": 83.73969735,
+   "prev_rate": 0.012221532
+  },
+  {
+   "agency": "SBA",
+   "program": "504 Certified Development Loans Approvals",
+   "outlays_m": 7569.07,
+   "improper_m": 164.35,
+   "unknown_m": 39.42,
+   "total_m": 203.77,
+   "rate": 0.026921405,
+   "over_m": 0,
+   "prev_rate": 0.045780996
+  },
+  {
+   "agency": "DOW",
+   "program": "Commercial Pay \u2013 Mechanization of Contract Administration Services (MOCAS)",
+   "outlays_m": 231954,
+   "improper_m": 199.2,
+   "unknown_m": 0,
+   "total_m": 199.2,
+   "rate": 0.000858791,
+   "over_m": 60.7,
+   "prev_rate": 0.006164135
+  },
+  {
+   "agency": "DOW",
+   "program": "ODO - Civilian Pay",
+   "outlays_m": 11584.4,
+   "improper_m": 141.5,
+   "unknown_m": 48,
+   "total_m": 189.5,
+   "rate": 0.016358206,
+   "over_m": 1.3,
+   "prev_rate": 0.017293392
+  },
+  {
+   "agency": "USDA",
+   "program": "Summer Electronic Benefit Transfer Program for Children",
+   "outlays_m": 3100,
+   "improper_m": 175.51,
+   "unknown_m": 0,
+   "total_m": 175.51,
+   "rate": 0.056616129,
+   "over_m": 164.59,
+   "prev_rate": null
+  },
+  {
+   "agency": "VA",
+   "program": "Beneficiary Travel",
+   "outlays_m": 2337.45,
+   "improper_m": 76.98,
+   "unknown_m": 83.04,
+   "total_m": 160.02,
+   "rate": 0.068459218,
+   "over_m": 76.98,
+   "prev_rate": 0.075817566
+  },
+  {
+   "agency": "SBA",
+   "program": "Disaster Assistance Loans",
+   "outlays_m": 1883.63,
+   "improper_m": 151.36,
+   "unknown_m": 0,
+   "total_m": 151.36,
+   "rate": 0.080355484,
+   "over_m": 124.07,
+   "prev_rate": 0.048705944
+  },
+  {
+   "agency": "ED",
+   "program": "Federal Pell Grant Program",
+   "outlays_m": 39177.75,
+   "improper_m": 133.86,
+   "unknown_m": 4.66,
+   "total_m": 138.52,
+   "rate": 0.00353568,
+   "over_m": 13.97,
+   "prev_rate": 0.010682269
+  },
+  {
+   "agency": "FCC",
+   "program": "Universal Service Fund \u2013 Lifeline",
+   "outlays_m": 924.05,
+   "improper_m": 133.55,
+   "unknown_m": 0,
+   "total_m": 133.55,
+   "rate": 0.144526811,
+   "over_m": 133.55,
+   "prev_rate": 0.091164417
+  },
+  {
+   "agency": "DOL",
+   "program": "Office of Workers' Compensation - Federal Employees' Compensation Act",
+   "outlays_m": 4095.54,
+   "improper_m": 117.86,
+   "unknown_m": 0,
+   "total_m": 117.86,
+   "rate": 0.028777646,
+   "over_m": 116.24,
+   "prev_rate": 0.027750245
+  },
+  {
+   "agency": "HHS",
+   "program": "Foster Care Title IV-E",
+   "outlays_m": 1173,
+   "improper_m": 110.5,
+   "unknown_m": 0,
+   "total_m": 110.5,
+   "rate": 0.094202899,
+   "over_m": 98.42,
+   "prev_rate": 0.057196911
+  },
+  {
+   "agency": "DOW",
+   "program": "DOW - Military Retirement - Annuitant Pay",
+   "outlays_m": 5052.5,
+   "improper_m": 51.4,
+   "unknown_m": 25.8,
+   "total_m": 77.2,
+   "rate": 0.015279565,
+   "over_m": 46.4,
+   "prev_rate": null
+  },
+  {
+   "agency": "DOW",
+   "program": "DOW - Military Retirement - Retired Pay",
+   "outlays_m": 65730.6,
+   "improper_m": 71.9,
+   "unknown_m": 0.07,
+   "total_m": 71.97,
+   "rate": 0.001094924,
+   "over_m": 63.1,
+   "prev_rate": null
+  },
+  {
+   "agency": "USDA",
+   "program": "Summer Food Service Program for Children",
+   "outlays_m": 781.7,
+   "improper_m": 70.66,
+   "unknown_m": 0,
+   "total_m": 70.66,
+   "rate": 0.090392734,
+   "over_m": 66.05,
+   "prev_rate": null
+  },
+  {
+   "agency": "VA",
+   "program": "Medical Care Contracts and Agreements",
+   "outlays_m": 1437.83,
+   "improper_m": 3.67,
+   "unknown_m": 46.92,
+   "total_m": 50.59,
+   "rate": 0.035184966,
+   "over_m": 3.67,
+   "prev_rate": 0.063703726
+  },
+  {
+   "agency": "HUD",
+   "program": "Mainstream Vouchers",
+   "outlays_m": 903.638,
+   "improper_m": 46.3,
+   "unknown_m": 0,
+   "total_m": 46.3,
+   "rate": 0.051237332,
+   "over_m": 0,
+   "prev_rate": null
+  },
+  {
+   "agency": "USDA",
+   "program": "Commodity Credit Corporation (CCC) Livestock Forage Disaster Program",
+   "outlays_m": 913.56,
+   "improper_m": 41.55,
+   "unknown_m": 0,
+   "total_m": 41.56,
+   "rate": 0.04549236,
+   "over_m": 22.68,
+   "prev_rate": 0.064121451
+  },
+  {
+   "agency": "SBA",
+   "program": "7(a) Loan Guarantees Purchases",
+   "outlays_m": 2646.63,
+   "improper_m": 40.3,
+   "unknown_m": 0,
+   "total_m": 40.3,
+   "rate": 0.015226911,
+   "over_m": 38.92,
+   "prev_rate": 0.015062633
+  },
+  {
+   "agency": "DOW",
+   "program": "ODO - DoW Travel Pay - DTS",
+   "outlays_m": 365.6,
+   "improper_m": 18.9,
+   "unknown_m": 16.2,
+   "total_m": 35.1,
+   "rate": 0.096006565,
+   "over_m": 7.5,
+   "prev_rate": 0.109903614
+  },
+  {
+   "agency": "VA",
+   "program": "Purchased Long Term Services and Supports",
+   "outlays_m": 8587.1,
+   "improper_m": 13.81,
+   "unknown_m": 19.61,
+   "total_m": 33.42,
+   "rate": 0.003891884,
+   "over_m": 3.16,
+   "prev_rate": 0.047396287
+  },
+  {
+   "agency": "FCC",
+   "program": "Universal Service Fund - High Cost Legacy",
+   "outlays_m": 1680.52,
+   "improper_m": 30.62,
+   "unknown_m": 0,
+   "total_m": 30.62,
+   "rate": 0.018220551,
+   "over_m": 3.65,
+   "prev_rate": 0.032568603
+  },
+  {
+   "agency": "USDA",
+   "program": "Agriculture Risk Coverage Program",
+   "outlays_m": 478.02,
+   "improper_m": 30.4,
+   "unknown_m": 0,
+   "total_m": 30.39,
+   "rate": 0.063574746,
+   "over_m": 0.62,
+   "prev_rate": null
+  },
+  {
+   "agency": "CNCS",
+   "program": "AmeriCorps State and National",
+   "outlays_m": 346.49,
+   "improper_m": 12.51,
+   "unknown_m": 15.53,
+   "total_m": 28.04,
+   "rate": 0.080925856,
+   "over_m": 12.51,
+   "prev_rate": 0.087671375
+  },
+  {
+   "agency": "SBA",
+   "program": "Paycheck Protection Program (PPP) Loan Guaranty Purchases",
+   "outlays_m": 2070.19,
+   "improper_m": 23.82,
+   "unknown_m": 0,
+   "total_m": 23.82,
+   "rate": 0.01150619,
+   "over_m": 23.82,
+   "prev_rate": 0.13283866
+  },
+  {
+   "agency": "USDA",
+   "program": "Noninsured Crop Disaster Assistance Program",
+   "outlays_m": 283.78,
+   "improper_m": 20.36,
+   "unknown_m": 0,
+   "total_m": 20.37,
+   "rate": 0.071780957,
+   "over_m": 6.42,
+   "prev_rate": 0.105608785
+  },
+  {
+   "agency": "USDA",
+   "program": "Emergency Conservation Program",
+   "outlays_m": 363.74,
+   "improper_m": 19.84,
+   "unknown_m": 0,
+   "total_m": 19.84,
+   "rate": 0.054544455,
+   "over_m": 6.36,
+   "prev_rate": 0.554995107
+  },
+  {
+   "agency": "SBA",
+   "program": "Paycheck Protection Program (PPP) Loan Forgiveness",
+   "outlays_m": 95.8,
+   "improper_m": 19.41,
+   "unknown_m": 0,
+   "total_m": 19.41,
+   "rate": 0.202609603,
+   "over_m": 19.28,
+   "prev_rate": 0.192169214
+  },
+  {
+   "agency": "CNCS",
+   "program": "The Foster Grandparent Program (FGP)",
+   "outlays_m": 75.89,
+   "improper_m": 3.89,
+   "unknown_m": 9.07,
+   "total_m": 12.96,
+   "rate": 0.170773488,
+   "over_m": 3.82,
+   "prev_rate": 0.236014917
+  },
+  {
+   "agency": "DOW",
+   "program": "ODO - DoW Travel Pay - IATS",
+   "outlays_m": 15.1,
+   "improper_m": 1,
+   "unknown_m": 0.2,
+   "total_m": 1.2,
+   "rate": 0.079470199,
+   "over_m": 0.6,
+   "prev_rate": 0.131025119
+  },
+  {
+   "agency": "DHS",
+   "program": "Federal Emergency Management Agency - Funeral Assistance",
+   "outlays_m": 94.70730411,
+   "improper_m": 0.75506049,
+   "unknown_m": 0,
+   "total_m": 0.75506049,
+   "rate": 0.007972569,
+   "over_m": 0.51377016,
+   "prev_rate": 0.043087709
+  },
+  {
+   "agency": "FCC",
+   "program": "FCC Secured & Trusted Communications Network Reimbursement Program (STCNRP)",
+   "outlays_m": 414.85,
+   "improper_m": 0.52,
+   "unknown_m": 0,
+   "total_m": 0.52,
+   "rate": 0.001253465,
+   "over_m": 0.52,
+   "prev_rate": null
+  }
+ ],
+ "root_causes_2026_m": {
+  "Failure to Access Data/Information Needed": 138285.38,
+  "Insufficient Documentation to Determine": 6050.89,
+  "Inability to Access the Data/Information": 16421.69,
+  "Data/Information Needed Does Not Exist": 28915.55,
+  "Technically Improper Payments (Made for correct amount but failed to meet all regulatory and/or statutory requirements)": 6972.62
+ },
+ "recovery_m": {
+  "2013": {
+   "identified_m": 44493.89,
+   "recovered_m": 22517.78
+  },
+  "2014": {
+   "identified_m": 40783.43,
+   "recovered_m": 19563.5
+  },
+  "2015": {
+   "identified_m": 43154.36,
+   "recovered_m": 19772.0
+  },
+  "2016": {
+   "identified_m": 46893.02,
+   "recovered_m": 20807.56
+  },
+  "2017": {
+   "identified_m": 47722.5,
+   "recovered_m": 21586.34
+  },
+  "2018": {
+   "identified_m": 47444.79,
+   "recovered_m": 20347.81
+  },
+  "2019": {
+   "identified_m": 45427.53,
+   "recovered_m": 21051.83
+  },
+  "2020": {
+   "identified_m": 46834.53,
+   "recovered_m": 21939.16
+  },
+  "2021": {
+   "identified_m": 56771.02,
+   "recovered_m": 22493.57
+  },
+  "2022": {
+   "identified_m": 51727.79,
+   "recovered_m": 23223.06
+  },
+  "2023": {
+   "identified_m": 33672.61,
+   "recovered_m": 25570.4
+  },
+  "2024": {
+   "identified_m": 33469.55,
+   "recovered_m": 22574.72
+  },
+  "2025": {
+   "identified_m": 38734.49,
+   "recovered_m": 23831.06
+  },
+  "2026": {
+   "identified_m": 44454.3,
+   "recovered_m": 29119.29
+  }
+ },
+ "compliance_fy2025": {
+  "noncompliant": [
+   "CNCS",
+   "DOL",
+   "DOW",
+   "EPA",
+   "FCC",
+   "HHS",
+   "HUD",
+   "SBA",
+   "SSA",
+   "SSS",
+   "TREASURY",
+   "USAGM",
+   "USDA"
+  ],
+  "agencies": 76,
+  "rated": 58
+ },
+ "cumulative_m": 3181446.17,
+ "cum_through_2025_m": 2983969.67
+}
