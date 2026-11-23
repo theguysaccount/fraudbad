@@ -4,8 +4,8 @@ Nothing on the site is invented: if a figure is not in SOURCES, it does not ship
 Last research pass: 2026-11-08.
 """
 
-UPDATED = "2026-11-08"
-UPDATED_HUMAN = "November 8, 2026"
+UPDATED = "2026-11-22"
+UPDATED_HUMAN = "November 22, 2026"
 SITE = "https://fraudbad.com"
 CTA_URL = "https://america.co/receipts-act#sign"
 GSC_FILE = "google6a4e35cb8c4a23e4.html"  # Google Search Console ownership file (URL-prefix property https://fraudbad.com/)

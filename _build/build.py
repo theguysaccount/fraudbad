@@ -10,7 +10,7 @@ import content_more as M  # official improper-payment ledger + round-3 cases
 
 OUT = os.path.join(os.path.dirname(__file__), "site")
 ASSETS = os.path.join(os.path.dirname(__file__), "assets")
-V = "20261110d"
+V = "20261122a"
 e = lambda s: html.escape(str(s), quote=True)
 
 LEVEL_ORDER = {"federal": 0, "state": 1, "local": 2}
@@ -184,7 +184,7 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
 <div><a class="mark" href="/"><span class="f">Fraud</span><span class="b">Bad</span></a>
 <p style="margin-top:14px">An independent public-interest site. Not a government website. Every figure links to the auditor, inspector general, court record or agency report it came from.</p></div>
-<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/soft-fraud">Soft fraud</a><a href="/ledger">Every program's error rate</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="/answers/">Answers</a><a href="/contracts">Contract explorer</a><a href="/states">Every state, ranked</a><a href="/your-share">Your share</a><a href="/data">Open data</a><a href="/about">About</a><a href="/corrections">Corrections</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
+<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/hard-fraud">Hard fraud</a><a href="/soft-fraud">Soft fraud</a><a href="/cases/federal">Federal cases</a><a href="/cases/state">State cases</a><a href="/cases/local">Local cases</a><a href="/ledger">Every program's error rate</a><a href="/agencies">All agencies</a><a href="/programs">All programs</a><a href="/years">By fiscal year</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="/answers/">Answers</a><a href="/contracts">Contract explorer</a><a href="/states">Every state, ranked</a><a href="/state-audits">State single audits</a><a href="/your-share">Your share</a><a href="/data">Open data</a><a href="/about">About</a><a href="/corrections">Corrections</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
 <nav aria-label="America.co"><a href="https://america.co/">America.co</a>{''.join(f'<a href="{u}" rel="noopener">{n}</a>' for n,u in SOCIALS)}<a href="https://america.co/work-with-us">Send a correction</a></nav>
 <p class="fine">Updated {UPDATED_HUMAN}. Charges are accusations; everyone charged is presumed innocent until proven guilty. Improper payments are not all fraud — each page says what kind of number it is.</p>
 </div></footer>
@@ -238,6 +238,18 @@ ORG_LD = {"@context": "https://schema.org", "@type": "Organization", "name": "Fr
           "parentOrganization": {"@type": "Organization", "name": "America House, Inc.", "url": "https://america.co"}}
 
 
+def breadcrumb_ld(*items):
+    """Build a canonical Schema.org BreadcrumbList from (name, path) tuples."""
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": i, "name": name, "item": SITE + (path if path.startswith("/") else "/" + path)}
+            for i, (name, path) in enumerate(items, 1)
+        ],
+    }
+
+
 SIGN_BASE = CTA_URL.split("#")[0]
 
 
@@ -289,7 +301,12 @@ def new_strip():
     fresh = sorted([c for c in ORDERED if ADDED[c["slug"]] == newest], key=lambda c: -c["sort"])[:6]
     import datetime as _dt
     when = _dt.date.fromisoformat(newest).strftime("%b %-d, %Y")
-    links = "".join(f'<a href="{h}">{t} →</a>' for h, t in (("/ledger", "Every program's error rate"), ("/states", "Every state, ranked"), ("/contracts", "The 100 biggest contracts"), ("/your-share", "Your share")))
+    links = "".join(f'<a href="{h}">{t} →</a>' for h, t in (
+        ("/hard-fraud", "Hard fraud cases"), ("/ledger", "Every program's error rate"),
+        ("/agencies", "All 27 agencies"), ("/programs", "All 112 programs"),
+        ("/years", "FY2004–FY2025 timeline"), ("/states", "Every state, ranked"),
+        ("/contracts", "The 100 biggest contracts"), ("/answers/", "Straight answers"),
+    ))
     return f"""<section class="sec new-strip" aria-labelledby="new-h"><div class="wrap">
 <div class="sec-head"><div><p class="kicker" style="color:var(--red)">Added {when}</p><h2 id="new-h">New this week</h2></div><p class="new-links">{links}</p></div>
 <div class="grid">{"".join(card(c) for c in fresh)}</div></div></section>"""
@@ -335,8 +352,8 @@ def build_home():
            "description": "Every major case of federal, state and local fraud, sourced, and a map of where public spending records stop."},
           {"@context": "https://schema.org", "@type": "ItemList", "name": "Mega-fraud cases",
            "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{c['slug']}", "name": c["title"]} for i, c in enumerate(ORDERED)]}]
-    title = "FraudBad: up to $521 billion a year lost to fraud. Here's every big case."
-    desc = "Every major fraud case in federal, state and local spending, sourced to auditors, inspectors general and courts — and a map of where the receipts stop."
+    title = "Government Spending Fraud Cases by State & Agency | FraudBad"
+    desc = f"Track {len(CASES)} U.S. government spending fraud cases and ${M.CUM/1e12:.2f}T in federal improper payments by state, agency, and program — every figure cited to OIG, DOJ, and GAO."
     body = f"""{header('cases')}
 <main id="main">
 <section class="hero"><div class="wrap">
@@ -387,14 +404,29 @@ def build_home():
     write("index.html", head(title, desc, "/", "og-home.png", ld) + body)
 
 
+# Concise SEO overrides for cases whose display title or dek exceeds 70 / 165 chars (avoids awkward truncation)
+CASE_TITLE_OVERRIDES = {
+    "medicare-generic-drug-prices": "Medicare Generic Drug Overpayments: $3.6B in One Year | FraudBad",
+    "california-high-speed-rail": "California High-Speed Rail: $33B Promised, Up to $231B | FraudBad",
+}
+CASE_DESC_OVERRIDES = {
+    "medicare-generic-drug-prices": "An Annals of Internal Medicine study estimated Medicare could have saved $3.6 billion in one year by paying Mark Cuban Cost Plus Drug Company prices.",
+    "data-existed-nobody-checked": f"Two-thirds of the government's ${M.FY25/1e9:,.1f}B in FY2025 improper payments went out because agencies failed to check data they already had access to.",
+    "shuttered-venue-grants": "SBA's Shuttered Venue Operators Grants had $14.6B in outlays; in FY2025, SBA reported $5.83B improper and $4.24B unproven — a 68.9% combined error rate.",
+}
+
+
 # ---------------------------------------------------------------- case pages
 def build_case(i, c):
     srcmap = {sid: n + 1 for n, sid in enumerate(c["sources"])}
     prev_c = ORDERED[i - 1] if i > 0 else ORDERED[-1]
     next_c = ORDERED[(i + 1) % len(ORDERED)]
     url = f"{SITE}/{c['slug']}"
-    title = [f"{c['fig']} {c['scale']}: {c['title']} | FraudBad", f"{c['fig']} {c['scale']}: {c['title']}", f"{c['title']} | FraudBad"]
-    desc = c["dek"]
+    if c["slug"] in CASE_TITLE_OVERRIDES:
+        title = [CASE_TITLE_OVERRIDES[c["slug"]]]
+    else:
+        title = [f"{c['fig']} {c['scale']}: {c['title']} | FraudBad", f"{c['fig']} {c['scale']}: {c['title']}", f"{c['title']} | FraudBad"]
+    desc = CASE_DESC_OVERRIDES.get(c["slug"], c["dek"])
     happened = "".join(f"<p>{e(p)}</p>" for p in c["happened"])
     missed = "".join(f"<li>{e(m)}</li>" for m in c["missed"])
     sources = "".join(
@@ -402,21 +434,21 @@ def build_case(i, c):
         for sid in c["sources"])
     tweet = f"{c['fig']} {c['scale']}: {c['title']}. Want to stop it? Sign the Receipts Act."
     x_url = "https://x.com/intent/post?" + urllib.parse.urlencode({"text": tweet, "url": url})
+    level_path = f"/cases/{c['level']}"
+    level_label = f"{LEVELS[c['level']]} cases"
+    related_html = __import__("pages_more").case_related_html(__import__("sys").modules[__name__], c)
     ld = [ORG_LD,
           {"@context": "https://schema.org", "@type": "Article", "headline": f"{c['fig']} {c['scale']}: {c['title']}",
-           "description": desc, "url": url, "datePublished": UPDATED, "dateModified": UPDATED,
+           "description": desc, "url": url, "datePublished": ADDED.get(c["slug"], UPDATED), "dateModified": UPDATED,
            "image": f"{SITE}/og-{c['slug']}.png", "author": {"@type": "Organization", "name": "FraudBad", "url": SITE},
            "publisher": {"@type": "Organization", "name": "FraudBad", "logo": {"@type": "ImageObject", "url": SITE + "/icon-512.png"}},
            "citation": [S[s][3] for s in c["sources"]], "isAccessibleForFree": True},
-          {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Cases", "item": SITE + "/#cases"},
-              {"@type": "ListItem", "position": 2, "name": LEVELS[c["level"]], "item": SITE + "/#" + c["level"]},
-              {"@type": "ListItem", "position": 3, "name": c["title"], "item": url}]}]
+          breadcrumb_ld(("Home", "/"), (level_label, level_path), (c["title"], f"/{c['slug']}"))]
     body = f"""{header()}
 <main id="main">
 <section class="case-hero"><div class="wrap">
 <div>
-<p class="crumbs"><a href="/#cases">All cases</a> / <a href="/#{c['level']}">{LEVELS[c['level']]}</a> / {e(c['place'])}</p>
+<p class="crumbs"><a href="/">Home</a> / <a href="{level_path}">{e(level_label)}</a> / {e(c['place'])}</p>
 <div class="tags">{type_chip(c['type'])}<span class="lvl">{LEVELS[c['level']]} · {e(c['place'])}</span>{tier_chip(c['tier'])}</div>
 <p class="fig" aria-hidden="true">{e(c['fig'])}<small>{e(c['scale'])}</small></p>
 <h1><span class="sr">{e(c['fig'])} {e(c['scale'])}: </span>{e(c['title'])}</h1>
@@ -429,6 +461,7 @@ def build_case(i, c):
 <section><h2>What happened</h2>{happened}</section>
 <section><h2>Why nobody caught it</h2><ul>{missed}</ul></section>
 <section><h2>How sure are we?</h2><div class="sure">{tier_chip(c['tier'])}<p><strong>{e(TIERS[c['tier']][1])}</strong></p><p style="margin:0">{e(c['sure'])}</p></div></section>
+{related_html}
 <section><h2>Sources</h2><ol class="sources">{sources}</ol><p class="src" style="margin-top:14px">Spot an error? <a href="https://america.co/work-with-us">Send the source</a> and we'll fix it.</p></section>
 </div>
 <aside class="aside-card" aria-label="Share and act">
@@ -484,10 +517,12 @@ def build_transparency():
         ("Parts it couldn't tell if the price was fair", "25 of 46", "mil_soap"),
     ]
     title = "Spending transparency: where the receipts stop | FraudBad"
-    desc = "Follow a public dollar down and the records run out. 74% of federal grant dollars can't be traced to a local place; most subawards go unreported; 56% of local governments list no website."
-    ld = [ORG_LD, {"@context": "https://schema.org", "@type": "Article", "headline": "Where the receipts stop", "description": desc,
-                   "url": SITE + "/transparency", "datePublished": UPDATED, "dateModified": UPDATED, "image": SITE + "/og-transparency.png",
-                   "author": {"@type": "Organization", "name": "FraudBad"}, "citation": sorted({S[d[2]][3] for c in DIVE.values() for d in c["cells"].values() if d[2]})}]
+    desc = "Follow a public dollar down and the records run out: 74% of federal grant dollars lack a local trail and 56% of local governments list no website."
+    ld = [ORG_LD,
+          {"@context": "https://schema.org", "@type": "Article", "headline": "Where the receipts stop", "description": desc,
+           "url": SITE + "/transparency", "datePublished": "2026-11-08", "dateModified": UPDATED, "image": SITE + "/og-transparency.png",
+           "author": {"@type": "Organization", "name": "FraudBad"}, "citation": sorted({S[d[2]][3] for c in DIVE.values() for d in c["cells"].values() if d[2]})},
+          breadcrumb_ld(("Home", "/"), ("Where the receipts stop", "/transparency"))]
     soap_srcmap = None
     body = f"""{header('transparency')}
 <main id="main">
@@ -544,9 +579,11 @@ def build_soft():
         return "".join(out)
     soft_cases = "\n".join(card(c) for c in ORDERED if c["type"] == "soft")
     title = ["Soft fraud: the trillions lost to negligence, and how we search for it | FraudBad", "Soft fraud: the trillions lost to negligence | FraudBad"]
-    desc = f"Paying without proof, overpaying, paying twice, losing track, never collecting. ${M.CUM/1e12:.2f} trillion in improper payments since {M.FIRST_YEAR} is just the start. Here's every official number and the seven signals we use to find more."
-    ld = [ORG_LD, {"@context": "https://schema.org", "@type": "Article", "headline": "Soft fraud", "description": desc, "url": SITE + "/soft-fraud",
-                   "datePublished": UPDATED, "dateModified": UPDATED, "image": SITE + "/og-soft-fraud.png", "author": {"@type": "Organization", "name": "FraudBad"}}]
+    desc = f"Paying without proof, overpaying, or never collecting: ${M.CUM/1e12:.2f}T in improper payments since {M.FIRST_YEAR}, plus 7 audit signals we use to find more."
+    ld = [ORG_LD,
+          {"@context": "https://schema.org", "@type": "Article", "headline": "Soft fraud", "description": desc, "url": SITE + "/soft-fraud",
+           "datePublished": "2026-11-09", "dateModified": UPDATED, "image": SITE + "/og-soft-fraud.png", "author": {"@type": "Organization", "name": "FraudBad"}},
+          breadcrumb_ld(("Home", "/"), ("Soft fraud", "/soft-fraud"))]
     body = f"""{header('soft')}
 <main id="main">
 <section class="page-hero"><div class="wrap">
@@ -636,16 +673,19 @@ def build_ledger():
     ]
     big = "".join(f'<a class="big" href="{h}"><b>{e(n)}</b><span>{e(t)}</span><i class="src">{e(S[sid][1].split(";")[0])}</i></a>' for n, t, sid, h in tiles)
     title = [f"The ledger: every federal program's error rate, and ${M.CUM/1e12:.2f} trillion since {M.FIRST_YEAR} | FraudBad", f"Improper payments since {M.FIRST_YEAR}: ${M.CUM/1e12:.2f} trillion, by program | FraudBad"]
-    desc = f"Every federal program that reports improper payments, from the government's own dataset: ${M.FY25/1e9:,.1f} billion paid wrong or without proof in fiscal 2025, ${M.CUM/1e12:.2f} trillion since {M.FIRST_YEAR}, and why."
-    ld = [ORG_LD, {"@context": "https://schema.org", "@type": "Dataset", "name": "Federal improper payments by program, FY2004–FY2025",
-                   "description": desc, "url": SITE + "/ledger", "creator": {"@type": "Organization", "name": "Office of Management and Budget"},
-                   "isBasedOn": S["pa_data"][3], "dateModified": UPDATED, "license": "https://www.usa.gov/government-works"}]
+    desc = f"Official OMB improper payment ledger: ${M.FY25/1e9:,.1f}B paid wrong or unproven in FY2025, ${M.CUM/1e12:.2f}T since FY{M.FIRST_YEAR}, ranked across 64 federal programs."
+    ld = [ORG_LD,
+          {"@context": "https://schema.org", "@type": "Dataset", "name": "Federal improper payments by program, FY2004–FY2025",
+           "description": desc, "url": SITE + "/ledger", "creator": {"@type": "Organization", "name": "Office of Management and Budget"},
+           "isBasedOn": S["pa_data"][3], "dateModified": UPDATED, "license": "https://www.usa.gov/government-works"},
+          breadcrumb_ld(("Home", "/"), ("The ledger", "/ledger"))]
     body = f"""{header('ledger')}
 <main id="main">
 <section class="page-hero"><div class="wrap">
 <p class="kicker" style="color:#ff4438">The government's own receipt</p>
 <h1>The ledger</h1>
 <p class="lede">Every year, federal agencies have to measure how much they paid in the wrong amount, to the wrong person, or without the paperwork to prove it was right. They report it to the White House budget office, which publishes one spreadsheet. We read every row. Here it is.</p>
+<p class="new-links" style="margin-top:18px"><a href="/agencies" style="color:#fff">All 27 federal agencies →</a><a href="/programs" style="color:#fff">All 112 program histories →</a><a href="/years" style="color:#fff">FY2004–FY2025 archive →</a><a href="/data" style="color:#fff">Download CSV/JSON →</a></p>
 </div></section>
 <section class="sec"><div class="wrap"><div class="big-grid">{big}</div></div></section>
 <section class="sec" id="years" style="background:#fff;border-top:1px solid var(--rule)"><div class="wrap">
@@ -730,7 +770,7 @@ def build_method():
 </div></section>
 </main>
 {cta()}{footer()}"""
-    write("method.html", head(title, desc, "/method", "og-home.png", [ORG_LD]) + body)
+    write("method.html", head(title, desc, "/method", "og-home.png", [ORG_LD, breadcrumb_ld(("Home", "/"), ("How we judge", "/method"))]) + body)
 
 
 def build_404():
@@ -741,10 +781,37 @@ def build_404():
     write("404.html", head("Page not found | FraudBad", "This page doesn't exist.", "/404", "og-home.png").replace('content="index,follow,max-image-preview:large"', 'content="noindex"') + body)
 
 
+def _urlset_xml(urls):
+    sm = "".join(f"<url><loc>{SITE}{u if u != '/' else '/'}</loc><lastmod>{UPDATED}</lastmod></url>" for u in urls)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n'
+
+
 def build_meta():
-    urls = ["/", "/soft-fraud", "/ledger", "/transparency", "/method"] + [f"/{c['slug']}" for c in ORDERED] + EXTRA_URLS
-    sm = "".join(f"<url><loc>{SITE}{u if u!='/' else '/'}</loc><lastmod>{UPDATED}</lastmod></url>" for u in urls)
-    write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>\n')
+    case_urls = [f"/{c['slug']}" for c in ORDERED]
+    state_urls = [u for u in EXTRA_URLS if u.startswith("/state/")]
+    ledger_urls = [u for u in EXTRA_URLS if u.startswith(("/program/", "/agency/", "/year/"))]
+    core_extra = [u for u in EXTRA_URLS if not u.startswith(("/state/", "/program/", "/agency/", "/year/"))]
+    core_urls = ["/", "/soft-fraud", "/ledger", "/transparency", "/method"] + core_extra
+
+    tiers = [
+        ("sitemap-core.xml", core_urls),
+        ("sitemap-cases.xml", case_urls),
+        ("sitemap-states.xml", state_urls),
+        ("sitemap-ledger.xml", ledger_urls),
+    ]
+    seen = set()
+    for fname, urls in tiers:
+        dedup = []
+        for u in urls:
+            if u not in seen:
+                seen.add(u)
+                dedup.append(u)
+        write(fname, _urlset_xml(dedup))
+    idx_items = "".join(
+        f"<sitemap><loc>{SITE}/{fname}</loc><lastmod>{UPDATED}</lastmod></sitemap>"
+        for fname, _ in tiers
+    )
+    write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{idx_items}</sitemapindex>\n')
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
     write("CNAME", "fraudbad.com\n")
     write(GSC_FILE, f"google-site-verification: {GSC_FILE}")
@@ -765,14 +832,14 @@ def main():
         shutil.move(os.path.join(OUT, "fonts", f), os.path.join(OUT, f))
     if os.path.isdir(os.path.join(OUT, "fonts")):
         os.rmdir(os.path.join(OUT, "fonts"))
+    import pages_more
+    pages_more.data()
+    PROGRAM_LINKS.update(pages_more.data()["links"])
     build_home()
     for i, c in enumerate(ORDERED):
         build_case(i, c)
     build_transparency()
     build_soft()
-    import pages_more
-    pages_more.data()
-    PROGRAM_LINKS.update(pages_more.data()["links"])
     build_ledger()
     build_method()
     import sys as _sys

@@ -1,10 +1,11 @@
 """Check every built page against SEO-STANDARD.md (Jack's rules). Usage: python3 seo_audit.py  -> exit 1 on problems."""
-import collections, html, os, re, sys
+import collections, html, json, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SITE = os.path.join(HERE, "site")
+SITE = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(HERE, "site")
 pages = []
-for root, _, files in os.walk(SITE):
+for root, dirs, files in os.walk(SITE):
+    dirs[:] = [d for d in dirs if d not in (".git", "_build")]
     for f in files:
         if f.endswith(".html"):
             rel = os.path.relpath(os.path.join(root, f), SITE)
@@ -22,11 +23,27 @@ for rel in sorted(pages):
     titles[title].append(rel); descs[desc].append(rel)
     if not title: probs.append((rel, "no <title>"))
     elif len(title) > 70: probs.append((rel, f"title {len(title)} chars (keep it under 70): {title}"))
+    elif "…" in title: probs.append((rel, f"truncated title: {title}"))
     if not desc: probs.append((rel, "no meta description"))
     elif not 50 <= len(desc) <= 170: probs.append((rel, f"description {len(desc)} chars (aim 50-170)"))
+    elif "…" in desc: probs.append((rel, f"truncated description: {desc}"))
     if h1 != 1: probs.append((rel, f"{h1} <h1> tags (want exactly 1)"))
     if 'rel="canonical"' not in t: probs.append((rel, "no canonical link"))
-    if '"@type": "Organization"' not in t and '"@type":"Organization"' not in t: probs.append((rel, "no Organization schema"))
+    ld_blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', t, re.S)
+    ld_types = set()
+    for blk in ld_blocks:
+        try:
+            obj = json.loads(blk)
+            if isinstance(obj, dict) and "@type" in obj:
+                ld_types.add(obj["@type"])
+                if obj["@type"] == "BreadcrumbList":
+                    for item in obj.get("itemListElement", []):
+                        if "#" in str(item.get("item", "")):
+                            probs.append((rel, f"BreadcrumbList contains fragment URL: {item.get('item')}"))
+        except Exception as exc:
+            probs.append((rel, f"invalid JSON-LD: {exc}"))
+    if "Organization" not in ld_types: probs.append((rel, "no Organization schema"))
+    if rel != "index.html" and "BreadcrumbList" not in ld_types: probs.append((rel, "no BreadcrumbList schema"))
     for img in re.findall(r"<img\b[^>]*>", t):
         if " alt=" not in img: probs.append((rel, "image without alt text"))
     for a in re.findall(r'<a\b[^>]*href="https://america\.co[^>]*>', t):

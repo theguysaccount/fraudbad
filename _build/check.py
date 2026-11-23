@@ -6,7 +6,10 @@ Usage: python3 check.py [--shots DIR] [--widths 390,1440]
 """
 import argparse, asyncio, html.parser, os, re, sys, threading
 from urllib.parse import urlparse
-from playwright.async_api import async_playwright
+try:
+    from playwright.async_api import async_playwright
+except ImportError:
+    async_playwright = None
 from browser import launch_args
 from serve import serve, ROOT
 
@@ -14,6 +17,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--shots", default="")
 ap.add_argument("--widths", default="390,1440")
 ap.add_argument("--only", default="", help="comma list of paths to check instead of the whole sitemap")
+ap.add_argument("--static-only", action="store_true", help="run static sitemap/link/meta checks without headless browser")
 args = ap.parse_args()
 WIDTHS = [int(w) for w in args.widths.split(",")]
 PORT = 8799
@@ -43,8 +47,23 @@ def exists(path):
     return os.path.isfile(p) or os.path.isfile(p + ".html") or os.path.isfile(os.path.join(p, "index.html"))
 
 
-sitemap = open(os.path.join(ROOT, "sitemap.xml")).read()
-paths = [urlparse(u).path or "/" for u in re.findall(r"<loc>([^<]+)</loc>", sitemap)]
+def load_sitemap_paths():
+    sitemap = open(os.path.join(ROOT, "sitemap.xml"), encoding="utf-8").read()
+    if "<sitemapindex" in sitemap:
+        out = []
+        for child_url in re.findall(r"<loc>([^<]+)</loc>", sitemap):
+            child_rel = urlparse(child_url).path.lstrip("/")
+            child_file = os.path.join(ROOT, child_rel)
+            if not os.path.isfile(child_file):
+                fails.append(f"missing child sitemap: {child_rel}")
+                continue
+            child_xml = open(child_file, encoding="utf-8").read()
+            out.extend(urlparse(u).path or "/" for u in re.findall(r"<loc>([^<]+)</loc>", child_xml))
+        return out
+    return [urlparse(u).path or "/" for u in re.findall(r"<loc>([^<]+)</loc>", sitemap)]
+
+
+paths = load_sitemap_paths()
 on_disk = set()
 for dp, _, fs in os.walk(ROOT):
     for f in fs:
@@ -101,11 +120,16 @@ async def browse():
         await b.close()
 
 
-httpd = serve(PORT)
-threading.Thread(target=httpd.serve_forever, daemon=True).start()
-asyncio.run(browse())
-httpd.shutdown()
-print(f"checked {len(paths)} pages at {WIDTHS}: {len(fails)} problems")
+if not args.static_only:
+    if async_playwright is None:
+        raise SystemExit("playwright is not installed; pass --static-only for static checks")
+    httpd = serve(PORT)
+    threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    asyncio.run(browse())
+    httpd.shutdown()
+    print(f"checked {len(paths)} pages at {WIDTHS}: {len(fails)} problems")
+else:
+    print(f"static-checked {len(paths)} sitemap pages ({len(on_disk)} html files): {len(fails)} problems")
 for f in fails[:80]:
     print("  -", f)
 sys.exit(1 if fails else 0)
