@@ -106,6 +106,7 @@ def head(title, desc, path, og, jsonld=None, extra=""):
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css?v={V}">
+<script defer src="https://rsio.org/vital.js"></script>
 {ld}{extra}
 </head>
 <body>
@@ -813,6 +814,18 @@ def build_meta():
     )
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{idx_items}</sitemapindex>\n')
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+    write("llms.txt", (
+        "# FraudBad\n\n"
+        "> Source-cited ledger of U.S. government spending fraud cases and federal improper payments by state, agency, and program, cited to OIG, DOJ, and GAO records.\n\n"
+        "## Key Pages\n\n"
+        f"- [Home]({SITE}/): Overview of documented government spending fraud cases.\n"
+        f"- [The Ledger]({SITE}/ledger): Federal improper payments ledger by agency and program.\n"
+        f"- [Soft Fraud]({SITE}/soft-fraud): Legalized waste and undocumented spending patterns.\n"
+        f"- [Where Receipts Stop]({SITE}/transparency): Public spending transparency gaps.\n"
+        f"- [States]({SITE}/states): Cases and audits organized by state.\n"
+        f"- [Agencies]({SITE}/agencies): Cases and improper payments organized by agency.\n"
+        f"- [Method]({SITE}/method): Sourcing and editorial methodology.\n"
+    ))
     write("CNAME", "fraudbad.com\n")
     write(GSC_FILE, f"google-site-verification: {GSC_FILE}")
     write(f"{INDEXNOW_KEY}.txt", INDEXNOW_KEY)

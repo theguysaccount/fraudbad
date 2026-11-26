@@ -1,0 +1,13 @@
+# FraudBad
+
+> Source-cited ledger of U.S. government spending fraud cases and federal improper payments by state, agency, and program, cited to OIG, DOJ, and GAO records.
+
+## Key Pages
+
+- [Home](https://fraudbad.com/): Overview of documented government spending fraud cases.
+- [The Ledger](https://fraudbad.com/ledger): Federal improper payments ledger by agency and program.
+- [Soft Fraud](https://fraudbad.com/soft-fraud): Legalized waste and undocumented spending patterns.
+- [Where Receipts Stop](https://fraudbad.com/transparency): Public spending transparency gaps.
+- [States](https://fraudbad.com/states): Cases and audits organized by state.
+- [Agencies](https://fraudbad.com/agencies): Cases and improper payments organized by agency.
+- [Method](https://fraudbad.com/method): Sourcing and editorial methodology.
