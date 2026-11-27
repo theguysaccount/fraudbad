@@ -1,8 +1,8 @@
 /* fraudbad.com — one stylesheet, no framework */
-@font-face{font-family:Anton;src:url(/anton-latin.woff2) format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"Plex Mono";src:url(/plexmono-400-latin.woff2) format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"Plex Mono";src:url(/plexmono-600-latin.woff2) format("woff2");font-weight:600;font-display:swap}
-@font-face{font-family:"Public Sans";src:url(/publicsans-var-latin.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:Anton;src:url(/anton-latin.woff2) format("woff2");font-weight:400;font-display:optional}
+@font-face{font-family:"Plex Mono";src:url(/plexmono-400-latin.woff2) format("woff2");font-weight:400;font-display:optional}
+@font-face{font-family:"Plex Mono";src:url(/plexmono-600-latin.woff2) format("woff2");font-weight:600;font-display:optional}
+@font-face{font-family:"Public Sans";src:url(/publicsans-var-latin.woff2) format("woff2");font-weight:100 900;font-display:optional}
 
 :root{
   --ink:#0b0f1a;--navy:#0a1f44;--navy-2:#11295a;--navy-3:#1d3b78;

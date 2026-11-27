@@ -627,7 +627,7 @@ def build_data(B):
         ("contract-obligations-by-month.csv", n4, "Federal contract obligations by fiscal month (October = 1), FY2018–FY2026, from USAspending.gov."),
         ("sources.csv", n5, "Every source this site cites."),
     ]
-    lis = "".join(f'<tr><td><a href="/downloads/{f}" download>{f}</a></td><td class="mono">{n:,} rows</td><td>{B.e(d)}</td></tr>' for f, n, d in files)
+    lis = "".join(f'<tr><td><a href="/downloads/{f}" download data-vital-event="offer_clicked">{f}</a></td><td class="mono">{n:,} rows</td><td>{B.e(d)}</td></tr>' for f, n, d in files)
     body = f"""<section class="sec"><div class="wrap">
 <div class="tbl-wrap"><table class="tbl"><thead><tr><th>File</th><th>Size</th><th>What's in it</th></tr></thead><tbody>{lis}</tbody></table></div>
 </div></section>
@@ -812,7 +812,7 @@ def build_programs_index(B):
             f'<td class="mono">{pct(last["rate"])}</td><td class="mono hide-sm">{nyr}</td></tr>'
         )
     body = f"""<section class="sec"><div class="wrap">{crumbs(('The ledger', '/ledger'), ('All programs', None))}
-<div class="pick"><label for="pq">Filter</label><input id="pq" type="search" placeholder="Program or agency (e.g. Medicaid, SNAP, VA, SBA)" autocomplete="off"></div>
+<div class="pick"><label for="pq">Filter</label><input id="pq" type="search" placeholder="Program or agency (e.g. Medicaid, SNAP, VA, SBA)" autocomplete="off" data-vital-event="tool_used"></div>
 <div class="tbl-wrap"><table class="tbl ledger fit" id="pt"><thead><tr><th>#</th><th>Program</th><th>Cumulative wrong/unproven</th><th class="hide-sm">Latest</th><th>Latest rate</th><th class="hide-sm">Years</th></tr></thead><tbody>{"".join(trs)}</tbody></table></div>
 <p class="src" style="margin-top:14px">Every federal program with at least {MIN_YEARS} years of official reporting in OMB's FY2025 dataset ({len(items)} programs). See also <a href="/agencies">all 27 agencies</a> and <a href="/years">all {len(D['years'])} fiscal years</a>.</p>
 </div></section>
@@ -1096,7 +1096,7 @@ def build_states(B):
         f'<td class="mono hide-sm">{_pct2(r["rate24"])}</td><td class="num">{_pct2(r["ui"])}</td><td class="mono hide-sm">${r["awards"]/r["pop"]:,.0f}</td></tr>' for r in rows)
     body = f"""<section class="sec"><div class="wrap">
 <div class="tbl-wrap"><table class="tbl ledger fit"><thead><tr><th>#</th><th>State</th><th>SNAP error rate, FY2025</th><th class="hide-sm">FY2024</th><th>Jobless benefits paid wrong, year to Mar 2026</th><th class="hide-sm">Federal awards per resident</th></tr></thead><tbody>{trs}</tbody></table></div>
-<p style="margin:0 0 18px"><a class="btn sm" href="/state-audits">What every state's own auditors found →</a></p>
+<p style="margin:0 0 18px"><a class="btn sm" href="/state-audits" data-vital-event="offer_clicked">What every state's own auditors found →</a></p>
 <p class="src" style="margin-top:14px">Ranked worst first on SNAP. SNAP error rates: USDA. Jobless (unemployment insurance) benefits paid wrong: Labor Department scorecard. Awards per resident: our math from USAspending.gov fiscal 2025 prime awards and Census 2024 population.</p>
 </div></section>
 {src_line(B, ['snap_fy25', 'snap_fy24', 'ui_scorecard', 'usas_state', 'census_pop'])}"""
@@ -1169,8 +1169,8 @@ def build_your_share(B, rows):
 <p>Divide what the government paid wrong in one year by everyone in the country, and each person's share is about <b>${ip/pop:,.0f}</b>. Divide GAO's estimate of yearly fraud losses the same way and it's <b>${lo/pop:,.0f} to ${hi/pop:,.0f}</b>.</p>
 <p>These are averages, not bills: no one is charged this. They show the size of the problem in terms anyone can picture.</p>
 <h2>See your state</h2>
-<form class="pick" action="/states" onsubmit="event.preventDefault();location.href=this.s.value"><label for="s">Pick a state</label><select id="s" name="s">{opts}</select><button class="btn sm" type="submit">Go</button></form>
-<p><a class="btn" href="__SIGN_inline__">Ask for the receipt: sign the RECEIPTS Act ↗</a></p>
+<form class="pick" action="/states" onsubmit="event.preventDefault();location.href=this.s.value"><label for="s">Pick a state</label><select id="s" name="s" data-vital-event="tool_used">{opts}</select><button class="btn sm" type="submit" data-vital-event="tool_used">Go</button></form>
+<p><a class="btn" href="__SIGN_inline__" data-vital-event="signup_started">Ask for the receipt: sign the RECEIPTS Act ↗</a></p>
 </div></div></section>
 {src_line(B, ['pa_data', 'gao_fraud', 'census_pop'])}"""
     page(B, "your-share.html", "", f"Your share: ${ip/pop:,.0f} per person in federal payments made wrong | FraudBad",
@@ -1196,8 +1196,8 @@ def build_contracts(B):
                     f'<td class="mono hide-sm">{B.e(desc[:140]) if desc else "—"} {flag}</td><td><a href="{url}" rel="noopener">Record ↗</a></td></tr>')
     nflag = len(kind)
     body = f"""<section class="sec"><div class="wrap">
-<div class="pick"><label for="cq">Search</label><input id="cq" type="search" placeholder="Company, agency or word" autocomplete="off">
-<label class="chk"><input id="cf" type="checkbox"> Only the {nflag} with no real description</label></div>
+<div class="pick"><label for="cq">Search</label><input id="cq" type="search" placeholder="Company, agency or word" autocomplete="off" data-vital-event="tool_used">
+<label class="chk"><input id="cf" type="checkbox" data-vital-event="tool_used"> Only the {nflag} with no real description</label></div>
 <div class="tbl-wrap"><table class="tbl fit" id="ct"><thead><tr><th>Award amount</th><th>Who got it</th><th class="hide-sm">What the public record says it's for</th><th>Record</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
 <p class="src" style="margin-top:14px">The 100 largest federal contracts with activity in fiscal 2026, from USAspending.gov ({B.e(sig['pulled'])}). "Award amount" is the contract's total to date. A short description isn't proof of waste; it means the public can't tell what was bought.</p>
 </div></section>

@@ -106,7 +106,7 @@ def head(title, desc, path, og, jsonld=None, extra=""):
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css?v={V}">
-<script defer src="https://rsio.org/vital.js"></script>
+<script defer src="https://rsio.org/vital.js" data-site="fraudbad.com"></script>
 {ld}{extra}
 </head>
 <body>
@@ -120,7 +120,7 @@ def header(active=""):
         return f'<a href="{href}"{cur}>{label}</a>'
     return f"""<header class="top"><div class="wrap">
 <a class="mark" href="/" aria-label="FraudBad home"><span class="f">Fraud</span><span class="b">Bad</span><small>No taxation without receipts</small></a>
-<nav class="nav" aria-label="Main">{a('/#cases','The cases','cases')}{a('/soft-fraud','Soft fraud','soft')}{a('/ledger','The ledger','ledger')}{a('/transparency','Where receipts stop','transparency')}{a('/method','How we judge','method')}<a class="btn sm" href="__SIGN_nav__">Sign the Receipts Act</a></nav>
+<nav class="nav" aria-label="Main">{a('/#cases','The cases','cases')}{a('/soft-fraud','Soft fraud','soft')}{a('/ledger','The ledger','ledger')}{a('/transparency','Where receipts stop','transparency')}{a('/method','How we judge','method')}<a class="btn sm" href="__SIGN_nav__" data-vital-event="signup_started">Sign the Receipts Act</a></nav>
 </div></header>
 """
 
@@ -163,14 +163,14 @@ def cta():
 <p class="cta-line" data-b="Every number on this site was counted after the money was already spent. The RECEIPTS Act starts with one rule: when the government buys from GSA's catalog for over $25,000, it publishes the price next to what other agencies paid for the same thing. Add your name.">Public money should come with a receipt anyone can check. The RECEIPTS Act starts with one rule for federal purchases over $25,000 from GSA's buying catalog: publish the price paid next to what other agencies paid for the same thing.</p>
 </div>
 <div class="side">
-<a class="{link_cls}" href="__SIGN_band__" data-sign-link>{link_txt}</a>
+<a class="{link_cls}" href="__SIGN_band__" data-sign-link data-vital-event="signup_started">{link_txt}</a>
 <form class="inline-sign" data-inline-sign{form_hidden}>
 <p class="sign-count" data-sign-count hidden></p>
 <div class="honey" aria-hidden="true"><label for="fb-website">Leave this blank</label><input type="text" id="fb-website" name="websiteAddress" tabindex="-1" autocomplete="off"></div>
 <label for="fb-name">Your name <span>(optional)</span></label><input type="text" id="fb-name" name="name" autocomplete="name" maxlength="100" placeholder="Full name">
-<label for="fb-email">Email address</label><input id="fb-email" type="email" name="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required>
+<label for="fb-email">Email address</label><input id="fb-email" type="email" name="email" autocomplete="email" maxlength="254" placeholder="you@example.com" data-vital-event="signup_started" required>
 <label class="consent" for="fb-consent"><input id="fb-consent" type="checkbox" name="consent" required><span>I support the RECEIPTS Act working draft and want the America.co newsletter, including updates on this proposal and upcoming events. I can unsubscribe at any time. <a href="https://america.co/privacy#newsletter-preferences">Privacy &amp; preferences</a>.</span></label>
-<button class="btn white" type="submit">Sign &amp; subscribe <span aria-hidden="true">→</span></button>
+<button class="btn white" type="submit" data-vital-event="signup_started">Sign &amp; subscribe <span aria-hidden="true">→</span></button>
 <p class="fine">Support for a citizen-authored working draft. Your email and signature stay private. Unsubscribe at any time.</p>
 </form>
 <p class="sign-status" data-sign-status role="status" aria-live="polite" aria-atomic="true"></p>
@@ -185,11 +185,11 @@ def footer():
     return f"""<footer class="foot"><div class="wrap">
 <div><a class="mark" href="/"><span class="f">Fraud</span><span class="b">Bad</span></a>
 <p style="margin-top:14px">An independent public-interest site. Not a government website. Every figure links to the auditor, inspector general, court record or agency report it came from.</p></div>
-<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/hard-fraud">Hard fraud</a><a href="/soft-fraud">Soft fraud</a><a href="/cases/federal">Federal cases</a><a href="/cases/state">State cases</a><a href="/cases/local">Local cases</a><a href="/ledger">Every program's error rate</a><a href="/agencies">All agencies</a><a href="/programs">All programs</a><a href="/years">By fiscal year</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="/answers/">Answers</a><a href="/contracts">Contract explorer</a><a href="/states">Every state, ranked</a><a href="/state-audits">State single audits</a><a href="/your-share">Your share</a><a href="/data">Open data</a><a href="/about">About</a><a href="/corrections">Corrections</a><a href="__SIGN_footer__">Sign the Receipts Act</a></nav>
+<nav aria-label="Site"><a href="/#cases">All cases</a><a href="/hard-fraud">Hard fraud</a><a href="/soft-fraud">Soft fraud</a><a href="/cases/federal">Federal cases</a><a href="/cases/state">State cases</a><a href="/cases/local">Local cases</a><a href="/ledger">Every program's error rate</a><a href="/agencies">All agencies</a><a href="/programs">All programs</a><a href="/years">By fiscal year</a><a href="/transparency">Where the receipts stop</a><a href="/method">How we judge cases</a><a href="/answers/">Answers</a><a href="/contracts">Contract explorer</a><a href="/states">Every state, ranked</a><a href="/state-audits">State single audits</a><a href="/your-share">Your share</a><a href="/data">Open data</a><a href="/about">About</a><a href="/corrections">Corrections</a><a href="__SIGN_footer__" data-vital-event="signup_started">Sign the Receipts Act</a></nav>
 <nav aria-label="America.co"><a href="https://america.co/">America.co</a>{''.join(f'<a href="{u}" rel="noopener">{n}</a>' for n,u in SOCIALS)}<a href="https://america.co/work-with-us">Send a correction</a></nav>
 <p class="fine">Updated {UPDATED_HUMAN}. Charges are accusations; everyone charged is presumed innocent until proven guilty. Improper payments are not all fraud — each page says what kind of number it is.</p>
 </div></footer>
-<div class="signbar" aria-hidden="true"><span>Want to stop it?</span><a class="btn sm" href="__SIGN_bar__" tabindex="-1">Sign the Receipts Act</a></div>
+<div class="signbar" aria-hidden="true"><span>Want to stop it?</span><a class="btn sm" href="__SIGN_bar__" tabindex="-1" data-vital-event="signup_started">Sign the Receipts Act</a></div>
 <script src="/site.js?v={V}" defer></script>
 </body></html>
 """
@@ -363,7 +363,7 @@ def build_home():
 <h1>$233–521 billion<span class="u">lost to fraud every year</span></h1>
 <p class="lede">That's the federal government's own estimate. Below is every case big enough to matter — sourced to the auditors, inspectors general and courts that found it — and a map of where the receipts stop.</p>
 <p class="soft-line">And that only counts the crimes. <a href="/soft-fraud">Soft fraud</a> — paying without proof, overpaying, paying twice, never collecting — runs into the trillions.</p>
-<div class="actions"><a class="btn" href="#cases">See every case ↓</a><a class="btn ghost" href="/soft-fraud">Soft fraud →</a><a class="btn ghost" href="/transparency">Where the receipts stop →</a></div>
+<div class="actions"><a class="btn" href="#cases" data-vital-event="offer_clicked">See every case ↓</a><a class="btn ghost" href="/soft-fraud" data-vital-event="offer_clicked">Soft fraud →</a><a class="btn ghost" href="/transparency" data-vital-event="offer_clicked">Where the receipts stop →</a></div>
 <div class="ticker" data-ticker aria-live="off"><span>Since you opened this page, at GAO's estimated rate</span><b>$0–$0</b><span>Based on GAO's estimate of $233B–$521B a year (2018–2022 data)</span></div>
 </div>
 {receipt(hero_lines, ("Itemized receipt", "NOT AVAILABLE"), "Federal spending", "Fiscal year 2026", link_mode="direct")}
@@ -375,15 +375,15 @@ def build_home():
 <p>Every case here was found by an auditor, an inspector general, a prosecutor, a court or the agency that paid the money. Each page shows the numbers, where they came from, and how sure anyone can be.</p></div>
 <div class="filterbar">
 <div class="filters" role="group" aria-label="Filter by kind">
-<button class="chip" data-group="type" data-filter="all" aria-pressed="true">All<span class="c">{len(CASES)}</span></button>
-<button class="chip" data-group="type" data-filter="hard" aria-pressed="false">Hard fraud<span class="c">{tcounts['hard']}</span></button>
-<button class="chip" data-group="type" data-filter="soft" aria-pressed="false">Soft fraud<span class="c">{tcounts['soft']}</span></button>
+<button class="chip" data-group="type" data-filter="all" aria-pressed="true" data-vital-event="tool_used">All<span class="c">{len(CASES)}</span></button>
+<button class="chip" data-group="type" data-filter="hard" aria-pressed="false" data-vital-event="tool_used">Hard fraud<span class="c">{tcounts['hard']}</span></button>
+<button class="chip" data-group="type" data-filter="soft" aria-pressed="false" data-vital-event="tool_used">Soft fraud<span class="c">{tcounts['soft']}</span></button>
 </div>
 <div class="filters" role="group" aria-label="Filter by level">
-<button class="chip" data-group="level" data-filter="all" aria-pressed="true">Every level</button>
-<button class="chip" data-group="level" data-filter="federal" aria-pressed="false">Federal<span class="c">{counts['federal']}</span></button>
-<button class="chip" data-group="level" data-filter="state" aria-pressed="false">State<span class="c">{counts['state']}</span></button>
-<button class="chip" data-group="level" data-filter="local" aria-pressed="false">Local<span class="c">{counts['local']}</span></button>
+<button class="chip" data-group="level" data-filter="all" aria-pressed="true" data-vital-event="tool_used">Every level</button>
+<button class="chip" data-group="level" data-filter="federal" aria-pressed="false" data-vital-event="tool_used">Federal<span class="c">{counts['federal']}</span></button>
+<button class="chip" data-group="level" data-filter="state" aria-pressed="false" data-vital-event="tool_used">State<span class="c">{counts['state']}</span></button>
+<button class="chip" data-group="level" data-filter="local" aria-pressed="false" data-vital-event="tool_used">Local<span class="c">{counts['local']}</span></button>
 </div></div>
 <div class="grid" style="margin-top:22px">{cards}</div>
 <div class="legend" aria-label="How sure we are">{legend}</div>
@@ -392,13 +392,13 @@ def build_home():
 <div class="sec-head"><div><p class="kicker" style="color:#ff4438">Bigger than the crimes</p><h2 id="soft-h">Soft fraud</h2></div>
 <p>Money lost without anyone breaking a law: paid without proof, paid too much, paid twice, lost track of, or never collected. Each of these is an official or peer-reviewed number.</p></div>
 <div class="big-grid">{soft_tiles}</div>
-<p style="margin-top:26px"><a class="btn" href="/soft-fraud">How we search for soft fraud →</a></p>
+<p style="margin-top:26px"><a class="btn" href="/soft-fraud" data-vital-event="offer_clicked">How we search for soft fraud →</a></p>
 </div></section>
 <section class="sec" style="background:#fff;border-top:1px solid var(--rule)"><div class="wrap">
 <div class="sec-head"><div><p class="kicker" style="color:var(--red)">Federal · State · Local</p><h2>Where the receipts stop</h2></div>
 <p>You can see the total. Follow a dollar down and the trail goes dark: who got paid next, what was bought, and whether it ever showed up.</p></div>
 <div class="mini" role="group" aria-label="How far you can follow a public dollar">{mini_html}</div>
-<p style="margin-top:26px"><a class="btn ink" href="/transparency">See the full map →</a></p>
+<p style="margin-top:26px"><a class="btn ink" href="/transparency" data-vital-event="offer_clicked">See the full map →</a></p>
 </div></section>
 </main>
 {cta()}{footer()}"""
@@ -469,9 +469,9 @@ def build_case(i, c):
 <div class="receipt flat static" style="padding:20px">
 <p class="kicker" style="color:var(--red);margin-bottom:8px">Want to stop it?</p>
 <p style="font:400 30px/1 var(--display);text-transform:uppercase;margin:0 0 14px">Sign the Receipts Act.</p>
-<a class="btn" href="__SIGN_inline__">Sign it on America.co ↗</a>
+<a class="btn" href="__SIGN_inline__" data-vital-event="signup_started">Sign it on America.co ↗</a>
 </div>
-<div class="share"><button class="btn ink sm" data-copy="{url}">Copy link</button><a class="btn ink sm" href="{e(x_url)}" rel="noopener">Post on X</a><button class="btn ink sm" data-share="{url}">Share</button><p class="status" aria-live="polite"></p></div>
+<div class="share"><button class="btn ink sm" data-copy="{url}" data-vital-event="tool_used">Copy link</button><a class="btn ink sm" href="{e(x_url)}" rel="noopener" data-vital-event="offer_clicked">Post on X</a><button class="btn ink sm" data-share="{url}" data-vital-event="tool_used">Share</button><p class="status" aria-live="polite"></p></div>
 {__import__("pages_more").embed_snippet(__import__("sys").modules[__name__], c)}
 </aside>
 </div>
@@ -554,7 +554,7 @@ def build_transparency():
 <h2>The $149,072 soap dispensers</h2>
 <p class="lede" style="margin-top:16px">When the Pentagon's inspector general compared what the Air Force paid for 46 spare parts against what they should cost, it found a soap dispenser marked up 7,943%. For 25 of the 46 parts, the Air Force couldn't even say whether the price was fair.</p>
 <p>Nobody needed an investigation to see it. They needed the price paid next to what everyone else pays. The RECEIPTS Act would make that kind of comparison public, starting with federal orders over $25,000 placed through GSA's schedules.</p>
-<p><a class="btn" href="__SIGN_inline__">Sign the Receipts Act ↗</a></p>
+<p><a class="btn" href="__SIGN_inline__" data-vital-event="signup_started">Sign the Receipts Act ↗</a></p>
 </div>
 </div></section>
 </main>
@@ -817,6 +817,7 @@ def build_meta():
     write("llms.txt", (
         "# FraudBad\n\n"
         "> Source-cited ledger of U.S. government spending fraud cases and federal improper payments by state, agency, and program, cited to OIG, DOJ, and GAO records.\n\n"
+        "Last reviewed: 2026-11-27\n\n"
         "## Key Pages\n\n"
         f"- [Home]({SITE}/): Overview of documented government spending fraud cases.\n"
         f"- [The Ledger]({SITE}/ledger): Federal improper payments ledger by agency and program.\n"
